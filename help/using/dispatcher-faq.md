@@ -4,7 +4,7 @@ seo-title: AEM Dispatcher的主要問題
 description: AEM Dispatcher的主要問題
 seo-description: Adobe AEM Dispatcher的主要問題
 translation-type: tm+mt
-source-git-commit: f35c79b487454059062aca6a7c989d5ab2afaf7b
+source-git-commit: 76cffbfb616cd5601aed36b7076f67a2faf3ed3b
 
 ---
 

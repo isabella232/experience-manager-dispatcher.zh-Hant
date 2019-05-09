@@ -8,7 +8,7 @@ topic-tags: dispatcher
 content-type: 引用
 discoiquuid: d61d021e-b338-4a1 d-91ee-55427557e931
 translation-type: tm+mt
-source-git-commit: f35c79b487454059062aca6a7c989d5ab2afaf7b
+source-git-commit: 69edbe7608b46c93d238515e4223606eadad0ac4
 
 ---
 
