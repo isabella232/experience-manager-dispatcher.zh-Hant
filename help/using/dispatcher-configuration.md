@@ -10,7 +10,7 @@ topic-tags: dispatcher
 content-type: 引用
 discoiquuid: affee8e-bb34-42a-7a5 e-b7 d0 e848391 a
 translation-type: tm+mt
-source-git-commit: bd8fff69a9c8a32eade60c68fc75c3aa411582af
+source-git-commit: 2f0ca874c23cb7aecbcedc22802c46a295bb4d75
 
 ---
 
@@ -567,20 +567,23 @@ Amazon Elastic Load Balancing(ELB)是一種回應getdrinfo的服務，可使用�
 
 * **請求列的元素：** 根據 `/method`HTTP要求的請求行部分的特定部分，包括 `/url`、 `/query`或 `/protocol` 建立篩選請求的模式。篩選請求行元素(而非整個請求行)是偏好篩選方法。
 
-* **glob屬性**： `/glob` 此屬性可用來符合HTTP要求的整個要求列。
-
-如需/glob屬性的詳細資訊，請參閱 [「設計glob屬性的圖樣](#designing-patterns-for-glob-properties)」。在/glob屬性中使用萬用字元字元的規則也會套用至請求行的對應元素的模式。
+* **請求行的進階元素：** 從Dispatcher4.2.0開始，有個新的篩選元素可供使用。這些新元素分別 `/path`為和 `/selectors``/extension``/suffix` 。納入一或多個這些項目，以進一步控制URL模式。
 
 >[!NOTE]
 >
->在Dispatcher4.2.0版中，已新增多項篩選組態和記錄功能的增強功能：
->
->* [支援POXX規則運算式](dispatcher-configuration.md#main-pars-title-1996763852)
->* [支援篩選請求URL的其他元素](dispatcher-configuration.md#main-pars-title-694578373)
->* [追蹤記錄](dispatcher-configuration.md#main-pars-title-1950006642)
->
+>如需這些元素參照之請求行之哪一部分的詳細資訊，請參閱 [Sling URL分解](https://sling.apache.org/documentation/the-sling-engine/url-decomposition.html) wiki頁面。
 
+* **glob屬性**： `/glob` 此屬性可用來符合HTTP要求的整個要求列。
 
+>[!CAUTION]
+>
+>在Dispatcher中停用使用globs的篩選。因此，您應避免在 `/filter` 章節中使用全球化，因為它可能導致安全性問題。因此，不是：
+
+`/glob "* *.css *"`
+
+您應使用
+
+`/url "*.css"`
 
 #### HTTP請求的請求行部分 {#the-request-line-part-of-http-requests}
 
@@ -593,6 +596,18 @@ HTTP/1.1定義 [要求列](https://www.w3.org/Protocols/rfc2616/rfc2616-sec5.htm
 GET/content/geometrixx-outdoors/en.htmlHTTP.1.1&lt; CRLF&gt;
 
 您的模式必須考量請求列和&lt; CRLF&gt;字元中的空格字元。
+
+#### 雙引號與單引號 {#double-quotes-vs-single-quotes}
+
+When creating your filter rules, use double quotation marks `"pattern"` for simple patterns. 如果您使用Dispatcher4.2.0或更新版本且您的模式包含規則運算式，則必須在單引號 `'(pattern1|pattern2)'` 中括住regex圖樣。
+
+#### 規則運算式 {#regular-expressions}
+
+在Dispatcher4.2.0之後，您可以在篩選模式中加入POSX Extended規則運算式。
+
+#### 疑難排解篩選器 {#troubleshooting-filters}
+
+如果您的篩選器未按照預期的方式觸發，請啓用「 [追蹤在](#trace-logging) 傳送程式上記錄」，讓您查看哪個篩選器正在截取請求。
 
 #### 篩選範例：拒絕全部 {#example-filter-deny-all}
 
@@ -659,15 +674,6 @@ GET/content/geometrixx-outdoors/en.htmlHTTP.1.1&lt; CRLF&gt;
 ```
 
 #### 篩選範例：篩選請求URL的其他元素 {#example-filter-filter-additional-elements-of-a-request-url}
-
-dispatcher4.2.0引進的增強功能之一，就是篩選請求URL的其他元素。引進的新元素包括：
-
-* 路徑
-* 選擇器
-* 擴充功能
-* 字尾
-
-您可以將相同名稱的屬性新增至篩選規則來設定： `/path``/selectors``/extension``/suffix` 和分別。
 
 以下是一個規則範例，可使用路徑、選擇器和擴充功能的篩選器封鎖 `/content` 路徑及其子樹狀結構中的內容抓取：
 
