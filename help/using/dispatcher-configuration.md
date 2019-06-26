@@ -10,7 +10,7 @@ topic-tags: dispatcher
 content-type: 引用
 discoiquuid: affee8e-bb34-42a-7a5 e-b7 d0 e848391 a
 translation-type: tm+mt
-source-git-commit: 8e8638027c79015a4151539918a17069fb16873a
+source-git-commit: 4f1e3740c7eb91023b819ffed0bb5d0b432002be
 
 ---
 
@@ -1710,7 +1710,7 @@ If using an **Apache** web server you can use the standard functionality for rot
 * dispatcher記錄檔；副檔名中的時間戳記(logs/dispatcher. log%Y%m%d)。
 * (60x60x24x=604800秒)。
 
-Please see the Apache web server documentation on Log Rotation and Piped Logs; for example [Apache 2.2](https://httpd.apache.org/docs/2.2/logs.html).
+Please see the Apache web server documentation on Log Rotation and Piped Logs; for example [Apache 2.4](https://httpd.apache.org/docs/2.4/logs.html).
 
 >[!NOTE]
 >
