@@ -14,12 +14,12 @@ index: y
 internal: n
 snippet: y
 translation-type: tm+mt
-source-git-commit: 8dd56f8b90331f0da43852e25893bc6f3e606a97
+source-git-commit: 6d3ff696780ce55c077a1d14d01efeaebcb8db28
 
 ---
 
 
-# Dispatcher Security Checklist{#the-dispatcher-security-checklist}
+# The Dispatcher Security Checklist{#the-dispatcher-security-checklist}
 
 <!-- 
 
@@ -36,11 +36,11 @@ dispatcher做為前端系統，為您的Adobe Experience Manager基礎架構提�
 
 >[!CAUTION]
 >
->您也必須先完成AEM版本的安全性檢查清單，才能上線。請參閱對應的 [Adobe Experience Manager文件](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html)。
+>您也必須先完成AEM版本的安全性檢查清單，才能上線。Please refer to the corresponding [Adobe Experience Manager documentation](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html).
 
-## 使用最新版Dispatcher {#use-the-latest-version-of-dispatcher}
+## Use the Latest Version of Dispatcher {#use-the-latest-version-of-dispatcher}
 
-您應安裝適用於平台的最新可用版本。您應升級Dispatcher實例，以使用最新版本來運用產品和安全性增強功能。請參閱 [安裝Dispatcher](dispatcher-install.md)。
+您應安裝適用於平台的最新可用版本。您應升級Dispatcher實例，以使用最新版本來運用產品和安全性增強功能。See [Installing Dispatcher](dispatcher-install.md).
 
 >[!NOTE]
 >
@@ -48,13 +48,13 @@ dispatcher做為前端系統，為您的Adobe Experience Manager基礎架構提�
 >
 >`[Thu Apr 30 17:30:49 2015] [I] [23171(140735307338496)] Dispatcher initialized (build 4.1.9)`
 >
->若要尋找記錄檔，請檢查您 `httpd.conf`的dispatcher組態。
+>To find the log file, inspect the dispatcher configuration in your `httpd.conf`.
 
-## 限制可清除快取的客戶 {#restrict-clients-that-can-flush-your-cache}
+## Restrict Clients that Can Flush Your Cache {#restrict-clients-that-can-flush-your-cache}
 
-Adobe建議 [您限制可清除快取的用戶端。](dispatcher-configuration.md#limiting-the-clients-that-can-flush-the-cache)
+Adobe recommends that you [limit the clients that can flush your cache.](dispatcher-configuration.md#limiting-the-clients-that-can-flush-the-cache)
 
-## 啓用HTTPS以提供傳輸層安全性 {#enable-https-for-transport-layer-security}
+## Enable HTTPS for transport layer security {#enable-https-for-transport-layer-security}
 
 Adobe建議在作者和發佈例項上啓用HTTPS傳輸層。
 
@@ -75,38 +75,38 @@ Last Modified Date: 2015-06-26T04:41:28.841-0400
 
  -->
 
-## 限制存取 {#restrict-access}
+## Restrict Access {#restrict-access}
 
-設定Dispatcher時，您應盡可能限制外部存取。請參閱 [Dispatcher文件中的範例/filter章節](dispatcher-configuration.md#main-pars_184_1_title) 。
+設定Dispatcher時，您應盡可能限制外部存取。See [Example /filter Section](dispatcher-configuration.md#main-pars_184_1_title) in the Dispatcher documentation.
 
-## 確定存取管理URL遭拒 {#make-sure-access-to-administrative-urls-is-denied}
+## Make Sure Access to Administrative URLs is Denied {#make-sure-access-to-administrative-urls-is-denied}
 
 確定您使用篩選器封鎖任何管理URL(例如Web主控台)的外部存取。
 
-如需需要封鎖的URL清單，請參閱 [測試Dispatcher安全性](dispatcher-configuration.md#testing-dispatcher-security) 。
+See [Testing Dispatcher Security](dispatcher-configuration.md#testing-dispatcher-security) for a list of URLs that need to be blocked.
 
-## 使用白名單取代黑名單 {#use-whitelists-instead-of-blacklists}
+## Use Whitelists Instead Of Blacklists {#use-whitelists-instead-of-blacklists}
 
 白名單是提供存取控制的較好方式，因為他們繼承了存取權，因此他們假設所有存取要求都應該被拒絕，除非明確的白名單部分。此模型對於在特定配置階段尚未審查或考量的新請求，提供更嚴格的控制權。
 
-## 使用專用系統使用者執行Dispatcher {#run-dispatcher-with-a-dedicated-system-user}
+## Run Dispatcher with a Dedicated System User {#run-dispatcher-with-a-dedicated-system-user}
 
 設定Dispatcher時，應確保Web伺服器由具有最少權限的專用使用者執行。建議只將寫入操作授與dispatcher快取資料夾。
 
 Additionnaly，IIS使用者需要設定其網站如下：
 
-1. 在網站的實體路徑設定中，選取 **「Connect」作為特定使用者**。
+1. In the physical path setting for your web site, select **Connect as specific user**.
 1. 設定使用者。
 
-## 防止拒絕服務(DoS)攻擊 {#prevent-denial-of-service-dos-attacks}
+## Prevent Denial of Service (DoS) Attacks {#prevent-denial-of-service-dos-attacks}
 
 拒絕服務(DoS)攻擊試圖讓其預定使用者無法使用電腦資源。
 
-在dispatcher層級，有兩種設定以防止DoS攻擊的方法： [](https://docs.adobe.com/content/docs/en/dispatcher.html#/filter (濾鏡))
+At the dispatcher level, there are two methods of configuring to prevent DoS attacks: [](https://docs.adobe.com/content/docs/en/dispatcher.html#/filter (Filters))
 
-* 使用mod_ rewrite模組(例如 [Apache2.2](https://httpd.apache.org/docs/2.2/mod/mod_rewrite.html))來執行URL驗證(如果URL模式規則不是太複雜)。
+* Use the mod_rewrite module (for example, [Apache 2.4](https://httpd.apache.org/docs/2.4/mod/mod_rewrite.html)) to perform URL validations (if the URL pattern rules are not too complex).
 
-* 使用 [篩選條件，防止傳送程式使用惡意擴充功能快取URL](dispatcher-configuration.md#configuring-access-to-conten-tfilter)。\
+* Prevent the dispatcher from caching URLs with spurious extensions by using [filters](dispatcher-configuration.md#configuring-access-to-conten-tfilter).\
    例如，變更快取規則以限制快取至預期的MIME類型，例如：
 
    * `.html`
@@ -117,7 +117,7 @@ Additionnaly，IIS使用者需要設定其網站如下：
    * `.doc`
    * `.pdf`
    * `.ppt`
-   可看到設定檔案 [以限制外部存取](#restrict-access)，這包括MIME類型的限制。
+   An example configuration file can be seen for [restricting external access](#restrict-access), this includes restrictions for mime types.
 
 若要安全啓用發佈例項的完整功能，請設定篩選器以防止存取下列節點：
 
@@ -147,20 +147,20 @@ Last Modified Date: 2015-06-26T04:38:17.016-0400
 
  -->
 
-## 設定Dispatcher以防止CSRF攻擊 {#configure-dispatcher-to-prevent-csrf-attacks}
+## Configure Dispatcher to prevent CSRF Attacks {#configure-dispatcher-to-prevent-csrf-attacks}
 
-AEM提供一個 [架構](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#verification-steps) ，旨在防止跨網站偽造要求偽造攻擊。若要正確使用此架構，您必須在傳送程式中建立安全清單的CSRF代號支援。You can do this by：
+AEM provides a [framework](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#verification-steps) aimed at preventing Cross-Site Request Forgery attacks. 若要正確使用此架構，您必須在傳送程式中建立安全清單的CSRF代號支援。You can do this by：
 
-1. 建立篩選器以允許 `/libs/granite/csrf/token.json` 路徑；
-1. 將 `CSRF-Token` 標題新增至Dispatcher組態 `clientheaders` 的區段。
+1. Creating a filter to allow the `/libs/granite/csrf/token.json` path;
+1. Add the `CSRF-Token` header to the `clientheaders` section of the Dispatcher configuration.
 
-## 防止Clickjacking {#prevent-clickjacking}
+## Prevent Clickjacking {#prevent-clickjacking}
 
-若要防止clickjacking，建議您設定網路伺服器，提供 `X-FRAME-OPTIONS` HTTP標題設 `SAMEORIGIN`為。
+To prevent clickjacking we recommend that you configure your webserver to provide the `X-FRAME-OPTIONS` HTTP header set to `SAMEORIGIN`.
 
-有關clickjacking的詳細 [資訊，請參閱OASP網站](https://www.owasp.org/index.php/Clickjacking)。
+For more [information on clickjacking please see the OWASP site](https://www.owasp.org/index.php/Clickjacking).
 
-## 執行滲透效果測試 {#perform-a-penetration-test}
+## Perform a Penetration Test {#perform-a-penetration-test}
 
 Adobe強烈建議您先執行AEM基礎架構的滲透測試，然後進行生產。
 
