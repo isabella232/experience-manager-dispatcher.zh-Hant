@@ -10,7 +10,7 @@ topic-tags: dispatcher
 content-type: 引用
 discoiquuid: affee8e-bb34-42a-7a5 e-b7 d0 e848391 a
 translation-type: tm+mt
-source-git-commit: 4f1e3740c7eb91023b819ffed0bb5d0b432002be
+source-git-commit: a997d2296e80d182232677af06a2f4ab5a14bfd5
 
 ---
 
@@ -413,7 +413,7 @@ The following example represents a snippet from a dispatcher.any file that defin
 >
 >`/allowAuthorized`**必須** 設定 `"0"` 在 `/cache` 區段中，才能啓用此功能。
 
-建立安全作業以存取演算農場，讓使用者必須登入才能存取農場中的任何頁面。登入後，使用者可以存取農場中的所有頁面。See [Creating a Closed User Group](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/cug.html#CreatingTheUserGroupToBeUsed) for information about using this feature with CUGs.
+建立安全作業以存取演算農場，讓使用者必須登入才能存取農場中的任何頁面。登入後，使用者可以存取農場中的頁面。See [Creating a Closed User Group](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/cug.html#CreatingTheUserGroupToBeUsed) for information about using this feature with CUGs. Also, see the Dispatcher [Security Checklist](/help/using/security-checklist.md) before going live.
 
 `/sessionmanagement` 屬性是一個子屬性 `/farms`。
 
@@ -426,6 +426,17 @@ The following example represents a snippet from a dispatcher.any file that defin
 **/directory** (強制)
 
 儲存工作階段資訊的目錄。如果目錄不存在，則會建立此目錄。
+
+>[!CAUTION]
+>
+> When configuring the directory sub-parameter **do not** point to the root folder (`/directory "/"`) as it can cause serious problems. 您應永遠指定儲存工作階段資訊的資料夾路徑。例如：
+
+```xml
+/sessionmanagement 
+  { 
+  /directory "/usr/local/apache/.sessions"
+  }
+```
 
 **/encode** (選用)
 
