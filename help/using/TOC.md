@@ -1,7 +1,7 @@
 ---
 cloud: experience-cloud
-product: 體驗管理員
-sub-product: experience Manager dispatcher
+product: 體驗經理
+sub-product: experience manager dispatcher
 archetype: 管理員
 user-guide-title: Experience Manager Dispatcher說明
 translation-type: tm+mt
@@ -17,14 +17,14 @@ source-git-commit: 5cd966c0e317949582084d3268c6914540b707b1
    + [安裝Dispatcher](dispatcher-install.md)
    + [Dispatcher Security Checklist](security-checklist.md)
    + [AEM Dispatcher發行說明](release-notes.md)
-+ Configuring {#configuring}
-   + [設定Dispatcher](dispatcher-configuration.md)
-   + [從AEM停用快取頁面](page-invalidate.md)
-   + [最佳化網站快取效能](https://helpx.adobe.com/experience-manager/6-4/sites/deploying/using/configuring-performance.html)
-   + [快取保全內容](permissions-cache.md)
-   + [搭配多個網域使用Dispatcher ](dispatcher-domains.md)
-   + [搭配Dispatcher使用SSL](dispatcher-ssl.md)
-   + [設定Dispatcher以防止CSRF攻擊](configuring-dispatcher-to-prevent-csrf.md)
++ 設定 {#configuring}
+   + [配置Dispatcher](dispatcher-configuration.md)
+   + [從AEM使快取頁面無效](page-invalidate.md)
+   + [針對快取效能最佳化網站](https://helpx.adobe.com/experience-manager/6-4/sites/deploying/using/configuring-performance.html)
+   + [快取安全內容](permissions-cache.md)
+   + [將Dispatcher與多個域一起使用 ](dispatcher-domains.md)
+   + [將SSL與Dispatcher搭配使用](dispatcher-ssl.md)
+   + [配置Dispatcher以防止CSRF攻擊](configuring-dispatcher-to-prevent-csrf.md)
 + 疑難排解 {#troubleshooting}
-   + [疑難排解Dispatcher問題疑難排解](dispatcher-troubleshooting.md)
-   + [Dispatcher熱門問題常見問題集](dispatcher-faq.md)
+   + [Dispatcher問題疑難排解](dispatcher-troubleshooting.md)
+   + [Dispatcher熱門問題常見問答集](dispatcher-faq.md)
