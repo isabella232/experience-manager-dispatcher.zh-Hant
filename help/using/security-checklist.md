@@ -1,15 +1,15 @@
 ---
 title: Dispatcher Security Checklist
 seo-title: Dispatcher Security Checklist
-description: 執行前應先完成的安全性檢查清單。
-seo-description: 執行前應先完成的安全性檢查清單。
-uuid: 7bfa3202-03f6-48e9-1d2e-2a40e137ecobe
+description: 在開始生產之前應先完成的安全檢查清單。
+seo-description: 在開始生產之前應先完成的安全檢查清單。
+uuid: 7bfa3202-03f6-48e9-8d2e-2a40e137ecbe
 contentOwner: 使用者
-products: SG_ PERIENCENCENAGER/ADDER
+products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: 引用
-discoiquuid: fbfafa55-c029-4eed7-ab3 e-1babfde18248
-jcr-lastmodifiedby: remove-leacacypath-6-1
+discoiquuid: fbfafa5-c029-4ed7-ab3e-1bbfde18248
+jcr-lastmodifiedby: remove-legacypath-6-1
 index: y
 internal: n
 snippet: y
@@ -19,7 +19,7 @@ source-git-commit: 6d3ff696780ce55c077a1d14d01efeaebcb8db28
 ---
 
 
-# The Dispatcher Security Checklist{#the-dispatcher-security-checklist}
+# Dispatcher Security Checklist{#the-dispatcher-security-checklist}
 
 <!-- 
 
@@ -32,31 +32,31 @@ Last Modified Date: 2015-06-05T05:14:35.365-0400
 
  -->
 
-dispatcher做為前端系統，為您的Adobe Experience Manager基礎架構提供額外的安全性層。Adobe強烈建議您在進行生產前，先完成下列檢查清單。
+作為前端系統的調度程式為您的Adobe Experience manager基礎架構提供了額外的安全層。 Adobe強烈建議您在開始生產之前先完成下列檢查清單。
 
 >[!CAUTION]
 >
->您也必須先完成AEM版本的安全性檢查清單，才能上線。Please refer to the corresponding [Adobe Experience Manager documentation](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html).
+>您也必須先完成AEM版本的安全性檢查清單，才能上線。 請參閱相應的 [Adobe Experience Manager檔案](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html)。
 
-## Use the Latest Version of Dispatcher {#use-the-latest-version-of-dispatcher}
+## 使用最新版的Dispatcher {#use-the-latest-version-of-dispatcher}
 
-您應安裝適用於平台的最新可用版本。您應升級Dispatcher實例，以使用最新版本來運用產品和安全性增強功能。See [Installing Dispatcher](dispatcher-install.md).
+您應安裝適用於您平台的最新可用版本。 您應升級您的Dispatcher實例，以使用最新版本，以利用產品和安全性增強功能。 請參 [閱安裝Dispatcher](dispatcher-install.md)。
 
 >[!NOTE]
 >
->您可以查看dispatcher記錄檔，檢查最新版本的dispatcher安裝。
+>您可以查看調度程式日誌檔案來檢查當前版本的調度程式安裝。
 >
 >`[Thu Apr 30 17:30:49 2015] [I] [23171(140735307338496)] Dispatcher initialized (build 4.1.9)`
 >
->To find the log file, inspect the dispatcher configuration in your `httpd.conf`.
+>要查找日誌檔案，請檢查您的中的調度程式配置 `httpd.conf`。
 
-## Restrict Clients that Can Flush Your Cache {#restrict-clients-that-can-flush-your-cache}
+## 限制可刷新快取的客戶端 {#restrict-clients-that-can-flush-your-cache}
 
-Adobe recommends that you [limit the clients that can flush your cache.](dispatcher-configuration.md#limiting-the-clients-that-can-flush-the-cache)
+Adobe建議您限 [制可清除快取的用戶端。](dispatcher-configuration.md#limiting-the-clients-that-can-flush-the-cache)
 
-## Enable HTTPS for transport layer security {#enable-https-for-transport-layer-security}
+## 啟用HTTPS以確保傳輸層安全 {#enable-https-for-transport-layer-security}
 
-Adobe建議在作者和發佈例項上啓用HTTPS傳輸層。
+Adobe建議在作者和發佈例項上啟用HTTPS傳輸層。
 
 <!-- 
 
@@ -75,39 +75,39 @@ Last Modified Date: 2015-06-26T04:41:28.841-0400
 
  -->
 
-## Restrict Access {#restrict-access}
+## 限制存取 {#restrict-access}
 
-設定Dispatcher時，您應盡可能限制外部存取。See [Example /filter Section](dispatcher-configuration.md#main-pars_184_1_title) in the Dispatcher documentation.
+在配置Dispatcher時，應盡可能限制外部訪問。 請參 [閱Dispatcher文檔中的](dispatcher-configuration.md#main-pars_184_1_title) Example /filter Section。
 
-## Make Sure Access to Administrative URLs is Denied {#make-sure-access-to-administrative-urls-is-denied}
+## 確保管理URL的存取遭到拒絕 {#make-sure-access-to-administrative-urls-is-denied}
 
-確定您使用篩選器封鎖任何管理URL(例如Web主控台)的外部存取。
+請確定您使用篩選器來封鎖任何管理URL（例如Web主控台）的外部存取。
 
-See [Testing Dispatcher Security](dispatcher-configuration.md#testing-dispatcher-security) for a list of URLs that need to be blocked.
+如需 [要封鎖之URL的清單，請參閱Testing Dispatcher Security](dispatcher-configuration.md#testing-dispatcher-security) 。
 
-## Use Whitelists Instead Of Blacklists {#use-whitelists-instead-of-blacklists}
+## 使用白名單而非黑名單 {#use-whitelists-instead-of-blacklists}
 
-白名單是提供存取控制的較好方式，因為他們繼承了存取權，因此他們假設所有存取要求都應該被拒絕，除非明確的白名單部分。此模型對於在特定配置階段尚未審查或考量的新請求，提供更嚴格的控制權。
+白名單是提供存取控制的更好方式，因為白名單本身就假定，除非所有存取要求明確屬於白名單，否則應拒絕。 此模型對某些配置階段可能尚未審查或考慮的新請求提供更嚴格的控制。
 
-## Run Dispatcher with a Dedicated System User {#run-dispatcher-with-a-dedicated-system-user}
+## 使用專用系統用戶運行Dispatcher {#run-dispatcher-with-a-dedicated-system-user}
 
-設定Dispatcher時，應確保Web伺服器由具有最少權限的專用使用者執行。建議只將寫入操作授與dispatcher快取資料夾。
+配置Dispatcher時，您應確保Web伺服器由具有最低權限的專用用戶運行。 建議僅將寫訪問權限授予調度程式快取資料夾。
 
-Additionnaly，IIS使用者需要設定其網站如下：
+此外，IIS使用者需要依下列方式設定其網站：
 
-1. In the physical path setting for your web site, select **Connect as specific user**.
+1. 在網站的物理路徑設定中，選擇「以特定用 **戶身份連接」**。
 1. 設定使用者。
 
-## Prevent Denial of Service (DoS) Attacks {#prevent-denial-of-service-dos-attacks}
+## 防止拒絕服務(DoS)攻擊 {#prevent-denial-of-service-dos-attacks}
 
-拒絕服務(DoS)攻擊試圖讓其預定使用者無法使用電腦資源。
+拒絕服務(DoS)攻擊是企圖使電腦資源對其預定用戶不可用。
 
-At the dispatcher level, there are two methods of configuring to prevent DoS attacks: [](https://docs.adobe.com/content/docs/en/dispatcher.html#/filter (Filters))
+在調度器級別，有兩種配置方法可防止DoS攻擊：篩 [](https://docs.adobe.com/content/docs/en/dispatcher.html#/filter (選器))
 
-* Use the mod_rewrite module (for example, [Apache 2.4](https://httpd.apache.org/docs/2.4/mod/mod_rewrite.html)) to perform URL validations (if the URL pattern rules are not too complex).
+* 使用mod_rewrite模組(例如 [Apache 2.4](https://httpd.apache.org/docs/2.4/mod/mod_rewrite.html))執行URL驗證（如果URL模式規則不太複雜）。
 
-* Prevent the dispatcher from caching URLs with spurious extensions by using [filters](dispatcher-configuration.md#configuring-access-to-conten-tfilter).\
-   例如，變更快取規則以限制快取至預期的MIME類型，例如：
+* 使用篩選器，防止分派器以假擴充名稱快取 [URL](dispatcher-configuration.md#configuring-access-to-conten-tfilter)。\
+   例如，變更快取規則，將快取限制在預期的MIME類型，例如：
 
    * `.html`
    * `.jpg`
@@ -117,25 +117,25 @@ At the dispatcher level, there are two methods of configuring to prevent DoS att
    * `.doc`
    * `.pdf`
    * `.ppt`
-   An example configuration file can be seen for [restricting external access](#restrict-access), this includes restrictions for mime types.
+   例如，設定檔案可用於限制外 [部存取](#restrict-access)，這包括MIME類型的限制。
 
-若要安全啓用發佈例項的完整功能，請設定篩選器以防止存取下列節點：
+若要安全地在發佈例項上啟用完整功能，請設定篩選器以防止存取下列節點：
 
 * `/etc/`
 * `/libs/`
 
-接著，設定篩選器以允許存取下列節點路徑：
+然後，配置篩選器以允許訪問以下節點路徑：
 
 * `/etc/designs/*`
 * `/etc/clientlibs/*`
 * `/etc/segmentation.segment.js`
 * `/libs/cq/personalization/components/clickstreamcloud/content/config.json`
 * `/libs/wcm/stats/tracker.js`
-* `/libs/cq/personalization/*` (JS、CSS和JSON)
-* `/libs/cq/security/userinfo.json` (CQ使用者資訊)
+* `/libs/cq/personalization/*` （JS、CSS和JSON）
+* `/libs/cq/security/userinfo.json` （CQ使用者資訊）
 * `/libs/granite/security/currentuser.json` (**資料不得快取**)
 
-* `/libs/cq/i18n/*` (Internation)
+* `/libs/cq/i18n/*` （內部化）
 
 <!-- 
 
@@ -147,20 +147,20 @@ Last Modified Date: 2015-06-26T04:38:17.016-0400
 
  -->
 
-## Configure Dispatcher to prevent CSRF Attacks {#configure-dispatcher-to-prevent-csrf-attacks}
+## 配置Dispatcher以防止CSRF攻擊 {#configure-dispatcher-to-prevent-csrf-attacks}
 
-AEM provides a [framework](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#verification-steps) aimed at preventing Cross-Site Request Forgery attacks. 若要正確使用此架構，您必須在傳送程式中建立安全清單的CSRF代號支援。You can do this by：
+AEM提供 [架構](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#verification-steps) ，以防止跨網站偽造要求攻擊。 為了正確使用此框架，您需要在調度器中列入CSRF Token支援的白名單。 您可以透過下列方式執行此動作：
 
-1. Creating a filter to allow the `/libs/granite/csrf/token.json` path;
-1. Add the `CSRF-Token` header to the `clientheaders` section of the Dispatcher configuration.
+1. 建立允許路徑的篩 `/libs/granite/csrf/token.json` 選；
+1. 將標頭 `CSRF-Token` 添加到Dispatcher `clientheaders` 配置的部分。
 
-## Prevent Clickjacking {#prevent-clickjacking}
+## 防止點按劫持 {#prevent-clickjacking}
 
-To prevent clickjacking we recommend that you configure your webserver to provide the `X-FRAME-OPTIONS` HTTP header set to `SAMEORIGIN`.
+為防止點按劫持，建議您設定您的網站伺服器，以提供 `X-FRAME-OPTIONS` HTTP標題設定 `SAMEORIGIN`。
 
-For more [information on clickjacking please see the OWASP site](https://www.owasp.org/index.php/Clickjacking).
+有關點 [按劫持的更多資訊，請參閱OWASP網站](https://www.owasp.org/index.php/Clickjacking)。
 
-## Perform a Penetration Test {#perform-a-penetration-test}
+## 執行滲透測試 {#perform-a-penetration-test}
 
-Adobe強烈建議您先執行AEM基礎架構的滲透測試，然後進行生產。
+Adobe強烈建議您在開始生產之前，先對AEM基礎架構執行滲透率測試。
 
