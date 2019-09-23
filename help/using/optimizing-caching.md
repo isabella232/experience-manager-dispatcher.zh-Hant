@@ -1,25 +1,25 @@
 ---
-title: 最佳化網站快取效能
-seo-title: 最佳化網站快取效能
-description: 瞭解如何設計網站，以最大化快取的優點。
-seo-description: Dispatcher提供一些內建機制，可用來最佳化效能。瞭解如何設計網站，以最大化快取的優點。
-uuid: 2d4114d1-f464-4e10-b25 c-a1 b9 a9 b9 a9 c715 d1
+title: 針對快取效能最佳化網站
+seo-title: 針對快取效能最佳化網站
+description: 瞭解如何設計您的網站，以充份發揮快取的優點。
+seo-description: Dispatcher提供了許多內置機制，可用於優化效能。 瞭解如何設計您的網站，以充份發揮快取的優點。
+uuid: 2d4114d1-f464-4e10-b25c-a1b9a9c715d1
 contentOwner: 使用者
-products: SG_ PERIENCENCENAGER/ADDER
+products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: 引用
-discoiquuid: ba323503-1494-4048-941d-c1 d14 f2 e85 b2
+discoiquuid: ba323503-1494-4048-941d-c1d14f2e85b2
 redirecttarget: https://helpx.adobe.com/experience-manager/6-4/sites/deploying/using/configuring-performance.html
 index: y
 internal: n
 snippet: y
 translation-type: tm+mt
-source-git-commit: f35c79b487454059062aca6a7c989d5ab2afaf7b
+source-git-commit: 2ca816ac0776d72be651b76ff4f45e0c3ed1450f
 
 ---
 
 
-# 最佳化網站快取效能 {#optimizing-a-website-for-cache-performance}
+# 針對快取效能最佳化網站 {#optimizing-a-website-for-cache-performance}
 
 <!-- 
 
@@ -33,26 +33,26 @@ Last Modified Date: 2017-10-25T04:13:34.919-0400
 
 >[!NOTE]
 >
->Dispatcher版本與AEM獨立。如果您關注Dispatcher文件的連結(內嵌於舊版AEM的文件中)，可能會重新導向至此頁面。
+>Dispatcher版本獨立於AEM。 如果您遵循Dispatcher檔案的連結，且該連結內嵌於舊版AEM的檔案中，您可能會被重新導向至本頁面。
 
-Dispatcher提供一些內建機制，可用來最佳化效能。本節說明如何設計網站，以最大化快取的優點。
+Dispatcher提供了許多內置機制，可用於優化效能。 本節會告訴您如何設計網站，以充份發揮快取的優點。
 
 >[!NOTE]
 >
->它可協助您記住Dispatcher將快取儲存在標準Web伺服器上。這表示您：
+>它可能有助於您記住Dispatcher將快取儲存在標準Web伺服器上。 這表示您：
 >
->* 可以快取您可以儲存為頁面並使用URL的所有項目
->* 無法儲存其他項目，例如HTTP標題、Cookie、作業資料和表單資料。
+>* 可以快取您可儲存為頁面並使用URL要求的所有項目
+>* 無法儲存其他項目，例如HTTP標題、Cookie、工作階段資料和表單資料。
 >
 >
-一般而言，許多快取策略涉及選擇良好URL，而不是依賴額外的資料。
+一般而言，許多快取策略都需要選取好的URL，而不需仰賴此額外資料。
 
 ## 使用一致的頁面編碼 {#using-consistent-page-encoding}
 
-HTTP要求標題不會快取，因此如果您將頁面編碼資訊儲存在標題中，就會發生問題。在此情況下，當Dispatcher從快取服務頁面時，網頁伺服器的預設編碼會用於頁面。有兩種方法可避免此問題：
+HTTP請求標頭不會快取，因此，如果您將頁面編碼資訊儲存在標頭中，就會發生問題。 在這種情況下，當Dispatcher從快取中服務頁面時，該頁面將使用Web伺服器的預設編碼。 要避免此問題，有兩種方法：
 
 * 如果您只使用一個編碼，請確定網頁伺服器上使用的編碼與AEM網站的預設編碼相同。
-* 使用 `<META>` HTML `head` 區段中的標籤來設定編碼，如下範例所示：
+* 在HTML `<META>` 區段中使用標 `head` 記來設定編碼，如下列範例所示：
 
 ```xml
         <META http-equiv="Content-Type" content="text/html; charset=EUC-JP">
@@ -60,7 +60,7 @@ HTTP要求標題不會快取，因此如果您將頁面編碼資訊儲存在標�
 
 ## 避免URL參數 {#avoid-url-parameters}
 
-如有可能，請避免您要快取頁面的URL參數。例如，如果您有圖片收藏館，則絕不會快取下列URL(除非已 [設定Dispatcher)](dispatcher-configuration.md#main-pars_title_24)：
+如果可能，請避免您要快取之頁面的URL參數。 例如，如果您有圖片收藏館，則不會快取下列URL(除非已據以設 [定Dispatcher](dispatcher-configuration.md#main-pars_title_24)):
 
 ```xml
 www.myCompany.com/pictures/gallery.html?event=christmas&amp;page=1
@@ -74,15 +74,15 @@ www.myCompany.com/pictures/gallery.christmas.1.html
 
 >[!NOTE]
 >
->此URL會呼叫相同頁面和與gallery. html相同的範本。在範本定義中，您可以指定哪個指令碼轉譯該頁面，或者您可以對所有頁面使用相同的指令碼。
+>此URL會呼叫與gallery.html相同的頁面和範本。 在範本定義中，您可以指定要轉譯頁面的指令碼，或對所有頁面使用相同的指令碼。
 
 ## 依URL自訂 {#customize-by-url}
 
-如果您允許使用者變更字體大小(或任何其他版面自訂)，請確定不同自訂會反映在URL中。
+如果您允許使用者變更字型大小（或任何其他版面自訂），請確定URL中會反映不同的自訂。
 
-例如，不快取Cookie，因此，如果您將字型大小儲存在Cookie(或類似機制)中，則不會針對快取頁面保留字體大小。因此，Dispatcher會隨機傳回任何字體大小的文件。
+例如，Cookie不會快取，因此如果您將字型大小儲存在Cookie（或類似機制）中，則快取頁面不會保留字型大小。 因此，Dispatcher會隨機傳回任何字型大小的檔案。
 
-將URL中的字型大小納入選取器中，可避免此問題：
+在URL中加入字型大小做為選取器，可避免此問題：
 
 ```xml
 www.myCompany.com/news/main.large.html
@@ -90,82 +90,82 @@ www.myCompany.com/news/main.large.html
 
 >[!NOTE]
 >
->對於大部分版面配置，也可以使用樣式表和/或用戶端指令碼。這通常可搭配快取運作。
+>對於大部分的版面配置，您也可以使用樣式表和／或用戶端指令碼。 這些功能通常在快取時非常有效。
 >
->這也適用於列印版本，您可以在其中使用URL，例如：
+>這對於列印版本也很有用，您可在其中使用URL，例如："
 >
 >`www.myCompany.com/news/main.print.html`
 >
->使用範本定義的指令碼全域，您可以指定個別的指令碼來產生列印頁面。
+>使用範本定義的指令碼全域化，您可以指定個別的指令碼，以轉譯列印頁面。
 
-## 使用作標題的影像檔案失效 {#invalidating-image-files-used-as-titles}
+## 使用作標題的影像檔案無效化 {#invalidating-image-files-used-as-titles}
 
-如果您將頁面標題或其他文字視為圖片，則建議您儲存檔案，以便在頁面上的內容更新時刪除它們：
+如果您將頁面標題或其他文字轉譯為圖片，則建議儲存檔案，以便在頁面內容更新時刪除這些檔案：
 
 1. 將影像檔案放置在與頁面相同的檔案夾中。
-1. 請針對影像檔案使用下列命名格式：
+1. 對影像檔案使用下列命名格式：
 
    `<page file name>.<image file name>`
 
-例如，您可以將頁面的標題儲存在檔案MyPage. title. gif中。如果更新頁面，此檔案會自動刪除，因此頁面標題的任何變更都會自動反映在快取中。
+例如，您可將頁面的標題myPage.html儲存在myPage.title.gif檔案中。 如果頁面已更新，此檔案會自動刪除，因此頁面標題的任何變更都會自動反映在快取中。
 
 >[!NOTE]
 >
->影像檔案不一定實體存在於AEM實例上。您可以使用動態建立影像檔案的指令碼。然後Dispatcher會將檔案儲存在Web伺服器上。
+>影像檔案不一定實際存在於AEM例項上。 您可以使用動態建立影像檔案的指令碼。 然後，Dispatcher將檔案儲存在Web伺服器上。
 
-## 使用於導覽的影像檔案失效 {#invalidating-image-files-used-for-navigation}
+## 使用於導覽的影像檔無效化 {#invalidating-image-files-used-for-navigation}
 
-如果您使用圖片來瀏覽導覽項目，方法基本上與標題相同，只會稍微複雜一些。使用目標頁面儲存所有導覽影像。如果您使用兩張一般和作用中的圖片，可以使用下列指令碼：
+如果您使用圖片來輸入導覽項目，這個方法基本上就和標題一樣，只是稍微複雜一點。 將所有導覽影像與目標頁面一起儲存。 如果您使用兩張圖片來處理正常和活動，則可使用下列指令碼：
 
-* 以正常方式顯示頁面的指令碼。
-* 處理「.一般」請求並傳回一般圖片的指令碼。
-* 處理「. active」要求並傳回已啓動圖片的指令碼。
+* 顯示頁面的指令碼，正常顯示。
+* 處理"。normal"請求並傳回正常圖片的指令碼。
+* 處理"。active"請求並傳回已啟動圖片的指令碼。
 
-您必須使用與頁面相同的命名控點來建立這些圖片，以確保內容更新會刪除這些圖片以及頁面。
+請務必使用與頁面相同的命名控制代碼來建立這些圖片，以確保內容更新會同時刪除這些圖片和頁面。
 
-對於未修改的頁面，圖片仍會保留在快取中，但頁面本身通常會自動失效。
+對於未修改的頁面，圖片仍保留在快取中，儘管頁面本身通常會自動失效。
 
 ## 個性化 {#personalization}
 
-Dispatcher無法快取個人化資料，因此建議您將個人化限制在需要的位置。說明為何：
+Dispatcher無法快取個人化資料，因此建議您將個人化限制在必要的位置。 為說明原因：
 
-* 如果您使用可自由自訂的開始頁面，則每次使用者提出要求時，都必須加以組合。
-* 相反地，如果您提供10個不同起始頁面的選擇，則可快取每個頁面，進而提高效能。
+* 如果您使用可自由自訂的開始頁面，則必須在使用者每次要求時合成該頁面。
+* 相反地，如果您提供10種不同的開始頁面選擇，則可以快取每個頁面，從而提升效能。
 
 >[!NOTE]
 >
->如果您個人化每個頁面(例如，將使用者名稱放入標題列)，您就無法快取它，因而造成重大效能影響。
+>如果您個人化每個頁面（例如將使用者名稱放入標題列），則無法快取它，這可能會對效能造成重大影響。
 >
->不過，如果您必須這麼做，可以：
+>不過，如果您必須這麼做，您可以：
 >
->* 使用iFrames將頁面分割為所有使用者都相同的部分，而且所有使用者的頁面都相同。然後，您可以快取這兩部分。
->* 使用用戶端JavaScript顯示個人化資訊。不過，如果使用者關閉JavaScript，您必須確定頁面仍然正確顯示。
+>* 使用iFrames將頁面分割為一個對所有用戶都相同的部分，以及對用戶所有頁面都相同的部分。 然後，您可以快取這兩個部件。
+>* 使用用戶端JavaScript來顯示個人化資訊。 不過，您必須確保在使用者關閉JavaScript時，頁面仍能正確顯示。
 >
 
 
 
-## 黏著連線 {#sticky-connections}
+## 自黏連線 {#sticky-connections}
 
-[黏著連線](dispatcher.md#TheBenefitsofLoadBalancing) 可確保一個使用者的文件都在同一伺服器上構成。如果使用者離開此資料夾，並稍後返回，連線仍會維持不變。定義一個資料夾，以放置所有需要網站連線的文件。請勿在其中使用其他文件。如果您使用個人化頁面和工作階段資料，這會影響負載平衡。
+[嚴格連線](dispatcher.md#TheBenefitsofLoadBalancing) ，確保一個使用者的檔案都是在同一部伺服器上撰寫。 如果使用者離開此資料夾，並稍後返回，連線仍會持續。 定義一個檔案夾，以存放所有需要網站嚴格連線的檔案。 請盡量不要在其中加入其他檔案。 如果您使用個人化頁面和作業資料，這會影響負載平衡。
 
-## MIME類型 {#mime-types}
+## MIME Types {#mime-types}
 
-瀏覽器可判斷檔案類型的兩種方式：
+瀏覽器有兩種方式可決定檔案類型：
 
-1. 依其擴充功能(例如.html、. gif、.jpg等)
-1. 由伺服器隨檔案傳送的MIME類型。
+1. 其延伸(例如.html、.gif、.jpg等)
+1. 由伺服器隨檔案發送的MIME類型。
 
-對於大部分檔案，MIME類型會隱含在副檔名中。例如：
+對於大多數檔案，MIME類型隱含在檔案副檔名中。 即：
 
-1. 依其擴充功能(例如.html、. gif、.jpg等)
-1. 由伺服器隨檔案傳送的MIME類型。
+1. 其延伸(例如.html、.gif、.jpg等)
+1. 由伺服器隨檔案發送的MIME類型。
 
-如果檔案名稱沒有副檔名，則會顯示為純文字。
+如果檔案名沒有副檔名，則顯示為純文字檔案。
 
-MIME類型是HTTP標題的一部分，因此，Dispatcher不會快取它。如果您的AEM應用程式傳回未識別檔案結尾的檔案，而是依賴MIME類型，則這些檔案可能會錯誤顯示。
+MIME類型是HTTP標頭的一部分，因此Dispatcher不快取它。 如果您的AEM應用程式傳回的檔案沒有識別的檔案結尾，但依賴MIME類型，則這些檔案可能會錯誤顯示。
 
-為了確保正確快取檔案，請遵循下列方針：
+若要確定檔案已正確快取，請遵循下列准則：
 
-* 請確定檔案的副檔名永遠正確。
-* 避免一般檔案伺服指令碼，其中包含下載. jsp之類的URL？file=214.重新編寫指令碼以使用包含檔案規格的URL；上一個範例為下載.214.pdf。
+* 請確定檔案的副檔名一律正確。
+* 請避免使用一般檔案伺服指令碼，這些指令碼具有URL，例如download.jsp?file=2214。 重寫指令碼，使用包含檔案規範的URL;在上一個範例中，此為download.2214.pdf。
 
