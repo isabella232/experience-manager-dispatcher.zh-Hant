@@ -1,13 +1,13 @@
 ---
 title: AEM Dispatcher發行說明
 seo-title: AEM Dispatcher發行說明
-description: Adobe Experience Manager Dispatcher專用的發行說明
-seo-description: Adobe Experience Manager Dispatcher專用的發行說明
-uuid: ae3cf62-0514-4c03-a3 b9-71799a482 cbd
-topic-tags: 版本注意事項
+description: Adobe Experience Manager Dispatcher的發行說明
+seo-description: Adobe Experience Manager Dispatcher的發行說明
+uuid: ae3ccf62-0514-4c03-a3b9-71799a482cbd
+topic-tags: 發行說明
 content-type: 引用
-products: SG_ PERIENCENCENAGER/6.4
-discoiquuid: ff3d38e0-71c9-4b41-85f9-fa896393 aac5
+products: SG_EXPERIENCEMANAGER/6.4
+discoiquuid: ff3d38e0-71c9-4b41-85f9-fa896393aac5
 translation-type: tm+mt
 source-git-commit: 2d72839d459973cba40f6a938ee157198c7cf50a
 
@@ -18,128 +18,128 @@ source-git-commit: 2d72839d459973cba40f6a938ee157198c7cf50a
 
 ## 發行資訊 {#release-information}
 
-|  |
+|  |  |
 |--- |--- |
-| 產品 | Adobe Experience Manager(AEM) Dispatcher |
+| 產品 | Adobe Experience Manager(AEM)Dispatcher |
 | 版本 | 4.3.2 |
 | 類型 | 次要版本 |
-| 日期 | 2019年月31日 |
-| 下載URL | <ul><li>[Apache2.4](release-notes.md#apache)</li><li>[Microsoft Internet Information Services(IIS)](release-notes.md#iis)</li></ul> |
-| 相容性 | AEM6.1或更新版本 |
+| 日期 | 2019年1月31日 |
+| 下載URL | <ul><li>[Apache 2.4](release-notes.md#apache)</li><li>[Microsoft Internet Information Services(IIS)](release-notes.md#iis)</li></ul> |
+| 相容性 | AEM 6.1或更新版本 |
 
-## 系統需求與必要條件 {#system-requirements-and-prerequisites}
+## 系統需求和先決條件 {#system-requirements-and-prerequisites}
 
-如需需求和必要條件的詳細資訊，請參閱 [「支援的平台](https://helpx.adobe.com/experience-manager/6-4/sites/deploying/using/technical-requirements.html) 」頁面。
+如需有關需求和 [先決條件的詳細資訊](https://helpx.adobe.com/experience-manager/6-4/sites/deploying/using/technical-requirements.html) ，請參閱支援的平台頁面。
 
-Adobe強烈建議使用最新版本的AEM Dispatcher來檢查最新功能、最新錯誤修正以及最佳效能。
+Adobe強烈建議使用最新版本的AEM Dispatcher，以取得最新的功能、最新的錯誤修正以及最佳的效能。
 
 ## 安裝指示 {#installation-instructions}
 
-如需詳細指示，請參閱 [安裝Dispatcher](dispatcher-install.md)。
+有關詳細說明，請參 [閱安裝Dispatcher](dispatcher-install.md)。
 
-## 發行歷史記錄 {#release-history}
+## 發行記錄 {#release-history}
 
-### 版本4.3.2(2019-Jan-31) {#jan}
+### 版本4.3.2（2019年1月31日） {#jan}
 
-**錯誤修正**：
+**錯誤修正**:
 
-* Disp-734-如果未設定為handler，Dispatcher會造成插入_ output_ filter損毀
-* DISP-735- Rights無法在Alpine Linux上運作
-* Disp-740-在macOS Mojave中載入dispatcher預設為停用
-* Disp-742-封鎖的要求可能會洩露資訊至驗證檢查程式的資源
+* DISP-734 —— 如果未設為處理常式，則Dispatcher會在insert_output_filter中造成當機
+* DISP-735 - RE在Alpine linux上無法運作
+* DISP-740 —— 在macOS Mojave中載入分派程式預設為停用
+* DISP-742 —— 被阻止的請求可能會將資訊洩露給驗證檢查器受保護的資源
 
-**改進**：
+**改進**:
 
-* Disp-746-傳送程式中不受影響的字串。任何應產生警告
+* DISP-746 - dispatcher.any中未標籤的字串應產生警告
 
-**新功能**：
+**新功能**:
 
-* Disp-747-在Apache環境中提供要求資訊
+* DISP-747 —— 在Apache環境中提供請求資訊
 
-### 版本4.3.1(2018年10月16日) {#oct}
+### 版本4.3.1（2018年10月16日） {#oct}
 
-**錯誤修正**：
+**錯誤修正**:
 
-* Disp-656- Dispatcher提供錯誤的eTag標題
-* Disp-694-在保持連線的狀態過時時抑制警告
-* Disp-714-基於Cookie的作業管理無法在IIS中運作
-* DisP-715- renderid Cookie的安全標幟
-* Disp-720-暫時未關閉的暫存檔案可能導致整合性(太多開啓檔案)
-* Disp-721- Dispatcher會中斷民調問答()當Apache正常重新啓動子項時
-* Disp-722-快取檔案是以ocar模式0600建立
-* Disp-723-將逾時設為0時，隱含10分鐘逾時(及重試)
-* DISP-725-字串在無訊息轉換為未命名值後的尾隨字元
-* Disp-726-當沒有農場實際符合傳入主機時記錄警告
-* DISP-727- Dispatcher檢查空快取檔案的請求內容長度
-* DISP-730-404嘗試存取header檔案over dispatcher
-* DisP-731- Dispatcher很容易受到記錄植入攻擊
-* Disp-732- Dispatcher應移除URL中的連續&#39;/&#39;
-* Disp-733- Dispatcher應設定(計算)年齡表頭
+* DISP-656 - Dispatcher服務錯誤的ETag標題
+* DISP-694 —— 在保持活連接失效時抑制警告
+* DISP-714 —— 以Cookie為基礎的工作階段管理無法在IIS中運作
+* DISP-715 —— 轉譯Cookie的安全標幟
+* DISP-720 —— 暫存檔案未關閉，可能導致耗盡（開啟的檔案太多）
+* DISP-721 —— 當Apache正常重新啟動子項時，Dispatcher中斷poll()
+* DISP-722 —— 以八進位模式0600建立快取檔案
+* DISP-723 —— 當演算逾時設為0時，隱式10分鐘逾時（並重試）
+* DISP-725 —— 字串後的尾隨字元會無訊息地轉換為未命名值
+* DISP-726 —— 記錄沒有群與傳入主機實際相符時的警告
+* DISP-727 - Dispatcher會檢查空快取檔案的要求內容長度
+* DISP-730 - 404：嘗試在發送器上訪問標頭檔
+* DISP-731 - Dispatcher易受日誌插入的攻擊
+* DISP-732 - Dispatcher應移除URL中的連續「/」
+* DISP-733 - Dispatcher應設定（計算）年齡標題
 
-**改進**：
+**改進**:
 
-* Disp-656- Dispatcher提供錯誤的eTag標題
-* Disp-694-在保持連線的狀態過時時抑制警告
-* DisP-715- renderid Cookie的安全標幟
-* Disp-722-快取檔案是以ocar模式0600建立
-* Disp-726-當沒有農場實際符合傳入主機時記錄警告
+* DISP-656 - Dispatcher服務錯誤的ETag標題
+* DISP-694 —— 在保持活連接失效時抑制警告
+* DISP-715 —— 轉譯Cookie的安全標幟
+* DISP-722 —— 以八進位模式0600建立快取檔案
+* DISP-726 —— 記錄沒有群與傳入主機實際相符時的警告
 
-### 版本4.3.0(2018-月13日) {#jun}
+### 版本4.3.0（2018年6月13日） {#jun}
 
-**錯誤修正**：
+**錯誤修正**:
 
-* Disp-682-數值記錄層級未正確套用
-* DisP-685-32位元Solaris SPARC二進位檔已定義為__ divdi3
-* Disp-688- Dispatcher在404回應中不會傳回「X-Cache-Info」標題
-* Disp-690-上次修改的標題不可用於
-* DisP-691- w3wp. exe中的存取違規
-* Disp-693-需要更新傳送程式下載頁面上Solaris伺服器的架構詳細資訊
-* DisP-695- Dispatcher模組4.2.3中的DispatcherLog層級問題
-* Disp-698- Dispatcher TTL需要支援s-maxage和私人指示
-* DISP-700- Alpon Linux無法正確運作
-* Disp-704-包含%2b的瀏覽器要求會傳送至重新編碼的發行者
-* Disp-705- Dispatcher因雙重釋放或損毀造成當機(頂端)
-* DisP-706-在失效期間，傳送程式會遵循反向連結的參考連結，可產生無限回圈
-* DisP-709-封鎖一些虛名URL擴充功能
-* Disp-710-適用於Linux的Builds不適用於Dent OS6
+* DISP-682 —— 數值記錄層級套用不正確
+* DISP-685 - 32位Solaris SPARC二進位檔案對__divdi3的引用未定義
+* DISP-688 - Dispatcher在404回應中未傳回「X-Cache-Info」標題
+* DISP-690 —— 上次修改的標頭無法快取
+* DISP-691 - w3wp.exe中的存取違規
+* DISP-693 —— 需要更新Dispatcher下載頁上Solaris伺服器的體系結構詳細資訊
+* DISP-695 - Dispatcher模組4.2.3中DispatcherLog級別的問題
+* DISP-698 - Dispatcher TTL需要支援s-maxage和private指令
+* DISP-700 —— 模組在Alpine linux上無法正常工作
+* DISP-704 —— 包含%2b的瀏覽器請求會傳送至未編碼的發佈者
+* DISP-705 —— 由於雙重釋放或損壞(fasttop)而導致的Dispatcher崩潰
+* DISP-706 —— 在失效期間，調度程式正在跟蹤可導致無限回圈的反向參考符號連結
+* DISP-709 —— 封鎖某些虛名URL擴充功能
+* DISP-710 - Cent OS 6上無法使用的Linux版本
 
-**改進**：
+**改進**:
 
-* DISP-652- Dispatcher提供錯誤的日期標題
+* DISP-652 - Dispatcher服務錯誤的日期標題
 
-## 實用資源 {#helpful-resources}
+## 有用的資源 {#helpful-resources}
 
-* [AEM Dispatcher概述](dispatcher.md)
+* [AEM Dispatcher概觀](dispatcher.md)
 
 ## 下載 {#downloads}
 
-### Apache2.4 {#apache}
+### Apache 2.4 {#apache}
 
-| 平台 | 架構 | SSL支援 | 下載 |
+| 平台 | 建築 | SSL支援 | 下載 |
 |---|---|---|---|
-| AIX | PowerPC(32位元) | 否 | [dispatcher-apache2.4-aix-powerpc-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-aix-powerpc-4.3.2.tar.gz) |
-| AIX | PowerPC(32位元) | 是 | [dispatcher-apache2.4-aix-powerpc-ssl-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-aix-powerpc-ssl-4.3.2.tar.gz) |
-| AIX | PowerPC(64位元) | 否 | [dispatcher-apache2.4-aix-powerpc64-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-aix-powerpc64-4.3.2.tar.gz) |
-| AIX | PowerPC(64位元) | 是 | [dispatcher-apache2.4-aix-powerpc64-ssl-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-aix-powerpc64-ssl-4.3.2.tar.gz) |
-| Linux | i686(32位元) | 否 | [dispatcher-apache2.4-linux-i686-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-i686-4.3.2.tar.gz) |
-| Linux | i686(32位元) | 是 | [dispatcher-apache2.4-linux-i686-ssl-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-i686-ssl-4.3.2.tar.gz) |
-| Linux | x86_64(64位元) | 否 | [dispatcher-apache2.4-linux-x86_64-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-x86_64-4.3.2.tar.gz) |
-| Linux | x86_64(64位元) | 是 | [dispatcher-apache2.4-linux-x86_64-ssl-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-x86_64-ssl-4.3.2.tar.gz) |
-| macOS作業系統 | x86_64(64位元) | 否 | [dispatcher-apache2.4-darwin-x86_64-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-darwin-x86_64-4.3.2.tar.gz) |
-| Solaris | AMD(32位元) | 否 | [dispatcher-apache2.4-solaris-i386-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-solaris-i386-4.3.2.tar.gz) |
-| Solaris | AMD(32位元) | 是 | [dispatcher-apache2.4-solaris-i386-ssl-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-solaris-i386-ssl-4.3.2.tar.gz) |
-| Solaris | AMD(64位元) | 否 | [dispatcher-apache2.4-solaris-amd64-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-solaris-amd64-4.3.2.tar.gz) |
-| Solaris | AMD(64位元) | 是 | [dispatcher-apache2.4-solaris-amd64-ssl-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-solaris-amd64-ssl-4.3.2.tar.gz) |
-| Solaris | SPARC(32位元) | 否 | [dispatcher-apache2.4-solaris-sparc-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-solaris-sparc-4.3.2.tar.gz) |
-| Solaris | SPARC(32位元) | 是 | [dispatcher-apache2.4-solaris-sparc-ssl-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-solaris-sparc-ssl-4.3.2.tar.gz) |
-| Solaris | SPARC(64位元) | 否 | [dispatcher-apache2.4-solaris-sparcv9-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-solaris-sparcv9-4.3.2.tar.gz) |
-| Solaris | SPARC(64位元) | 是 | [dispatcher-apache2.4-solaris-sparcv9-ssl-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-solaris-sparcv9-ssl-4.3.2.tar.gz) |
+| AIX | PowerPC（32位元） | 否 | [dispatcher-apache2.4-aix-powerpc-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-aix-powerpc-4.3.2.tar.gz) |
+| AIX | PowerPC（32位元） | 是 | [dispatcher-apache2.4-aix-powerpc-ssl-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-aix-powerpc-ssl-4.3.2.tar.gz) |
+| AIX | PowerPC（64位元） | 否 | [dispatcher-apache2.4-aix-powerpc64-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-aix-powerpc64-4.3.2.tar.gz) |
+| AIX | PowerPC（64位元） | 是 | [dispatcher-apache2.4-aix-powerpc64-ssl-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-aix-powerpc64-ssl-4.3.2.tar.gz) |
+| Linux | i686（32位元） | 否 | [dispatcher-apache2.4-linux-i686-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-i686-4.3.2.tar.gz) |
+| Linux | i686（32位元） | 是 | [dispatcher-apache2.4-linux-i686-ssl-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-i686-ssl-4.3.2.tar.gz) |
+| Linux | x86_64（64位元） | 否 | [dispatcher-apache2.4-linux-x86_64-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-x86_64-4.3.2.tar.gz) |
+| Linux | x86_64（64位元） | 是 | [dispatcher-apache2.4-linux-x86_64-ssl-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-x86_64-ssl-4.3.2.tar.gz) |
+| macOS | x86_64（64位元） | 否 | [dispatcher-apache2.4-darwin-x86_64-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-darwin-x86_64-4.3.2.tar.gz) |
+| Solaris | AMD（32位元） | 否 | [dispatcher-apache2.4-solaris-i386-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-solaris-i386-4.3.2.tar.gz) |
+| Solaris | AMD（32位元） | 是 | [dispatcher-apache2.4-solaris-i386-ssl-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-solaris-i386-ssl-4.3.2.tar.gz) |
+| Solaris | AMD（64位元） | 否 | [dispatcher-apache2.4-solaris-amd64-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-solaris-amd64-4.3.2.tar.gz) |
+| Solaris | AMD（64位元） | 是 | [dispatcher-apache2.4-solaris-amd64-ssl-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-solaris-amd64-ssl-4.3.2.tar.gz) |
+| Solaris | SPARC（32位元） | 否 | [dispatcher-apache2.4-solaris-sparc-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-solaris-sparc-4.3.2.tar.gz) |
+| Solaris | SPARC（32位元） | 是 | [dispatcher-apache2.4-solaris-sparc-ssl-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-solaris-sparc-ssl-4.3.2.tar.gz) |
+| Solaris | SPARC（64位元） | 否 | [dispatcher-apache2.4-solaris-sparcv9-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-solaris-sparcv9-4.3.2.tar.gz) |
+| Solaris | SPARC（64位元） | 是 | [dispatcher-apache2.4-solaris-sparcv9-ssl-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-solaris-sparcv9-ssl-4.3.2.tar.gz) |
 
 ### IIS {#iis}
 
-| 平台 | 架構 | SSL支援 | 下載 |
+| 平台 | 建築 | SSL支援 | 下載 |
 |---|---|---|---|
-| Windows | x86(32位元) | 否 | [dispatcher-iis-windows-x86-4.3.2.zip](http://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x86-4.3.2.zip) |
-| Windows | x86(32位元) | 是 | [dispatcher-iis-windows-x86-ssl-4.3.2.zip](http://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x86-ssl-4.3.2.zip) |
-| Windows | x64(64位元) | 否 | [dispatcher-iis-windows-x64-4.3.2.zip](http://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x64-4.3.2.zip) |
-| Windows | x64(64位元) | 是 | [dispatcher-iis-windows-x64-ssl-4.3.2.zip](http://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x64-ssl-4.3.2.zip) |
+| Windows | x86（32位元） | 否 | [dispatcher-iis-windows-x86-4.3.2.zip](http://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x86-4.3.2.zip) |
+| Windows | x86（32位元） | 是 | [dispatcher-iis-windows-x86-ssl-4.3.2.zip](http://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x86-ssl-4.3.2.zip) |
+| Windows | x64（64位元） | 否 | [dispatcher-iis-windows-x64-4.3.2.zip](http://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x64-4.3.2.zip) |
+| Windows | x64（64位元） | 是 | [dispatcher-iis-windows-x64-ssl-4.3.2.zip](http://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x64-ssl-4.3.2.zip) |
