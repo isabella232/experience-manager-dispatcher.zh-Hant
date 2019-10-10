@@ -10,7 +10,7 @@ topic-tags: dispatcher
 content-type: 引用
 discoiquuid: aeffee8e-bb34-42a7-9a5e-b7d0e848391a
 translation-type: tm+mt
-source-git-commit: a997d2296e80d182232677af06a2f4ab5a14bfd5
+source-git-commit: 119f952439a59e51f769f285c79543aec8fdda37
 
 ---
 
@@ -163,7 +163,7 @@ AEM和Dispatcher的所有元素都可安裝在IPv4和IPv6網路中。 請參 [�
 
 屬 `/farms` 性是配置結構中的頂級屬性。 要定義農場，請向屬性中添加子屬 `/farms` 性。 使用屬性名，唯一標識Dispatcher實例中的群。
 
-屬 `/*farmname*` 性是多值的，包含定義Dispatcher行為的其他屬性：
+屬 `/farmname` 性是多值的，包含定義Dispatcher行為的其他屬性：
 
 * 群套用之頁面的URL。
 * 一或多個服務URL（通常為AEM發佈例項），用於轉譯檔案。
@@ -213,6 +213,7 @@ AEM和Dispatcher的所有元素都可安裝在IPv4和IPv6網路中。 請參 [�
 | [/retryDelay](#specifying-the-page-retry-delay) | 重試失敗連接之前的延遲。 |
 | [/unavailableDestamy](#reflecting-server-unavailability-in-dispatcher-statistics) | 影響負載平衡計算統計資料的罰款。 |
 | [/failover](#using-the-fail-over-mechanism) | 當原始請求失敗時，將請求重新傳送至不同的轉譯。 |
+| [/auth_checker](permissions-cache.md) | 如需權限相關快取，請參閱快 [取保全內容](permissions-cache.md)。 |
 
 ## 指定預設頁面（僅限IIS）- /homepage {#specify-a-default-page-iis-only-homepage}
 
@@ -545,7 +546,7 @@ Amazon Elastic Load Balancing(ELB)是一種服務，它以可能相同的順序I
 此外，此屬性也可用於您遇到動態IP解析度問題時，如下列範例所示：
 
 ```xml
-/rend {
+/renders {
   /0001 {
      /hostname "host-name-here"
      /port "4502"
@@ -666,7 +667,7 @@ HTTP/1.1定義請 [求行](https://www.w3.org/Protocols/rfc2616/rfc2616-sec5.htm
 /0003   { /type "deny"  /url "/publish/libs/cq/workflow/content/console/archive*"  }
 ```
 
-如果您仍需要在限制區域記憶體取單一頁面，則可以允許存取。 例如，要允許訪問「工作流」控制台中的「存檔」頁籤，請添加以下部分：
+如果您仍需要存取受限制區域內的單一頁面，則可以允許存取。 例如，要允許訪問「工作流」控制台中的「存檔」頁籤，請添加以下部分：
 
 ```xml
 /0004  { /type "allow"  /url "/libs/cq/workflow/content/console/archive*"   }
@@ -974,6 +975,7 @@ Last Modified Date: 2015-03-25T14:23:05.185-0400
 * /headers
 * /mode
 * /gracePeriod
+* /enableTTL
 
 
 快取區段範例可能如下所示：
@@ -1037,7 +1039,7 @@ statfile沒有內容。 更新內容時，Dispatcher會更新時間戳記。 預
 * 名為的Cookie `authorization`。
 * 名為的Cookie `login-token`。
 
-根據預設，包含此驗證資訊的請求不會快取，因為當快取檔案傳回給用戶端時，不會執行驗證。 此配置可防止Dispatcher向沒有必要權限的用戶提供快取的文檔。
+根據預設，包含此驗證資訊的請求不會快取，因為當快取檔案傳回用戶端時，不會執行驗證。 此配置可防止Dispatcher向沒有必要權限的用戶提供快取的文檔。
 
 不過，如果您的要求允許快取已驗證的檔案，請將/allowAuthorized設為：
 
@@ -1505,7 +1507,7 @@ Dispatcher最多支援8個統計類別。 如果您定義8個以上的類別，�
 
 ### 安全 {#secure}
 
-啟用自黏連線時，分派程式模組會設定 `renderid` Cookie。 此Cookie沒有安全標 **幟** ，應加入此標幟以增強安全性。 通過在配置檔案的節 `secure` 點中設定屬 `/stickyConnections` 性可以 `dispatcher.any` 執行此操作。 屬性的值（0或1）定義Cookie是否附 `renderid` 加了屬 `secure` 性。 預設值為0，這表示如果* *傳入的請求是安全的，則會新增屬性。 如果值設定為1，則無論傳入請求是否安全，都將添加安全標誌。
+啟用自黏連線時，分派程式模組會設定 `renderid` Cookie。 此Cookie沒有安全標 **幟** ，應加入此標幟以增強安全性。 通過在配置檔案的節 `secure` 點中設定屬 `/stickyConnections` 性可以 `dispatcher.any` 執行此操作。 屬性的值（0或1）定義Cookie是否附 `renderid` 加了屬 `secure` 性。 預設值為0，這表示如果傳入的請求安全， **則會** 新增屬性。 如果值設定為1，則無論傳入請求是否安全，都將添加安全標誌。
 
 ## 處理渲染連接錯誤 {#handling-render-connection-errors}
 
@@ -1604,7 +1606,7 @@ Dispatcher配置檔案中的幾個部分使用屬 `glob` 性作為客戶端請�
 | `*` | 相符項目：字串中任何字元的零個或多個連續例項。 符合的最終字元由下列任一情況決定：字 <br/>串中的字元與模式中的下一個字元相符，而模式字元具有下列特性：<br/><ul><li>不是*</li><li>不是？</li><li>常值字元（包括空格）或字元類別。</li><li>到達模式的結尾。</li></ul>在字元類中，字元將逐字解釋。 | `*/geo*` 與節點和節點下 `/content/geometrixx` 的任何頁 `/content/geometrixx-outdoors` 面匹配。 下列HTTP請求與全域模式相符： <br/><ul><li>`"GET /content/geometrixx/en.html"`</li><li>`"GET /content/geometrixx-outdoors/en.html"` </li></ul><br/> `*outdoors/*` 匹 <br/>配節點下的任 `/content/geometrixx-outdoors` 何頁。 例如，下列HTTP要求符合全域模式： <br/><ul><li>`"GET /content/geometrixx-outdoors/en.html"`</li></ul> |
 | `?` | 符合任何單一字元。 使用外部字元類別。 在字元類中，該字元將逐字解釋。 | `*outdoors/??/*`<br/> 相符項目：geometrixx-outdoors網站中任何語言的頁面。 例如，下列HTTP要求符合全域模式： <br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>下列請求不符合全域模式： <br/><ul><li>"取得/content/geometrixx-outdoors/en.html"</li></ul> |
 | `[ and ]` | 標籤字元類的開頭和結尾。 字元類別可包含一或多個字元範圍和單一字元。<br/>如果目標字元符合字元類別中的任何字元，或在定義的範圍內，就會發生相符。<br/>如果未包括右括弧，則陣列不會產生匹配。 | `*[o]men.html*`<br/> 符合下列HTTP要求：<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>不符合下列HTTP要求：<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/> `*[o/]men.html*` 符 <br/>合下列HTTP請求： <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
-| `-` | 表示字元範圍。 用於字元類。  在字元類之外，將逐字解釋該字元。 | `*[m-p]men.html*` 符合下列HTTP要求： <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul> 不符合下列HTTP要求：<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
+| `-` | 表示字元範圍。 用於字元類。  在字元類之外，將逐字解釋該字元。 | `*[m-p]men.html*` 符合下列HTTP要求： <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul>不符合下列HTTP要求：<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
 | `!` | 否定後面的字元或字元類。 僅用於否定字元類別中的字元和字元範圍。 相當於 `^ wildcard`。 <br/>在字元類之外，將逐字解釋該字元。 | `*[!o]men.html*`<br/> 符合下列HTTP要求： <br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>不符合下列HTTP要求： <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>`*[!o!/]men.html*`<br/> 不符合下列HTTP要求：<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"` 或 `"GET /content/geometrixx-outdoors/en/men. html"`</li></ul> |
 | `^` | 否定後面的字元或字元範圍。 僅用於否定字元類內的字元和字元範圍。 相當於萬用字 `!` 元。 <br/>在字元類之外，將逐字解釋該字元。 | 套用萬用字元 `!` 的範例，以字元 `!` 取代範例模式中的字 `^` 元。 |
 
