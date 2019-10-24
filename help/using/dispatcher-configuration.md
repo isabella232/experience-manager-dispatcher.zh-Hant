@@ -1,25 +1,25 @@
 ---
-title: 配置Dispatcher
-seo-title: 配置Dispatcher
+title: 設定 Dispatcher
+seo-title: 設定 Dispatcher
 description: 瞭解如何配置Dispatcher。
 seo-description: 瞭解如何配置Dispatcher。
 uuid: 253ef0f7-2491-4cec-ab22-97439df29fd6
 cmgrlastmodified: 01.11.2007 08 22 29 [aheimoz]
 pageversionid: '1193211344162'
-topic-tags: dispatcher
+topic-tags: 'Dispatcher '
 content-type: 引用
 discoiquuid: aeffee8e-bb34-42a7-9a5e-b7d0e848391a
 translation-type: tm+mt
-source-git-commit: 119f952439a59e51f769f285c79543aec8fdda37
+source-git-commit: eed7c3f77ec64f2e7c5cfff070ef96108886a059
 
 ---
 
 
-# 配置Dispatcher{#configuring-dispatcher}
+# 設定 Dispatcher{#configuring-dispatcher}
 
 >[!NOTE]
 >
->Dispatcher版本獨立於AEM。 如果您遵循Dispatcher檔案的連結，且該連結內嵌於舊版AEM的檔案中，您可能會被重新導向至本頁面。
+>Dispatcher 版本與 AEM 無關。如果您依循連結至 Dispatcher 文件，且該連結內嵌於舊版 AEM 的文件中，您可能會被重新導向至本頁。
 
 以下各節介紹如何配置Dispatcher的各個方面。
 
@@ -221,7 +221,7 @@ AEM和Dispatcher的所有元素都可安裝在IPv4和IPv6網路中。 請參 [�
 >
 >參 `/homepage`數（僅限IIS）不再運作。 您應改用 [IIS URL Rewrite Module](https://docs.microsoft.com/en-us/iis/extensions/url-rewrite-module/using-the-url-rewrite-module)。
 >
->如果您使用Apache，則應使用模 `mod_rewrite` 塊。 如需有關資訊(例如， `mod_rewrite` Apache 2.4 [](https://httpd.apache.org/docs/current/mod/mod_rewrite.html))，請參閱Apache網站檔案。 使用 `mod_rewrite`時，建議使用標幟** ['passthrough|PT'（傳遞至下一個處理常式）](https://helpx.adobe.com/dispatcher/kb/DispatcherModReWrite.html)**，以強制重寫引擎將內部結構的欄位 `uri` 設為欄位的值 `request_rec``filename` 。
+>如果您使用Apache，則應使用模 `mod_rewrite` 塊。 如需有關資訊(例如， `mod_rewrite` Apache 2.4 [](https://httpd.apache.org/docs/current/mod/mod_rewrite.html))，請參閱Apache網站檔案。 使用 `mod_rewrite`時，建議使用標幟 **['passthrough|PT'（傳遞至下一個處理常式）](https://helpx.adobe.com/dispatcher/kb/DispatcherModReWrite.html)** ，強制重寫引擎將內部結構的欄位 `uri` 設定為欄位的值 `request_rec``filename` 。
 
 <!-- 
 
@@ -847,7 +847,7 @@ Dispatcher篩選器應封鎖對AEM發佈例項上下列頁面和指令碼的存�
 請注意，您應該會看到/content/add_valid_page.html?debug=layout的一般頁面演算。
 
 
-* /admin
+* /管理員
 * /system/console
 * /dav/crx.default
 * /crx
@@ -1056,8 +1056,8 @@ statfile沒有內容。 更新內容時，Dispatcher會更新時間戳記。 預
 * 如果請求URI包含問號("?")。\
    這通常表示動態頁面，例如不需要快取的搜尋結果。
 * 缺少檔案副檔名。\
-   Web伺服器需要擴充功能來判斷檔案類型（MIME類型）。
-* 驗證標題已設定（可進行設定）
+   Web 伺服器需要副檔名來判斷文件類型 (MIME 類型)。
+* 驗證標頭已設定 (這可以設定)
 * 如果AEM例項以下列標題回應：
 
    * `no-cache`
@@ -1066,7 +1066,7 @@ statfile沒有內容。 更新內容時，Dispatcher會更新時間戳記。 預
 
 >[!NOTE]
 >
->GET或HEAD（用於HTTP標頭）方法可由Dispatcher進行快取。 如需回應標頭快取的詳細資訊，請參 [閱快取HTTP回應標頭](dispatcher-configuration.md#caching-http-response-headers) 。
+>GET 或 HEAD (用於 HTTP 標頭) 方法可讓 Dispatcher 快取。如需回應標頭快取的詳細資訊，請參 [閱快取HTTP回應標頭](dispatcher-configuration.md#caching-http-response-headers) 。
 
 /rules屬性中的每個項目都包含 [全域](#designing-patterns-for-glob-properties) (glob)模式和類型：
 
@@ -1163,7 +1163,7 @@ Last Modified Date: 2017-11-13T09:23:24.326-0500
 
    * 例如：如果您將屬 `statfileslevel` 性設為6，而檔案在5級失效，則每個從Docroot `.stat` 變成5的檔案都會被觸碰。 繼續此範例，如果檔案在7級時失效，則每隔一次。 `stat` 檔案從docroot移至6時，將會觸動(自此 `/statfileslevel = "6"`起)。
 
-僅影響到無效檔案路徑**中的資源**。 請考慮下列範例：網站使用結構。如 `/content/myWebsite/xx/.` 果您設 `statfileslevel` 為3，則會 `.stat`建立如下檔案：
+僅會影 **響到已失效檔案** 的路徑上的資源。 請考慮下列範例：網站使用結構。如 `/content/myWebsite/xx/.` 果您設 `statfileslevel` 為3，則會 `.stat`建立如下檔案：
 
 * `docroot`
 * `/content`
@@ -1788,14 +1788,14 @@ https://localhost:80/libs/wcm/core/content/siteadmin.html
 1. 啟動頁面以檢查快取是否正確刷新。
 1. 如果一切都正常運作，您可將 `loglevel` 降 `0`低。
 
-## 使用多個調度程式 {#using-multiple-dispatchers}
+## 使用多個 Dispatcher {#using-multiple-dispatchers}
 
-在複雜的設定中，您可以使用多個調度程式。 例如，您可以使用：
+您可以透過複雜的設定來使用多個 Dispatcher。例如您可以使用：
 
-* 一個Dispatcher，在內部網路上發佈網站
-* 第二個Dispatcher，位於不同的地址下，並具有不同的安全設定，以便在Internet上發佈相同的內容。
+* 一個 Dispatcher 在內部網路上發佈網站
+* 另一個 Dispatcher 位於不同的位址下，並具有不同的安全設定，以便在網際網路上發佈相同的內容。
 
-在這種情況下，請確定每個請求只通過一個Dispatcher。 Dispatcher不處理來自其他Dispatcher的請求。 因此，請確定兩個Dispatcher都直接存取AEM網站。
+在這種情況下，請確定每個請求只通過一個 Dispatcher。Dispatcher 不會處理來自其他 Dispatcher 的請求。因此，請確定兩個 Dispatcher 都直接存取 AEM 網站。
 
 ## 除錯 {#debugging}
 
