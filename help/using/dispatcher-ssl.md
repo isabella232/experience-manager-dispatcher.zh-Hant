@@ -1,24 +1,24 @@
 ---
-title: 將SSL與Dispatcher搭配使用
-seo-title: 將SSL與Dispatcher搭配使用
+title: 將 SSL 與 Dispatcher 搭配使用
+seo-title: 將 SSL 與 Dispatcher 搭配使用
 description: 瞭解如何設定Dispatcher以使用SSL連線與AEM通訊。
 seo-description: 瞭解如何設定Dispatcher以使用SSL連線與AEM通訊。
 uuid: 1a8f448c-d3d8-4798-a5cb-9579171171ed
 contentOwner: 使用者
 products: SG_EXPERIENCEMANAGER/DISPATCHER
-topic-tags: dispatcher
+topic-tags: 'Dispatcher '
 content-type: 引用
 discoiquuid: 771cfd85-6c26-4ff2-a3fe-dff8d8f7920b
 index: y
 internal: n
 snippet: y
 translation-type: tm+mt
-source-git-commit: 6d3ff696780ce55c077a1d14d01efeaebcb8db28
+source-git-commit: eed7c3f77ec64f2e7c5cfff070ef96108886a059
 
 ---
 
 
-# 將SSL與Dispatcher搭配使用 {#using-ssl-with-dispatcher}
+# 將 SSL 與 Dispatcher 搭配使用 {#using-ssl-with-dispatcher}
 
 在Dispatcher和Render電腦之間使用SSL連接：
 
@@ -162,7 +162,7 @@ X-Forwarded-SSL-Session-ID: 814825E8CD055B4C166C2EF6D75E1D0FE786FFB29DEB6DE1E239
 當您建立憑證時，OpenSSL會使用「公用名稱」屬性來識別憑證持有人。 對於演算實例的證書，如果要將Dispatcher配置為只在證書與Publish實例的主機名匹配時才接受證書，請使用實例電腦的主機名作為通用名稱。 (請參 [閱DispatcherCheckPeerCN](dispatcher-ssl.md#main-pars-title-11) 屬性。)
 
 1. 開啟終端機，並將目前的目錄變更為包含OpenSSL程式庫CH.sh檔案的目錄。
-1. 輸入以下命令，並在出現提示時提供值。 如果需要，請使用發佈實例的主機名作為公用名。 主機名是DNS可解析的Render IP地址名稱：
+1. 輸入以下命令，並在出現提示時提供值。 如有需要，請使用發佈實例的主機名作為公用名。 主機名是DNS可解析的Render IP地址名稱：
 
    ```shell
    ./CA.sh -newreq
