@@ -4,14 +4,14 @@ seo-title: AEM Dispatcher的主要問題
 description: AEM Dispatcher的主要問題
 seo-description: Adobe AEM Dispatcher的主要問題
 translation-type: tm+mt
-source-git-commit: 76cffbfb616cd5601aed36b7076f67a2faf3ed3b
+source-git-commit: eed7c3f77ec64f2e7c5cfff070ef96108886a059
 
 ---
 
 
 # AEM Dispatcher熱門問題常見問答集
 
-![配置Dispatcher](assets/CQDispatcher_workflow_v2.png)
+![設定 Dispatcher](assets/CQDispatcher_workflow_v2.png)
 
 ## 簡介
 
@@ -23,17 +23,17 @@ Dispatcher是Adobe Experience manager的快取和／或負載平衡工具，可�
 
 ### Dispatcher如何執行快取？
 
-Dispatcher使用Web伺服器提供靜態內容的能力。 Dispatcher會將快取的檔案儲存在Web伺服器的檔案根目錄中。 Dispatcher有兩種主要方法，用於在對網站進行更改時更新快取內容。
+Dispatcher使用Web伺服器提供靜態內容的能力。 Dispatcher會將快取的檔案儲存在Web伺服器的檔案根目錄中。 Dispatcher 有兩種主要方法，用於在對網站進行更改時更新快取內容。
 
-* **內容更新** ：移除已變更的頁面，以及直接與之關聯的檔案。
-* **自動失效** (Auto-Invalidation)會自動使更新後可能過期的快取部分失效。 例如，它會將相關頁面標示為已過時，而不會刪除任何內容。
+* **內容更新**&#x200B;會移除已變更的頁面，以及與其直接相關的檔案。
+* **自動失效**&#x200B;功能會自動讓那些在更新後可能過期的快取失效。例如，它會將相關頁面標示為已過時，而不會刪除任何內容。
 
 ### 負載平衡有哪些好處？
 
 Load Balancing會將使用者要求（負載）分發至數個AEM例項。下列清單說明負載平衡的優點：
 
-* **提高處理能力**:實際上，這表示Dispatcher會在數個AEM執行個體之間共用檔案請求。 由於每個例項處理的檔案較少，因此您的回應時間更快。 Dispatcher會保留每個文檔類別的內部統計資訊，以便能夠估計負載並高效地分發查詢。
-* **增加故障保險範圍**:如果Dispatcher未從實例接收響應，它將自動將請求中繼到另一個實例。 因此，如果某個例項無法使用，唯一的效果是網站的減速，與失去的計算能力成正比。
+* **提高處理能力**:實際上，這表示Dispatcher會在數個AEM執行個體之間共用檔案請求。 由於每個例項處理的檔案較少，因此您的回應時間更快。 Dispatcher 會保留每個文件類別的內部統計資料，以便能夠估計負載並有效率地分配查詢。
+* **增加故障保險範圍**:如果Dispatcher未從實例接收響應，它將自動將請求中繼到另一個實例。 因此，如果某個例項無法使用，唯一的影響是網站速度變慢，與失去的運算能力成正比。
 
 >[!NOTE]
 >
@@ -43,32 +43,32 @@ Load Balancing會將使用者要求（負載）分發至數個AEM例項。下列
 
 ### 我要從何處下載Dispatcher模組？
 
-You can download the latest Dispatcher module from the Dispatcher Release Notes page.[](release-notes.md)
+您可以從「 [Dispatcher發行說明」頁下載最新的Dispatcher模組](release-notes.md) 。
 
-### How do I install the Dispatcher module?
+### 如何安裝Dispatcher模組？
 
-Refer to the Installing Dispatcher page[](dispatcher-install.md)
+請參閱「安 [裝Dispatcher](dispatcher-install.md) 」頁
 
-### How do I configure the Dispatcher module?
+### 如何配置Dispatcher模組？
 
-See the [Configuring Dispatcher](dispatcher-configuration.md) page.
+請參閱 [Configuring Dispatcher](dispatcher-configuration.md) 頁。
 
-### How do I configure the Dispatcher for the author instance?
+### 如何為作者實例配置Dispatcher?
 
-See Using Dispatcher with an Author Instance for the detailed steps.[](dispatcher.md#using-a-dispatcher-with-an-author-server)
+有關詳 [細步驟，請參閱使用Dispatcher與Author Instance](dispatcher.md#using-a-dispatcher-with-an-author-server) 。
 
-### How do I configure the Dispatcher with multiple domains?
+### 如何配置具有多個域的Dispatcher?
 
-You can configure the CQ Dispatcher with multiple domains, provided the domains satisfy the following conditions:
+您可以配置具有多個域的CQ Dispatcher，前提是這些域滿足以下條件：
 
-* The Web content for both the domains is stored in a single AEM repository
-* The files in the Dispatcher cache can be invalidated separately for each domain
+* 這兩個網域的Web內容都儲存在單一AEM儲存庫中
+* Dispatcher快取中的檔案可針對每個域分別失效
 
-Read Using Dispatcher with Multiple Domains for further details.[](dispatcher-domains.md)
+閱讀 [Using Dispatcher with Multiple Domains](dispatcher-domains.md) （將Dispatcher與多個網域搭配使用）以取得詳細資訊。
 
-### How do I configure the Dispatcher, such that all requests from a user are routed to the same Publish instance?
+### 如何配置Dispatcher，以便將來自用戶的所有請求路由到同一個Publish實例？
 
-您可以使用 [嚴格連線](dispatcher-configuration.md#identifying-a-sticky-connection-folder-stickyconnectionsfor) ，這可確保使用者的所有檔案都會在AEM的同一個例項上處理。 如果您使用個人化頁面和作業資料，此功能就很重要。 The data is stored on the instance. Therefore, subsequent requests from the same user must return to that instance or the data is lost.
+您可以使用 [嚴格連線](dispatcher-configuration.md#identifying-a-sticky-connection-folder-stickyconnectionsfor) ，這可確保使用者的所有檔案都會在AEM的同一個例項上處理。 如果您使用個人化頁面和作業資料，此功能就很重要。 資料會儲存在例項上。 因此，來自相同使用者的後續要求必須傳回至該執行個體，否則資料會遺失。
 
 由於粘滯連接限制了Dispatcher優化請求的能力，因此您應僅在必要時使用此方法。 您可以指定包含「嚴格」檔案的檔案夾，如此可確保該檔案夾中的所有檔案都會在使用者的相同執行個體上處理。
 
@@ -82,7 +82,7 @@ Read Using Dispatcher with Multiple Domains for further details.[](dispatcher-do
 
 是的，如果機器足夠強大。 不過，建議您在不同的電腦上設定Dispatcher和AEM Publish執行個體。
 
-通常， Publish實例駐留在防火牆內，而Dispatcher駐留在DMZ中。 如果您決定將Publish實例和Dispatcher都放在同一台物理電腦上，請確保防火牆設定禁止從外部網路直接訪問Publish實例。
+通常， Publish實例駐留在防火牆內，而Dispatcher駐留在DMZ內。 如果您決定將Publish實例和Dispatcher都放在同一台物理電腦上，請確保防火牆設定禁止從外部網路直接訪問Publish實例。
 
 ### 我是否只能快取具有特定副檔名的檔案？
 
@@ -113,35 +113,35 @@ Dispatcher會刪除名稱與CQ-Handle標題值相符的快取檔案和檔案夾�
 
 ### 如何保護Dispatcher和CQ實例之間的通信安全？
 
-See the Dispatcher Security Checklist and the AEM Security Checklist pages.[](security-checklist.md)[](https://helpx.adobe.com/experience-manager/6-4/sites/administering/using/security-checklist.html)
+請參閱 [Dispatcher Security Checklist](security-checklist.md) 和 [AEM Security Checklist](https://helpx.adobe.com/experience-manager/6-4/sites/administering/using/security-checklist.html) 頁面。
 
 ### Dispatcher問題 `jcr:content` 變更為 `jcr%3acontent`
 
-**Question: We have recently faced a problem at dispatcher level wherein one of the ajax call which was getting some data form CQ repository had  in it and that got encoded to  resulting in wrong result set.**`jcr:content``jcr%3acontent`
+**問題**:我們最近在調度器級別遇到了一個問題，其中ajax調用中有一個是從CQ儲存庫中獲取一些資料， `jcr:content` 而它被編碼到 `jcr%3acontent` 導致錯誤的結果集。
 
-**Answer: Please use  method to get a 'Friendly' URL to be used / issued get requests from and also to solve the caching issue with Dispatcher.**`ResourceResolver.map()`The map() method encodes the  colon to underscores and the resolve() method decodes them back to SLING JCR readable format.You need to use the map() method to generate the URL that is used in the Ajax call.`:`
+**答案**:請使用 `ResourceResolver.map()` 方法取得要使用／已發出的「友好」URL，並從中取得請求，以及解決Dispatcher的快取問題。 map()方法將冒號編碼為底線， `:` resolve()方法會將它們解碼回SLING JCR可讀格式。您需要使用map()方法來產生Ajax呼叫中使用的URL。
 
-Further read: https://sling.apache.org/documentation/the-sling-engine/mappings-for-resource-resolution.html#namespace-mangling[](https://sling.apache.org/documentation/the-sling-engine/mappings-for-resource-resolution.html#namespace-mangling)
+進一步閱讀： [https://sling.apache.org/documentation/the-sling-engine/mappings-for-resource-resolution.html#namespace-mangling](https://sling.apache.org/documentation/the-sling-engine/mappings-for-resource-resolution.html#namespace-mangling)
 
-## Flush the Dispatcher
+## 刷新調度程式
 
-### How do I configure Dispatcher flush agents on a Publish instance?
+### 如何在發佈實例上配置Dispatcher flush代理？
 
-See the Replication page.[](https://helpx.adobe.com/content/help/en/experience-manager/6-4/sites/deploying/using/replication.html#ConfiguringyourReplicationAgents)
+請參見「 [複製](https://helpx.adobe.com/content/help/en/experience-manager/6-4/sites/deploying/using/replication.html#ConfiguringyourReplicationAgents) 」頁。
 
-### How do I troubleshoot Dispatcher flushing issues?
+### 如何診斷Dispatcher刷新問題？
 
-[Refer to this troubleshooting article that answers the following questions:](https://helpx.adobe.com/content/help/en/experience-manager/kb/troubleshooting-dispatcher-flushing-issues.html)
+[請參閱本疑難排解文章](https://helpx.adobe.com/content/help/en/experience-manager/kb/troubleshooting-dispatcher-flushing-issues.html) ，以回答下列問題：
 
-* How should I debug a situation where no content is getting saved in the Dispatcher cache?
-* How do I debug a situation where cache files are not getting updated?
-* How do I debug a situation where nothing related to Dispatcher flushing is working?
+* 如何對Dispatcher快取中未保存任何內容的情況進行調試？
+* 如何對未更新快取檔案的情況進行除錯？
+* 如何調試與Dispatcher刷新無關的情況？
 
-If Delete operations are causing the Dispatcher to flush, use the workaround in this community blog post by Sensei Martin.[](https://mkalugin-cq.blogspot.in/2012/04/i-have-been-working-on-following.html)
+如果刪除操作導致Dispatcher刷新，請 [在Sensei Martin的此社區部落格中使用解決方法](https://mkalugin-cq.blogspot.in/2012/04/i-have-been-working-on-following.html)。
 
 ### 如何從Dispatcher快取刷新DAM資產？
 
-You can use the "chain replication" feature.  啟用此功能後，當從作者處收到複製時，調度程式刷新代理會發送刷新請求。
+您可以使用「鏈複製」功能。  啟用此功能後，當從作者處收到複製時，調度程式刷新代理會發送刷新請求。
 
 若要啟用它：
 
@@ -153,30 +153,29 @@ You can use the "chain replication" feature.  啟用此功能後，當從作者�
 Dispatcher如何確定文檔是否是最新的？
 要確定文檔是否是最新的，Dispatcher將執行以下操作：
 
-它會檢查檔案是否受到自動失效的影響。 否則，檔案會視為最新。
-如果文檔已配置為自動失效，Dispatcher將檢查其是否比上次可用更改更舊或更新。 如果版本較舊，Dispatcher會從AEM例項要求目前版本，並取代快取中的版本。
+它會檢查文件是否會自動失效。如果不會，則可將該文件視為最新版本。如果文件已設定為會自動失效，Dispatcher 會檢查其是否比最後一次可用變更來得舊或更新。如果版本較舊，Dispatcher 會請求來自 AEM 例項的最新版本，並取代快取中的版本。
 
 ### Dispatcher如何傳回檔案？
 
-您可以定義Dispatcher是否使用 [Dispatcher配置檔案快取文](dispatcher-configuration.md) 檔 `dispatcher.any`,。 Dispatcher會根據可快取文檔的清單檢查請求。 If the document is not in this list, the Dispatcher requests the document from the AEM instance.
+您可以定義Dispatcher是否使用 [Dispatcher配置檔案快取文](dispatcher-configuration.md) 檔 `dispatcher.any`,。 Dispatcher 會根據可快取文件清單來檢查請求。如果文件不在此清單中，Dispatcher 會請求 AEM 例項的文件。
 
-The  property controls which documents are cached according to the document path. `/rules`無論屬性 `/rules` 如何，Dispatcher都不會在以下情況下快取文檔：
+屬 `/rules` 性控制根據文檔路徑快取哪些文檔。 無論屬性 `/rules` 如何，Dispatcher都不會在以下情況下快取文檔：
 
-* If the request URI contains a question mark .`(?)`
+* If the request URI contains a question mark `(?)`.
 * 這通常表示動態頁面，例如不需要快取的搜尋結果。
-* The file extension is missing.
-* The web server needs the extension to determine the document type (the MIME-type).
-* The authentication header is set (this can be configured)
-* If the AEM instance responds with the following headers:
-   * no-cache
-   * no-store
+* 缺少檔案副檔名。
+* Web 伺服器需要副檔名來判斷文件類型 (MIME 類型)。
+* 驗證標頭已設定 (這可以設定)
+* 如果AEM例項以下列標題回應：
+   * 無快取
+   * 無商店
    * must-revalidate
 
 Dispatcher會將快取檔案儲存在Web伺服器上，就像是靜態網站的一部分。 如果用戶請求快取的文檔，Dispatcher將檢查該文檔是否存在於Web伺服器的檔案系統中。 如果是，Dispatcher將返回文檔。 如果沒有，Dispatcher會從AEM例項請求檔案。
 
 >[!NOTE]
 >
->GET或HEAD（用於HTTP標頭）方法可由Dispatcher進行快取。 如需回應標頭快取的詳細資訊，請參 [閱快取HTTP回應標頭](dispatcher-configuration.md#caching-http-response-headers) 。
+>GET 或 HEAD (用於 HTTP 標頭) 方法可讓 Dispatcher 快取。如需回應標頭快取的詳細資訊，請參 [閱快取HTTP回應標頭](dispatcher-configuration.md#caching-http-response-headers) 。
 
 ### 我是否可以在設定中實施多個調度程式？
 
