@@ -1,21 +1,21 @@
 ---
-title: 安裝Dispatcher
+title: 安裝 Dispatcher
 seo-title: 安裝AEM Dispatcher
 description: 瞭解如何在Microsoft Internet Information Server、Apache Web server和Sun Java Web Server-iPlanet上安裝Dispatcher模組。
 seo-description: 瞭解如何在Microsoft Internet Information Server、Apache Web server和Sun Java Web Server-iPlanet上安裝AEM Dispatcher模組。
 uuid: 2384b907-1042-4707-b02f-fba2125618cf
 contentOwner: 使用者
 converted: 'true'
-topic-tags: dispatcher
+topic-tags: 'Dispatcher '
 content-type: 引用
 discoiquuid: f00ad751-6b95-4365-8500-e1e0108d9536
 translation-type: tm+mt
-source-git-commit: 6d3ff696780ce55c077a1d14d01efeaebcb8db28
+source-git-commit: eed7c3f77ec64f2e7c5cfff070ef96108886a059
 
 ---
 
 
-# 安裝Dispatcher {#installing-dispatcher}
+# 安裝 Dispatcher {#installing-dispatcher}
 
 <!-- 
 
@@ -27,7 +27,7 @@ Comment Type: draft
 
 >[!NOTE]
 >
->Dispatcher版本獨立於AEM。 如果您遵循Dispatcher檔案的連結，且該連結內嵌於舊版AEM的檔案中，您可能會被重新導向至本頁面。
+>Dispatcher 版本與 AEM 無關。如果您依循連結至 Dispatcher 文件，且該連結內嵌於舊版 AEM 的文件中，您可能會被重新導向至本頁。
 
 使用「 [Dispatcher發行說明](release-notes.md) 」頁可以獲取您的作業系統和Web伺服器的最新Dispatcher安裝檔案。 Dispatcher發行號碼與Adobe Experience Manager發行號碼無關，並與Adobe Experience Manager 6.x、5.x和Adobe CQ 5.x版本相容。
 
@@ -114,7 +114,7 @@ ZIP檔案包含下列檔案：
 | `dispatcher.any` | Dispatcher的示例配置檔案。 |
 | `author_dispatcher.any` | Dispatcher使用作者實例的示例配置檔案。 |
 | 自述檔案 | 自述檔案，包含安裝說明和最後一分鐘資訊。 **注意**:請先檢查此檔案，然後再開始安裝。 |
-| 變更 | 變更列出目前和過去版本中已修正問題的檔案。 |
+| 變更 | 變更列出目前和舊版中已修正問題的檔案。 |
 
 請按下列步驟將Dispatcher檔案複製到正確的位置。
 
@@ -250,7 +250,7 @@ replaceauthorization=0
    `IIS AppPool\DefaultAppPool`
 
 1. 按一下「檢查名稱」按鈕。 當Windows解析使用者帳戶時，按一下「確定」。
-1. 在調度程式資料夾的「權限」對話框中，選擇剛添加的帳戶，啟用帳戶的所有權限**（完全控制除外）,**並按一下「確定」。 按一下「確定」(OK)關閉資料夾「屬性」(Properties)對話框。
+1. 在調度程式資料夾的「權限」對話框中，選擇剛添加的帳戶，啟用帳戶的所有權限(完全控制 **項除外)** ，然後按一下「確定」。 按一下「確定」(OK)關閉資料夾「屬性」(Properties)對話框。
 1. 使用文字編輯器來開啟 `disp_iis.ini` 檔案。
 1. 新增類似下列範例的文字行，以設定記錄檔的位置，然後儲存檔案：
 
@@ -624,7 +624,7 @@ keepalivetimeout="60"
 |--- |--- |
 | config | 配置檔案的位置和名稱 `dispatcher.any.` |
 | 日誌檔案 | 日誌檔案的位置和名稱。 |
-| loglevel | 將消息寫入日誌檔案時的日誌級別： <br/>**0** Errors <br/>**1** 警告 <br/>**2** Infos <br/>**3** 錯誤調 <br/>**試注**：建議在安裝和測試期間將日誌級別設定為3，在生產環境中運行時將日誌級別設定為0。 |
+| loglevel | <br/> 將消息寫入日誌檔案時的日誌級別： **** 00<br/> 1警告 **** 2<br/> Infos ****<br/> 3錯誤調 ****<br/>****&#x200B;試注：建議在安裝和測試期間將日誌級別設定為3，在生產環境中運行時將日誌級別設定為0。 |
 | keepalivetimeout | 指定保持活動超時（秒）。 從Dispatcher 4.2.0版開始，預設的keep-alive值為60。 值0會停用keep-alive。 |
 
 根據您的需求，您可以將Dispatcher定義為對象的服務。 要為整個網站配置Dispatcher，請修改預設對象：
