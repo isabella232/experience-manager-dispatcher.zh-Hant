@@ -5,12 +5,12 @@ description: 瞭解如何配置Dispatcher。
 seo-description: 瞭解如何配置Dispatcher。
 uuid: 253ef0f7-2491-4cec-ab22-97439df29fd6
 cmgrlastmodified: 01.11.2007 08 22 29 [aheimoz]
-pageversionid: '1193211344162'
-topic-tags: 'Dispatcher '
-content-type: 引用
+pageversionid: 1193211344162
+topic-tags: dispatcher
+content-type: reference
 discoiquuid: aeffee8e-bb34-42a7-9a5e-b7d0e848391a
 translation-type: tm+mt
-source-git-commit: eed7c3f77ec64f2e7c5cfff070ef96108886a059
+source-git-commit: 71bca4bea15ca8fa89888e10770743422c56b827
 
 ---
 
@@ -667,7 +667,7 @@ HTTP/1.1定義請 [求行](https://www.w3.org/Protocols/rfc2616/rfc2616-sec5.htm
 /0003   { /type "deny"  /url "/publish/libs/cq/workflow/content/console/archive*"  }
 ```
 
-如果您仍需要存取受限制區域內的單一頁面，則可以允許存取。 例如，要允許訪問「工作流」控制台中的「存檔」頁籤，請添加以下部分：
+如果您仍需要在限制區域記憶體取單一頁面，則可以允許存取。 例如，要允許訪問「工作流」控制台中的「存檔」頁籤，請添加以下部分：
 
 ```xml
 /0004  { /type "allow"  /url "/libs/cq/workflow/content/console/archive*"   }
@@ -1156,7 +1156,7 @@ Last Modified Date: 2017-11-13T09:23:24.326-0500
 
 使用屬 `/statfileslevel` 性根據快取檔案的路徑使其無效：
 
-* Dispatcher在 `.stat`每個資料夾中從Docroot資料夾建立檔案到您指定的級別。 docroot資料夾是0級。
+* Dispatcher在 `.stat`每個資料夾中從Docroot資料夾建立到您指定級別的檔案。 docroot資料夾是0級。
 * 通過觸摸檔案使檔案失 `.stat` 效。 文 `.stat` 件的上次修改日期與快取文檔的上次修改日期進行比較。 如果檔案較新，則會重新擷 `.stat` 取檔案。
 
 * 當位於某一級別的檔案被失效時， **從**`.stat` Docroot到失效檔案級別的所有檔案 ****`statsfilevel` （以小的為準）都將被觸碰。
@@ -1383,19 +1383,13 @@ FileETag none
 
 如需其他詳細資訊，請閱讀上 `/invalidate` 述 `/statfileslevel`章節。
 
-## 配置基於時間的快取失效- /enableTTL {#configuring-time-based-cache-invalidation-enablettl}
+### 配置基於時間的快取失效- /enableTTL {#configuring-time-based-cache-invalidation-enablettl}
 
-如果設定， `enableTTL``Cache-Control``Expires` 屬性將評估後端的回應標頭，如果這些標頭包含最大時間或日期，則會在快取檔案旁建立輔助的空檔案，修改時間等於到期日。 當快取檔案在修改時間之後被要求時，會自動從後端重新要求。
-
-您可將此行新增至檔案，以啟用此 `dispatcher.any` 功能：
-
-```xml
-/enableTTL "1"
-```
+如果設定， `/enableTTL``Cache-Control``Expires` 屬性將評估後端的回應標頭，如果這些標頭包含最大時間或日期，則會在快取檔案旁建立輔助的空檔案，修改時間等於到期日。 當快取檔案在修改時間之後被要求時，會自動從後端重新要求。
 
 >[!NOTE]
 >
->此功能適用於 **4.1.11版** 的Dispatcher。
+>此功能適用於 **4.1.11版或更新版** 本的Dispatcher。
 
 ## 配置負載平衡- /statistics {#configuring-load-balancing-statistics}
 
@@ -1565,7 +1559,7 @@ Dispatcher最多支援8個統計類別。 如果您定義8個以上的類別，�
 
 >[!NOTE]
 >
->要重試包含內文的HTTP請求，Dispatcher會在假設實 `Expect: 100-continue` 際內容之前，先將請求標頭髮送到演算。 含CQSE的CQ 5.5會立即回答100（繼續）或錯誤碼。 其他servlet容器也應支援此功能。
+>要重試包含內文的HTTP請求，Dispatcher會先將請求標 `Expect: 100-continue` 頭髮送到渲染器，然後再假設實際內容。 含CQSE的CQ 5.5會立即回答100（繼續）或錯誤碼。 其他servlet容器也應支援此功能。
 
 ## 忽略中斷錯誤- /ignoreEINTR {#ignoring-interruption-errors-ignoreeintr}
 
@@ -1606,7 +1600,7 @@ Dispatcher配置檔案中的幾個部分使用屬 `glob` 性作為客戶端請�
 | `*` | 相符項目：字串中任何字元的零個或多個連續例項。 符合的最終字元由下列任一情況決定：字 <br/>串中的字元與模式中的下一個字元相符，而模式字元具有下列特性：<br/><ul><li>不是*</li><li>不是？</li><li>常值字元（包括空格）或字元類別。</li><li>到達模式的結尾。</li></ul>在字元類中，字元將逐字解釋。 | `*/geo*` 與節點和節點下 `/content/geometrixx` 的任何頁 `/content/geometrixx-outdoors` 面匹配。 下列HTTP請求與全域模式相符： <br/><ul><li>`"GET /content/geometrixx/en.html"`</li><li>`"GET /content/geometrixx-outdoors/en.html"` </li></ul><br/> `*outdoors/*` 匹 <br/>配節點下的任 `/content/geometrixx-outdoors` 何頁。 例如，下列HTTP要求符合全域模式： <br/><ul><li>`"GET /content/geometrixx-outdoors/en.html"`</li></ul> |
 | `?` | 符合任何單一字元。 使用外部字元類別。 在字元類中，該字元將逐字解釋。 | `*outdoors/??/*`<br/> 相符項目：geometrixx-outdoors網站中任何語言的頁面。 例如，下列HTTP要求符合全域模式： <br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>下列請求不符合全域模式： <br/><ul><li>"取得/content/geometrixx-outdoors/en.html"</li></ul> |
 | `[ and ]` | 標籤字元類的開頭和結尾。 字元類別可包含一或多個字元範圍和單一字元。<br/>如果目標字元符合字元類別中的任何字元，或在定義的範圍內，就會發生相符。<br/>如果未包括右括弧，則陣列不會產生匹配。 | `*[o]men.html*`<br/> 符合下列HTTP要求：<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>不符合下列HTTP要求：<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/> `*[o/]men.html*` 符 <br/>合下列HTTP請求： <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
-| `-` | 表示字元範圍。 用於字元類。  在字元類之外，將逐字解釋該字元。 | `*[m-p]men.html*` 符合下列HTTP要求： <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul>不符合下列HTTP要求：<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
+| `-` | 表示字元範圍。 用於字元類。  在字元類之外，將逐字解釋該字元。 | `*[m-p]men.html*` 符合下列HTTP要求： <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul> 不符合下列HTTP要求：<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
 | `!` | 否定後面的字元或字元類。 僅用於否定字元類別中的字元和字元範圍。 相當於 `^ wildcard`。 <br/>在字元類之外，將逐字解釋該字元。 | `*[!o]men.html*`<br/> 符合下列HTTP要求： <br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>不符合下列HTTP要求： <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>`*[!o!/]men.html*`<br/> 不符合下列HTTP要求：<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"` 或 `"GET /content/geometrixx-outdoors/en/men. html"`</li></ul> |
 | `^` | 否定後面的字元或字元範圍。 僅用於否定字元類內的字元和字元範圍。 相當於萬用字 `!` 元。 <br/>在字元類之外，將逐字解釋該字元。 | 套用萬用字元 `!` 的範例，以字元 `!` 取代範例模式中的字 `^` 元。 |
 
