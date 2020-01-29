@@ -10,7 +10,7 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: aeffee8e-bb34-42a7-9a5e-b7d0e848391a
 translation-type: tm+mt
-source-git-commit: 71bca4bea15ca8fa89888e10770743422c56b827
+source-git-commit: fb7891406af215c59e9768b699a5d191ba4b1eb2
 
 ---
 
@@ -118,7 +118,7 @@ AEM和Dispatcher的所有元素都可安裝在IPv4和IPv6網路中。 請參 [�
   }
 ```
 
-使用星號("*")做為萬用字元，指定要包含的檔案範圍。
+使用星號(&quot;*&quot;)做為萬用字元，指定要包含的檔案範圍。
 
 例如，如果檔案 `farm_1.any` 到包含 `farm_5.any` 1到5個農場的配置，則可以按如下方式包括它們：
 
@@ -221,7 +221,7 @@ AEM和Dispatcher的所有元素都可安裝在IPv4和IPv6網路中。 請參 [�
 >
 >參 `/homepage`數（僅限IIS）不再運作。 您應改用 [IIS URL Rewrite Module](https://docs.microsoft.com/en-us/iis/extensions/url-rewrite-module/using-the-url-rewrite-module)。
 >
->如果您使用Apache，則應使用模 `mod_rewrite` 塊。 如需有關資訊(例如， `mod_rewrite` Apache 2.4 [](https://httpd.apache.org/docs/current/mod/mod_rewrite.html))，請參閱Apache網站檔案。 使用 `mod_rewrite`時，建議使用標幟 **['passthrough|PT'（傳遞至下一個處理常式）](https://helpx.adobe.com/dispatcher/kb/DispatcherModReWrite.html)** ，強制重寫引擎將內部結構的欄位 `uri` 設定為欄位的值 `request_rec``filename` 。
+>如果您使用Apache，則應使用模 `mod_rewrite` 塊。 如需有關資訊(例如， `mod_rewrite` Apache 2.4 [](https://httpd.apache.org/docs/current/mod/mod_rewrite.html))，請參閱Apache網站檔案。 使用 `mod_rewrite`時，建議使用標幟 **[&#39;passthrough|PT&#39;（傳遞至下一個處理常式）](https://helpx.adobe.com/dispatcher/kb/DispatcherModReWrite.html)**，強制重寫引擎將內部結構的欄位`uri`設定為欄位的值`request_rec``filename`。
 
 <!-- 
 
@@ -263,7 +263,7 @@ Comment Type: draft
 
 ## 指定要傳遞的HTTP標題 {#specifying-the-http-headers-to-pass-through-clientheaders}
 
-屬 `/clientheaders` 性定義Dispatcher從用戶端HTTP請求傳遞至轉譯器（AEM例項）的HTTP標題清單。
+屬 `/clientheaders` 性定義Dispatcher從用戶端HTTP請求傳遞至轉譯器（AEM例項）的HTTP標頭清單。
 
 依預設，Dispatcher會將標準HTTP標頭轉送至AEM例項。 在某些情況下，您可能需要轉寄其他標題，或移除特定標題：
 
@@ -322,7 +322,7 @@ Comment Type: draft
 
 ## 識別虛擬主機 {#identifying-virtual-hosts-virtualhosts}
 
-該 `/virtualhosts` 屬性定義Dispatcher為此場接受的所有主機名/URI組合的清單。 您可以使用星號("*")字元做為萬用字元。 /屬性的值 `virtualhosts` 使用下列格式：
+該 `/virtualhosts` 屬性定義Dispatcher為此場接受的所有主機名/URI組合的清單。 您可以使用星號(&quot;*&quot;)字元做為萬用字元。 /屬性的值 `virtualhosts` 使用下列格式：
 
 ```xml
 [scheme]host[uri][*]
@@ -405,7 +405,7 @@ Dispatcher以下列方式查找最匹配的虛擬主機值：
 
 | 請求URL | 已解析的虛擬主機 |
 |---|---|
-| `https://www.mycompany.com/products/gloves.html` | `www.mycompany.com/products/*;` |
+| `https://www.mycompany.com/products/gloves.html` | `www.mycompany.com/products/*` |
 | `https://www.mycompany.com/about.html` | `www.mycompany.com` |
 
 ## 啟用安全會話- /sessionmanagement {#enabling-secure-sessions-sessionmanagement}
@@ -441,7 +441,7 @@ Dispatcher以下列方式查找最匹配的虛擬主機值：
 
 **/encode** （選用）
 
-會話資訊的編碼方式。 使用"md5"進行加密，使用md5演算法；使用"hex"進行十六進位編碼。 如果您加密會話資料，則具有檔案系統訪問權限的用戶無法讀取會話內容。 預設值為"md5"。
+會話資訊的編碼方式。 使用&quot;md5&quot;進行加密，使用md5演算法；使用&quot;hex&quot;進行十六進位編碼。 如果您加密會話資料，則具有檔案系統訪問權限的用戶無法讀取會話內容。 預設值為&quot;md5&quot;。
 
 **/header** （選用）
 
@@ -449,7 +449,7 @@ Dispatcher以下列方式查找最匹配的虛擬主機值：
 
 **/timeout** （可選）
 
-作業在上次使用後逾時的秒數。 如果未指定"800"，則會在使用者最後要求後13分鐘多一點的時間逾時。
+作業在上次使用後逾時的秒數。 如果未指定&quot;800&quot;，則會在使用者最後要求後13分鐘多一點的時間逾時。
 
 配置示例如下所示：
 
@@ -482,7 +482,7 @@ Dispatcher以下列方式查找最匹配的虛擬主機值：
   }
 ```
 
-以下範例/renders區段識別與Dispatcher在同一部電腦上執行的AEM例項：
+以下範例/renders區段識別與dispatcher在同一部電腦上執行的AEM例項：
 
 ```xml
 /renders
@@ -517,11 +517,11 @@ Dispatcher以下列方式查找最匹配的虛擬主機值：
 
 **/timeout**
 
-指定存取AEM例項的連線逾時（以毫秒為單位）。 預設值為"0"，導致Dispatcher無限期等待。
+指定存取AEM例項的連線逾時（以毫秒為單位）。 預設值為&quot;0&quot;，導致Dispatcher無限期等待。
 
 **/receiveTimeout**
 
-指定允許回應花費的時間（以毫秒為單位）。 預設值為"600000"，導致Dispatcher等待10分鐘。 設定"0"可完全消除逾時。\
+指定允許回應花費的時間（以毫秒為單位）。 預設值為&quot;600000&quot;，導致Dispatcher等待10分鐘。 設定&quot;0&quot;可完全消除逾時。\
 如果在剖析回應標題時到達逾時，會傳回504（錯誤閘道）的HTTP狀態。 如果在讀取響應主體時到達超時，Dispatcher將向客戶端返回不完整的響應，但刪除可能已寫入的任何快取檔案。
 
 **/ipv4**
@@ -534,13 +534,13 @@ Amazon Elastic Load Balancing(ELB)是一種服務，它以可能相同的順序I
 
 **/secure**
 
-如果 `/secure` 屬性的值為"1",Dispatcher會使用HTTPS與AEM例項通訊。 如需詳細資訊，請參 [閱設定Dispatcher以使用SSL](dispatcher-ssl.md#configuring-dispatcher-to-use-ssl)。
+如果 `/secure` 屬性的值為&quot;1&quot;,Dispatcher會使用HTTPS與AEM例項通訊。 如需詳細資訊，請參 [閱設定Dispatcher以使用SSL](dispatcher-ssl.md#configuring-dispatcher-to-use-ssl)。
 
 **/always-resolve**
 
 使用Dispatcher **4.1.6版**，您可以按如 `/always-resolve` 下方式配置屬性：
 
-* 設定為"1"時，將解析每個請求的主機名（Dispatcher將不會快取任何IP地址）。 由於需要額外呼叫來取得每個請求的主機資訊，因此可能會對效能造成輕微影響。
+* 設定為&quot;1&quot;時，將解析每個請求的主機名（Dispatcher將不會快取任何IP地址）。 由於需要額外呼叫來取得每個請求的主機資訊，因此可能會對效能造成輕微影響。
 * 如果未設定屬性，預設會快取IP位址。
 
 此外，此屬性也可用於您遇到動態IP解析度問題時，如下列範例所示：
@@ -601,13 +601,13 @@ Amazon Elastic Load Balancing(ELB)是一種服務，它以可能相同的順序I
 
 HTTP/1.1定義請 [求行](https://www.w3.org/Protocols/rfc2616/rfc2616-sec5.html) :
 
-*方法請求-URI HTTP-Version*&lt;CRLF&gt;
+*方法請求-URI HTTP-Version*&lt;CRLF>
 
-&lt;CRLF&gt;字元代表回車符號，後面接著行動態消息。 下列範例是當用戶端要求Geometrixx-Outoors網站的en頁面時收到的請求行：
+&lt;CRLF>字元代表回車符號，後面接著行動態消息。 下列範例是當用戶端要求Geometrixx-Outoors網站的en頁面時收到的請求行：
 
-取得/content/geometrixx-outdoors/en.html HTTP.1.1&lt;CRLF&gt;
+取得/content/geometrixx-outdoors/en.html HTTP.1.1&lt;CRLF>
 
-您的模式必須考慮請求行中的空格字元和&lt;CRLF&gt;字元。
+您的模式必須考慮請求行中的空格字元和&lt;CRLF>字元。
 
 #### 雙引號與單引號 {#double-quotes-vs-single-quotes}
 
@@ -955,7 +955,7 @@ Last Modified Date: 2015-03-25T14:23:05.185-0400
 
 協同內容請求通常僅針對Dispatcher，因此依預設，它們不會傳送至轉譯器（例如AEM例項）。
 
-如有必要，請將/propagateSyndPost屬性設定為"1"，以向Dispatcher轉發聯合請求。 若已設定，您必須確保篩選區段中不會拒絕POST要求。
+如有必要，請將/propagateSyndPost屬性設定為&quot;1&quot;，以向Dispatcher轉發聯合請求。 若已設定，您必須確保篩選區段中不會拒絕POST要求。
 
 ## 配置Dispatcher快取- /cache {#configuring-the-dispatcher-cache-cache}
 
@@ -1029,7 +1029,7 @@ statfile沒有內容。 更新內容時，Dispatcher會更新時間戳記。 預
 
 該屬 `/serveStaleOnError` 性控制當渲染伺服器返回錯誤時，Dispatcher是否返回無效文檔。 預設情況下，當觸動statfile並使快取內容無效時，Dispatcher會在下次請求快取內容時刪除該內容。
 
-如果 `/serveStaleOnError` 設定為"1"，則Dispatcher不會從快取中刪除無效的內容，除非渲染伺服器返回成功響應。 來自AEM的5xx回應或連線逾時會導致Dispatcher提供過時的內容，並回應及HTTP狀態111（重新驗證失敗）。
+如果 `/serveStaleOnError` 設定為&quot;1&quot;，則Dispatcher不會從快取中刪除無效的內容，除非渲染伺服器返回成功響應。 來自AEM的5xx回應或連線逾時會導致Dispatcher提供過時的內容，並回應及HTTP狀態111（重新驗證失敗）。
 
 ### 使用驗證時進行快取 {#caching-when-authentication-is-used}
 
@@ -1053,7 +1053,7 @@ statfile沒有內容。 更新內容時，Dispatcher會更新時間戳記。 預
 
 屬 `/rules` 性控制根據文檔路徑快取哪些文檔。 無論/rules屬性為何，Dispatcher在以下情況下都不會快取文檔：
 
-* 如果請求URI包含問號("?")。\
+* 如果請求URI包含問號(&quot;?&quot;)。\
    這通常表示動態頁面，例如不需要快取的搜尋結果。
 * 缺少檔案副檔名。\
    Web 伺服器需要副檔名來判斷文件類型 (MIME 類型)。
@@ -1156,7 +1156,7 @@ Last Modified Date: 2017-11-13T09:23:24.326-0500
 
 使用屬 `/statfileslevel` 性根據快取檔案的路徑使其無效：
 
-* Dispatcher在 `.stat`每個資料夾中從Docroot資料夾建立到您指定級別的檔案。 docroot資料夾是0級。
+* Dispatcher在 `.stat`每個資料夾中從Docroot資料夾建立檔案到您指定的級別。 docroot資料夾是0級。
 * 通過觸摸檔案使檔案失 `.stat` 效。 文 `.stat` 件的上次修改日期與快取文檔的上次修改日期進行比較。 如果檔案較新，則會重新擷 `.stat` 取檔案。
 
 * 當位於某一級別的檔案被失效時， **從**`.stat` Docroot到失效檔案級別的所有檔案 ****`statsfilevel` （以小的為準）都將被觸碰。
@@ -1292,7 +1292,7 @@ printf "%-15s: %s %s" $1 $2 $3>> /opt/dispatcher/logs/invalidate.log
 * 要忽略參數，請建立允許該參數的全局屬性。
 * 若要防止快取頁面，請建立拒絕參數的全域屬性。
 
-下列範例會使Dispatcher忽略"q"參數，以便快取包含q參數的請求URL:
+下列範例會使Dispatcher忽略&quot;q&quot;參數，以便快取包含q參數的請求URL:
 
 ```xml
 /ignoreUrlParams
@@ -1465,7 +1465,7 @@ Dispatcher最多支援8個統計類別。 如果您定義8個以上的類別，�
 
 屬 `/unavailablePenalty` 性是區段的直接子項 `/farm` (區段的同 `/statistics` 級)。
 
-如果沒 `/unavailablePenalty` 有屬性，則使用"1"值。
+如果沒 `/unavailablePenalty` 有屬性，則使用&quot;1&quot;值。
 
 ```xml
 /unavailablePenalty "1"
@@ -1559,7 +1559,7 @@ Dispatcher最多支援8個統計類別。 如果您定義8個以上的類別，�
 
 >[!NOTE]
 >
->要重試包含內文的HTTP請求，Dispatcher會先將請求標 `Expect: 100-continue` 頭髮送到渲染器，然後再假設實際內容。 含CQSE的CQ 5.5會立即回答100（繼續）或錯誤碼。 其他servlet容器也應支援此功能。
+>要重試包含內文的HTTP請求，Dispatcher會在假設實 `Expect: 100-continue` 際內容之前，先將請求標頭髮送到演算。 含CQSE的CQ 5.5會立即回答100（繼續）或錯誤碼。 其他servlet容器也應支援此功能。
 
 ## 忽略中斷錯誤- /ignoreEINTR {#ignoring-interruption-errors-ignoreeintr}
 
@@ -1581,7 +1581,7 @@ Dispatcher最多支援8個統計類別。 如果您定義8個以上的類別，�
 read more data  
 }`
 
-當在" `EINTR``read more data`"部分中發生時，可以生成這樣的消息，其由在接收任何資料之前接收的信號引起。
+當在&quot; `EINTR``read more data`&quot;部分中發生時，可以生成這樣的消息，其由在接收任何資料之前接收的信號引起。
 
 要忽略此類中斷，可將以下參數添加到( `dispatcher.any` 之前 `/farms`):
 
@@ -1598,9 +1598,9 @@ Dispatcher配置檔案中的幾個部分使用屬 `glob` 性作為客戶端請�
 | 萬用字元 | 說明 | 範例 |
 |--- |--- |--- |
 | `*` | 相符項目：字串中任何字元的零個或多個連續例項。 符合的最終字元由下列任一情況決定：字 <br/>串中的字元與模式中的下一個字元相符，而模式字元具有下列特性：<br/><ul><li>不是*</li><li>不是？</li><li>常值字元（包括空格）或字元類別。</li><li>到達模式的結尾。</li></ul>在字元類中，字元將逐字解釋。 | `*/geo*` 與節點和節點下 `/content/geometrixx` 的任何頁 `/content/geometrixx-outdoors` 面匹配。 下列HTTP請求與全域模式相符： <br/><ul><li>`"GET /content/geometrixx/en.html"`</li><li>`"GET /content/geometrixx-outdoors/en.html"` </li></ul><br/> `*outdoors/*` 匹 <br/>配節點下的任 `/content/geometrixx-outdoors` 何頁。 例如，下列HTTP要求符合全域模式： <br/><ul><li>`"GET /content/geometrixx-outdoors/en.html"`</li></ul> |
-| `?` | 符合任何單一字元。 使用外部字元類別。 在字元類中，該字元將逐字解釋。 | `*outdoors/??/*`<br/> 相符項目：geometrixx-outdoors網站中任何語言的頁面。 例如，下列HTTP要求符合全域模式： <br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>下列請求不符合全域模式： <br/><ul><li>"取得/content/geometrixx-outdoors/en.html"</li></ul> |
+| `?` | 符合任何單一字元。 使用外部字元類別。 在字元類中，該字元將逐字解釋。 | `*outdoors/??/*`<br/> 相符項目：geometrixx-outdoors網站中任何語言的頁面。 例如，下列HTTP要求符合全域模式： <br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>下列請求不符合全域模式： <br/><ul><li>&quot;取得/content/geometrixx-outdoors/en.html&quot;</li></ul> |
 | `[ and ]` | 標籤字元類的開頭和結尾。 字元類別可包含一或多個字元範圍和單一字元。<br/>如果目標字元符合字元類別中的任何字元，或在定義的範圍內，就會發生相符。<br/>如果未包括右括弧，則陣列不會產生匹配。 | `*[o]men.html*`<br/> 符合下列HTTP要求：<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>不符合下列HTTP要求：<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/> `*[o/]men.html*` 符 <br/>合下列HTTP請求： <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
-| `-` | 表示字元範圍。 用於字元類。  在字元類之外，將逐字解釋該字元。 | `*[m-p]men.html*` 符合下列HTTP要求： <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul> 不符合下列HTTP要求：<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
+| `-` | 表示字元範圍。 用於字元類。  在字元類之外，將逐字解釋該字元。 | `*[m-p]men.html*` 符合下列HTTP要求： <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul>不符合下列HTTP要求：<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
 | `!` | 否定後面的字元或字元類。 僅用於否定字元類別中的字元和字元範圍。 相當於 `^ wildcard`。 <br/>在字元類之外，將逐字解釋該字元。 | `*[!o]men.html*`<br/> 符合下列HTTP要求： <br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>不符合下列HTTP要求： <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>`*[!o!/]men.html*`<br/> 不符合下列HTTP要求：<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"` 或 `"GET /content/geometrixx-outdoors/en/men. html"`</li></ul> |
 | `^` | 否定後面的字元或字元範圍。 僅用於否定字元類內的字元和字元範圍。 相當於萬用字 `!` 元。 <br/>在字元類之外，將逐字解釋該字元。 | 套用萬用字元 `!` 的範例，以字元 `!` 取代範例模式中的字 `^` 元。 |
 
@@ -1838,7 +1838,7 @@ curl -v -H "X-Dispatcher-Info: true" https://localhost/content/we-retail/us/en.h
 * **無法進行快取：包含查詢字串的請求**\
    請求包含查詢字串。 調度器假定輸出取決於給定的查詢字串，因此不進行快取。
 * **無法進行快取：會話管理器未驗證**\
-   群的快取由會話管理器（配置包含節點）管 `sessionmanagement` 理，請求中不包含適當的驗證資訊。
+   群的快取由會話管理器管理（配置包含節點），而請 `sessionmanagement` 求不包含適當的驗證資訊。
 * **無法進行快取：請求包含授權**\
    群不允許快取輸出( `allowAuthorized 0`)，且請求包含驗證資訊。
 * **無法進行快取：target是目錄**\
@@ -1850,5 +1850,5 @@ curl -v -H "X-Dispatcher-Info: true" https://localhost/content/we-retail/us/en.h
 * **無法進行快取：授權驗證器拒絕訪問**\
    農場的授權檢查程式拒絕存取快取檔案。
 * **無法進行快取：會話無效**&#x200B;群的快取受會話管理器(配置包含節點 `sessionmanagement` )控制，用戶的會話無效或不再有效。
-* **無法進行快取：響應包`no_cache `**&#x200B;含遠程伺服器返回的 `Dispatcher: no_cache` 標頭，禁止調度程式快取輸出。
+* **無法進行快取：響應包`no_cache `**含遠程伺服器返回的`Dispatcher: no_cache`標頭，禁止調度程式快取輸出。
 * **無法進行快取：響應內容長度為零**，響應內容長度為零；調度程式將不建立零長度檔案。
