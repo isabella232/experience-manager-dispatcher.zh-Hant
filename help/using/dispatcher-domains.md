@@ -1,26 +1,26 @@
 ---
-title: '將Dispatcher與多個域一起使用 '
-seo-title: '將Dispatcher與多個域一起使用 '
+title: '使用具有多個網域的 Dispatcher '
+seo-title: '使用具有多個網域的 Dispatcher '
 description: 瞭解如何使用Dispatcher處理多個Web網域中的頁面請求。
 seo-description: 瞭解如何使用Dispatcher處理多個Web網域中的頁面請求。
 uuid: 7342a1c2-fe61-49be-a240-b487d53c7ec1
-contentOwner: 使用者
+contentOwner: User
 cq-exporttemplate: /etc/contentsync/templates/geometrixx/page/rewrite
 products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
-content-type: 引用
+content-type: reference
 discoiquuid: 40d91d66-c99b-422d-8e61-c0ced23272ef
 translation-type: tm+mt
-source-git-commit: 76cffbfb616cd5601aed36b7076f67a2faf3ed3b
+source-git-commit: 851202feff9b8fe3c6a44241d0ed12822b07b806
 
 ---
 
 
-# 將Dispatcher與多個域一起使用 {#using-dispatcher-with-multiple-domains}
+# 使用具有多個網域的 Dispatcher {#using-dispatcher-with-multiple-domains}
 
 >[!NOTE]
 >
->Dispatcher版本獨立於AEM。 如果您遵循內嵌於AEM或CQ檔案中之Dispatcher檔案的連結，您可能會被重新導向至本頁面。
+>Dispatcher 版本與 AEM 無關。如果您遵循內嵌於AEM或CQ檔案中之Dispatcher檔案的連結，您可能會被重新導向至本頁面。
 
 使用Dispatcher可處理多個Web網域中的頁面請求，同時支援下列條件：
 
@@ -70,8 +70,8 @@ source-git-commit: 76cffbfb616cd5601aed36b7076f67a2faf3ed3b
 
 若要啟用網域URL和內容路徑以解析為快取檔案，在程式的某個時間點，必須轉換檔案路徑或頁面URL。 提供了以下常見策略的說明，其中路徑或URL轉換在進程中的不同點發生：
 
-* （建議）AEM發佈例項使用Sling對應來解析資源，以實作內部URL重寫規則。 網域URL會轉譯為內容儲存庫路徑。 (請參 [閱「AEM重寫傳入的URL](dispatcher-domains.md#main-pars-title-2)」)。
-* Web伺服器使用內部URL重寫規則，將網域URL轉譯為快取路徑。 (請參 [閱Web Server Rewrites Incoming URL](dispatcher-domains.md#main-pars-title-1))。
+* （建議）AEM發佈例項使用Sling對應來解析資源，以實作內部URL重寫規則。 網域URL會轉譯為內容儲存庫路徑。 (請參 [閱「AEM重寫傳入的URL](#aem-rewrites-incoming-urls)」)。
+* Web伺服器使用內部URL重寫規則，將網域URL轉譯為快取路徑。 (請參 [閱Web Server Rewrites Incoming URL](#the-web-server-rewrites-incoming-urls))。
 
 一般而言，最好為網頁使用簡短的URL。 通常，頁面URL會鏡像包含Web內容的儲存庫資料夾的結構。 但是，URL不會顯示最上層的儲存庫節點，例如 `/content`。 用戶端不一定知道AEM存放庫的結構。
 
