@@ -11,7 +11,7 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: 40d91d66-c99b-422d-8e61-c0ced23272ef
 translation-type: tm+mt
-source-git-commit: 851202feff9b8fe3c6a44241d0ed12822b07b806
+source-git-commit: 64d26d802dbc9bb0b6815011a16e24c63a7672aa
 
 ---
 
@@ -70,8 +70,8 @@ source-git-commit: 851202feff9b8fe3c6a44241d0ed12822b07b806
 
 若要啟用網域URL和內容路徑以解析為快取檔案，在程式的某個時間點，必須轉換檔案路徑或頁面URL。 提供了以下常見策略的說明，其中路徑或URL轉換在進程中的不同點發生：
 
-* （建議）AEM發佈例項使用Sling對應來解析資源，以實作內部URL重寫規則。 網域URL會轉譯為內容儲存庫路徑。 (請參 [閱「AEM重寫傳入的URL](#aem-rewrites-incoming-urls)」)。
-* Web伺服器使用內部URL重寫規則，將網域URL轉譯為快取路徑。 (請參 [閱Web Server Rewrites Incoming URL](#the-web-server-rewrites-incoming-urls))。
+* （建議）AEM發佈例項使用Sling對應來解析資源，以實作內部URL重寫規則。 網域URL會轉譯為內容儲存庫路徑。 請參 [閱「AEM重寫傳入的URL](#aem-rewrites-incoming-urls)」。
+* Web伺服器使用內部URL重寫規則，將網域URL轉譯為快取路徑。 請參 [閱Web Server重寫傳入的URL](#the-web-server-rewrites-incoming-urls)。
 
 一般而言，最好為網頁使用簡短的URL。 通常，頁面URL會鏡像包含Web內容的儲存庫資料夾的結構。 但是，URL不會顯示最上層的儲存庫節點，例如 `/content`。 用戶端不一定知道AEM存放庫的結構。
 
