@@ -10,7 +10,7 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: aeffee8e-bb34-42a7-9a5e-b7d0e848391a
 translation-type: tm+mt
-source-git-commit: fb7891406af215c59e9768b699a5d191ba4b1eb2
+source-git-commit: 5b5ac8cdff27d6bc6664f1c18302c53649df7360
 
 ---
 
@@ -200,19 +200,19 @@ AEM和Dispatcher的所有元素都可安裝在IPv4和IPv6網路中。 請參 [�
 |--- |--- |
 | [/homepage](#specify-a-default-page-iis-only-homepage) | 預設首頁（選用）（僅限IIS） |
 | [/clienders](#specifying-the-http-headers-to-pass-through-clientheaders) | 要傳遞的用戶端HTTP要求的標頭。 |
-| [/virtualhosts](#identifying-virtual-hosts-virtual-hosts) | 此場的虛擬主機。 |
-| [/sessionmanagement](#enabling-secure-sessions-session-management) | 支援作業管理和驗證。 |
+| [/virtualhosts](#identifying-virtual-hosts-virtualhosts) | 此場的虛擬主機。 |
+| [/sessionmanagement](#enabling-secure-sessions-sessionmanagement) | 支援作業管理和驗證。 |
 | [/renders](#defining-page-renderers-renders) | 提供轉譯頁面的伺服器（通常為AEM發佈例項）。 |
 | [/filter](#configuring-access-to-content-filter) | 定義Dispatcher啟用訪問的URL。 |
 | [/vanity_urls](#enabling-access-to-vanity-urls-vanity-urls) | 設定虛名URL的存取權。 |
-| [/propagateSyndPost](#forwarding-syndication-requests-propagate-syndpost) | 支援轉送匯集請求。 |
+| [/propagateSyndPost](#forwarding-syndication-requests-propagatesyndpost) | 支援轉送匯集請求。 |
 | [/cache](#configuring-the-dispatcher-cache-cache) | 設定快取行為。 |
 | [/statistics](#configuring-load-balancing-statistics) | 定義負載平衡計算的統計類別。 |
-| [/stickyConnectionsFor](#identifying-a-sticky-connection-folder-sticky-connections-for) | 包含自黏檔案的資料夾。 |
+| [/stickyConnectionsFor](#identifying-a-sticky-connection-folder-stickyconnectionsfor) | 包含自黏檔案的資料夾。 |
 | [/health_check](#specifying-a-health-check-page) | 用於確定伺服器可用性的URL。 |
 | [/retryDelay](#specifying-the-page-retry-delay) | 重試失敗連接之前的延遲。 |
 | [/unavailableDestamy](#reflecting-server-unavailability-in-dispatcher-statistics) | 影響負載平衡計算統計資料的罰款。 |
-| [/failover](#using-the-fail-over-mechanism) | 當原始請求失敗時，將請求重新傳送至不同的轉譯。 |
+| [/failover](#using-the-failover-mechanism) | 當原始請求失敗時，將請求重新傳送至不同的轉譯。 |
 | [/auth_checker](permissions-cache.md) | 如需權限相關快取，請參閱快 [取保全內容](permissions-cache.md)。 |
 
 ## 指定預設頁面（僅限IIS）- /homepage {#specify-a-default-page-iis-only-homepage}
@@ -263,7 +263,7 @@ Comment Type: draft
 
 ## 指定要傳遞的HTTP標題 {#specifying-the-http-headers-to-pass-through-clientheaders}
 
-屬 `/clientheaders` 性定義Dispatcher從用戶端HTTP請求傳遞至轉譯器（AEM例項）的HTTP標頭清單。
+屬 `/clientheaders` 性定義Dispatcher從用戶端HTTP請求傳遞至轉譯器（AEM例項）的HTTP標題清單。
 
 依預設，Dispatcher會將標準HTTP標頭轉送至AEM例項。 在某些情況下，您可能需要轉寄其他標題，或移除特定標題：
 
@@ -667,7 +667,7 @@ HTTP/1.1定義請 [求行](https://www.w3.org/Protocols/rfc2616/rfc2616-sec5.htm
 /0003   { /type "deny"  /url "/publish/libs/cq/workflow/content/console/archive*"  }
 ```
 
-如果您仍需要在限制區域記憶體取單一頁面，則可以允許存取。 例如，要允許訪問「工作流」控制台中的「存檔」頁籤，請添加以下部分：
+如果您仍需要存取受限制區域內的單一頁面，則可以允許存取。 例如，要允許訪問「工作流」控制台中的「存檔」頁籤，請添加以下部分：
 
 ```xml
 /0004  { /type "allow"  /url "/libs/cq/workflow/content/console/archive*"   }
@@ -1039,7 +1039,7 @@ statfile沒有內容。 更新內容時，Dispatcher會更新時間戳記。 預
 * 名為的Cookie `authorization`。
 * 名為的Cookie `login-token`。
 
-根據預設，包含此驗證資訊的請求不會快取，因為當快取檔案傳回用戶端時，不會執行驗證。 此配置可防止Dispatcher向沒有必要權限的用戶提供快取的文檔。
+根據預設，包含此驗證資訊的請求不會快取，因為當快取檔案傳回給用戶端時，不會執行驗證。 此配置可防止Dispatcher向沒有必要權限的用戶提供快取的文檔。
 
 不過，如果您的要求允許快取已驗證的檔案，請將/allowAuthorized設為：
 
@@ -1156,7 +1156,7 @@ Last Modified Date: 2017-11-13T09:23:24.326-0500
 
 使用屬 `/statfileslevel` 性根據快取檔案的路徑使其無效：
 
-* Dispatcher在 `.stat`每個資料夾中從Docroot資料夾建立檔案到您指定的級別。 docroot資料夾是0級。
+* Dispatcher在 `.stat`每個資料夾中從Docroot資料夾建立到您指定級別的檔案。 docroot資料夾是0級。
 * 通過觸摸檔案使檔案失 `.stat` 效。 文 `.stat` 件的上次修改日期與快取文檔的上次修改日期進行比較。 如果檔案較新，則會重新擷 `.stat` 取檔案。
 
 * 當位於某一級別的檔案被失效時， **從**`.stat` Docroot到失效檔案級別的所有檔案 ****`statsfilevel` （以小的為準）都將被觸碰。
@@ -1559,7 +1559,7 @@ Dispatcher最多支援8個統計類別。 如果您定義8個以上的類別，�
 
 >[!NOTE]
 >
->要重試包含內文的HTTP請求，Dispatcher會在假設實 `Expect: 100-continue` 際內容之前，先將請求標頭髮送到演算。 含CQSE的CQ 5.5會立即回答100（繼續）或錯誤碼。 其他servlet容器也應支援此功能。
+>要重試包含內文的HTTP請求，Dispatcher會先將請求標 `Expect: 100-continue` 頭髮送到渲染器，然後再假設實際內容。 含CQSE的CQ 5.5會立即回答100（繼續）或錯誤碼。 其他servlet容器也應支援此功能。
 
 ## 忽略中斷錯誤- /ignoreEINTR {#ignoring-interruption-errors-ignoreeintr}
 
@@ -1838,7 +1838,7 @@ curl -v -H "X-Dispatcher-Info: true" https://localhost/content/we-retail/us/en.h
 * **無法進行快取：包含查詢字串的請求**\
    請求包含查詢字串。 調度器假定輸出取決於給定的查詢字串，因此不進行快取。
 * **無法進行快取：會話管理器未驗證**\
-   群的快取由會話管理器管理（配置包含節點），而請 `sessionmanagement` 求不包含適當的驗證資訊。
+   群的快取由會話管理器（配置包含節點）管 `sessionmanagement` 理，請求中不包含適當的驗證資訊。
 * **無法進行快取：請求包含授權**\
    群不允許快取輸出( `allowAuthorized 0`)，且請求包含驗證資訊。
 * **無法進行快取：target是目錄**\
