@@ -1,25 +1,25 @@
 ---
-title: Dispatcher Security Checklist
-seo-title: Dispatcher Security Checklist
+title: Dispatcher 安全性檢查清單
+seo-title: Dispatcher 安全性檢查清單
 description: 在開始生產之前應先完成的安全檢查清單。
 seo-description: 在開始生產之前應先完成的安全檢查清單。
 uuid: 7bfa3202-03f6-48e9-8d2e-2a40e137ecbe
-contentOwner: 使用者
+contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
-content-type: 引用
-discoiquuid: fbfafa5-c029-4ed7-ab3e-1bbfde18248
+content-type: reference
+discoiquuid: fbfafa55-c029-4ed7-ab3e-1bebfde18248
 jcr-lastmodifiedby: remove-legacypath-6-1
 index: y
 internal: n
 snippet: y
 translation-type: tm+mt
-source-git-commit: 6d3ff696780ce55c077a1d14d01efeaebcb8db28
+source-git-commit: 5b5ac8cdff27d6bc6664f1c18302c53649df7360
 
 ---
 
 
-# Dispatcher Security Checklist{#the-dispatcher-security-checklist}
+# Dispatcher 安全性檢查清單{#the-dispatcher-security-checklist}
 
 <!-- 
 
@@ -91,7 +91,7 @@ Last Modified Date: 2015-06-26T04:41:28.841-0400
 
 ## 使用專用系統用戶運行Dispatcher {#run-dispatcher-with-a-dedicated-system-user}
 
-配置Dispatcher時，您應確保Web伺服器由具有最低權限的專用用戶運行。 建議僅將寫訪問權限授予調度程式快取資料夾。
+配置Dispatcher時，您應確保Web伺服器由具有最低權限的專用用戶運行。 建議僅授予調度程式快取資料夾的寫訪問權限。
 
 此外，IIS使用者需要依下列方式設定其網站：
 
@@ -147,7 +147,7 @@ Last Modified Date: 2015-06-26T04:38:17.016-0400
 
  -->
 
-## 配置Dispatcher以防止CSRF攻擊 {#configure-dispatcher-to-prevent-csrf-attacks}
+## Configure Dispatcher to prevent CSRF Attacks {#configure-dispatcher-to-prevent-csrf-attacks}
 
 AEM提供 [架構](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#verification-steps) ，以防止跨網站偽造要求攻擊。 為了正確使用此框架，您需要在調度器中列入CSRF Token支援的白名單。 您可以透過下列方式執行此動作：
 
