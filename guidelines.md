@@ -1,17 +1,17 @@
 ---
-source-git-commit: 36c4ad10a9140d368fdbf3f0939e6756cc2bfbbf
+source-git-commit: 053f90d9a0574c7d470cec6794498919e3340713
 translation-type: tm+mt
 
 ---
-# AEM檔案的貢獻准則
+# Adobe Experience Manager檔案提供指引
 
-## AEM檔案哲學
+## 檔案哲學
 
 我們知道Adobe Experience Manager使用者在競爭激烈的環境中工作，致力於建立讓他們與眾不同的數位體驗。 因此，當Adobe在AEM中提供進階的新工具時，必須以精確而清楚的檔案來補充這些工具，讓客戶立即運用其AEM投資並將投資報酬率提升到最大。
 
 AEM檔案的目的，是讓AEM使用者盡快掌握檔案。 因此，我們會優先處理正確、可用的檔案，並致力於不斷更新和改進。
 
-## AEM檔案貢獻
+## 檔案貢獻
 
 為了持續改善AEM檔案，歡迎AEM使用者的整個社群加入檔案。 不論是透過提取要求或問題，對檔案的改進包括更正、說明、擴充及其他範例。
 
@@ -35,13 +35,13 @@ AEM檔案涵蓋標準使用案例。 因此，通常不會記錄錯誤、由錯�
 
 歡迎您提出任何必須改善AEM檔案的想法，做為貢獻。 但是，評論、問題和提取要求僅供稿 *件* 。 這些項目不會用來回答您有關如何使用AEM、實作AEM專案或解決技術問題的問題。
 
-如果您對AEM的使用或技術錯誤有任何疑問，請透過 [Experience Manager支援入口網站](https://daycare.day.com/home.html) ，或在 [Experience Manager社群中討論，透過一般的支援程式進行報告](http://help-forums.adobe.com/content/adobeforums/en/experience-manager-forum/adobe-experience-manager.html)。
+如果您對AEM的使用或技術錯誤有任何疑問，請透過 [Experience Cloud企業支援入口網站](https://helpx.adobe.com/contact/enterprise-support.ec.html) ，或在 [Experience Manager社群中討論，透過一般支援程式進行報告](https://forums.adobe.com/community/experience-cloud/marketing-cloud/experience-manager)。
 
-***AEM 文件稿件不會取代 Adobe 支援***，且這類稿件只要試圖解答支援相關問題，都將遭到拒絕。
+***AEM檔案捐款並非Adobe客戶服務的替代品*** ，任何此類捐款如欲獲得支援相關問題的解答，將遭拒絕。
 
 ### 稿件必須清楚參考受影響的檔案頁面。
 
-如果您建立問題以建議對檔案進行改進，則必須包含受影響頁面的連結。如果您使用檔案頁面上的「編輯 **此頁面** 」連結來建立期刊，則會自動建立包含該頁面連結的期刊。
+如果您建立問題以建議對檔案進行改進，則必須包含受影響頁面的連結。 如果您使用檔案頁面上的「編輯 **此頁面** 」連結來建立期刊，則會自動建立包含該頁面連結的期刊。
 
 這不適用於提取請求，因為根據其性質引用受影響頁面的提取請求。
 
