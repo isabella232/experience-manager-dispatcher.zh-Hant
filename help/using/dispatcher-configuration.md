@@ -10,7 +10,7 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: aeffee8e-bb34-42a7-9a5e-b7d0e848391a
 translation-type: tm+mt
-source-git-commit: 5b5ac8cdff27d6bc6664f1c18302c53649df7360
+source-git-commit: 183131dec51b67e152a8660c325ed980ae9ef458
 
 ---
 
@@ -405,7 +405,7 @@ Dispatcher以下列方式查找最匹配的虛擬主機值：
 
 | 請求URL | 已解析的虛擬主機 |
 |---|---|
-| `https://www.mycompany.com/products/gloves.html` | `www.mycompany.com/products/*` |
+| `https://www.mycompany.com/products/gloves.html` | `www.mycompany.com/products/` |
 | `https://www.mycompany.com/about.html` | `www.mycompany.com` |
 
 ## 啟用安全會話- /sessionmanagement {#enabling-secure-sessions-sessionmanagement}
@@ -560,7 +560,7 @@ Amazon Elastic Load Balancing(ELB)是一種服務，它以可能相同的順序I
 
 使用該 `/filter` 部分可指定Dispatcher接受的HTTP請求。 所有其他請求都會以404錯誤碼（找不到頁面）傳回至網頁伺服器。 如果不存 `/filter` 在區段，則會接受所有請求。
 
-**** 注意：statfile的請 [求](dispatcher-configuration.md#main-pars-title-28) ，一律拒絕。
+**注意：** statfile的請 [求](dispatcher-configuration.md#main-pars-title-28) ，一律拒絕。
 
 >[!CAUTION]
 >
@@ -577,9 +577,9 @@ Amazon Elastic Load Balancing(ELB)是一種服務，它以可能相同的順序I
 
 * **類型**:指 `/type` 出是否允許或拒絕對符合模式的請求的訪問。 值可以是 `allow` 或 `deny`。
 
-* **** 請求行的要素：根據 `/method`HTTP請求的請求 `/url`行部分的這些特定部分，包含、或 `/query``/protocol` 和篩選請求的模式。 偏好的篩選方法是篩選請求行的元素（而非整個請求行）。
+* **請求行的要素：** 根據 `/method`HTTP請求的請求 `/url`行部分的這些特定部分，包含、或 `/query``/protocol` 和篩選請求的模式。 偏好的篩選方法是篩選請求行的元素（而非整個請求行）。
 
-* **** 請求行的進階元素：從Dispatcher 4.2.0開始，有四個新的篩選元素可供使用。 這些新元素 `/path`分 `/selectors`別 `/extension` 是 `/suffix` 和。 包含一或多個這些項目，以進一步控制URL模式。
+* **請求行的進階元素：** 從Dispatcher 4.2.0開始，有四個新的篩選元素可供使用。 這些新元素 `/path`分 `/selectors`別 `/extension` 是 `/suffix` 和。 包含一或多個這些項目，以進一步控制URL模式。
 
 >[!NOTE]
 >
@@ -700,7 +700,7 @@ HTTP/1.1定義請 [求行](https://www.w3.org/Protocols/rfc2616/rfc2616-sec5.htm
 
 ### 範例/filter區段 {#example-filter-section}
 
-在配置Dispatcher時，應盡可能限制外部訪問。 下列範例提供外部訪客的最低存取權：
+在配置Dispatcher時，您應盡可能限制外部訪問。 下列範例提供外部訪客的最低存取權：
 
 * `/content`
 * 其他內容，例如設計和用戶端資料庫；例如：
@@ -949,7 +949,7 @@ Last Modified Date: 2015-03-25T14:23:05.185-0400
 1. 如果您的轉譯服務是AEM例項，請在發佈例項上安裝com.adobe.granite.dispatcher.vanityurl.content套件（請參閱上述附註）。
 1. 針對您為AEM或CQ頁面設定的每個虛名URL，請確定此 ` [/filter](dispatcher-configuration.md#main-pars_134_32_0009)` 設定拒絕URL。 如有必要，請新增拒絕URL的篩選器。
 1. 新增下 `/vanity_urls` 方的章節 `/farms`。
-1. 重新啟動Apache web伺服器。
+1. 重新啟動Apache Web伺服器。
 
 ## 轉發協同內容請求- /propagateSyndPost {#forwarding-syndication-requests-propagatesyndpost}
 
@@ -1039,7 +1039,7 @@ statfile沒有內容。 更新內容時，Dispatcher會更新時間戳記。 預
 * 名為的Cookie `authorization`。
 * 名為的Cookie `login-token`。
 
-根據預設，包含此驗證資訊的請求不會快取，因為當快取檔案傳回給用戶端時，不會執行驗證。 此配置可防止Dispatcher向沒有必要權限的用戶提供快取的文檔。
+根據預設，包含此驗證資訊的請求不會快取，因為當快取檔案傳回用戶端時，不會執行驗證。 此配置可防止Dispatcher向沒有必要權限的用戶提供快取的文檔。
 
 不過，如果您的要求允許快取已驗證的檔案，請將/allowAuthorized設為：
 
@@ -1101,7 +1101,7 @@ statfile沒有內容。 更新內容時，Dispatcher會更新時間戳記。 預
 
 **壓縮**
 
-在Apache web伺服器上，您可以壓縮快取的檔案。 壓縮允許Apache在客戶端請求時以壓縮形式返回文檔。 通過啟用Apache模組(例如： `mod_deflate`
+在Apache Web伺服器上，您可以壓縮快取的檔案。 壓縮允許Apache在客戶端請求時以壓縮形式返回文檔。 通過啟用Apache模組(例如： `mod_deflate`
 
 ```xml
 AddOutputFilterByType DEFLATE text/plain
@@ -1174,7 +1174,7 @@ Last Modified Date: 2017-11-13T09:23:24.326-0500
 
 >[!NOTE]
 >
->可以通過發送附加的標頭來防止失效 `CQ-Action-Scope:ResourceOnly`。 這可用於刷新特定資源，而不使快取的其他部分失效。 有關其 [他詳細資訊](https://adobe-consulting-services.github.io/acs-aem-commons/features/dispatcher-flush-rules/index.html) ，請參 [](https://helpx.adobe.com/experience-manager/dispatcher/using/page-invalidate.html) 閱此頁和手動使Dispatcher cache失效。
+>可以通過發送附加的標頭來防止失效 `CQ-Action-Scope:ResourceOnly`。 這可用於刷新特定資源，而不使快取的其他部分失效。 有關其 [他詳細資訊](https://adobe-consulting-services.github.io/acs-aem-commons/features/dispatcher-flush-rules/index.html) ，請參 [](https://helpx.adobe.com/experience-manager/dispatcher/using/page-invalidate.html) 閱此頁和手動使Dispatcher Cache失效。
 
 >[!NOTE]
 >
@@ -1359,7 +1359,7 @@ GET /mypage.html?q=5&p=4
 FileETag none
 ```
 
-### Dispatcher cache檔案權限 {#dispatcher-cache-file-permissions}
+### Dispatcher Cache檔案權限 {#dispatcher-cache-file-permissions}
 
 該屬 `mode` 性指定哪些檔案權限應用於快取中的新目錄和檔案。 此設定受呼叫程 `umask` 序的限制。 它是由下列一或多個值之和構成的八位數：
 
@@ -1509,7 +1509,7 @@ Dispatcher最多支援8個統計類別。 如果您定義8個以上的類別，�
 
 ### 指定運行狀況檢查頁 {#specifying-a-health-check-page}
 
-使用屬 `/health_check` 性來指定在發生500狀態代碼時被勾選的URL。 如果此頁還返回500狀態代碼，則該實例被認為不可用，並且在重試前將可配置的時間補償( `/unavailablePenalty`)應用於渲染。
+使用屬 `/health_check` 性來指定在發生500個狀態代碼時被勾選的URL。 如果此頁還返回500狀態代碼，則該實例被認為不可用，並且在重試前將可配置的時間補償( `/unavailablePenalty`)應用於渲染。
 
 ```xml
 /health_check
@@ -1559,7 +1559,7 @@ Dispatcher最多支援8個統計類別。 如果您定義8個以上的類別，�
 
 >[!NOTE]
 >
->要重試包含內文的HTTP請求，Dispatcher會先將請求標 `Expect: 100-continue` 頭髮送到渲染器，然後再假設實際內容。 含CQSE的CQ 5.5會立即回答100（繼續）或錯誤碼。 其他servlet容器也應支援此功能。
+>要重試包含內文的HTTP請求，Dispatcher會在假設實 `Expect: 100-continue` 際內容之前，先將請求標頭髮送到演算。 含CQSE的CQ 5.5會立即回答100（繼續）或錯誤碼。 其他servlet容器也應支援此功能。
 
 ## 忽略中斷錯誤- /ignoreEINTR {#ignoring-interruption-errors-ignoreeintr}
 
@@ -1598,7 +1598,7 @@ Dispatcher配置檔案中的幾個部分使用屬 `glob` 性作為客戶端請�
 | 萬用字元 | 說明 | 範例 |
 |--- |--- |--- |
 | `*` | 相符項目：字串中任何字元的零個或多個連續例項。 符合的最終字元由下列任一情況決定：字 <br/>串中的字元與模式中的下一個字元相符，而模式字元具有下列特性：<br/><ul><li>不是*</li><li>不是？</li><li>常值字元（包括空格）或字元類別。</li><li>到達模式的結尾。</li></ul>在字元類中，字元將逐字解釋。 | `*/geo*` 與節點和節點下 `/content/geometrixx` 的任何頁 `/content/geometrixx-outdoors` 面匹配。 下列HTTP請求與全域模式相符： <br/><ul><li>`"GET /content/geometrixx/en.html"`</li><li>`"GET /content/geometrixx-outdoors/en.html"` </li></ul><br/> `*outdoors/*` 匹 <br/>配節點下的任 `/content/geometrixx-outdoors` 何頁。 例如，下列HTTP要求符合全域模式： <br/><ul><li>`"GET /content/geometrixx-outdoors/en.html"`</li></ul> |
-| `?` | 符合任何單一字元。 使用外部字元類別。 在字元類中，該字元將逐字解釋。 | `*outdoors/??/*`<br/> 相符項目：geometrixx-outdoors網站中任何語言的頁面。 例如，下列HTTP要求符合全域模式： <br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>下列請求不符合全域模式： <br/><ul><li>&quot;取得/content/geometrixx-outdoors/en.html&quot;</li></ul> |
+| `?` | 符合任何單一字元。 使用外部字元類別。 在字元類中，該字元將按字面方式解釋。 | `*outdoors/??/*`<br/> 相符項目：geometrixx-outdoors網站中任何語言的頁面。 例如，下列HTTP要求符合全域模式： <br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>下列請求不符合全域模式： <br/><ul><li>&quot;取得/content/geometrixx-outdoors/en.html&quot;</li></ul> |
 | `[ and ]` | 標籤字元類的開頭和結尾。 字元類別可包含一或多個字元範圍和單一字元。<br/>如果目標字元符合字元類別中的任何字元，或在定義的範圍內，就會發生相符。<br/>如果未包括右括弧，則陣列不會產生匹配。 | `*[o]men.html*`<br/> 符合下列HTTP要求：<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>不符合下列HTTP要求：<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/> `*[o/]men.html*` 符 <br/>合下列HTTP請求： <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
 | `-` | 表示字元範圍。 用於字元類。  在字元類之外，將逐字解釋該字元。 | `*[m-p]men.html*` 符合下列HTTP要求： <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul>不符合下列HTTP要求：<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
 | `!` | 否定後面的字元或字元類。 僅用於否定字元類別中的字元和字元範圍。 相當於 `^ wildcard`。 <br/>在字元類之外，將逐字解釋該字元。 | `*[!o]men.html*`<br/> 符合下列HTTP要求： <br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>不符合下列HTTP要求： <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>`*[!o!/]men.html*`<br/> 不符合下列HTTP要求：<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"` 或 `"GET /content/geometrixx-outdoors/en/men. html"`</li></ul> |
@@ -1717,7 +1717,7 @@ The following table describes the wildcard characters.
 * 調度程式日誌檔案；具有副檔名(logs/dispatcher.log%Y%m%d)的時間戳記。
 * 每週（60 x 60 x 24 x 7 = 604800秒）。
 
-請參閱「日誌輪替」和「管道日誌」上的Apache web伺服器文檔；例如 [Apache 2.4](https://httpd.apache.org/docs/2.4/logs.html)。
+請參閱「日誌輪替」和「管道日誌」上的Apache Web伺服器文檔；例如 [Apache 2.4](https://httpd.apache.org/docs/2.4/logs.html)。
 
 >[!NOTE]
 >
