@@ -1,30 +1,30 @@
 ---
-title: 從AEM使快取頁面無效
+title: 使 AEM 快取的頁面失效
 seo-title: 從Adobe AEM使快取頁面無效
 description: 瞭解如何設定Dispatcher與AEM之間的互動，以確保有效的快取管理。
 seo-description: 瞭解如何設定Adobe AEM Dispatcher與AEM之間的互動，以確保有效的快取管理。
 uuid: 66533299-55c0-4864-9beb-77e281af9359
 cmgrlastmodified: 01.11.2007 08 22 29 [aheimoz]
-pageversionid: '1193211344162'
+pageversionid: 1193211344162
 template: /apps/docs/templates/contentpage
-contentOwner: 使用者
+contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
-content-type: 引用
+content-type: reference
 discoiquuid: 79cd94be-a6bc-4d34-bfe9-393b4107925c
 translation-type: tm+mt
-source-git-commit: 76cffbfb616cd5601aed36b7076f67a2faf3ed3b
+source-git-commit: 85497651ce29c8564da4b52c60819a48b776af7b
 
 ---
 
 
-# 從AEM使快取頁面無效 {#invalidating-cached-pages-from-aem}
+# 使 AEM 快取的頁面失效 {#invalidating-cached-pages-from-aem}
 
 搭配使用Dispatcher與AEM時，必須設定互動以確保有效的快取管理。 視您的環境而定，此配置還可以提高效能。
 
 ## 設定AEM使用者帳戶 {#setting-up-aem-user-accounts}
 
-預設用 `admin` 戶帳戶用於驗證預設安裝的複製代理。 您應建立專用用戶帳戶以用於複製代理。 [](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps)
+預設用 `admin` 戶帳戶用於驗證預設安裝的複製代理。 您應建立專用用戶帳戶以用於複製代理。
 
 如需詳細資訊，請參 [閱「AEM安全性檢查清單」的「設定複製與傳輸使用者](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps) 」區段。
 
@@ -58,9 +58,9 @@ Last Modified Date: 2017-05-25T10:37:23.679-0400
 
 1. （可選）要啟用別名或虛名路徑失效請求，請選擇「別 **名更新** 」選項。
 1. 在「傳輸」頁籤上，輸入訪問Dispatcher所需的URI。\
-   如果您使用標準Dispatcher Flush代理，則可能需要更新主機名和埠；例如，https://&lt;*dispatcherHost*&gt;:&lt;*portApache*&gt;/dispatcher/invalidate.cache
+   如果您使用標準Dispatcher Flush代理，則可能需要更新主機名和埠；例如，https://&lt;*dispatcherHost*>:&lt;*portApache*>/dispatcher/invalidate.cache
 
-   **** 注意：對於Dispatcher Flush代理，僅當使用基於路徑的虛擬主機條目來區分場時，才使用URI屬性。 使用此欄位可以定位要失效的場。 例如，場#1的虛擬主機為，場#2 `www.mysite.com/path1/*` 的虛擬主機為 `www.mysite.com/path2/*`。 您可以使用的URL來 `/path1/invalidate.cache` 定位第一個群體， `/path2/invalidate.cache` 以及定位第二個群體。 如需詳細資訊，請參 [閱使用Dispatcher搭配多個網域](dispatcher-domains.md)。
+   **注意：** 對於Dispatcher Flush代理，僅當使用基於路徑的虛擬主機條目來區分場時，才使用URI屬性。 使用此欄位可以定位要失效的場。 例如，場#1的虛擬主機為，場#2 `www.mysite.com/path1/*` 的虛擬主機為 `www.mysite.com/path2/*`。 您可以使用的URL來 `/path1/invalidate.cache` 定位第一個群體， `/path2/invalidate.cache` 以及定位第二個群體。 如需詳細資訊，請參 [閱使用Dispatcher搭配多個網域](dispatcher-domains.md)。
 
 1. 視需要設定其他參數。
 1. 按一下「確定」激活代理。
@@ -79,7 +79,7 @@ Last Modified Date: 2017-05-25T10:37:23.679-0400
 
 * 發佈和快取失效同時發生。 視時間而定，使用者可能會在從快取中移除頁面後，以及新頁面發佈前，請求頁面。 AEM現在會傳回舊頁面，而Dispatcher會再次快取它。 對於大型網站而言，這更是個問題。
 
-## 從發佈實例中使Dispatcher cache失效 {#invalidating-dispatcher-cache-from-a-publishing-instance}
+## 從發佈實例中使Dispatcher Cache失效 {#invalidating-dispatcher-cache-from-a-publishing-instance}
 
 在某些情況下，將快取管理從製作環境傳輸至發佈執行個體，可提升效能。 接著，當收到發佈頁面時，會將快取失效要求傳送給Dispatcher的發佈環境（而非AEM製作環境）。
 
@@ -109,7 +109,7 @@ Comment Type: draft
 1. 在「傳輸」頁籤上，輸入訪問Dispatcher所需的URI。\
    如果您使用標準Dispatcher Flush代理，則可能需要更新主機名和埠；例如， `http://<dispatcherHost>:<portApache>/dispatcher/invalidate.cache`
 
-   **** 注意：對於Dispatcher Flush代理，僅當使用基於路徑的虛擬主機條目來區分場時，才使用URI屬性。 使用此欄位可以定位要失效的場。 例如，場#1的虛擬主機為，場#2 `www.mysite.com/path1/*` 的虛擬主機為 `www.mysite.com/path2/*`。 您可以使用的URL來 `/path1/invalidate.cache` 定位第一個群體， `/path2/invalidate.cache` 以及定位第二個群體。 如需詳細資訊，請參 [閱使用Dispatcher搭配多個網域](dispatcher-domains.md)。
+   **注意：** 對於Dispatcher Flush代理，僅當使用基於路徑的虛擬主機條目來區分場時，才使用URI屬性。 使用此欄位可以定位要失效的場。 例如，場#1的虛擬主機為，場#2 `www.mysite.com/path1/*` 的虛擬主機為 `www.mysite.com/path2/*`。 您可以使用的URL來 `/path1/invalidate.cache` 定位第一個群體， `/path2/invalidate.cache` 以及定位第二個群體。 如需詳細資訊，請參 [閱使用Dispatcher搭配多個網域](dispatcher-domains.md)。
 
 1. 視需要設定其他參數。
 1. 對每個受影響的發佈例項重複此步驟。
@@ -120,7 +120,7 @@ Comment Type: draft
 
 ## 手動使Dispatcher快取失效 {#manually-invalidating-the-dispatcher-cache}
 
-要使Dispatcher快取失效（或刷新）而不激活頁，可以向Dispatcher發出HTTP請求。 例如，您可以建立AEM應用程式，讓管理員或其他應用程式清除快取。
+要使Dispatcher快取無效（或刷新）而不激活頁，可以向調度程式發出HTTP請求。 例如，您可以建立AEM應用程式，讓管理員或其他應用程式清除快取。
 
 HTTP請求會使Dispatcher從快取中刪除特定檔案。 （可選）Dispatcher然後使用新副本刷新快取。
 
@@ -128,7 +128,7 @@ HTTP請求會使Dispatcher從快取中刪除特定檔案。 （可選）Dispatch
 
 發出HTTP請求，使Dispatcher從快取中刪除檔案。 Dispatcher僅在收到頁面的客戶端請求時才會再次快取檔案。 以此方式刪除快取檔案，對於不太可能同時收到相同頁面要求的網站而言是適當的。
 
-HTTP要求有下列格式：
+HTTP請求有下列格式：
 
 ```xml
 POST /dispatcher/invalidate.cache HTTP/1.1  
@@ -141,7 +141,7 @@ Dispatcher會刷新（刪除）名稱與標題值匹配的快取檔案和 `CQ-Ha
 
 * 目錄中命名的所有檔案(任何副 `en` 檔名) `geometrixx-outdoors`
 
-* en目錄下的任 `_jcr_content`何名為""的目錄（如果存在，則包含頁面子節點的快取轉譯）
+* en目錄下的任 `_jcr_content`何名為&quot;&quot;的目錄（如果存在，則包含頁面子節點的快取轉譯）
 
 通過觸摸檔案，調度器快取中的所有其他檔案(或最高到特定級別，取決於 `/statfileslevel` 設定)都將失效 `.stat` 。 此檔案的上次修改日期與快取文檔的上次修改日期進行比較，如果檔案較新，則重新提 `.stat` 取文檔。 有關詳 [細資訊，請參閱按資料夾級別使檔案失效](dispatcher-configuration.md#main-pars_title_26) 。
 
@@ -151,9 +151,9 @@ Dispatcher會刷新（刪除）名稱與標題值匹配的快取檔案和 `CQ-Ha
 
 發出HTTP請求，使Dispatcher刪除快取的檔案，並立即檢索和重新快取檔案。 當網站可能同時收到同一頁面的用戶端要求時，請刪除檔案並立即重新快取。 立即重新快取可確保Dispatcher只檢索和快取頁面一次，而不是對每個同步客戶端請求一次。
 
-**** 注意：刪除和重新快取檔案應僅在發佈實例上執行。 從作者實例執行時，當重新快取資源的嘗試在發佈之前發生時，就會發生競爭條件。
+**注意：** 刪除和重新快取檔案應僅在發佈實例上執行。 從作者實例執行時，當重新快取資源的嘗試在發佈之前發生時，就會發生競爭條件。
 
-HTTP要求有下列格式：
+HTTP請求有下列格式：
 
 ```xml
 POST /dispatcher/invalidate.cache HTTP/1.1  
