@@ -14,7 +14,10 @@ index: y
 internal: n
 snippet: y
 translation-type: tm+mt
-source-git-commit: 5b5ac8cdff27d6bc6664f1c18302c53649df7360
+source-git-commit: 9ffdc1d85d1a0da45f95e0780227ee6569cd4b3d
+workflow-type: tm+mt
+source-wordcount: '672'
+ht-degree: 1%
 
 ---
 
@@ -32,7 +35,7 @@ Last Modified Date: 2015-06-05T05:14:35.365-0400
 
  -->
 
-作為前端系統的調度程式為您的Adobe Experience manager基礎架構提供了額外的安全層。 Adobe強烈建議您在開始生產之前先完成下列檢查清單。
+作為前端系統的調度程式為您的Adobe Experience Manager基礎架構提供了額外的安全層。 Adobe強烈建議您在開始生產之前先完成下列檢查清單。
 
 >[!CAUTION]
 >
@@ -85,9 +88,9 @@ Last Modified Date: 2015-06-26T04:41:28.841-0400
 
 如需 [要封鎖之URL的清單，請參閱Testing Dispatcher Security](dispatcher-configuration.md#testing-dispatcher-security) 。
 
-## 使用白名單而非黑名單 {#use-whitelists-instead-of-blacklists}
+## 使用允許清單而不使用區塊清單 {#use-allowlists-instead-of-blocklists}
 
-白名單是提供存取控制的更好方式，因為白名單本身就假定，除非所有存取要求明確屬於白名單，否則應拒絕。 此模型對某些配置階段可能尚未審查或考慮的新請求提供更嚴格的控制。
+允許清單是提供訪問控制的更好方法，因為它們本身假定，除非所有訪問請求明確地屬於允許清單，否則應拒絕所有訪問請求。 此模型對某些配置階段可能尚未審查或考慮的新請求提供更嚴格的控制。
 
 ## 使用專用系統用戶運行Dispatcher {#run-dispatcher-with-a-dedicated-system-user}
 
@@ -102,7 +105,7 @@ Last Modified Date: 2015-06-26T04:41:28.841-0400
 
 拒絕服務(DoS)攻擊是企圖使電腦資源對其預定用戶不可用。
 
-在調度器級別，有兩種配置方法可防止DoS攻擊：篩 [](https://docs.adobe.com/content/docs/en/dispatcher.html#/filter (選器))
+在調度器級別，有兩種配置方法可防止DoS攻擊： [](https://docs.adobe.com/content/docs/en/dispatcher.html#/filter (濾鏡))
 
 * 使用mod_rewrite模組(例如 [Apache 2.4](https://httpd.apache.org/docs/2.4/mod/mod_rewrite.html))執行URL驗證（如果URL模式規則不太複雜）。
 
@@ -149,7 +152,7 @@ Last Modified Date: 2015-06-26T04:38:17.016-0400
 
 ## Configure Dispatcher to prevent CSRF Attacks {#configure-dispatcher-to-prevent-csrf-attacks}
 
-AEM提供 [架構](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#verification-steps) ，以防止跨網站偽造要求攻擊。 為了正確使用此框架，您需要在調度器中列入CSRF Token支援的白名單。 您可以透過下列方式執行此動作：
+AEM提供 [架構](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#verification-steps) ，以防止跨網站偽造要求攻擊。 為了正確使用此框架，您需要允許在調度器中列出CSRF Token支援。 您可以透過下列方式執行此動作：
 
 1. 建立允許路徑的篩 `/libs/granite/csrf/token.json` 選；
 1. 將標頭 `CSRF-Token` 添加到Dispatcher `clientheaders` 配置的部分。
