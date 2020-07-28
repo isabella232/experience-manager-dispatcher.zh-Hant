@@ -2,10 +2,14 @@
 cloud: experience-cloud
 product: experience manager
 sub-product: experience manager dispatcher
-archetype: 管理員
+archetype: Administrator
 user-guide-title: Experience Manager Dispatcher 說明
-translation-type: ht
-source-git-commit: 5cd966c0e317949582084d3268c6914540b707b1
+user-guide-description: Learn to use Dispatcher for caching, load balancing, and improving security for your AEM server.
+translation-type: tm+mt
+source-git-commit: 02a082ec66e32f2c4c0b3a6135eacbb4c5e9de7b
+workflow-type: tm+mt
+source-wordcount: '70'
+ht-degree: 81%
 
 ---
 
@@ -20,7 +24,7 @@ source-git-commit: 5cd966c0e317949582084d3268c6914540b707b1
 + 設定 {#configuring}
    + [設定 Dispatcher](dispatcher-configuration.md)
    + [使 AEM 快取的頁面失效](page-invalidate.md)
-   + [最佳化網站以提升快取效能](https://helpx.adobe.com/tw/experience-manager/6-4/sites/deploying/using/configuring-performance.html)
+   + [針對快取效能最佳化網站](https://helpx.adobe.com/experience-manager/6-4/sites/deploying/using/configuring-performance.html)
    + [快取安全內容](permissions-cache.md)
    + [使用具有多個網域的 Dispatcher ](dispatcher-domains.md)
    + [將 SSL 與 Dispatcher 搭配使用](dispatcher-ssl.md)
