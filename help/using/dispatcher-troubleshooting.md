@@ -1,30 +1,33 @@
 ---
-title: Dispatcher問題疑難排解
+title: 疑難排解 Dispatcher 問題
 seo-title: 疑難排解AEM Dispatcher問題
 description: 瞭解如何疑難排解Dispatcher問題。
 seo-description: 瞭解如何疑難排解AEM Dispatcher問題。
 uuid: 9c109a48-d921-4b6e-9626-1158cebc41e7
 cmgrlastmodified: 01.11.2007 08 22 29 [aheimoz]
-pageversionid: '1193211344162'
+pageversionid: 1193211344162
 template: /apps/docs/templates/contentpage
-contentOwner: 使用者
+contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
-content-type: 引用
+content-type: reference
 discoiquuid: a612e745-f1e6-43de-b25a-9adcaadab5cf
 translation-type: tm+mt
-source-git-commit: 76cffbfb616cd5601aed36b7076f67a2faf3ed3b
+source-git-commit: 5734e601379fda9a62eda46bded493b8dbd49a4c
+workflow-type: tm+mt
+source-wordcount: '553'
+ht-degree: 6%
 
 ---
 
 
-# Dispatcher問題疑難排解 {#troubleshooting-dispatcher-problems}
+# 疑難排解 Dispatcher 問題 {#troubleshooting-dispatcher-problems}
 
 >[!NOTE]
 >
 >Dispatcher版本與AEM無關，但Dispatcher檔案已內嵌在AEM檔案中。 請務必使用檔案中內嵌的Dispatcher檔案，以取得最新版的AEM。
 >
->如果您遵循Dispatcher檔案的連結，且該連結內嵌於舊版AEM的檔案中，您可能會被重新導向至本頁面。
+>如果您依循連結至 Dispatcher 文件，且該連結內嵌於舊版 AEM 的文件中，您可能會被重新導向至本頁。
 
 >[!NOTE]
 >
@@ -80,7 +83,7 @@ IIS提供各種跟蹤工具，取決於實際版本：
 
 1. 按一 **下「是** 」以確認。
 1. 將出現一個錯誤消息框，其中顯示：\
-   " `ERROR 'Could not delete workflow model!!`".
+   &quot; `ERROR 'Could not delete workflow model!!`&quot;.
 
 **解析度**
 
@@ -89,14 +92,16 @@ IIS提供各種跟蹤工具，取決於實際版本：
 * `x-http-method-override`
 * `x-requested-with`
 
-`{  
+```
+{  
 {  
 /clientheaders  
 {  
 ...  
 "x-http-method-override"  
 "x-requested-with"  
-}`
+}
+```
 
 ## 與mod_dir(Apache)的干涉 {#interference-with-mod-dir-apache}
 
