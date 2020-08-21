@@ -10,7 +10,10 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: aeffee8e-bb34-42a7-9a5e-b7d0e848391a
 translation-type: tm+mt
-source-git-commit: 183131dec51b67e152a8660c325ed980ae9ef458
+source-git-commit: 5734e601379fda9a62eda46bded493b8dbd49a4c
+workflow-type: tm+mt
+source-wordcount: '8802'
+ht-degree: 2%
 
 ---
 
@@ -221,7 +224,7 @@ AEM和Dispatcher的所有元素都可安裝在IPv4和IPv6網路中。 請參 [�
 >
 >參 `/homepage`數（僅限IIS）不再運作。 您應改用 [IIS URL Rewrite Module](https://docs.microsoft.com/en-us/iis/extensions/url-rewrite-module/using-the-url-rewrite-module)。
 >
->如果您使用Apache，則應使用模 `mod_rewrite` 塊。 如需有關資訊(例如， `mod_rewrite` Apache 2.4 [](https://httpd.apache.org/docs/current/mod/mod_rewrite.html))，請參閱Apache網站檔案。 使用 `mod_rewrite`時，建議使用標幟 **[&#39;passthrough|PT&#39;（傳遞至下一個處理常式）](https://helpx.adobe.com/dispatcher/kb/DispatcherModReWrite.html)**，強制重寫引擎將內部結構的欄位`uri`設定為欄位的值`request_rec``filename`。
+>如果您使用Apache，則應使用模 `mod_rewrite` 塊。 如需有關資訊(例如， `mod_rewrite` Apache 2.4 [](https://httpd.apache.org/docs/current/mod/mod_rewrite.html))，請參閱Apache網站檔案。 使用 `mod_rewrite`時，建議使用標幟 **[&#39;passthrough|PT&#39;（傳遞至下一個處理常式）](https://helpx.adobe.com/dispatcher/kb/DispatcherModReWrite.html)** ，強制重寫引擎將內部結構的欄位 `uri` 設定為欄位的值 `request_rec``filename` 。
 
 <!-- 
 
@@ -412,7 +415,7 @@ Dispatcher以下列方式查找最匹配的虛擬主機值：
 
 >[!CAUTION]
 >
->`/allowAuthorized` 必 **須在** 節中設定為 `"0"``/cache` 才能啟用此功能。
+>`/allowAuthorized` **必須** 在節中 `"0"` 設 `/cache` 置為才能啟用此功能。
 
 建立安全作業以存取轉譯群，讓使用者需要登入才能存取群中的任何頁面。 登入後，使用者可以存取群中的頁面。 如需 [與CUG搭配使用此功能的詳細資訊](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/cug.html#CreatingTheUserGroupToBeUsed) ，請參閱建立封閉使用者群組。 此外，請先參閱Dispatcher [Security Checklist](/help/using/security-checklist.md) ，再上線。
 
@@ -1351,6 +1354,7 @@ GET /mypage.html?q=5&p=4
 >
 >* 在區段中新增標題 `/cache/headers`名稱。
 >* 在與Dispatcher相關的部 [分中添加](https://httpd.apache.org/docs/2.4/mod/core.html#fileetag) 以下Apache指令：
+
 >
 
 
@@ -1559,7 +1563,7 @@ Dispatcher最多支援8個統計類別。 如果您定義8個以上的類別，�
 
 >[!NOTE]
 >
->要重試包含內文的HTTP請求，Dispatcher會在假設實 `Expect: 100-continue` 際內容之前，先將請求標頭髮送到演算。 含CQSE的CQ 5.5會立即回答100（繼續）或錯誤碼。 其他servlet容器也應支援此功能。
+>要重試包含內文的HTTP請求，Dispatcher會先將請求標 `Expect: 100-continue` 頭髮送到渲染器，然後再假設實際內容。 含CQSE的CQ 5.5會立即回答100（繼續）或錯誤碼。 其他servlet容器也應支援此功能。
 
 ## 忽略中斷錯誤- /ignoreEINTR {#ignoring-interruption-errors-ignoreeintr}
 
@@ -1577,9 +1581,11 @@ Dispatcher最多支援8個統計類別。 如果您定義8個以上的類別，�
 
 在內部，Dispatcher使用可表示為：
 
-`while (response not finished) {  
+```
+while (response not finished) {  
 read more data  
-}`
+}
+```
 
 當在&quot; `EINTR``read more data`&quot;部分中發生時，可以生成這樣的消息，其由在接收任何資料之前接收的信號引起。
 
@@ -1597,9 +1603,9 @@ Dispatcher配置檔案中的幾個部分使用屬 `glob` 性作為客戶端請�
 
 | 萬用字元 | 說明 | 範例 |
 |--- |--- |--- |
-| `*` | 相符項目：字串中任何字元的零個或多個連續例項。 符合的最終字元由下列任一情況決定：字 <br/>串中的字元與模式中的下一個字元相符，而模式字元具有下列特性：<br/><ul><li>不是*</li><li>不是？</li><li>常值字元（包括空格）或字元類別。</li><li>到達模式的結尾。</li></ul>在字元類中，字元將逐字解釋。 | `*/geo*` 與節點和節點下 `/content/geometrixx` 的任何頁 `/content/geometrixx-outdoors` 面匹配。 下列HTTP請求與全域模式相符： <br/><ul><li>`"GET /content/geometrixx/en.html"`</li><li>`"GET /content/geometrixx-outdoors/en.html"` </li></ul><br/> `*outdoors/*` 匹 <br/>配節點下的任 `/content/geometrixx-outdoors` 何頁。 例如，下列HTTP要求符合全域模式： <br/><ul><li>`"GET /content/geometrixx-outdoors/en.html"`</li></ul> |
+| `*` | 相符項目：字串中任何字元的零個或多個連續例項。 符合的最終字元由下列任一情況決定： <br/>字串中的字元與模式中的下一個字元相符，而模式字元具有下列特性：<br/><ul><li>不是*</li><li>不是？</li><li>常值字元（包括空格）或字元類別。</li><li>到達模式的結尾。</li></ul>在字元類中，字元將逐字解釋。 | `*/geo*` 與節點和節點下 `/content/geometrixx` 的任何頁 `/content/geometrixx-outdoors` 面匹配。 下列HTTP請求與全域模式相符： <br/><ul><li>`"GET /content/geometrixx/en.html"`</li><li>`"GET /content/geometrixx-outdoors/en.html"` </li></ul><br/> `*outdoors/*` <br/>與節點下的任何頁 `/content/geometrixx-outdoors` 面相符。 例如，下列HTTP要求符合全域模式： <br/><ul><li>`"GET /content/geometrixx-outdoors/en.html"`</li></ul> |
 | `?` | 符合任何單一字元。 使用外部字元類別。 在字元類中，該字元將按字面方式解釋。 | `*outdoors/??/*`<br/> 相符項目：geometrixx-outdoors網站中任何語言的頁面。 例如，下列HTTP要求符合全域模式： <br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>下列請求不符合全域模式： <br/><ul><li>&quot;取得/content/geometrixx-outdoors/en.html&quot;</li></ul> |
-| `[ and ]` | 標籤字元類的開頭和結尾。 字元類別可包含一或多個字元範圍和單一字元。<br/>如果目標字元符合字元類別中的任何字元，或在定義的範圍內，就會發生相符。<br/>如果未包括右括弧，則陣列不會產生匹配。 | `*[o]men.html*`<br/> 符合下列HTTP要求：<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>不符合下列HTTP要求：<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/> `*[o/]men.html*` 符 <br/>合下列HTTP請求： <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
+| `[ and ]` | 標籤字元類的開頭和結尾。 字元類別可包含一或多個字元範圍和單一字元。<br/>如果目標字元符合字元類別中的任何字元，或在定義的範圍內，就會發生相符。<br/>如果未包括右括弧，則陣列不會產生匹配。 | `*[o]men.html*`<br/> 符合下列HTTP要求：<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>不符合下列HTTP要求：<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/> `*[o/]men.html*` <br/>符合下列HTTP要求： <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
 | `-` | 表示字元範圍。 用於字元類。  在字元類之外，將逐字解釋該字元。 | `*[m-p]men.html*` 符合下列HTTP要求： <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul>不符合下列HTTP要求：<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
 | `!` | 否定後面的字元或字元類。 僅用於否定字元類別中的字元和字元範圍。 相當於 `^ wildcard`。 <br/>在字元類之外，將逐字解釋該字元。 | `*[!o]men.html*`<br/> 符合下列HTTP要求： <br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>不符合下列HTTP要求： <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>`*[!o!/]men.html*`<br/> 不符合下列HTTP要求：<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"` 或 `"GET /content/geometrixx-outdoors/en/men. html"`</li></ul> |
 | `^` | 否定後面的字元或字元範圍。 僅用於否定字元類內的字元和字元範圍。 相當於萬用字 `!` 元。 <br/>在字元類之外，將逐字解釋該字元。 | 套用萬用字元 `!` 的範例，以字元 `!` 取代範例模式中的字 `^` 元。 |
@@ -1827,18 +1833,19 @@ curl -v -H "X-Dispatcher-Info: true" https://localhost/content/we-retail/us/en.h
 * **快取**\
    目標檔案不包含在快取中，而調度程式已確定快取輸出並傳送輸出是有效的。
 * **快取：stat檔案較新**。目標檔案包含在快取中，但是，它被較新的stat檔案使其無效。 調度程式將刪除目標檔案，從輸出中重新建立併發送該檔案。
-* **無法進行快取：no document root**&#x200B;農場的配置不包含document root(configuration element `cache.docroot`)。
+* **無法進行快取：no document root**&#x200B;農場的配置不包含document root(configuration element) 
+`cache.docroot`).
 * **無法進行快取：快取檔案路徑過長**\
    目標檔案——文檔根檔案和URL檔案的串連——超過系統上最長的檔案名。
 * **無法進行快取：臨時檔案路徑過長**\
    臨時檔案名模板超過系統上可能的最長檔案名。 調度程式首先建立臨時檔案，然後實際建立或覆蓋快取檔案。 臨時檔案名是目標檔案名，其中附加 `_YYYYXXXXXX` 了字元，將替換 `Y` 和 `X` 以建立唯一名稱。
 * **無法進行快取：請求URL沒有副檔名**\
-   請求URL沒有副檔名，或是檔案副檔名後面有路徑，例如： `/test.html/a/path`。
+   請求URL沒有副檔名，或是檔案副檔名後面有路徑，例如： `/test.html/a/path`.
 * **無法進行快取：請求不是GET或HEAD** HTTP方法既不是GET也不是HEAD。 調度程式假定輸出將包含不應被快取的動態資料。
 * **無法進行快取：包含查詢字串的請求**\
    請求包含查詢字串。 調度器假定輸出取決於給定的查詢字串，因此不進行快取。
 * **無法進行快取：會話管理器未驗證**\
-   群的快取由會話管理器（配置包含節點）管 `sessionmanagement` 理，請求中不包含適當的驗證資訊。
+   群的快取由會話管理器管理（配置包含節點），而請 `sessionmanagement` 求不包含適當的驗證資訊。
 * **無法進行快取：請求包含授權**\
    群不允許快取輸出( `allowAuthorized 0`)，且請求包含驗證資訊。
 * **無法進行快取：target是目錄**\
@@ -1850,5 +1857,6 @@ curl -v -H "X-Dispatcher-Info: true" https://localhost/content/we-retail/us/en.h
 * **無法進行快取：授權驗證器拒絕訪問**\
    農場的授權檢查程式拒絕存取快取檔案。
 * **無法進行快取：會話無效**&#x200B;群的快取受會話管理器(配置包含節點 `sessionmanagement` )控制，用戶的會話無效或不再有效。
-* **無法進行快取：響應包`no_cache `**含遠程伺服器返回的`Dispatcher: no_cache`標頭，禁止調度程式快取輸出。
+* **無法進行快取：響應包`no_cache `**&#x200B;含遠程伺服器返回 
+`Dispatcher: no_cache` 標題，禁止調度程式快取輸出。
 * **無法進行快取：響應內容長度為零**，響應內容長度為零；調度程式將不建立零長度檔案。
