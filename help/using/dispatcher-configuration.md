@@ -10,9 +10,9 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: aeffee8e-bb34-42a7-9a5e-b7d0e848391a
 translation-type: tm+mt
-source-git-commit: 5734e601379fda9a62eda46bded493b8dbd49a4c
+source-git-commit: 31dc02adc1d16ec61d5191b86d0d1276c2e1da46
 workflow-type: tm+mt
-source-wordcount: '8802'
+source-wordcount: '8582'
 ht-degree: 2%
 
 ---
@@ -164,7 +164,7 @@ AEM和Dispatcher的所有元素都可安裝在IPv4和IPv6網路中。 請參 [�
 * 當您希望Dispatcher以相同方式處理所有網頁或網站時，請使用單一場。
 * 當您的網站或不同網站的不同區域需要不同的Dispatcher行為時，可建立多個場。
 
-屬 `/farms` 性是配置結構中的頂級屬性。 要定義農場，請向屬性中添加子屬 `/farms` 性。 使用屬性名，唯一標識Dispatcher實例中的群。
+屬 `/farms` 性是配置結構中的頂級屬性。 要定義農場，請向屬性中添加子屬 `/farms` 性。 使用屬性名稱，可唯一標識Dispatcher實例中的群。
 
 屬 `/farmname` 性是多值的，包含定義Dispatcher行為的其他屬性：
 
@@ -224,7 +224,7 @@ AEM和Dispatcher的所有元素都可安裝在IPv4和IPv6網路中。 請參 [�
 >
 >參 `/homepage`數（僅限IIS）不再運作。 您應改用 [IIS URL Rewrite Module](https://docs.microsoft.com/en-us/iis/extensions/url-rewrite-module/using-the-url-rewrite-module)。
 >
->如果您使用Apache，則應使用模 `mod_rewrite` 塊。 如需有關資訊(例如， `mod_rewrite` Apache 2.4 [](https://httpd.apache.org/docs/current/mod/mod_rewrite.html))，請參閱Apache網站檔案。 使用 `mod_rewrite`時，建議使用標幟 **[&#39;passthrough|PT&#39;（傳遞至下一個處理常式）](https://helpx.adobe.com/dispatcher/kb/DispatcherModReWrite.html)** ，強制重寫引擎將內部結構的欄位 `uri` 設定為欄位的值 `request_rec``filename` 。
+>如果您使用Apache，則應使用模 `mod_rewrite` 塊。 如需有關資訊(例如， `mod_rewrite` Apache 2.4 [](https://httpd.apache.org/docs/current/mod/mod_rewrite.html))，請參閱Apache網站檔案。 使用 `mod_rewrite`時，建議使用標幟 **[&#39;passthrough|PT&#39;（傳遞至下一個處理常式）](https://helpx.adobe.com/dispatcher/kb/DispatcherModReWrite.html)** ，強制重寫引擎將內部結構的 `uri` 欄位設為欄位的值 `request_rec``filename` 。
 
 <!-- 
 
@@ -266,7 +266,7 @@ Comment Type: draft
 
 ## 指定要傳遞的HTTP標題 {#specifying-the-http-headers-to-pass-through-clientheaders}
 
-屬 `/clientheaders` 性定義Dispatcher從用戶端HTTP請求傳遞至轉譯器（AEM例項）的HTTP標題清單。
+屬 `/clientheaders` 性定義Dispatcher從用戶端HTTP請求傳遞至轉譯器（AEM例項）的HTTP標頭清單。
 
 依預設，Dispatcher會將標準HTTP標頭轉送至AEM例項。 在某些情況下，您可能需要轉寄其他標題，或移除特定標題：
 
@@ -703,7 +703,7 @@ HTTP/1.1定義請 [求行](https://www.w3.org/Protocols/rfc2616/rfc2616-sec5.htm
 
 ### 範例/filter區段 {#example-filter-section}
 
-在配置Dispatcher時，您應盡可能限制外部訪問。 下列範例提供外部訪客的最低存取權：
+在配置Dispatcher時，應盡可能限制外部訪問。 下列範例提供外部訪客的最低存取權：
 
 * `/content`
 * 其他內容，例如設計和用戶端資料庫；例如：
@@ -847,60 +847,60 @@ Last Modified Date: 2015-06-26T04:32:37.986-0400
 
 Dispatcher篩選器應封鎖對AEM發佈例項上下列頁面和指令碼的存取權。 使用網頁瀏覽器嘗試以網站訪客的方式開啟下列頁面，並驗證是否傳回程式碼404。 如果取得其他結果，請調整您的篩選。
 
-請注意，您應該會看到/content/add_valid_page.html?debug=layout的一般頁面演算。
+請注意，您應看到的是正常的頁面呈 `/content/add_valid_page.html?debug=layout`現。
 
 
-* /管理員
-* /system/console
-* /dav/crx.default
-* /crx
-* /bin/crxde/logs
-* /jcr:system/jcr:versionStorage.json
-* /_jcr_system/_jcr_versionStorage.json
-* /libs/wcm/core/content/siteadmin.html
-* /libs/collab/core/content/admin.html
-* /libs/cq/ui/content/dumplibs.html
-* /var/linkchecker.html
-* /etc/linkchecker.html
-* /home/users/a/admin/profile.json
-* /home/users/a/admin/profile.xml
-* /libs/cq/core/content/login.json
-* /content/../libs/foundation/components/text/text.jsp
-* /content/.{.}/libs/foundation/components/text/text.jsp
-* /apps/sling/config/org.apache.felix.webconsole.internal.servlet.OsgiManager.config/jcr%3acontent/jcr%3adata
-* /libs/foundation/components/primary/cq/workflow/components/participants/json.GET.servlet
-* /content.pages.json
-* /content.languages.json
-* /content.blueprint.json
-* /content.-1.json
-* /content.10.json
-* /content.infinity.json
-* /content.tidy.json
-* /content.tidy。-1.blubber.json
-* /content/dam.tidy。-100.json
-* /content/content/geometrixx.sitemap.txt
-* /content/add_valid_page.query.json?statement=//*
-* /content/add_valid_page.qu%65ry.js%6Fn?statement=//*
-* /content/add_valid_page.query.json?statement=//*[@transportPassword]/(@transportPassword%20|%20@transportUri%20|%20@transportUser)
-* /content/add_valid_path_to_a_page/_jcr_content.json
-* /content/add_valid_path_to_a_page/jcr:content.json
-* /content/add_valid_path_to_a_page/_jcr_content.feed
-* /content/add_valid_path_to_a_page/jcr:content.feed
-* /content/add_valid_path_to_a_page/pagename。_jcr_content.feed
-* /content/add_valid_path_to_a_page/pagename.jcr:content.feed
-* /content/add_valid_path_to_a_page/pagename.docview.xml
-* /content/add_valid_path_to_a_page/pagename.docview.json
-* /content/add_valid_path_to_a_page/pagename.sysview.xml
-* /etc.xml
-* /content.feed.xml
-* /content.rss.xml
-* /content.feed.html
-* /content/add_valid_page.html?debug=layout
-* /projects
-* /tagging
-* /etc/replication.html
-* /etc/cloudservices.html
-* /歡迎
+* `/admin`
+* `/system/console`
+* `/dav/crx.default`
+* `/crx`
+* `/bin/crxde/logs`
+* `/jcr:system/jcr:versionStorage.json`
+* `/_jcr_system/_jcr_versionStorage.json`
+* `/libs/wcm/core/content/siteadmin.html`
+* `/libs/collab/core/content/admin.html`
+* `/libs/cq/ui/content/dumplibs.html`
+* `/var/linkchecker.html`
+* `/etc/linkchecker.html`
+* `/home/users/a/admin/profile.json`
+* `/home/users/a/admin/profile.xml`
+* `/libs/cq/core/content/login.json`
+* `/content/../libs/foundation/components/text/text.jsp`
+* `/content/.{.}/libs/foundation/components/text/text.jsp`
+* `/apps/sling/config/org.apache.felix.webconsole.internal.servlet.OsgiManager.config/jcr%3acontent/jcr%3adata`
+* `/libs/foundation/components/primary/cq/workflow/components/participants/json.GET.servlet`
+* `/content.pages.json`
+* `/content.languages.json`
+* `/content.blueprint.json`
+* `/content.-1.json`
+* `/content.10.json`
+* `/content.infinity.json`
+* `/content.tidy.json`
+* `/content.tidy.-1.blubber.json`
+* `/content/dam.tidy.-100.json`
+* `/content/content/geometrixx.sitemap.txt `
+* `/content/add_valid_page.query.json?statement=//*`
+* `/content/add_valid_page.qu%65ry.js%6Fn?statement=//*`
+* `/content/add_valid_page.query.json?statement=//*[@transportPassword]/(@transportPassword%20|%20@transportUri%20|%20@transportUser)`
+* `/content/add_valid_path_to_a_page/_jcr_content.json`
+* `/content/add_valid_path_to_a_page/jcr:content.json`
+* `/content/add_valid_path_to_a_page/_jcr_content.feed`
+* `/content/add_valid_path_to_a_page/jcr:content.feed`
+* `/content/add_valid_path_to_a_page/pagename._jcr_content.feed`
+* `/content/add_valid_path_to_a_page/pagename.jcr:content.feed`
+* `/content/add_valid_path_to_a_page/pagename.docview.xml`
+* `/content/add_valid_path_to_a_page/pagename.docview.json`
+* `/content/add_valid_path_to_a_page/pagename.sysview.xml`
+* `/etc.xml`
+* `/content.feed.xml`
+* `/content.rss.xml`
+* `/content.feed.html`
+* `/content/add_valid_page.html?debug=layout`
+* `/projects`
+* `/tagging`
+* `/etc/replication.html`
+* `/etc/cloudservices.html`
+* `/welcome`
 
 在終端或命令提示符中發出以下命令，以確定是否啟用了匿名寫訪問。 您不應該能夠將資料寫入節點。
 
@@ -1042,7 +1042,7 @@ statfile沒有內容。 更新內容時，Dispatcher會更新時間戳記。 預
 * 名為的Cookie `authorization`。
 * 名為的Cookie `login-token`。
 
-根據預設，包含此驗證資訊的請求不會快取，因為當快取檔案傳回用戶端時，不會執行驗證。 此配置可防止Dispatcher向沒有必要權限的用戶提供快取的文檔。
+根據預設，包含此驗證資訊的請求不會快取，因為當快取檔案傳回給用戶端時，不會執行驗證。 此配置可防止Dispatcher向沒有必要權限的用戶提供快取的文檔。
 
 不過，如果您的要求允許快取已驗證的檔案，請將/allowAuthorized設為：
 
@@ -1162,7 +1162,7 @@ Last Modified Date: 2017-11-13T09:23:24.326-0500
 * Dispatcher在 `.stat`每個資料夾中從Docroot資料夾建立到您指定級別的檔案。 docroot資料夾是0級。
 * 通過觸摸檔案使檔案失 `.stat` 效。 文 `.stat` 件的上次修改日期與快取文檔的上次修改日期進行比較。 如果檔案較新，則會重新擷 `.stat` 取檔案。
 
-* 當位於某一級別的檔案被失效時， **從**`.stat` Docroot到失效檔案級別的所有檔案 ****`statsfilevel` （以小的為準）都將被觸碰。
+* 當位於某一級別的檔案被失效時， **從**`.stat` Docroot到失效檔案級別的所有檔案或 ****`statsfilevel` （以小的為準）被觸碰。
 
    * 例如：如果您將屬 `statfileslevel` 性設為6，而檔案在5級失效，則每個從Docroot `.stat` 變成5的檔案都會被觸碰。 繼續此範例，如果檔案在7級時失效，則每隔一次。 `stat` 檔案從docroot移至6時，將會觸動(自此 `/statfileslevel = "6"`起)。
 
@@ -1311,7 +1311,7 @@ printf "%-15s: %s %s" $1 $2 $3>> /opt/dispatcher/logs/invalidate.log
 GET /mypage.html?q=5
 ```
 
-使用范 `ignoreUrlParams` 例值時，下列HTTP請求會導致頁面不 **會快取** ，因為 `p` 參數不會忽略：
+使用范 `ignoreUrlParams` 例值時，下列HTTP請求會導致頁面不 **會快取** ，因為 `p` 不會忽略參數：
 
 ```xml
 GET /mypage.html?q=5&p=4
@@ -1513,7 +1513,7 @@ Dispatcher最多支援8個統計類別。 如果您定義8個以上的類別，�
 
 ### 指定運行狀況檢查頁 {#specifying-a-health-check-page}
 
-使用屬 `/health_check` 性來指定在發生500個狀態代碼時被勾選的URL。 如果此頁還返回500狀態代碼，則該實例被認為不可用，並且在重試前將可配置的時間補償( `/unavailablePenalty`)應用於渲染。
+使用屬 `/health_check` 性來指定在發生500狀態代碼時被勾選的URL。 如果此頁還返回500狀態代碼，則該實例被認為不可用，並且在重試前將可配置的時間補償( `/unavailablePenalty`)應用於渲染。
 
 ```xml
 /health_check
@@ -1605,7 +1605,7 @@ Dispatcher配置檔案中的幾個部分使用屬 `glob` 性作為客戶端請�
 |--- |--- |--- |
 | `*` | 相符項目：字串中任何字元的零個或多個連續例項。 符合的最終字元由下列任一情況決定： <br/>字串中的字元與模式中的下一個字元相符，而模式字元具有下列特性：<br/><ul><li>不是*</li><li>不是？</li><li>常值字元（包括空格）或字元類別。</li><li>到達模式的結尾。</li></ul>在字元類中，字元將逐字解釋。 | `*/geo*` 與節點和節點下 `/content/geometrixx` 的任何頁 `/content/geometrixx-outdoors` 面匹配。 下列HTTP請求與全域模式相符： <br/><ul><li>`"GET /content/geometrixx/en.html"`</li><li>`"GET /content/geometrixx-outdoors/en.html"` </li></ul><br/> `*outdoors/*` <br/>與節點下的任何頁 `/content/geometrixx-outdoors` 面相符。 例如，下列HTTP要求符合全域模式： <br/><ul><li>`"GET /content/geometrixx-outdoors/en.html"`</li></ul> |
 | `?` | 符合任何單一字元。 使用外部字元類別。 在字元類中，該字元將按字面方式解釋。 | `*outdoors/??/*`<br/> 相符項目：geometrixx-outdoors網站中任何語言的頁面。 例如，下列HTTP要求符合全域模式： <br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>下列請求不符合全域模式： <br/><ul><li>&quot;取得/content/geometrixx-outdoors/en.html&quot;</li></ul> |
-| `[ and ]` | 標籤字元類的開頭和結尾。 字元類別可包含一或多個字元範圍和單一字元。<br/>如果目標字元符合字元類別中的任何字元，或在定義的範圍內，就會發生相符。<br/>如果未包括右括弧，則陣列不會產生匹配。 | `*[o]men.html*`<br/> 符合下列HTTP要求：<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>不符合下列HTTP要求：<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/> `*[o/]men.html*` <br/>符合下列HTTP要求： <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
+| `[ and ]` | 定義字元類的開頭和結尾。 字元類別可包含一或多個字元範圍和單一字元。<br/>如果目標字元符合字元類別中的任何字元，或在定義的範圍內，就會發生相符。<br/>如果未包括右括弧，則陣列不會產生匹配。 | `*[o]men.html*`<br/> 符合下列HTTP要求：<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>不符合下列HTTP要求：<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/> `*[o/]men.html*` <br/>符合下列HTTP要求： <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
 | `-` | 表示字元範圍。 用於字元類。  在字元類之外，將逐字解釋該字元。 | `*[m-p]men.html*` 符合下列HTTP要求： <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul>不符合下列HTTP要求：<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
 | `!` | 否定後面的字元或字元類。 僅用於否定字元類別中的字元和字元範圍。 相當於 `^ wildcard`。 <br/>在字元類之外，將逐字解釋該字元。 | `*[!o]men.html*`<br/> 符合下列HTTP要求： <br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>不符合下列HTTP要求： <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>`*[!o!/]men.html*`<br/> 不符合下列HTTP要求：<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"` 或 `"GET /content/geometrixx-outdoors/en/men. html"`</li></ul> |
 | `^` | 否定後面的字元或字元範圍。 僅用於否定字元類內的字元和字元範圍。 相當於萬用字 `!` 元。 <br/>在字元類之外，將逐字解釋該字元。 | 套用萬用字元 `!` 的範例，以字元 `!` 取代範例模式中的字 `^` 元。 |
@@ -1845,7 +1845,7 @@ curl -v -H "X-Dispatcher-Info: true" https://localhost/content/we-retail/us/en.h
 * **無法進行快取：包含查詢字串的請求**\
    請求包含查詢字串。 調度器假定輸出取決於給定的查詢字串，因此不進行快取。
 * **無法進行快取：會話管理器未驗證**\
-   群的快取由會話管理器管理（配置包含節點），而請 `sessionmanagement` 求不包含適當的驗證資訊。
+   群的快取由會話管理器（配置包含節點）管 `sessionmanagement` 理，請求中不包含適當的驗證資訊。
 * **無法進行快取：請求包含授權**\
    群不允許快取輸出( `allowAuthorized 0`)，且請求包含驗證資訊。
 * **無法進行快取：target是目錄**\
