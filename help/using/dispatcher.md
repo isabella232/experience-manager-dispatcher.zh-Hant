@@ -9,7 +9,10 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: 1d449ee2-4cdd-4b7a-8b4e-7e6fc0a1d7ee
 translation-type: tm+mt
-source-git-commit: 3bf255c54b46f571fab64f0754b71e050c3bda3f
+source-git-commit: 88ea38c9ad7fe67edbaf68c4882a01c3f9a475d9
+workflow-type: tm+mt
+source-wordcount: '3222'
+ht-degree: 91%
 
 ---
 
@@ -26,15 +29,18 @@ Dispatcher 是 Adobe Experience manager 的快取和/或負載平衡工具。使
 
 1. 瞭解 Dispatcher (本頁)。此外，請參 [閱有關dispatcher的常見問題](https://helpx.adobe.com/experience-manager/using/dispatcher-faq.html)。
 1. 根據網 [頁伺服器檔案](https://helpx.adobe.com/experience-manager/6-3/sites/deploying/using/technical-requirements.html) ，安裝支援的網頁伺服器。
-
 1. [在 Web 伺服器上安裝 Dispatcher 模組](dispatcher-install.md)，並相應地設定 Web 伺服器。
 1. [設定 Dispatcher](dispatcher-configuration.md) (dispatcher.any 檔案)。
-
 1. [設定 AEM](page-invalidate.md)，如此一來內容更新即可讓快取失效。
 
 >[!NOTE]
 >
->若要進一步瞭解 Dispatcher 如何與 AEM 搭配運作，請參閱 [2017 年 7 月的「詢問 AEM 社群專家」](https://bit.ly/ATACE0717)。
+>若要進一步瞭解Dispatcher如何與AEM搭配運作：
+>
+>* 請參 [閱「向AEM社群專家詢問2017年7月的資訊](https://bit.ly/ATACE0717)」。
+>* 訪問 [此儲存庫](https://github.com/adobe/aem-dispatcher-experiments)。 它包含一系列「回家」實驗室格式的實驗。
+
+
 
 視需要使用下列資訊: 
 
@@ -99,7 +105,7 @@ Dispatcher 包含的機制可根據動態網站上的內容來產生和更新靜
 
 >[!NOTE]
 >
->當缺少 HTTP 標頭快取的設定時，Dispatcher 只會儲存頁面的 HTML 程式碼，不會儲存 HTTP 標 題。如果您的網站使用不同的編碼，可能會發生問題，因為這些編碼可能會遺失。如要啟用 HTTP 標頭快取，請參閱[設定 Dispatcher 快取。](https://helpx.adobe.com/experience-manager/dispatcher/using/dispatcher-configuration.html)
+>當缺少 HTTP 標頭快取的設定時，Dispatcher 只會儲存頁面的 HTML 程式碼，不會儲存 HTTP 標 題。如果您的網站使用不同的編碼，可能會發生問題，因為這些編碼可能會遺失。如要啟用 HTTP 標頭快取，請參閱[設定 Dispatcher 快取。](https://helpx.adobe.com/tw/experience-manager/dispatcher/using/dispatcher-configuration.html)
 
 >[!NOTE]
 >
@@ -153,7 +159,7 @@ Dispatcher 有一個檔案清單，這些檔案會自動失效。請求該清單
 
 ### 確定文件是否會進入快取
 
-您可以定 [義Dispatcher在配置檔案中快取哪些文檔](https://helpx.adobe.com/experience-manager/dispatcher/using/dispatcher-configuration.html)。 Dispatcher 會根據可快取文件清單來檢查請求。如果文件不在此清單中，Dispatcher 會請求 AEM 例項的文件。
+您可以定 [義Dispatcher在配置檔案中快取哪些文檔](https://helpx.adobe.com/tw/experience-manager/dispatcher/using/dispatcher-configuration.html)。 Dispatcher 會根據可快取文件清單來檢查請求。如果文件不在此清單中，Dispatcher 會請求 AEM 例項的文件。
 
 在下列情況下，** Dispatcher 一律會直接從 AEM 例項要求文件:
 
@@ -163,7 +169,7 @@ Dispatcher 有一個檔案清單，這些檔案會自動失效。請求該清單
 
 >[!NOTE]
 >
->GET 或 HEAD (用於 HTTP 標頭) 方法可讓 Dispatcher 快取。如需回應標頭快取的詳細資訊，請參 [閱快取HTTP回應標頭](https://helpx.adobe.com/experience-manager/dispatcher/using/dispatcher-configuration.html) 。
+>GET 或 HEAD (用於 HTTP 標頭) 方法可讓 Dispatcher 快取。如需回應標頭快取的詳細資訊，請參 [閱快取HTTP回應標頭](https://helpx.adobe.com/tw/experience-manager/dispatcher/using/dispatcher-configuration.html) 。
 
 ### 確定是否已快取文件
 
