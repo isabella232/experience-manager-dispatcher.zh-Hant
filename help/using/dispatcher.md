@@ -9,10 +9,10 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: 1d449ee2-4cdd-4b7a-8b4e-7e6fc0a1d7ee
 translation-type: tm+mt
-source-git-commit: 88ea38c9ad7fe67edbaf68c4882a01c3f9a475d9
+source-git-commit: 590a9a2b6005cd48676cf525b0e029e42d1b3ca6
 workflow-type: tm+mt
-source-wordcount: '3222'
-ht-degree: 91%
+source-wordcount: '3199'
+ht-degree: 90%
 
 ---
 
@@ -23,9 +23,9 @@ ht-degree: 91%
 >
 >Dispatcher 版本與 AEM 無關。如果您依循連結至 Dispatcher 文件，且該連結內嵌於舊版 AEM 的文件中，您可能會被重新導向至本頁。
 
-Dispatcher 是 Adobe Experience manager 的快取和/或負載平衡工具。使用 AEM 的 Dispatcher 也有助於保護您的 AEM 伺服器不受攻擊。因此，您可以搭配使用 Dispatcher 與企業級 Web 伺服器，以提高 AEM 例項的安全性。
+Dispatcher是Adobe Experience Manager的快取和／或負載平衡工具，可與企業級Web伺服器搭配使用。
 
-部署 Dispatcher 的程序與所選的 Web 伺服器和作業系統平台無關:
+部署調度程式的過程獨立於Web伺服器和所選的作業系統平台：
 
 1. 瞭解 Dispatcher (本頁)。此外，請參 [閱有關dispatcher的常見問題](https://helpx.adobe.com/experience-manager/using/dispatcher-faq.html)。
 1. 根據網 [頁伺服器檔案](https://helpx.adobe.com/experience-manager/6-3/sites/deploying/using/technical-requirements.html) ，安裝支援的網頁伺服器。
