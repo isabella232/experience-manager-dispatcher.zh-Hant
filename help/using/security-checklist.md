@@ -14,9 +14,9 @@ index: y
 internal: n
 snippet: y
 translation-type: tm+mt
-source-git-commit: 9ffdc1d85d1a0da45f95e0780227ee6569cd4b3d
+source-git-commit: 7889c025fb8fb29e6f11ea01c5248470556d3160
 workflow-type: tm+mt
-source-wordcount: '672'
+source-wordcount: '653'
 ht-degree: 1%
 
 ---
@@ -35,7 +35,7 @@ Last Modified Date: 2015-06-05T05:14:35.365-0400
 
  -->
 
-作為前端系統的調度程式為您的Adobe Experience Manager基礎架構提供了額外的安全層。 Adobe強烈建議您在開始生產之前先完成下列檢查清單。
+Adobe強烈建議您在開始生產之前先完成下列檢查清單。
 
 >[!CAUTION]
 >
