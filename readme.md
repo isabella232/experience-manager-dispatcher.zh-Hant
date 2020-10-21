@@ -1,9 +1,16 @@
 ---
-source-git-commit: 36c4ad10a9140d368fdbf3f0939e6756cc2bfbbf
+source-git-commit: 21f7d8e620bb6dc220bf08a996b5f273e0c11743
+workflow-type: tm+mt
 translation-type: tm+mt
+source-wordcount: '155'
+ht-degree: 3%
 
 ---
 # Adobe Experience Manager Dispatcher檔案
+
+| EXL-PR | EXL | 預覽 | 啟動 | 已發佈 | 說明 |
+|--- |--- |--- |--- |--- |--- |
+| [![建置狀態](https://docs.ci.corp.adobe.com/view/exl-pr/job/authoring-guide-exl.en_pr-exl/badge/icon)](https://docs.ci.corp.adobe.com/view/exl-pr/job/authoring-guide-exl.en_pr-exl/lastBuild/) | [![建置狀態](https://docs.ci.corp.adobe.com/view/exl-pr/job/authoring-guide-exl.en_exl/lastBuild/badge/icon)](https://docs.ci.corp.adobe.com/view/exl-pr/job/authoring-guide-exl.en_exl/lastBuild/lastBuild) | [預覽URL](https://experienceleague.corp.adobe.com/docs/authoring-guide-exl/using/dispatcher.html?lang=en) | [activate-exl](https://docs.ci.corp.adobe.com/job/activate-exl/build/) | [即時URL](https://experienceleague.adobe.com/docs/authoring-guide-exl/using/dispatcher.html?lang=en) | [Authoring 指南](https://experienceleague.adobe.com/docs/authoring-guide-exl/using/home.html?lang=en) |
 
 這是Adobe Experience Manager Dispatcher檔案的儲存庫。
 
