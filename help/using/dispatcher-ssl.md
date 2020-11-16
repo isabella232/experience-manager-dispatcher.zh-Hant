@@ -4,16 +4,19 @@ seo-title: 將 SSL 與 Dispatcher 搭配使用
 description: 瞭解如何設定Dispatcher以使用SSL連線與AEM通訊。
 seo-description: 瞭解如何設定Dispatcher以使用SSL連線與AEM通訊。
 uuid: 1a8f448c-d3d8-4798-a5cb-9579171171ed
-contentOwner: 使用者
+contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
-topic-tags: 'Dispatcher '
-content-type: 引用
+topic-tags: dispatcher
+content-type: reference
 discoiquuid: 771cfd85-6c26-4ff2-a3fe-dff8d8f7920b
 index: y
 internal: n
 snippet: y
 translation-type: tm+mt
-source-git-commit: eed7c3f77ec64f2e7c5cfff070ef96108886a059
+source-git-commit: f9fb0e94dbd1c67bf87463570e8b5eddaca11bf3
+workflow-type: tm+mt
+source-wordcount: '1375'
+ht-degree: 0%
 
 ---
 
@@ -22,8 +25,8 @@ source-git-commit: eed7c3f77ec64f2e7c5cfff070ef96108886a059
 
 在Dispatcher和Render電腦之間使用SSL連接：
 
-* [單向SSL](dispatcher-ssl.md#main-pars-title-1)
-* [相互SSL](dispatcher-ssl.md#main-pars-title-2)
+* [單向SSL](#use-ssl-when-dispatcher-connects-to-aem)
+* [相互SSL](#configuring-mutual-ssl-between-dispatcher-and-aem)
 
 >[!NOTE]
 >
@@ -35,8 +38,8 @@ source-git-commit: eed7c3f77ec64f2e7c5cfff070ef96108886a059
 
 在設定Dispatcher之前，請先設定AEM或CQ以使用SSL:
 
-* AEM 6.2:透 [過SSL啟用HTTP](https://helpx.adobe.com/experience-manager/6-2/sites/deploying/using/config-ssl.html)
-* AEM 6.1:透 [過SSL啟用HTTP](https://docs.adobe.com/content/docs/en/aem/6-1/deploy/configuring/config-ssl.html)
+* AEM 6.2: [透過SSL啟用HTTP](https://helpx.adobe.com/experience-manager/6-2/sites/deploying/using/config-ssl.html)
+* AEM 6.1: [透過SSL啟用HTTP](https://docs.adobe.com/content/docs/en/aem/6-1/deploy/configuring/config-ssl.html)
 * 舊版AEM:請參 [閱本頁](https://helpx.adobe.com/experience-manager/aem-previous-versions.html)。
 
 ### 與SSL相關的請求標題 {#ssl-related-request-headers}
@@ -142,7 +145,7 @@ X-Forwarded-SSL-Session-ID: 814825E8CD055B4C166C2EF6D75E1D0FE786FFB29DEB6DE1E239
 
 #### 建立CA {#creating-your-ca}
 
-如果您是CA，請使用 [OpenSSL](https://www.openssl.org/) 來建立簽署伺服器和用戶端憑證的憑證授權機構。 （您必須安裝OpenSSL程式庫。）如果您使用第三方CA，請勿執行此程式。
+如果您是CA，請使用 [OpenSSL](https://www.openssl.org/) 來建立簽署伺服器和用戶端憑證的憑證授權機構。 （您必須安裝OpenSSL程式庫。） 如果您使用第三方CA，請勿執行此程式。
 
 1. 開啟終端，將當前目錄更改為包含CA.sh檔案的目錄，例如 `/usr/local/ssl/misc`。
 1. 要建立CA，請輸入以下命令，然後在提示時提供值：
@@ -197,7 +200,7 @@ X-Forwarded-SSL-Session-ID: 814825E8CD055B4C166C2EF6D75E1D0FE786FFB29DEB6DE1E239
    openssl pkcs12 -export -in rendercert.pem -inkey renderkey.pem  -certfile demoCA/cacert.pem -out rendercert.p12
    ```
 
-1. 輸入以下命令，將PKCS#12檔案轉換為Java keyStore(JKS)格式：
+1. 輸入以下命令，將PKCS#12檔案轉換為Java KeyStore(JKS)格式：
 
    ```shell
    keytool -importkeystore -srckeystore servercert.p12 -srcstoretype pkcs12 -destkeystore render.keystore
@@ -251,8 +254,8 @@ Last Modified Date: 2014-08-12T13:11:21.401-0400
 
 使用演算憑證及「發佈例項」區段中 ** 「啟用SSL」中的指示，將演算例項的HTTP服務設定為使用SSL:
 
-* AEM 6.2:透 [過SSL啟用HTTP](https://helpx.adobe.com/experience-manager/6-2/sites/deploying/using/config-ssl.html)
-* AEM 6.1:透 [過SSL啟用HTTP](https://docs.adobe.com/content/docs/en/aem/6-1/deploy/configuring/config-ssl.html)
+* AEM 6.2: [透過SSL啟用HTTP](https://helpx.adobe.com/experience-manager/6-2/sites/deploying/using/config-ssl.html)
+* AEM 6.1: [透過SSL啟用HTTP](https://docs.adobe.com/content/docs/en/aem/6-1/deploy/configuring/config-ssl.html)
 * 舊版AEM:請參 [閱本頁。](https://helpx.adobe.com/experience-manager/aem-previous-versions.html)
 
 ### 為Dispatcher模組配置SSL {#configuring-ssl-for-the-dispatcher-module}
