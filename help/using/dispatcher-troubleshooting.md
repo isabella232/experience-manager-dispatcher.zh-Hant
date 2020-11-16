@@ -13,7 +13,7 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: a612e745-f1e6-43de-b25a-9adcaadab5cf
 translation-type: tm+mt
-source-git-commit: 5734e601379fda9a62eda46bded493b8dbd49a4c
+source-git-commit: 9af0dc22d32f1176b84c28a70b1a4701414d434e
 workflow-type: tm+mt
 source-wordcount: '553'
 ht-degree: 6%
@@ -37,10 +37,10 @@ ht-degree: 6%
 
 首先要檢查基本知識，一如往常：
 
-* [確認基本操作](#ConfirmBasicOperation)
-* 檢查Web伺服器和調度程式的所有日誌檔案。 如有必要，請 `loglevel` 增加用於調度程式 [日誌](#Logging)。
+* [確認基本操作](/help/using/dispatcher-configuration.md#confirming-basic-operation)
+* 檢查Web伺服器和調度程式的所有日誌檔案。 如有必要，請 `loglevel` 增加用於調度程式 [日誌](/help/using/dispatcher-configuration.md#logging)。
 
-* [檢查您的配置](#ConfiguringtheDispatcher):
+* [檢查您的配置](/help/using/dispatcher-configuration.md):
 
    * 您有多個調度程式嗎？
 
