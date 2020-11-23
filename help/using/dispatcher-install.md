@@ -10,9 +10,9 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: f00ad751-6b95-4365-8500-e1e0108d9536
 translation-type: tm+mt
-source-git-commit: ef0fc34cbf2f07090f39613811d6f015ba2305ab
+source-git-commit: 024348672c2a9a4f8a01429572eba27ea8b8a490
 workflow-type: tm+mt
-source-wordcount: '0'
+source-wordcount: '3684'
 ht-degree: 0%
 
 ---
@@ -28,11 +28,11 @@ Comment Type: draft
 
  -->
 
+使用「 [Dispatcher發行說明](release-notes.md) 」頁可以獲取您的作業系統和Web伺服器的最新Dispatcher安裝檔案。 Dispatcher發行號碼與Adobe Experience Manager發行號碼無關，並與Adobe Experience Manager 6.x、5.x和Adobe CQ 5.x版本相容。
+
 >[!NOTE]
 >
->Dispatcher 版本與 AEM 無關。如果您依循連結至 Dispatcher 文件，且該連結內嵌於舊版 AEM 的文件中，您可能會被重新導向至本頁。
-
-使用「 [Dispatcher發行說明](release-notes.md) 」頁可以獲取您的作業系統和Web伺服器的最新Dispatcher安裝檔案。 Dispatcher發行號碼與Adobe Experience Manager發行號碼無關，並與Adobe Experience Manager 6.x、5.x和Adobe CQ 5.x版本相容。
+>請注意，Adobe Experience Manager 6.5需要Dispatcher 4.3.2版或更高版本。 儘管如此，Dispatcher版本與AEM無關，例如Dispatcher 4.3.2版也與Adobe Experience Manager 6.4相容。
 
 使用下列檔案命名慣例：
 
@@ -48,7 +48,7 @@ Comment Type: draft
 | Microsoft Internet Information Server 7.5、8、8.5 | dispatcher-**iis**-&lt;other parameters> |
 | Sun Java Web Server iPlanet | dispatcher-**ns**-&lt;其他參數> |
 
->[!NOTE]
+>[!CAUTION]
 >
 >您應安裝適用於您平台的最新版Dispatcher。 您應每年升級您的Dispatcher實例，以使用最新版本，以利用產品改進。
 
