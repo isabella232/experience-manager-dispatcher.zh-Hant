@@ -31,14 +31,14 @@ ht-degree: 6%
 
 >[!NOTE]
 >
->另請查看 [Dispatcher知識庫](https://helpx.adobe.com/cq/kb/index/dispatcher.html)、 [Troubleshooting Dispatcher Flushing Issues](https://helpx.adobe.com/adobe-cq/kb/troubleshooting-dispatcher-flushing-issues.html) 和 [](dispatcher-faq.md) Dispatcher Top Issues常見問答集以取得詳細資訊。
+>有關詳細資訊，請查看[Dispatcher Knowledge Base](https://helpx.adobe.com/cq/kb/index/dispatcher.html)、[Troubleshooting Dispatcher Flushing Issues](https://helpx.adobe.com/adobe-cq/kb/troubleshooting-dispatcher-flushing-issues.html)和[Dispatcher Top Issues FAQ](dispatcher-faq.md)。
 
-## 檢查基本配置 {#check-the-basic-configuration}
+## 檢查基本配置{#check-the-basic-configuration}
 
 首先要檢查基本知識，一如往常：
 
 * [確認基本操作](/help/using/dispatcher-configuration.md#confirming-basic-operation)
-* 檢查Web伺服器和調度程式的所有日誌檔案。 如有必要，請 `loglevel` 增加用於調度程式 [日誌](/help/using/dispatcher-configuration.md#logging)。
+* 檢查Web伺服器和調度程式的所有日誌檔案。 如有必要，請增加用於調度程式[logging](/help/using/dispatcher-configuration.md#logging)的`loglevel`。
 
 * [檢查您的配置](/help/using/dispatcher-configuration.md):
 
@@ -50,7 +50,7 @@ ht-degree: 6%
       * 這些對您正在調查的事件有影響嗎？
 
 
-## IIS診斷工具 {#iis-diagnostic-tools}
+## IIS Diagnostic Tools {#iis-diagnostic-tools}
 
 IIS提供各種跟蹤工具，取決於實際版本：
 
@@ -59,16 +59,16 @@ IIS提供各種跟蹤工具，取決於實際版本：
 
 這些功能可協助您監控活動。
 
-## 找不到IIS和404 {#iis-and-not-found}
+## IIS和404 Not Found {#iis-and-not-found}
 
-使用IIS時，您可能會遇 `404 Not Found` 到在各種情況下傳回的情況。 如果是，請參閱下列知識庫文章。
+使用IIS時，您可能會在各種情況下遇到`404 Not Found`傳回。 如果是，請參閱下列知識庫文章。
 
 * [IIS 6/7:POST方法返回404](https://helpx.adobe.com/dispatcher/kb/IIS6IsapiFilters.html)
-* [IIS 6:傳回包含基本路徑的URL要 `/bin` 求 `404 Not Found`](https://helpx.adobe.com/dispatcher/kb/RequestsToBinDirectoryFailInIIS6.html)
+* [IIS 6:傳回包含基本路徑的URL要 `/bin` 求  `404 Not Found`](https://helpx.adobe.com/dispatcher/kb/RequestsToBinDirectoryFailInIIS6.html)
 
 您還應檢查調度程式快取根目錄和IIS文檔根目錄是否設定為同一目錄。
 
-## 刪除工作流模型的問題 {#problems-deleting-workflow-models}
+## 刪除工作流模型{#problems-deleting-workflow-models}時的問題
 
 **症狀**
 
@@ -79,15 +79,15 @@ IIS提供各種跟蹤工具，取決於實際版本：
 1. 登入您的作者例項（確認請求是透過Dispatcher傳送）。
 1. 建立新的工作流程；例如，將「標題」設為workflowToDelete。
 1. 確認工作流程已成功建立。
-1. 選取工作流程並按一下滑鼠右鍵，然後按一下「刪 **除」**。
+1. 選擇工作流並按一下右鍵，然後按一下&#x200B;**Delete**。
 
-1. 按一 **下「是** 」以確認。
+1. 按一下&#x200B;**是**&#x200B;確認。
 1. 將出現一個錯誤消息框，其中顯示：\
-   &quot; `ERROR 'Could not delete workflow model!!`&quot;.
+   &quot; `ERROR 'Could not delete workflow model!!`&quot;。
 
 **解析度**
 
-將下列標題新增至 `/clientheaders` 檔案的區 `dispatcher.any` 段：
+將下列標題新增至`dispatcher.any`檔案的`/clientheaders`區段：
 
 * `x-http-method-override`
 * `x-requested-with`
@@ -103,29 +103,29 @@ IIS提供各種跟蹤工具，取決於實際版本：
 }
 ```
 
-## 與mod_dir(Apache)的干涉 {#interference-with-mod-dir-apache}
+## 與mod_dir(Apache){#interference-with-mod-dir-apache}的干擾
 
-這將說明調度程式如何與 `mod_dir` Apache Webserver內部進行交互，因為這可能導致各種可能未預期的效果：
+這將說明調度程式如何與Apache Web伺服器內的`mod_dir`進行交互，因為這可能導致各種可能未預期的效果：
 
 ### Apache 1.3 {#apache}
 
-在Apache 1.3中， `mod_dir` 處理URL對應至檔案系統目錄的每個請求。
+在Apache 1.3 `mod_dir`中，處理URL映射至檔案系統目錄的每個請求。
 
 它或者：
 
-* 將請求重新導向至現有檔 `index.html` 案
+* 將請求重新導向至現有的`index.html`檔案
 * 生成目錄清單
 
-當調度器啟用時，它會將自身註冊為內容類型的處理常式，以處理此類請求 `httpd/unix-directory`。
+當調度程式被啟用時，它通過將自身註冊為內容類型`httpd/unix-directory`的處理程式來處理此類請求。
 
 ### Apache 2.x {#apache-x}
 
 在Apache 2.x中，情況不同。 模組可處理請求的不同階段，例如URL修正。 `mod_dir` 將請求（當URL對應至目錄時）重新導向至附加的URL，以處理此階 `/` 段。
 
-Dispatcher不會截取修 `mod_dir` 正，但會完全處理對重新導向URL的請求(即附加 `/` 的)。 如果遠端伺服器（例如AEM）處理的要求與要求不同(當對應至現 `/a_path` 有目錄時), `/a_path/``/a_path` 這可能會造成問題。
+Dispatcher不會截取`mod_dir`修正，但會完全處理對重新導向URL的請求（亦即附加了`/`）。 如果遠端伺服器（例如AEM）處理`/a_path`的要求與`/a_path/`的要求不同（當`/a_path`對應至現有目錄時），這可能會造成問題。
 
 如果發生這種情況，您必須：
 
-* 禁 `mod_dir` 用調度 `Directory` 器所處 `Location` 理的或子樹
+* 對由調度程式處理的`Directory`或`Location`子樹禁用`mod_dir`
 
-* 使用 `DirectorySlash Off` 配置 `mod_dir` 不附加 `/`
+* 使用`DirectorySlash Off`來設定`mod_dir`不要附加`/`
