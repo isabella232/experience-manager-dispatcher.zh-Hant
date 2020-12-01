@@ -4,13 +4,16 @@ seo-title: 在AEM Dispatcher中快取保全內容
 description: 瞭解權限相關快取在Dispatcher中的運作方式。
 seo-description: 瞭解權限相關快取在AEM Dispatcher中的運作方式。
 uuid: abfed68a-2efe-45f6-bdf7-2284931629d6
-contentOwner: 使用者
+contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
-content-type: 引用
+content-type: reference
 discoiquuid: 4f9b2bc8-a309-47bc-b70d-a1c0da78d464
 translation-type: tm+mt
 source-git-commit: 8dd56f8b90331f0da43852e25893bc6f3e606a97
+workflow-type: tm+mt
+source-wordcount: '762'
+ht-degree: 0%
 
 ---
 
@@ -25,11 +28,11 @@ Dispatcher包含AuthChecker模組，可實作權限感應快取。 當模組啟�
 
 >[!NOTE]
 >
->使用 `deny` 篩選器來強制實施一攬子安全限制。 對設定為允許存取使用者或群組子集的頁面使用權限相關快取。
+>使用`deny`篩選器來強制實施一攬子安全限制。 對設定為允許存取使用者或群組子集的頁面使用權限相關快取。
 
 下圖說明當網頁瀏覽器要求使用權限相關快取的頁面時，發生事件的順序。
 
-## 頁面已快取且使用者已授權 {#page-is-cached-and-user-is-authorized}
+## 頁面已快取，使用者已獲得{#page-is-cached-and-user-is-authorized}授權
 
 ![](assets/chlimage_1.png)
 
@@ -38,7 +41,7 @@ Dispatcher包含AuthChecker模組，可實作權限感應快取。 當模組啟�
 1. 演算器會呼叫授權者以執行安全性檢查並回應Dispatcher。 回應訊息包含200的HTTP狀態碼，以指出使用者已獲得授權。
 1. Dispatcher會傳送回應訊息給瀏覽器，該回應訊息包含來自演算回應的標題行和內文中快取的內容。
 
-## 頁面未快取且使用者已授權 {#page-is-not-cached-and-user-is-authorized}
+## 頁面未快取，且使用者已獲得{#page-is-not-cached-and-user-is-authorized}授權
 
 ![](assets/chlimage_1-1.png)
 
@@ -47,7 +50,7 @@ Dispatcher包含AuthChecker模組，可實作權限感應快取。 當模組啟�
 1. 轉換器調用授權者servlet以執行安全檢查。 當用戶被授權時，渲染器將渲染的頁面包括在響應消息的正文中。
 1. Dispatcher將響應轉發到瀏覽器。 Dispatcher將Render的響應消息的正文添加到快取中。
 
-## 用戶未獲得授權 {#user-is-not-authorized}
+## 用戶未獲得{#user-is-not-authorized}授權
 
 ![](assets/chlimage_1-2.png)
 
@@ -55,7 +58,7 @@ Dispatcher包含AuthChecker模組，可實作權限感應快取。 當模組啟�
 1. Dispatcher會傳送請求訊息給演算器，其中包含瀏覽器請求中的所有標題行。
 1. render調用authorizer servlet執行失敗的安全檢查，render將原始請求轉發到Dispatcher。
 
-## 實作權限相關快取 {#implementing-permission-sensitive-caching}
+## 實作權限相關快取{#implementing-permission-sensitive-caching}
 
 若要實作權限相關快取，請執行下列工作：
 
@@ -71,11 +74,11 @@ Dispatcher包含AuthChecker模組，可實作權限感應快取。 當模組啟�
 
 建立和部署Servlet，該Servlet執行請求Web內容的用戶的驗證和授權。 Servlet可以使用任何驗證和授權方法，例如AEM使用者帳戶和儲存庫ACL，或LDAP查閱服務。 您可將servlet部署至Dispatcher用作演算的AEM例項。
 
-所有用戶都必須可以訪問Servlet。 因此，Servlet應該擴展類 `org.apache.sling.api.servlets.SlingSafeMethodsServlet` ，該類提供對系統的只讀訪問。
+所有用戶都必須可以訪問Servlet。 因此，Servlet應該擴展`org.apache.sling.api.servlets.SlingSafeMethodsServlet`類，該類提供對系統的只讀訪問。
 
-Servlet只會從轉譯器接收HEAD請求，因此您只需要實作方 `doHead` 法。
+Servlet僅接收來自render的HEAD請求，因此您只需實施`doHead`方法。
 
-演算包含所請求資源的URI作為HTTP請求的參數。 例如，通過訪問授權servlet `/bin/permissioncheck`。 若要在/content/geometrixx-outdoors/en.html頁面上執行安全性檢查，轉譯會在HTTP要求中包含下列URL:
+演算包含所請求資源的URI作為HTTP請求的參數。 例如，通過`/bin/permissioncheck`訪問授權servlet。 若要在/content/geometrixx-outdoors/en.html頁面上執行安全性檢查，轉譯會在HTTP要求中包含下列URL:
 
 `/bin/permissioncheck?uri=/content/geometrixx-outdoors/en.html`
 
@@ -83,13 +86,13 @@ Servlet響應消息必須包含以下HTTP狀態代碼：
 
 * 200:已傳遞驗證和授權。
 
-以下示例servlet從HTTP請求中獲取所請求資源的URL。 代碼使用Felix SCR注 `Property` 釋將屬性的值 `sling.servlet.paths` 設定為/bin/permissioncheck。 在該方 `doHead` 法中，servlet獲得會話對象，並使用該方 `checkPermission` 法確定適當的響應代碼。
+以下示例servlet從HTTP請求中獲取所請求資源的URL。 代碼使用Felix SCR `Property`注釋將`sling.servlet.paths`屬性的值設定為/bin/permissioncheck。 在`doHead`方法中，servlet獲取會話對象，並使用`checkPermission`方法確定相應的響應代碼。
 
 >[!NOTE]
 >
 >sling.servlet.paths屬性的值必須在Sling Servlet Resolver(org.apache.sling.servlets.resolver.SlingServletResolver)服務中啟用。
 
-### 示例servlet {#example-servlet}
+### Servlet {#example-servlet}示例
 
 ```java
 package com.adobe.example;
@@ -138,13 +141,13 @@ public class AuthcheckerServlet extends SlingSafeMethodsServlet {
 }
 ```
 
-## 配置Dispatcher以進行權限敏感的快取 {#configure-dispatcher-for-permission-sensitive-caching}
+## 配置Dispatcher以獲得對權限敏感的快取{#configure-dispatcher-for-permission-sensitive-caching}
 
-dispatcher.any檔案的auth_checker部分控制對權限敏感的快取的行為。 auth_checker區段包含下列子區段：
+dispatcher.any檔案的auth_checker區段會控制權限相關快取的行為。 auth_checker區段包含下列子區段：
 
 * `url`:執行安全檢 `sling.servlet.paths` 查的servlet屬性的值。
 
-* `filter`:指定套用權限相關快取的資料夾的篩選器。 通常，篩選器 `deny` 會套用至所有資料夾，而篩選器 `allow` 則會套用至受保護的資料夾。
+* `filter`:指定套用權限相關快取的資料夾的篩選器。通常，`deny`篩選器會套用至所有資料夾，而`allow`篩選器則會套用至受保護的資料夾。
 
 * `headers`:指定授權servlet在響應中包含的HTTP標頭。
 
@@ -154,7 +157,7 @@ Dispatcher啟動時，Dispatcher日誌檔案包含以下調試級別消息：
 
 下面的示例auth_checker部分將Dispatcher配置為使用前置主題的servlet。 篩選區段只會在安全的HTML資源上執行權限檢查。
 
-### 配置示例 {#example-configuration}
+### 配置示例{#example-configuration}
 
 ```xml
 /auth_checker
