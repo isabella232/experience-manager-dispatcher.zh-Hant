@@ -4,12 +4,15 @@ seo-title: AEM Dispatcher 發行說明
 description: Adobe Experience Manager Dispatcher的發行說明
 seo-description: Adobe Experience Manager Dispatcher的發行說明
 uuid: ae3ccf62-0514-4c03-a3b9-71799a482cbd
-topic-tags: 發行說明
-content-type: 引用
+topic-tags: release-notes
+content-type: reference
 products: SG_EXPERIENCEMANAGER/6.4
 discoiquuid: ff3d38e0-71c9-4b41-85f9-fa896393aac5
 translation-type: tm+mt
 source-git-commit: 328bc82673783b4a2df2d68481fa7eec88b74b01
+workflow-type: tm+mt
+source-wordcount: '805'
+ht-degree: 8%
 
 ---
 
@@ -29,22 +32,22 @@ source-git-commit: 328bc82673783b4a2df2d68481fa7eec88b74b01
 
 ## 系統需求和先決條件 {#system-requirements-and-prerequisites}
 
-如需有關需求和 [先決條件的詳細資訊](https://helpx.adobe.com/experience-manager/6-4/sites/deploying/using/technical-requirements.html) ，請參閱支援的平台頁面。
+有關要求和先決條件的詳細資訊，請參閱[支援的平台](https://helpx.adobe.com/experience-manager/6-4/sites/deploying/using/technical-requirements.html)頁面。
 
 Adobe強烈建議使用最新版本的AEM Dispatcher，以取得最新的功能、最新的錯誤修正以及最佳的效能。
 
 ## 安裝指示 {#installation-instructions}
 
-有關詳細說明，請參 [閱安裝Dispatcher](dispatcher-install.md)。
+有關詳細說明，請參見[ Installing Dispatcher](dispatcher-install.md)。
 
-## 發行記錄 {#release-history}
+## 發行記錄{#release-history}
 
-### 版本4.3.3（2019年10月18日） {#october}
+### 版本4.3.3（2019年10月18日）{#october}
 
 **錯誤修正**:
 
-* DISP-739 - logLevel dispatcher:級 **別不** 起作用
-* DISP-749 - Alpine linux調度器當機並具有跟蹤日誌級別
+* DISP-739 - LogLevel dispatcher:**level**&#x200B;無法運作
+* DISP-749 - Alpine Linux調度器當機並具有跟蹤日誌級別
 
 **改進**:
 
@@ -63,12 +66,12 @@ Adobe強烈建議使用最新版本的AEM Dispatcher，以取得最新的功能�
 * DISP-827 —— 用於測試的本地伺服器
 * DISP-828 —— 為調度程式建立測試Docker映像
 
-### 版本4.3.2（2019年1月31日） {#jan}
+### 版本4.3.2（2019年1月31日）{#jan}
 
 **錯誤修正**:
 
 * DISP-734 —— 如果未設為處理常式，則Dispatcher會在insert_output_filter中造成當機
-* DISP-735 - RE在Alpine linux上無法運作
+* DISP-735 - RE在Alpine Linux上無法運作
 * DISP-740 —— 在macOS Mojave中載入分派程式預設為停用
 * DISP-742 —— 被阻止的請求可能會將資訊洩露給驗證檢查器受保護的資源
 
@@ -80,7 +83,7 @@ Adobe強烈建議使用最新版本的AEM Dispatcher，以取得最新的功能�
 
 * DISP-747 —— 在Apache環境中提供請求資訊
 
-### 版本4.3.1（2018年10月16日） {#oct}
+### 版本4.3.1（2018年10月16日）{#oct}
 
 **錯誤修正**:
 
@@ -108,7 +111,7 @@ Adobe強烈建議使用最新版本的AEM Dispatcher，以取得最新的功能�
 * DISP-722 —— 以八進位模式0600建立快取檔案
 * DISP-726 —— 記錄沒有群與傳入主機實際相符時的警告
 
-### 版本4.3.0（2018年6月13日） {#jun}
+### 版本4.3.0（2018年6月13日）{#jun}
 
 **錯誤修正**:
 
@@ -120,7 +123,7 @@ Adobe強烈建議使用最新版本的AEM Dispatcher，以取得最新的功能�
 * DISP-693 —— 需要更新Dispatcher下載頁上Solaris伺服器的體系結構詳細資訊
 * DISP-695 - Dispatcher模組4.2.3中DispatcherLog級別的問題
 * DISP-698 - Dispatcher TTL需要支援s-maxage和private指令
-* DISP-700 —— 模組在Alpine linux上無法正常工作
+* DISP-700 —— 模組在Alpine Linux上無法正常工作
 * DISP-704 —— 包含%2b的瀏覽器請求會傳送至未編碼的發佈者
 * DISP-705 —— 由於雙重釋放或損壞(fasttop)而導致的Dispatcher崩潰
 * DISP-706 —— 在失效期間，調度程式正在跟蹤可導致無限回圈的反向參考符號連結
@@ -135,11 +138,11 @@ Adobe強烈建議使用最新版本的AEM Dispatcher，以取得最新的功能�
 
 * [AEM Dispatcher概觀](dispatcher.md)
 
-## 下載 {#downloads}
+## 下載{#downloads}
 
 ### Apache 2.4 {#apache}
 
-| 平台 | 建築 | OpenSSL支援 | 下載 |
+| 平台 | 架構 | OpenSSL支援 | 下載 |
 |---|---|---|---|
 | Linux | i686（32位元） | 無 | [dispatcher-apache2.4-linux-i686-4.3.3.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-i686-4.3.3.tar.gz) |
 | Linux | i686（32位元） | 1.0 | [dispatcher-apache2.4-linux-i686-ssl1.0-4.3.3.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-i686-ssl1.0-4.3.3.tar.gz) |
@@ -151,7 +154,7 @@ Adobe強烈建議使用最新版本的AEM Dispatcher，以取得最新的功能�
 
 ### IIS {#iis}
 
-| 平台 | 建築 | OpenSSL支援 | 下載 |
+| 平台 | 架構 | OpenSSL支援 | 下載 |
 |---|---|---|---|
 | Windows | x86（32位元） | 無 | [dispatcher-iis-windows-x86-4.3.3.zip](https://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x86-4.3.3.zip) |
 | Windows | x86（32位元） | 1.0 | [dispatcher-iis-windows-x86-ssl1.0-4.3.3.zip](https://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x86-ssl1.0-4.3.3.zip) |
