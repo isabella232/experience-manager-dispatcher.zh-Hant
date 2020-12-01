@@ -12,6 +12,9 @@ content-type: reference
 discoiquuid: 40d91d66-c99b-422d-8e61-c0ced23272ef
 translation-type: tm+mt
 source-git-commit: 64d26d802dbc9bb0b6815011a16e24c63a7672aa
+workflow-type: tm+mt
+source-wordcount: '2983'
+ht-degree: 0%
 
 ---
 
@@ -38,7 +41,7 @@ source-git-commit: 64d26d802dbc9bb0b6815011a16e24c63a7672aa
        | - content nodes
 ```
 
-頁面儲 `BrandA.com` 存於下 `/content/sitea`方。 用戶端對URL的要 `https://BrandA.com/en.html` 求會傳回節點的轉譯頁 `/content/sitea/en` 面。 同樣地，頁面 `BrandB.com` 儲存在下方 `/content/siteb`。
+`BrandA.com`的頁面儲存在`/content/sitea`下方。 客戶端對URL `https://BrandA.com/en.html`的請求將返回`/content/sitea/en`節點的呈現頁面。 同樣地，`BrandB.com`的頁面儲存在`/content/siteb`下方。
 
 使用Dispatcher快取內容時，必須在用戶端HTTP請求中的頁面URL、快取中對應檔案的路徑，以及儲存庫中對應檔案的路徑之間建立關聯。
 
@@ -66,31 +69,31 @@ source-git-commit: 64d26d802dbc9bb0b6815011a16e24c63a7672aa
 
 若要搭配多個網域使用Dispatcher，您必須設定AEM、Dispatcher和您的Web伺服器。 本頁所述的解決方案是一般的，適用於大多數環境。 由於某些AEM拓撲的複雜性，您的解決方案可能需要進一步的自訂配置來解決特定問題。 您可能需要調整示例以滿足現有的IT基礎架構和管理策略。
 
-## URL對應 {#url-mapping}
+## URL映射{#url-mapping}
 
 若要啟用網域URL和內容路徑以解析為快取檔案，在程式的某個時間點，必須轉換檔案路徑或頁面URL。 提供了以下常見策略的說明，其中路徑或URL轉換在進程中的不同點發生：
 
-* （建議）AEM發佈例項使用Sling對應來解析資源，以實作內部URL重寫規則。 網域URL會轉譯為內容儲存庫路徑。 請參 [閱「AEM重寫傳入的URL](#aem-rewrites-incoming-urls)」。
-* Web伺服器使用內部URL重寫規則，將網域URL轉譯為快取路徑。 請參 [閱Web Server重寫傳入的URL](#the-web-server-rewrites-incoming-urls)。
+* （建議）AEM發佈例項使用Sling對應來解析資源，以實作內部URL重寫規則。 網域URL會轉譯為內容儲存庫路徑。 請參閱[AEM Rewrites Incoming URLs](#aem-rewrites-incoming-urls)。
+* Web伺服器使用內部URL重寫規則，將網域URL轉譯為快取路徑。 請參閱[The Web Server Rewrites Incoming URLs](#the-web-server-rewrites-incoming-urls)。
 
-一般而言，最好為網頁使用簡短的URL。 通常，頁面URL會鏡像包含Web內容的儲存庫資料夾的結構。 但是，URL不會顯示最上層的儲存庫節點，例如 `/content`。 用戶端不一定知道AEM存放庫的結構。
+一般而言，最好為網頁使用簡短的URL。 通常，頁面URL會鏡像包含Web內容的儲存庫資料夾的結構。 但是，URL不會顯示最上層的儲存庫節點，如`/content`。 用戶端不一定知道AEM存放庫的結構。
 
-## 一般需求 {#general-requirements}
+## 一般要求{#general-requirements}
 
 您的環境必須實施以下配置，以支援使用多個域的Dispatcher:
 
 * 每個域的內容駐留在儲存庫的不同分支中（請參見下面的示例環境）。
-* Dispatcher Flush複製代理已設定在AEM發佈例項上。 (請參 [閱從發佈實例中使Dispatcher Cache無效](page-invalidate.md))。
+* Dispatcher Flush複製代理已設定在AEM發佈例項上。 （請參閱[從發佈實例中使Dispatcher Cache失效](page-invalidate.md)）。
 * 域名系統將域名解析為Web伺服器的IP地址。
 * Dispatcher快取會鏡像AEM內容存放庫的目錄結構。 Web伺服器文檔根目錄下的檔案路徑與儲存庫中檔案的路徑相同。
 
-## 提供範例的環境 {#environment-for-the-provided-examples}
+## 提供的示例環境{#environment-for-the-provided-examples}
 
 提供的示例解決方案適用於具有以下特徵的環境：
 
 * AEM作者和發佈例項部署在Linux系統上。
 * Apache HTTPD是部署在Linux系統上的Web伺服器。
-* AEM內容存放庫和Web伺服器的檔案根目錄會使用下列檔案結構(Apache web伺服器的檔案根目錄為/`usr/lib/apache/httpd-2.4.3/htdocs)`:
+* AEM內容存放庫和Web伺服器的檔案根目錄會使用下列檔案結構(Apache Web伺服器的檔案根目錄為/`usr/lib/apache/httpd-2.4.3/htdocs)`:
 
    **存放庫**
 
@@ -121,7 +124,7 @@ source-git-commit: 64d26d802dbc9bb0b6815011a16e24c63a7672aa
 
 資源解析度的Sling對應可讓您將傳入的URL與AEM內容路徑產生關聯。 在AEM發佈例項上建立對應，以便從Dispatcher將請求解析為儲存庫中正確的內容。
 
-頁面演算的Dispatcher要求會使用從Web伺服器傳遞的URL來識別頁面。 當URL包含網域名稱時，Sling映射會將URL解析為內容。 下圖說明URL與節 `branda.com/en.html` 點的映 `/content/sitea/en` 射。
+頁面演算的Dispatcher要求會使用從Web伺服器傳遞的URL來識別頁面。 當URL包含網域名稱時，Sling映射會將URL解析為內容。 下圖說明`branda.com/en.html` URL與`/content/sitea/en`節點的映射。
 
 ![](assets/chlimage_1-10.png)
 
@@ -129,22 +132,22 @@ Dispatcher快取將鏡像儲存庫節點結構。 因此，當頁面啟動時，
 
 ![](assets/chlimage_1-11.png)
 
-## 定義Web伺服器上的虛擬主機 {#define-virtual-hosts-on-the-web-server}
+## 在Web伺服器上定義虛擬主機{#define-virtual-hosts-on-the-web-server}
 
 定義Web伺服器上的虛擬主機，以便將不同的文檔根目錄分配給每個Web域：
 
 * Web伺服器必須為每個Web域定義虛擬域。
 * 對於每個域，請將文檔根配置為與包含域Web內容的儲存庫中的資料夾一致。
-* 每個虛擬域還必須包括與Dispatcher相關的配置，如「安裝 [Dispatcher](dispatcher-install.md) 」頁中所述。
+* 每個虛擬域還必須包括與Dispatcher相關的配置，如[安裝Dispatcher](dispatcher-install.md)頁中所述。
 
-以下示例文 `httpd.conf` 件為Apache web伺服器配置兩個虛擬域：
+以下示例`httpd.conf`檔案為Apache Web伺服器配置兩個虛擬域：
 
 * 伺服器名稱（與域名一致）是branda.com（行16）和brandb.com（行30）。
 * 每個虛擬域的文檔根目錄是Dispatcher快取中包含站點頁面的目錄。 （第17和31行）
 
-使用此配置時，Web伺服器在收到請求時將執行以下操作 `https://branda.com/en/products.html`:
+使用此配置時，Web伺服器在收到`https://branda.com/en/products.html`請求時執行以下操作：
 
-* 將URL與具有下列項目的虛擬主 `ServerName` 機 `branda.com.`
+* 將URL與具有`branda.com.`的`ServerName`虛擬主機關聯
 
 * 將URL轉發到Dispatcher。
 
@@ -196,9 +199,9 @@ LoadModule dispatcher_module modules/mod_dispatcher.so
 DocumentRoot "/usr/lib/apache/httpd-2.4.3/htdocs"
 ```
 
-請注意，虛擬主機繼承 [在主伺服器部分中配置的DispatcherConfig](dispatcher-install.md#main-pars-67-table-7) 屬性值。 虛擬主機可以包含其自己的DispatcherConfig屬性，以覆蓋主伺服器配置。
+請注意，虛擬主機繼承在主伺服器部分中配置的[DispatcherConfig](dispatcher-install.md#main-pars-67-table-7)屬性值。 虛擬主機可以包含其自己的DispatcherConfig屬性，以覆蓋主伺服器配置。
 
-### 配置Dispatcher以處理多個域 {#configure-dispatcher-to-handle-multiple-domains}
+### 配置Dispatcher以處理多個域{#configure-dispatcher-to-handle-multiple-domains}
 
 要支援包含域名及其相應虛擬主機的URL，請定義以下Dispatcher場：
 
@@ -209,10 +212,10 @@ DocumentRoot "/usr/lib/apache/httpd-2.4.3/htdocs"
 
 虛擬主機的場必須具有以下配置，以便將客戶端HTTP請求中的URL解析為Dispatcher快取中的正確檔案：
 
-* 屬 `/virtualhosts` 性被設定為域名。 此屬性使Dispatcher能夠將群與域關聯。
-* 此屬 `/filter` 性可讓存取在網域名稱部分之後截斷的請求URL路徑。 例如，對於 `https://branda.com/en.html` URL，路徑會解譯為 `/en.html`，因此篩選器必須允許存取此路徑。
+* `/virtualhosts`屬性已設定為域名。 此屬性使Dispatcher能夠將群與域關聯。
+* `/filter`屬性可讓存取在網域名稱部分之後截斷的請求URL的路徑。 例如，對於`https://branda.com/en.html` URL，路徑會解譯為`/en.html`，因此篩選器必須允許存取此路徑。
 
-* 屬 `/docroot` 性設定為Dispatcher快取中域站點內容的根目錄的路徑。 此路徑會用作原始請求串連URL的首碼。 例如，docroot會 `/usr/lib/apache/httpd-2.4.3/htdocs/sitea` 將要求解 `https://branda.com/en.html` 析至檔 `/usr/lib/apache/httpd-2.4.3/htdocs/sitea/en.html` 案。
+* `/docroot`屬性設定為Dispatcher快取中域站點內容的根目錄的路徑。 此路徑會用作原始請求串連URL的首碼。 例如，`/usr/lib/apache/httpd-2.4.3/htdocs/sitea`的docroot會將`https://branda.com/en.html`的要求解析為`/usr/lib/apache/httpd-2.4.3/htdocs/sitea/en.html`檔案。
 
 此外，AEM發佈例項必須指定為虛擬主機的演算。 根據需要配置其他場屬性。 以下代碼是branda.com域的縮寫群配置：
 
@@ -242,10 +245,10 @@ DocumentRoot "/usr/lib/apache/httpd-2.4.3/htdocs"
 
 下列屬性設定可讓Dispatcher從快取中的檔案解析AEM內容存放庫中的檔案：
 
-* 屬 `/docroot` 性會設為Web伺服器的預設Docroot。 通常，此為建立資料夾 `/content` 的目錄。 在Linux上，Apache的示例值為 `/usr/lib/apache/httpd-2.4.3/htdocs`。
-* 該屬 `/filter` 性允許訪問目錄下的 `/content` 檔案。
+* `/docroot`屬性設為Web伺服器的預設配置。 通常，此目錄是建立`/content`資料夾的目錄。 在Linux上，Apache的示例值為`/usr/lib/apache/httpd-2.4.3/htdocs`。
+* `/filter`屬性允許訪問`/content`目錄下的檔案。
 
-該 `/statfileslevel`屬性必須足夠高，以便在每個虛擬主機的根目錄中建立。stat檔案。 此屬性使每個域的快取分別失效。 對於示例設定， `/statfileslevel` 值為 `2` 在目錄和目錄中創 `*docroot*/content/sitea` 建。stat `*docroot*/content/siteb` 檔案。
+`/statfileslevel`屬性必須足夠高，以便在每個虛擬主機的根目錄中建立。stat檔案。 此屬性使每個域的快取分別失效。 對於示例設定，`2`的`/statfileslevel`值在`*docroot*/content/sitea`目錄和`*docroot*/content/siteb`目錄中建立。stat檔案。
 
 此外，必須將發佈實例指定為虛擬主機的渲染。 根據需要配置其他場屬性。 以下代碼是用於使快取失效的群的縮寫配置：
 
@@ -280,19 +283,19 @@ Dispatcher initializing (build 4.1.2)
 [Fri Nov 02 16:27:18 2012] [I] [24974(140006182991616)] Dispatcher initialized (build 4.1.2)
 ```
 
-### 設定Sling Mapping的資源解析度 {#configure-sling-mapping-for-resource-resolution}
+### 設定資源解析度{#configure-sling-mapping-for-resource-resolution}的Sling對應
 
 使用Sling對應來解析資源，讓網域型URL解析為AEM發佈例項上的內容。 資源映射將Dispatcher（最初是從客戶端HTTP請求）傳入的URL轉換為內容節點。
 
-若要瞭解Sling資源對應，請參閱Sling [檔案中的Mappings for Resource Resolution](https://sling.apache.org/site/mappings-for-resource-resolution.html) 。
+若要瞭解Sling資源對應，請參閱Sling檔案中的[Mappings for Resource Resolution](https://sling.apache.org/site/mappings-for-resource-resolution.html)。
 
 通常，以下資源需要映射，但可能需要其他映射：
 
-* 內容頁面的根節點(下 `/content`)
-* 頁面使用的設計節點(下 `/etc/designs`)
-* 資料 `/libs` 夾
+* 內容頁面的根節點（`/content`下）
+* 頁面使用的設計節點（`/etc/designs`下）
+* `/libs`資料夾
 
-建立內容頁面的對應後，若要探索其他必要的對應，請使用網頁瀏覽器在網頁伺服器上開啟頁面。 在發佈實例的error.log檔案中，找到有關未找到的資源的消息。 以下示例消息表示需要映射 `/etc/clientlibs` :
+建立內容頁面的對應後，若要探索其他必要的對應，請使用網頁瀏覽器在網頁伺服器上開啟頁面。 在發佈實例的error.log檔案中，找到有關未找到的資源的消息。 以下示例消息表示需要`/etc/clientlibs`的映射：
 
 ```shell
 01.11.2012 15:59:24.601 *INFO* [10.36.34.243 [1351799964599] GET /etc/clientlibs/foundation/jquery.js HTTP/1.1] org.apache.sling.engine.impl.SlingRequestProcessorImpl service: Resource /content/sitea/etc/clientlibs/foundation/jquery.js not found
@@ -304,29 +307,29 @@ Dispatcher initializing (build 4.1.2)
 
 ### 資源映射節點示例
 
-下表列出了為branda.com域實現資源映射的節點。 類似節點會為網域 `brandb.com` 建立，例如 `/etc/map/http/brandb.com`。 在所有情況下，當頁面HTML中的參考無法在Sling內容中正確解析時，都需要映射。
+下表列出了為branda.com域實現資源映射的節點。 為`brandb.com`域建立類似節點，如`/etc/map/http/brandb.com`。 在所有情況下，當頁面HTML中的參考無法在Sling內容中正確解析時，都需要映射。
 
 | 節點路徑 | 類型 | 屬性 |
 |--- |--- |--- |
 | `/etc/map/http/branda.com` | sling:Mapping | 名稱：sling:internalRedirect Type:字串值：/content/sitea |
-| `/etc/map/http/branda.com/libs` | sling:Mapping | 名稱：sling:internalRedirect <br/>Type:字串 <br/>值：/libs |
+| `/etc/map/http/branda.com/libs` | sling:Mapping | 名稱：sling:internalRedirect <br/>Type:字串<br/>值：/libs |
 | `/etc/map/http/branda.com/etc` | sling:Mapping |  |
-| `/etc/map/http/branda.com/etc/designs` | sling:Mapping | 名稱：sling:internalRedirect <br/>VType:字串 <br/>值：/etc/designs |
-| `/etc/map/http/branda.com/etc/clientlibs` | sling:Mapping | 名稱：sling:internalRedirect <br/>VType:字串 <br/>值：/etc/clientlibs |
+| `/etc/map/http/branda.com/etc/designs` | sling:Mapping | 名稱：sling:internalRedirect <br/>VType:字串<br/>值：/etc/designs |
+| `/etc/map/http/branda.com/etc/clientlibs` | sling:Mapping | 名稱：sling:internalRedirect <br/>VType:字串<br/>值：/etc/clientlibs |
 
-## 配置Dispatcher Flush複製代理 {#configuring-the-dispatcher-flush-replication-agent}
+## 配置Dispatcher Flush複製代理{#configuring-the-dispatcher-flush-replication-agent}
 
-AEM發佈例項上的Dispatcher Flush複製代理必須將失效請求傳送至正確的Dispatcher群。 要定位群，請使用Dispatcher Flush複製代理的URI屬性（在「傳輸」頁籤上）。 包含配置為使緩 `/virtualhost` 存失效的Dispatcher群的屬性值：
+AEM發佈例項上的Dispatcher Flush複製代理必須將失效請求傳送至正確的Dispatcher群。 要定位群，請使用Dispatcher Flush複製代理的URI屬性（在「傳輸」頁籤上）。 為配置為使快取失效的Dispatcher群包含`/virtualhost`屬性的值：
 
 `https://*webserver_name*:*port*/*virtual_host*/dispatcher/invalidate.cache`
 
-例如，若要使用上 `farm_flush` 一個範例的場，URI為 `https://localhost:80/invalidation_only/dispatcher/invalidate.cache`。
+例如，若要使用上一個範例的`farm_flush`群，URI為`https://localhost:80/invalidation_only/dispatcher/invalidate.cache`。
 
 ![](assets/chlimage_1-12.png)
 
 ## Web伺服器重寫傳入的URL {#the-web-server-rewrites-incoming-urls}
 
-使用Web伺服器的內部URL重寫功能，將網域型URL轉譯為Dispatcher快取中的檔案路徑。 例如，用戶端對頁面的 `https://brandA.com/en.html` 要求會轉譯為網 `content/sitea/en.html`頁伺服器檔案根目錄中的檔案。
+使用Web伺服器的內部URL重寫功能，將網域型URL轉譯為Dispatcher快取中的檔案路徑。 例如，將`https://brandA.com/en.html`頁面的客戶機請求轉換為Web伺服器文檔根目錄中的`content/sitea/en.html`檔案。
 
 ![](assets/chlimage_1-13.png)
 
@@ -334,28 +337,28 @@ Dispatcher快取將鏡像儲存庫節點結構。 因此，當頁面啟動時，
 
 ![](assets/chlimage_1-14.png)
 
-## 在Web伺服器上定義虛擬主機和重寫規則 {#define-virtual-hosts-and-rewrite-rules-on-the-web-server}
+## 在Web伺服器{#define-virtual-hosts-and-rewrite-rules-on-the-web-server}上定義虛擬主機和重寫規則
 
 在Web伺服器上配置以下方面：
 
 * 為每個Web網域定義虛擬主機。
 * 對於每個域，請將文檔根配置為與包含域Web內容的儲存庫中的資料夾一致。
 * 針對每個虛擬網域，建立URL重新命名規則，將傳入的URL轉譯為快取檔案的路徑。
-* 每個虛擬域還必須包括與Dispatcher相關的配置，如「安裝 [Dispatcher](dispatcher-install.md) 」頁中所述。
-* 必須將Dispatcher模組配置為使用Web伺服器已重寫的URL。 (請參閱「安 `DispatcherUseProcessedURL` 裝Dispatcher [」中的屬性](dispatcher-install.md)。)
+* 每個虛擬域還必須包括與Dispatcher相關的配置，如[安裝Dispatcher](dispatcher-install.md)頁中所述。
+* 必須將Dispatcher模組配置為使用Web伺服器已重寫的URL。 （請參閱[安裝Dispatcher](dispatcher-install.md)中的`DispatcherUseProcessedURL`屬性。）
 
-以下示例httpd.conf檔案為Apache web伺服器配置兩個虛擬主機：
+以下示例httpd.conf檔案為Apache Web伺服器配置兩個虛擬主機：
 
-* 伺服器名稱（與域名一致） `brandA.com` 是（行16） `brandB.com` 和（行32）。
+* 伺服器名稱（與域名一致）是`brandA.com`（行16）和`brandB.com`（行32）。
 
 * 每個虛擬域的文檔根目錄是Dispatcher快取中包含站點頁面的目錄。 （第20和33行）
 * 每個虛擬網域的URL重寫規則是規則運算式，用於將請求頁面的路徑與快取中頁面的路徑作為前置詞。 （第19和35行）
-* 屬 `DispatherUseProcessedURL` 性設定為 `1`。 （第10行）
+* `DispatherUseProcessedURL`屬性設為`1`。 （第10行）
 
-例如，Web伺服器在收到具有 `https://brandA.com/en/products.html` URL的請求時，會執行下列動作：
+例如，Web伺服器在收到具有`https://brandA.com/en/products.html` URL的請求時執行以下操作：
 
-* 將URL與具有下列項目的虛擬主 `ServerName` 機 `brandA.com.`
-* 將URL重寫為 `/content/sitea/en/products.html.`
+* 將URL與具有`brandA.com.`的`ServerName`虛擬主機關聯
+* 將URL重寫為`/content/sitea/en/products.html.`
 * 將URL轉發到Dispatcher。
 
 ### httpd.conf {#httpd-conf-1}
@@ -412,17 +415,17 @@ DocumentRoot "/usr/lib/apache/httpd-2.4.3/htdocs"
 
 ### 配置Dispatcher Farm {#configure-a-dispatcher-farm}
 
-當Web伺服器重寫URL時，Dispatcher需要根據「配置Dispatcher」定義的 [單個群](dispatcher-configuration.md)。 支援Web伺服器虛擬主機和URL更名規則需要以下配置：
+當Web伺服器重寫URL時，Dispatcher需要根據[ Configuring Dispatcher](dispatcher-configuration.md)定義的單個群。 支援Web伺服器虛擬主機和URL更名規則需要以下配置：
 
-* 屬 `/virtualhosts` 性必須包含所有VirtualHost定義的ServerName值。
-* 該 `/statfileslevel` 屬性必須足夠高，才能在包含每個域內容檔案的目錄中建立。stat檔案。
+* `/virtualhosts`屬性必須包含所有VirtualHost定義的ServerName值。
+* `/statfileslevel`屬性必須足夠高，才能在包含每個域內容檔案的目錄中建立。stat檔案。
 
-以下示例配置檔案基於隨Dispatcher一起安 `dispatcher.any` 裝的示例檔案。 需要進行以下更改以支援上一個檔案的Web伺服器配 `httpd.conf` 置：
+以下示例配置檔案基於隨Dispatcher一起安裝的示例`dispatcher.any`檔案。 要支援前一個`httpd.conf`檔案的Web伺服器配置，需要進行以下更改：
 
-* 該屬 `/virtualhosts` 性使Dispatcher能夠處理對和域的 `brandA.com` 請 `brandB.com` 求。 （第12行）
-* 屬 `/statfileslevel` 性設定為2，以便在包含域Web內容的每個目錄中建立stat檔案（第41行）: `/statfileslevel "2"`
+* `/virtualhosts`屬性使Dispatcher處理`brandA.com`和`brandB.com`域的請求。 （第12行）
+* `/statfileslevel`屬性設定為2，以便在包含域Web內容的每個目錄中建立stat檔案（第41行）:`/statfileslevel "2"`
 
-和往常一樣，快取的檔案根目錄與網頁伺服器的檔案根目錄相同（第40行）: `/usr/lib/apache/httpd-2.4.3/htdocs`
+和往常一樣，快取的檔案根目錄與網頁伺服器的檔案根目錄相同（第40行）:`/usr/lib/apache/httpd-2.4.3/htdocs`
 
 ### `dispatcher.any` {#dispatcher-any}
 
@@ -498,59 +501,59 @@ DocumentRoot "/usr/lib/apache/httpd-2.4.3/htdocs"
 >
 >由於已定義單一Dispatcher群，因此AEM發佈例項上的Dispatcher Flush複製代理不需要特殊組態。
 
-## 重寫非HTML檔案的連結 {#rewriting-links-to-non-html-files}
+## 重寫非HTML檔案的連結{#rewriting-links-to-non-html-files}
 
 若要重寫副檔名為。html或。htm以外檔案的參照，請建立Sling rewriter變形器元件，並將它新增至預設的重寫器管線。
 
-當資源路徑在Web伺服器上下文中無法正確解析時，重寫引用。 例如，當影像產生元件建立連結(例如/content/sitea/en/products.navimage.png)時，需要變形器。 如何建立功能完 [整的網際網路網站的topnav元件](https://helpx.adobe.com/experience-manager/6-3/sites/developing/using/the-basics.html) ，會建立此類連結。
+當資源路徑在Web伺服器上下文中無法正確解析時，重寫引用。 例如，當影像產生元件建立連結(例如/content/sitea/en/products.navimage.png)時，需要變形器。 [如何建立功能完備的網際網路網站](https://helpx.adobe.com/experience-manager/6-3/sites/developing/using/the-basics.html)的topnav元件會建立此類連結。
 
-The [Sling rewriter](https://sling.apache.org/documentation/bundles/output-rewriting-pipelines-org-apache-sling-rewriter.html) is a module that post-processes Sling output. 重寫器的SAX流水線實現包括發生器、一個或多個變壓器和串列器：
+[Sling rewriter](https://sling.apache.org/documentation/bundles/output-rewriting-pipelines-org-apache-sling-rewriter.html)是後處理Sling輸出的模組。 重寫器的SAX流水線實現包括發生器、一個或多個變壓器和串列器：
 
-* **** 產生器：剖析Sling輸出串流（HTML檔案），並在遇到特定元素類型時產生SAX事件。
-* **** 變壓器：監聽SAX事件，然後修改事件目標（HTML元素）。 重寫器管線包含零個或多個變壓器。 互感器依序執行，將SAX事件傳遞到序列中的下一個互感器。
-* **** 串列化程式：串列化輸出，包括每個變壓器的修改。
+* **Generator：剖析** Sling輸出串流（HTML檔案），並在遇到特定元素類型時產生SAX事件。
+* **變形器：** 監聽SAX事件，然後修改事件目標（HTML元素）。重寫器管線包含零個或多個變壓器。 互感器依序執行，將SAX事件傳遞到序列中的下一個互感器。
+* **串列化** 器：串列化輸出，包括每個變壓器的修改。
 
 ![](assets/chlimage_1-15.png)
 
-### AEM預設重寫管線 {#the-aem-default-rewriter-pipeline}
+### AEM Default Rewriter Pipeline {#the-aem-default-rewriter-pipeline}
 
 AEM使用預設的管線重寫程式來處理文字/html類型的檔案：
 
-* 產生器會剖析HTML檔案，並在遇到a、img、區域、表單、基本、連結、指令碼和內文元素時產生SAX事件。 生成器別名為 `htmlparser`。
-* 該管道包括以下變壓器： `linkchecker`, `mobile`, `mobiledebug`, `contentsync`。 轉換 `linkchecker` 器將路徑外部化為參考的HTML或HTM檔案，以防止連結中斷。
+* 產生器會剖析HTML檔案，並在遇到a、img、區域、表單、基本、連結、指令碼和內文元素時產生SAX事件。 生成器別名為`htmlparser`。
+* 該管道包括以下變壓器：`linkchecker`、`mobile`、`mobiledebug`、`contentsync`。 `linkchecker`轉換器將路徑外部化為參考的HTML或HTM檔案，以防止連結中斷。
 * 序列化程式會寫入HTML輸出。 序列化器別名是htmlwriter。
 
-節 `/libs/cq/config/rewriter/default` 點定義管線。
+`/libs/cq/config/rewriter/default`節點定義管線。
 
-### 建立變壓器 {#creating-a-transformer}
+### 建立變壓器{#creating-a-transformer}
 
 執行以下任務以建立變壓器元件並在管線中使用它：
 
-1. 實作介 `org.apache.sling.rewriter.TransformerFactory` 面。 此類建立變壓器類的實例。 指定屬性(變 `transformer.type` 壓器別名)的值，並將類配置為OSGi服務元件。
-1. 實作介 `org.apache.sling.rewriter.Transformer` 面。 為了將工作減至最低，您可以擴充 `org.apache.cocoon.xml.sax.AbstractSAXPipe` 課程。 覆寫startElement方法以自訂重寫行為。 對每個傳遞給變壓器的SAX事件調用此方法。
+1. 實施`org.apache.sling.rewriter.TransformerFactory`介面。 此類建立變壓器類的實例。 指定`transformer.type`屬性（變壓器別名）的值，並將類配置為OSGi服務元件。
+1. 實施`org.apache.sling.rewriter.Transformer`介面。 要最小化工作量，可以擴展`org.apache.cocoon.xml.sax.AbstractSAXPipe`類。 覆寫startElement方法以自訂重寫行為。 對每個傳遞給變壓器的SAX事件調用此方法。
 1. 捆綁和部署類。
 1. 將設定節點新增至AEM應用程式，將變壓器新增至管線。
 
 >[!TIP]
 >您可以改為將TransformerFactory配置為將變壓器插入定義的每個重寫器。 因此，您不需要配置管線：
 >
->* 將屬性 `pipeline.mode` 設為 `global`。
->* 將屬性 `service.ranking` 設為正整數。
->* 請勿包含屬 `pipeline.type` 性。
+>* 將`pipeline.mode`屬性設為`global`。
+>* 將`service.ranking`屬性設為正整數。
+>* 請勿包含`pipeline.type`屬性。
 
 
 >[!NOTE]
 >
->使用 [Content Package](https://helpx.adobe.com/experience-manager/aem-previous-versions.html) Maven Plugin的多模組原型來建立您的Maven專案。 POM會自動建立和安裝內容包。
+>使用Content Package Maven Plugin的[multimodule](https://helpx.adobe.com/experience-manager/aem-previous-versions.html)原型建立您的Maven專案。 POM會自動建立和安裝內容包。
 
-下列範例實作可重寫影像檔案參照的轉換器。
+下列範例實作可重寫影像檔案參照的變形器。
 
 * MyRewriterTransformerFactory類實例化MyRewriterTransformer對象。 pipeline.type屬性將變壓器別名設定為mytransformer。 為了將別名包括在流水線中，流水線配置節點將該別名包括在變壓器清單中。
 * MyRewriterTransformer類覆蓋AbstractSAXTransfer類的startElement方法。 startElement方法會重寫img元素的src屬性值。
 
 這些範例不健全，不應用於生產環境。
 
-### TransformerFactory實施示例 {#example-transformerfactory-implementation}
+### TransformerFactory實施示例{#example-transformerfactory-implementation}
 
 ```java
 package com.adobe.example;
@@ -576,7 +579,7 @@ public class MyRewriterTransformerFactory implements TransformerFactory {
 }
 ```
 
-### 變壓器實作範例 {#example-transformer-implementation}
+### 變壓器實施示例{#example-transformer-implementation}
 
 ```java
 package com.adobe.example;
@@ -644,15 +647,15 @@ public class MyRewriterTransformer extends AbstractSAXPipe implements Transforme
 }
 ```
 
-### 將變壓器添加到重寫器管線 {#adding-the-transformer-to-a-rewriter-pipeline}
+### 將變壓器添加到重寫器管線{#adding-the-transformer-to-a-rewriter-pipeline}
 
 建立JCR節點，該節點定義使用變壓器的管線。 下列節點定義會建立處理文字/html檔案的管線。 使用HTML的預設AEM產生器和剖析器。
 
 >[!NOTE]
 >
->如果將「變壓器」屬 `pipeline.mode` 性設 `global`置為，則無需配置管線。 該模 `global` 式將變壓器插入所有管道中。
+>如果將「變壓器」屬性`pipeline.mode`設定為`global`，則無需配置管線。 `global`模式將變壓器插入所有管道。
 
-### 重寫器配置節點- XML表示法 {#rewriter-configuration-node-xml-representation}
+### 重寫器配置節點- XML表示法{#rewriter-configuration-node-xml-representation}
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
