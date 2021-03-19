@@ -6,10 +6,14 @@ archetype: Administrator
 user-guide-title: Experience Manager Dispatcher 說明
 breadcrumb-title: Dispatcher 指南
 user-guide-description: 了解如何使用 Dispatcher 來快取、負載平衡及改善 AEM 伺服器的安全性。
+feature-set: Experience Manager
+feature: Dispatcher
+topic: 管理
+role: 管理員
 translation-type: tm+mt
-source-git-commit: 5765970c0335df084b5d49efae60997b3a021c47
+source-git-commit: d03518767918288f03d289f19253f15803a313c7
 workflow-type: tm+mt
-source-wordcount: '87'
+source-wordcount: '90'
 ht-degree: 85%
 
 ---
