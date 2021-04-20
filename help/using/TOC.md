@@ -8,8 +8,8 @@ breadcrumb-title: Dispatcher 指南
 user-guide-description: 了解如何使用 Dispatcher 來快取、負載平衡及改善 AEM 伺服器的安全性。
 feature-set: Experience Manager
 feature: Dispatcher
-topic: 管理
-role: 管理員
+topic: Administration
+role: Administrator
 translation-type: tm+mt
 source-git-commit: da6af93fa3dec8e3b2f146e9c8c6183a3185199b
 workflow-type: tm+mt
