@@ -8,12 +8,11 @@ breadcrumb-title: Dispatcher 指南
 user-guide-description: 了解如何使用 Dispatcher 來快取、負載平衡及改善 AEM 伺服器的安全性。
 feature-set: Experience Manager
 feature: Dispatcher
-topic: Administration
+topic: 管理
 role: Administrator
-translation-type: tm+mt
 source-git-commit: da6af93fa3dec8e3b2f146e9c8c6183a3185199b
 workflow-type: tm+mt
-source-wordcount: '90'
+source-wordcount: '89'
 ht-degree: 85%
 
 ---
@@ -21,7 +20,7 @@ ht-degree: 85%
 
 # AEM Dispatcher 說明 {#using}
 
-+ [綜覽](dispatcher.md)
++ [概覽](dispatcher.md)
 + 快速入門 {#getting-started}
    + [安裝 Dispatcher](dispatcher-install.md)
    + [Dispatcher 安全性檢查清單](security-checklist.md)
@@ -29,7 +28,7 @@ ht-degree: 85%
 + 設定 {#configuring}
    + [設定 Dispatcher](dispatcher-configuration.md)
    + [使 AEM 快取的頁面失效](page-invalidate.md)
-   + [針對快取效能最佳化網站](https://helpx.adobe.com/experience-manager/6-4/sites/deploying/using/configuring-performance.html)
+   + [最佳化網站以提升快取效能](https://helpx.adobe.com/experience-manager/6-4/sites/deploying/using/configuring-performance.html)
    + [快取安全內容](permissions-cache.md)
    + [使用具有多個網域的 Dispatcher ](dispatcher-domains.md)
    + [將 SSL 與 Dispatcher 搭配使用](dispatcher-ssl.md)
