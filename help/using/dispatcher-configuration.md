@@ -2,9 +2,9 @@
 title: 設定 Dispatcher
 description: 了解如何設定Dispatcher。
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: 3a0e237278079a3885e527d7f86989f8ac91e09d
+source-git-commit: 35739785aa835a0b995fab4710a0e37bd0ff62b4
 workflow-type: tm+mt
-source-wordcount: '8513'
+source-wordcount: '8512'
 ht-degree: 2%
 
 ---
@@ -21,7 +21,7 @@ ht-degree: 2%
 
 AEM和Dispatcher的所有元素都可安裝在IPv4和IPv6網路中。 請參閱[IPV4和IPV6](https://experienceleague.adobe.com/docs/experience-manager-65/deploying/introduction/technical-requirements.html?lang=en#ipv-and-ipv)。
 
-## Dispatcher組態檔{#dispatcher-configuration-files}
+## Dispatcher組態檔 {#dispatcher-configuration-files}
 
 預設情況下，Dispatcher設定會儲存在`dispatcher.any`文字檔案中，不過您可以在安裝期間變更此檔案的名稱和位置。
 
@@ -123,7 +123,7 @@ AEM和Dispatcher的所有元素都可安裝在IPv4和IPv6網路中。 請參閱[
   }
 ```
 
-## 使用環境變數{#using-environment-variables}
+## 使用環境變數 {#using-environment-variables}
 
 您可以在dispatcher.any檔案的字串值屬性中使用環境變數，而非硬式編碼值。 若要包含環境變數的值，請使用`${variable_name}`格式。
 
@@ -144,11 +144,11 @@ AEM和Dispatcher的所有元素都可安裝在IPv4和IPv6網路中。 請參閱[
 }
 ```
 
-## 命名Dispatcher例項{#naming-the-dispatcher-instance-name}
+## 命名Dispatcher例項 {#naming-the-dispatcher-instance-name}
 
 使用`/name`屬性來指定唯一名稱以識別Dispatcher例項。 `/name`屬性是配置結構中的頂級屬性。
 
-## 定義場{#defining-farms-farms}
+## 定義伺服器陣列 {#defining-farms-farms}
 
 `/farms`屬性定義一或多組Dispatcher行為，其中每組行為都與不同的網站或URL相關聯。 `/farms`屬性可以包含單個伺服器陣列或多個伺服器陣列：
 
@@ -255,7 +255,7 @@ Comment Type: draft
 
  -->
 
-## 指定要傳遞{#specifying-the-http-headers-to-pass-through-clientheaders}的HTTP標題
+## 指定要傳遞的HTTP標題 {#specifying-the-http-headers-to-pass-through-clientheaders}
 
 `/clientheaders`屬性定義了HTTP標題清單，Dispatcher會將這些標題從用戶端HTTP請求傳遞至轉譯器(AEM例項)。
 
@@ -314,7 +314,7 @@ Comment Type: draft
   }
 ```
 
-## 標識虛擬主機{#identifying-virtual-hosts-virtualhosts}
+## 識別虛擬主機 {#identifying-virtual-hosts-virtualhosts}
 
 `/virtualhosts`屬性定義Dispatcher為此伺服器陣列接受的所有主機名/URI組合的清單。 您可以使用星號(`*`)字元作為通配符。 / `virtualhosts`屬性的值使用下列格式：
 
@@ -346,7 +346,7 @@ Comment Type: draft
     }
 ```
 
-### 解析虛擬主機{#resolving-the-virtual-host}
+### 解析虛擬主機 {#resolving-the-virtual-host}
 
 當Dispatcher收到HTTP或HTTPS要求時，會找到最符合要求的`host,` `uri`和`scheme`標題的虛擬主機值。 Dispatcher會依下列順序評估`virtualhosts`屬性中的值：
 
@@ -361,7 +361,7 @@ Dispatcher會以下列方式找出最符合的虛擬主機值：
 
 因此，您應將預設虛擬主機放置在`dispatcher.any`檔案的最頂端伺服器陣列的`virtualhosts`屬性頂端。
 
-### 虛擬主機解析度示例{#example-virtual-host-resolution}
+### 虛擬主機解析示例 {#example-virtual-host-resolution}
 
 下列範例代表`dispatcher.any`檔案中的程式碼片段，該檔案定義兩個Dispatcher伺服器陣列，而每個伺服器陣列定義一個`virtualhosts`屬性。
 
@@ -457,7 +457,7 @@ Dispatcher會以下列方式找出最符合的虛擬主機值：
   }
 ```
 
-## 定義頁面轉譯器{#defining-page-renderers-renders}
+## 定義頁面轉譯器 {#defining-page-renderers-renders}
 
 /renders屬性定義Dispatcher傳送請求以轉譯檔案的URL。 以下範例`/renders`區段識別要呈現的單一AEM例項：
 
@@ -507,7 +507,7 @@ Dispatcher會以下列方式找出最符合的虛擬主機值：
   }
 ```
 
-### 呈現選項{#renders-options}
+### 呈現選項 {#renders-options}
 
 **/timeout**
 
@@ -551,7 +551,7 @@ Amazon Elastic Load Balancing(ELB)是一項服務，可使用可能相同順序�
   }
 ```
 
-## 配置內容訪問{#configuring-access-to-content-filter}
+## 設定內容存取權 {#configuring-access-to-content-filter}
 
 使用`/filter`區段來指定Dispatcher接受的HTTP請求。 所有其他請求都會以404錯誤碼（找不到頁面）傳回至Web伺服器。 若不存在`/filter`區段，則會接受所有請求。
 
@@ -566,7 +566,7 @@ Amazon Elastic Load Balancing(ELB)是一項服務，可使用可能相同順序�
 * 首先，拒絕訪問所有內容。
 * 視需要允許存取內容。
 
-### 定義篩選器{#defining-a-filter}
+### 定義篩選器 {#defining-a-filter}
 
 `/filter`區段中的每個項目都包含類型和模式，這些類型和模式與請求行或整個請求行的特定元素相匹配。 每個篩選器可包含下列項目：
 
@@ -592,7 +592,7 @@ Amazon Elastic Load Balancing(ELB)是一項服務，可使用可能相同順序�
 >
 >`/url "*.css"`
 
-#### HTTP請求{#the-request-line-part-of-http-requests}的請求行部分
+#### HTTP要求的要求行部分 {#the-request-line-part-of-http-requests}
 
 HTTP/1.1定義[request-line](https://www.w3.org/Protocols/rfc2616/rfc2616-sec5.html)如下：
 
@@ -604,19 +604,19 @@ HTTP/1.1定義[request-line](https://www.w3.org/Protocols/rfc2616/rfc2616-sec5.h
 
 您的模式必須考慮要求行中的空格字元和`<CRLF>`字元。
 
-#### 雙引號與單引號{#double-quotes-vs-single-quotes}
+#### 雙引號與單引號 {#double-quotes-vs-single-quotes}
 
 建立篩選規則時，請對簡單模式使用雙引號`"pattern"`。 如果您使用Dispatcher 4.2.0或更新版本，且您的模式包含規則運算式，則必須在單引號內將規則運算式模式`'(pattern1|pattern2)'`括住。
 
-#### 規則運算式{#regular-expressions}
+#### 規則運算式 {#regular-expressions}
 
 在4.2.0以後的Dispatcher版本中，您可以在篩選模式中加入POSIX延伸規則運算式。
 
-#### 疑難排解篩選器{#troubleshooting-filters}
+#### 疑難排解篩選器 {#troubleshooting-filters}
 
 如果您的篩選器沒有以預期的方式觸發，請在Dispatcher上啟用[追蹤記錄](#trace-logging)，以便您查看哪個篩選器正在攔截請求。
 
-#### 範例篩選：全部拒絕{#example-filter-deny-all}
+#### 範例篩選：全部拒絕 {#example-filter-deny-all}
 
 下列範例篩選器區段會使Dispatcher拒絕所有檔案的請求。 您應拒絕訪問所有檔案，然後允許訪問特定區域。
 
@@ -626,7 +626,7 @@ HTTP/1.1定義[request-line](https://www.w3.org/Protocols/rfc2616/rfc2616-sec5.h
 
 請求明確拒絕的區域會導致傳回404錯誤碼（找不到頁面）。
 
-#### 範例篩選：拒絕訪問特定區域{#example-filter-deny-access-to-specific-areas}
+#### 範例篩選：拒絕訪問特定區域 {#example-filter-deny-access-to-specific-areas}
 
 篩選器也可讓您拒絕存取各種元素，例如ASP頁面和發佈執行個體內的敏感區域。 下列篩選器拒絕存取ASP頁面：
 
@@ -634,7 +634,7 @@ HTTP/1.1定義[request-line](https://www.w3.org/Protocols/rfc2616/rfc2616-sec5.h
 /0002  { /type "deny" /url "*.asp"  }
 ```
 
-#### 範例篩選：啟用POST請求{#example-filter-enable-post-requests}
+#### 範例篩選：啟用POST請求 {#example-filter-enable-post-requests}
 
 下列範例篩選器允許使用POST方法提交表單資料：
 
@@ -645,7 +645,7 @@ HTTP/1.1定義[request-line](https://www.w3.org/Protocols/rfc2616/rfc2616-sec5.h
 }
 ```
 
-#### 範例篩選：允許訪問工作流控制台{#example-filter-allow-access-to-the-workflow-console}
+#### 範例篩選：允許存取工作流程主控台 {#example-filter-allow-access-to-the-workflow-console}
 
 下列範例顯示用於拒絕外部存取工作流程控制台的篩選器：
 
@@ -672,7 +672,7 @@ HTTP/1.1定義[request-line](https://www.w3.org/Protocols/rfc2616/rfc2616-sec5.h
 >
 >當多個篩選模式套用至請求時，套用的最後一個篩選模式即有效。
 
-#### 範例篩選：使用規則運算式{#example-filter-using-regular-expressions}
+#### 範例篩選：使用規則運算式 {#example-filter-using-regular-expressions}
 
 此篩選器會使用規則運算式，在非公用內容目錄中啟用擴充功能，定義於此處的單引號之間：
 
@@ -680,7 +680,7 @@ HTTP/1.1定義[request-line](https://www.w3.org/Protocols/rfc2616/rfc2616-sec5.h
 /005  {  /type "allow" /extension '(css|gif|ico|js|png|swf|jpe?g)' }
 ```
 
-#### 範例篩選：篩選請求URL的其他元素{#example-filter-filter-additional-elements-of-a-request-url}
+#### 範例篩選：篩選請求URL的其他元素 {#example-filter-filter-additional-elements-of-a-request-url}
 
 以下是使用路徑、選取器和擴充功能的篩選器，封鎖從`/content`路徑及其子樹狀結構擷取內容的規則範例：
 
@@ -693,7 +693,7 @@ HTTP/1.1定義[request-line](https://www.w3.org/Protocols/rfc2616/rfc2616-sec5.h
         }
 ```
 
-### 範例/filter區段{#example-filter-section}
+### 範例/filter區段 {#example-filter-section}
 
 在設定Dispatcher時，您應盡可能限制外部存取。 下列範例將外部訪客的存取權限降至最低：
 
@@ -806,7 +806,7 @@ Last Modified Date: 2015-06-26T04:32:37.986-0400
 >
 >如果您[使用發佈環境中的報表](https://experienceleague.adobe.com/docs/experience-manager-65/administering/operations/reporting.html?lang=en#using-reports-in-a-publish-environment)，應將Dispatcher設定為拒絕外部訪客對`/etc/reports`的存取。
 
-### 限制查詢字串{#restricting-query-strings}
+### 限制查詢字串 {#restricting-query-strings}
 
 自Dispatcher 4.1.5版起，請使用`/filter`區段來限制查詢字串。 強烈建議您明確允許查詢字串，並透過`allow`篩選元素排除一般允許。
 
@@ -835,7 +835,7 @@ Last Modified Date: 2015-06-26T04:32:37.986-0400
 }  
 ```
 
-### 測試Dispatcher安全性{#testing-dispatcher-security}
+### 測試Dispatcher安全性 {#testing-dispatcher-security}
 
 Dispatcher篩選器應會封鎖AEM發佈例項上對下列頁面和指令碼的存取權。 使用網頁瀏覽器嘗試以網站訪客會的方式開啟下列頁面，並驗證是否傳回程式碼404。 如果獲得任何其他結果，請調整您的篩選。
 
@@ -901,7 +901,7 @@ Dispatcher篩選器應會封鎖AEM發佈例項上對下列頁面和指令碼的�
 
 `curl -H "CQ-Handle: /content" -H "CQ-Path: /content" https://yourhostname/dispatcher/invalidate.cache`
 
-## 啟用虛名URL的存取{#enabling-access-to-vanity-urls-vanity-urls}
+## 啟用虛名URL的存取 {#enabling-access-to-vanity-urls-vanity-urls}
 
 <!-- 
 
@@ -940,12 +940,12 @@ Last Modified Date: 2015-03-25T14:23:05.185-0400
 
 請依照下列程式啟用虛名URL的存取權。
 
-1. 如果您的轉譯服務是AEM例項，請在發佈例項上安裝「com.adobe.granite.dispatcher.vanityurl.content」套件（請參閱上述附註）。
+1. 如果您的轉譯服務是AEM例項，請在發佈例項上安裝`com.adobe.granite.dispatcher.vanityurl.content`套件（請參閱上述附註）。
 1. 針對您為AEM或CQ頁面設定的每個虛名URL，請確定[`/filter`](#configuring-access-to-content-filter)設定拒絕URL。 如有必要，請新增拒絕URL的篩選器。
 1. 新增`/farms`下方的`/vanity_urls`區段。
 1. 重新啟動Apache Web伺服器。
 
-## 轉發聯合請求 — /propagateSyncPost {#forwarding-syndication-requests-propagatesyndpost}
+## 轉發聯合請求 — /propagateSyndPost {#forwarding-syndication-requests-propagatesyndpost}
 
 整合請求通常僅針對Dispatcher，因此依預設，這些請求不會傳送至轉譯器(例如AEM例項)。
 
@@ -996,7 +996,7 @@ Last Modified Date: 2015-03-25T14:23:05.185-0400
 >
 >有關對權限敏感的快取，請閱讀[快取安全內容](permissions-cache.md)。
 
-### 指定快取目錄{#specifying-the-cache-directory}
+### 指定快取目錄 {#specifying-the-cache-directory}
 
 `/docroot`屬性標識儲存快取檔案的目錄。
 
@@ -1017,13 +1017,13 @@ statfile沒有內容。 內容更新時，Dispatcher會更新時間戳記。 預
 >
 >如果已設定`/statfileslevel`,Dispatcher會忽略`/statfile`屬性，並使用`.stat`作為名稱。
 
-### 發生錯誤{#serving-stale-documents-when-errors-occur}時提供過時文檔
+### 發生錯誤時提供過時文檔 {#serving-stale-documents-when-errors-occur}
 
 `/serveStaleOnError`屬性可控制當轉譯伺服器傳回錯誤時，Dispatcher是否傳回失效的檔案。 依預設，當接觸到statfile且讓快取內容失效時，Dispatcher會在下次請求快取內容時刪除該內容。
 
 如果將`/serveStaleOnError`設為`"1"`，除非轉譯伺服器傳回成功回應，否則Dispatcher不會從快取中刪除已失效的內容。 來自AEM的5xx回應或連線逾時會導致Dispatcher提供過時內容，並以111的和HTTP狀態回應（重新驗證失敗）。
 
-### 使用身份驗證時快取{#caching-when-authentication-is-used}
+### 使用驗證時快取 {#caching-when-authentication-is-used}
 
 `/allowAuthorized`屬性控制是否快取包含下列任何驗證資訊的請求：
 
@@ -1041,7 +1041,7 @@ statfile沒有內容。 內容更新時，Dispatcher會更新時間戳記。 預
 >
 >要啟用會話管理（使用`/sessionmanagement`屬性），必須將`/allowAuthorized`屬性設定為`"0"`。
 
-### 指定要快取的文檔{#specifying-the-documents-to-cache}
+### 指定要快取的文檔 {#specifying-the-documents-to-cache}
 
 `/rules`屬性控制根據文檔路徑快取哪些文檔。 無論`/rules`屬性為何，Dispatcher在下列情況下都不會快取檔案：
 
@@ -1144,7 +1144,7 @@ Last Modified Date: 2017-11-13T09:23:24.326-0500
 
  -->
 
-### 按資料夾級別{#invalidating-files-by-folder-level}使檔案失效
+### 按資料夾級別使檔案失效 {#invalidating-files-by-folder-level}
 
 使用`/statfileslevel`屬性，根據快取檔案的路徑使其無效：
 
@@ -1172,7 +1172,7 @@ Last Modified Date: 2017-11-13T09:23:24.326-0500
 >
 >如果為`/statfileslevel`屬性指定值，則會忽略`/statfile`屬性。
 
-### 自動使快取檔案{#automatically-invalidating-cached-files}失效
+### 自動使快取檔案失效 {#automatically-invalidating-cached-files}
 
 `/invalidate`屬性定義內容更新時自動失效的文檔。
 
@@ -1216,7 +1216,7 @@ AEM與Adobe Analytics的整合會在您網站的`analytics.sitecatalyst.js`檔�
 }
 ```
 
-### 使用自訂失效指令碼{#using-custom-invalidation-scripts}
+### 使用自訂失效指令碼 {#using-custom-invalidation-scripts}
 
 `/invalidateHandler`屬性可讓您定義指令碼，該指令碼會針對Dispatcher收到的每個無效請求進行呼叫。
 
@@ -1234,7 +1234,7 @@ AEM與Adobe Analytics的整合會在您網站的`analytics.sitecatalyst.js`檔�
 /invalidateHandler "/opt/dispatcher/scripts/invalidate.sh"
 ```
 
-#### 無效處理程式指令碼示例{#sample-invalidation-handler-script}
+#### 範例失效處理程式指令碼 {#sample-invalidation-handler-script}
 
 ```shell
 #!/bin/bash
@@ -1242,7 +1242,7 @@ AEM與Adobe Analytics的整合會在您網站的`analytics.sitecatalyst.js`檔�
 printf "%-15s: %s %s" $1 $2 $3>> /opt/dispatcher/logs/invalidate.log
 ```
 
-### 限制可刷新快取{#limiting-the-clients-that-can-flush-the-cache}的客戶端
+### 限制可刷新快取的客戶端 {#limiting-the-clients-that-can-flush-the-cache}
 
 `/allowedClients`屬性定義允許刷新快取的特定客戶端。 全域模式會與IP相符。
 
@@ -1267,7 +1267,7 @@ printf "%-15s: %s %s" $1 $2 $3>> /opt/dispatcher/logs/invalidate.log
 >
 >若未執行此操作，任何用戶端都可發出呼叫以清除快取；如果重複執行此操作，可能會嚴重影響網站效能。
 
-### 忽略URL參數{#ignoring-url-parameters}
+### 忽略URL參數 {#ignoring-url-parameters}
 
 `ignoreUrlParams`區段定義在判斷頁面是快取還是從快取傳送時，會忽略哪些URL參數：
 
@@ -1305,7 +1305,7 @@ GET /mypage.html?q=5&p=4
 
 有關全局屬性的資訊，請參閱[設計全局屬性的模式](#designing-patterns-for-glob-properties)。
 
-### 快取HTTP回應標題{#caching-http-response-headers}
+### 快取HTTP回應標題 {#caching-http-response-headers}
 
 >[!NOTE]
 >
@@ -1347,7 +1347,7 @@ GET /mypage.html?q=5&p=4
 >FileETag none
 >```
 
-### Dispatcher快取檔案權限{#dispatcher-cache-file-permissions}
+### Dispatcher快取檔案權限 {#dispatcher-cache-file-permissions}
 
 `mode`屬性指定將哪些檔案權限應用於快取中的新目錄和檔案。 此設定受調用進程的`umask`限制。 它是從以下一個或多個值的總和中構建的八位數：
 
@@ -1363,13 +1363,13 @@ GET /mypage.html?q=5&p=4
 
 預設值為`0755`，允許所有者讀取、寫入或搜索組和其他人讀取或搜索。
 
-### 調節接觸{#throttling-stat-file-touching}的.stat檔案
+### 節流.stat檔案接觸 {#throttling-stat-file-touching}
 
 使用預設的`/invalidate`屬性，每次啟動都會有效使所有`.html`檔案失效（當其路徑符合`/invalidate`區段時）。 在具有相當流量的網站上，多次後續啟動會增加後端的cpu負載。 在這種情況下，最好「限制」`.stat`檔案接觸以保持網站的回應。 您可以使用`/gracePeriod`屬性來執行此操作。
 
 `/gracePeriod`屬性定義上次啟動後，自動失效的過時資源仍可從快取中提供的秒數。 該屬性可用於設定中，否則批次啟動會重複使整個快取失效。 建議的值為2秒。
 
-如需其他詳細資訊，請另閱上文的`/invalidate`和`/statfileslevel`小節。
+如需其他詳細資訊，請另閱上文的`/invalidate`和`/statfileslevel`部分。
 
 ### 配置基於時間的快取失效 — /enableTTL {#configuring-time-based-cache-invalidation-enablettl}
 
@@ -1408,7 +1408,7 @@ Dispatcher最多支援8個統計資料類別。 如果您定義了8個以上的�
 >
 >如果不使用負載平衡，則可忽略此部分。
 
-### 定義統計類別{#defining-statistics-categories}
+### 定義統計類別 {#defining-statistics-categories}
 
 為要保留用於選擇渲染的統計資訊的每種類型的文檔定義類別。 `/statistics`部分包含`/categories`部分。 要定義類別，請在`/categories`區段下添加一行，該行具有以下格式：
 
@@ -1445,7 +1445,7 @@ Dispatcher最多支援8個統計資料類別。 如果您定義了8個以上的�
   }
 ```
 
-### 在Dispatcher統計資料{#reflecting-server-unavailability-in-dispatcher-statistics}中反映伺服器不可用性
+### 在Dispatcher統計資料中反映伺服器不可用性 {#reflecting-server-unavailability-in-dispatcher-statistics}
 
 `/unavailablePenalty`屬性設定當與呈現的連接失敗時應用於呈現統計資訊的時間（以秒的十分之一為單位）。 Dispatcher會將時間新增至符合請求URI的統計資料類別。
 
@@ -1459,7 +1459,7 @@ Dispatcher最多支援8個統計資料類別。 如果您定義了8個以上的�
 /unavailablePenalty "1"
 ```
 
-## 識別黏著連線資料夾 — {#identifying-a-sticky-connection-folder-stickyconnectionsfor}的/stickyConnections
+## 識別黏著連線資料夾 — /stickyConnectionsFor {#identifying-a-sticky-connection-folder-stickyconnectionsfor}
 
 `/stickyConnectionsFor`屬性定義一個包含黏著檔案的資料夾；這將使用URL來存取。 Dispatcher會從單一使用者傳送此資料夾中的所有請求至相同的呈現例項。 黏著連線可確保所有檔案都有工作階段資料且一致。 此機制使用`renderid` Cookie。
 
@@ -1491,11 +1491,11 @@ Dispatcher最多支援8個統計資料類別。 如果您定義了8個以上的�
 
 嚴格連線啟用時，Dispatcher模組會設定`renderid` Cookie。 此Cookie沒有`secure`標幟，應新增此標幟以增強安全性。 您可以通過在`dispatcher.any`配置檔案的`/stickyConnections`節點中設定`secure`屬性來執行此操作。 屬性的值（`0`或`1`）定義`renderid` Cookie是否附加了`secure`屬性。 預設值為`0`，這表示如果傳入的請求安全，則將添加&#x200B;**屬性。**&#x200B;如果值設為`1`，則無論傳入的請求是否安全，都會新增安全標幟。
 
-## 處理渲染連接錯誤{#handling-render-connection-errors}
+## 處理渲染連接錯誤 {#handling-render-connection-errors}
 
 當轉譯伺服器傳回500錯誤或無法使用時，設定Dispatcher行為。
 
-### 指定運行狀況檢查頁{#specifying-a-health-check-page}
+### 指定運行狀況檢查頁 {#specifying-a-health-check-page}
 
 使用`/health_check`屬性來指定當500狀態代碼發生時所檢查的URL。 如果此頁還返回500狀態代碼，則該實例被視為不可用，並且在重試之前，可配置的時間代價(`/unavailablePenalty`)將應用於呈現。
 
@@ -1507,7 +1507,7 @@ Dispatcher最多支援8個統計資料類別。 如果您定義了8個以上的�
   }
 ```
 
-### 指定頁面重試延遲{#specifying-the-page-retry-delay}
+### 指定頁面重試延遲 {#specifying-the-page-retry-delay}
 
 `/retryDelay`屬性會設定Dispatcher在伺服器陣列轉譯的連線嘗試回合之間等待的時間（以秒為單位）。 對於每個回合，Dispatcher嘗試連線至轉譯的次數上限為伺服器陣列中的轉譯次數。
 
@@ -1517,7 +1517,7 @@ Dispatcher最多支援8個統計資料類別。 如果您定義了8個以上的�
 /retryDelay "1"
 ```
 
-### 配置重試次數{#configuring-the-number-of-retries}
+### 設定重試次數 {#configuring-the-number-of-retries}
 
 `/numberOfRetries`屬性設定Dispatcher隨轉譯而執行的連線嘗試次數上限。 如果在此次重試次數之後，Dispatcher無法成功連線至轉譯，Dispatcher會傳回失敗的回應。
 
@@ -1529,7 +1529,7 @@ Dispatcher最多支援8個統計資料類別。 如果您定義了8個以上的�
 /numberOfRetries "5"
 ```
 
-### 使用故障轉移機制{#using-the-failover-mechanism}
+### 使用故障轉移機制 {#using-the-failover-mechanism}
 
 在原始請求失敗時，啟用Dispatcher伺服器陣列上的故障轉移機制，將請求重新傳送至不同的轉譯。 啟用故障轉移時，Dispatcher的行為如下：
 
@@ -1578,7 +1578,7 @@ read more data
 
 將`/ignoreEINTR`設為`"1"`會導致Dispatcher繼續嘗試讀取資料，直到讀取完整回應為止。 預設值為`0` ，並停用該選項。
 
-## 設計全局屬性的模式{#designing-patterns-for-glob-properties}
+## 設計全局屬性的模式 {#designing-patterns-for-glob-properties}
 
 Dispatcher設定檔案中的數個區段使用`glob`屬性作為用戶端請求的選擇標準。 `glob`屬性的值是Dispatcher與請求方面（例如請求的資源路徑或用戶端的IP位址）相比較的模式。 例如，`/filter`區段中的項目會使用`glob`模式來識別Dispatcher針對或拒絕的頁面所採取的動作路徑。
 
@@ -1714,7 +1714,7 @@ The following table describes the wildcard characters.
 >
 >不過，這需要額外的資源，因此當Dispatcher根據您的需求&#x200B;*順利運作*&#x200B;時，您可以（應該）降低記錄層級。
 
-### 跟蹤記錄{#trace-logging}
+### 追蹤記錄 {#trace-logging}
 
 在Dispatcher的其他增強功能中，4.2.0版也導入了追蹤記錄功能。
 
@@ -1747,7 +1747,7 @@ The following table describes the wildcard characters.
 [Thu Mar 03 14:42:45 2016] [T] [11831] 'GET /content.infinity.json HTTP/1.1' was blocked because of /0082
 ```
 
-## 確認基本操作{#confirming-basic-operation}
+## 確認基本操作 {#confirming-basic-operation}
 
 若要確認Web伺服器、Dispatcher和AEM例項的基本操作和互動，您可以使用下列步驟：
 
