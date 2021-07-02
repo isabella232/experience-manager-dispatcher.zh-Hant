@@ -10,7 +10,7 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: f00ad751-6b95-4365-8500-e1e0108d9536
 exl-id: 9375d1c0-8d9e-46cb-9810-fa4162a8c1ba
-source-git-commit: 3a0e237278079a3885e527d7f86989f8ac91e09d
+source-git-commit: 35739785aa835a0b995fab4710a0e37bd0ff62b4
 workflow-type: tm+mt
 source-wordcount: '3684'
 ht-degree: 1%
@@ -86,14 +86,14 @@ Comment Type: draft
 
  -->
 
-## Microsoft Internet資訊伺服器{#microsoft-internet-information-server}
+## Microsoft Internet Information Server {#microsoft-internet-information-server}
 
 有關如何安裝此Web伺服器的資訊，請參閱以下資源：
 
 * Microsoft在Internet Information Server上自己的文檔
 * [&quot;官方的Microsoft IIS站點&quot;](https://www.iis.net/)
 
-### 必需的IIS元件{#required-iis-components}
+### 必需的IIS元件 {#required-iis-components}
 
 IIS 8.5和10版要求安裝以下IIS元件：
 
@@ -101,7 +101,7 @@ IIS 8.5和10版要求安裝以下IIS元件：
 
 同時，您必須添加Web伺服器(IIS)角色。 使用「伺服器管理器」添加角色和元件。
 
-## Microsoft IIS — 安裝Dispatcher模組{#microsoft-iis-installing-the-dispatcher-module}
+## Microsoft IIS — 安裝Dispatcher模組 {#microsoft-iis-installing-the-dispatcher-module}
 
 Microsoft Internet Information System所需的歸檔檔案是：
 
@@ -130,7 +130,7 @@ ZIP檔案包含下列檔案：
       * 製作例項：`author_dispatcher.any`
       * 發佈例項：`dispatcher.any`
 
-## Microsoft IIS — 配置Dispatcher INI檔案{#microsoft-iis-configure-the-dispatcher-ini-file}
+## Microsoft IIS — 配置Dispatcher INI檔案 {#microsoft-iis-configure-the-dispatcher-ini-file}
 
 編輯`disp_iis.ini`檔案以設定Dispatcher安裝。 `.ini`檔案的基本格式如下：
 
@@ -217,7 +217,7 @@ replaceauthorization=0
 1. 按一下「檢查名稱」按鈕。 Windows解析用戶帳戶時，按一下「確定」。
 1. 在Dispatcher資料夾的「權限」對話方塊中，選取您剛新增的帳戶，啟用帳戶&#x200B;**的所有權限，但完全控制**&#x200B;除外，然後按一下「確定」。 按一下「確定」(OK)以關閉資料夾「屬性」(Properties)對話框。
 
-### 註冊JSON Mime類型 — IIS 8.5和10 {#registering-the-json-mime-type-iis-and}
+### 註冊JSON Mime Type - IIS 8.5和10 {#registering-the-json-mime-type-iis-and}
 
 當您希望Dispatcher允許JSON呼叫時，請依照下列程式來註冊JSON MIME類型。
 
@@ -260,7 +260,7 @@ replaceauthorization=0
    logfile=C:\inetpub\logs\dispatcher\dispatcher.log
    ```
 
-### 後續步驟{#next-steps}
+### 後續步驟 {#next-steps}
 
 開始使用Dispatcher之前，您必須知道：
 
@@ -285,7 +285,7 @@ replaceauthorization=0
 
 另請參閱Apache HTTP Server [ Security Tips](https://httpd.apache.org/docs/2.4/misc/security_tips.html)和[ Security Reports](https://httpd.apache.org/security_report.html)。
 
-### Apache Web伺服器 — 新增Dispatcher模組{#apache-web-server-add-the-dispatcher-module}
+### Apache Web Server — 新增Dispatcher模組 {#apache-web-server-add-the-dispatcher-module}
 
 Dispatcher會以下列任一方式提供：
 
@@ -318,7 +318,7 @@ Dispatcher會以下列任一方式提供：
 
    **注意：** 只要Dispatcher模組的DispatcherLog屬性已據以設定，您就可以將此檔案放置在不同位置。（請參閱下方的Dispatcher專用設定項目）。
 
-### Apache Web伺服器 — 配置SELinux屬性{#apache-web-server-configure-selinux-properties}
+### Apache Web Server — 配置SELinux屬性 {#apache-web-server-configure-selinux-properties}
 
 如果您在已啟用SELinux的RedHat Linux Kernel 2.6上執行Dispatcher，在Dispatcher記錄檔中可能會遇到類似的錯誤訊息。
 
@@ -339,7 +339,7 @@ chcon -R --type httpd_sys_content_t [path to the docroot]
 semanage fcontext -a -t httpd_sys_content_t "[path to the docroot](/.*)?"
 ```
 
-### Apache Web伺服器 — 為Dispatcher {#apache-web-server-configure-apache-web-server-for-dispatcher}配置Apache Web伺服器
+### Apache Web Server — 為Dispatcher配置Apache Web Server {#apache-web-server-configure-apache-web-server-for-dispatcher}
 
 需要使用`httpd.conf`配置Apache Web伺服器。 在Dispatcher安裝套件中，您會找到名為`httpd.conf.disp<x>`的範例設定檔案。
 
@@ -420,12 +420,17 @@ DispatcherKeepAliveTimeout 60
 
 >[!NOTE]
 >
->伺服器標題的預設設定為：`  
-ServerTokens Full` `  
-DispatcherNoServerHeader 0`\
-這會顯示AEM版本（用於統計用途）。 如果要停用標題中可用的此類資訊，可以設定：`  
-ServerTokens Prod`\
-如需詳細資訊，請參閱[關於ServerToken指令的Apache檔案（例如，適用於Apache 2.4）](https://httpd.apache.org/docs/2.4/mod/core.html) 。
+>伺服器標題的預設設定為：
+>
+>`ServerTokens Full`
+>
+>`DispatcherNoServerHeader 0`
+>
+>這會顯示AEM版本（用於統計用途）。 如果要停用標題中可用的此類資訊，可以設定：
+>
+>`ServerTokens Prod`
+>
+>如需詳細資訊，請參閱[關於ServerToken指令的Apache檔案（例如，適用於Apache 2.4）](https://httpd.apache.org/docs/2.4/mod/core.html) 。
 
 **SetHandler**
 
@@ -483,16 +488,20 @@ AllowOverride None
 ```
 
 >[!NOTE]
-**SetHandler**&#x200B;語句的參數必須寫入&#x200B;*，與上述示例*&#x200B;中的參數完全相同，因為這是模組中定義的處理程式的名稱。
-有關此命令的完整詳細資訊，請參閱提供的示例配置檔案和Apache Web Server文檔。
+>
+>**SetHandler**&#x200B;語句的參數必須寫入&#x200B;*，與上述示例*&#x200B;中的參數完全相同，因為這是模組中定義的處理程式的名稱。
+>
+>有關此命令的完整詳細資訊，請參閱提供的示例配置檔案和Apache Web Server文檔。
 
 **ModMimeUsePathInfo**
 
 在&#x200B;**SetHandler**&#x200B;語句後，您還應添加&#x200B;**ModMimeUsePathInfo**&#x200B;定義。
 
 >[!NOTE]
-`ModMimeUsePathInfo`參數僅應在您使用Dispatcher 4.0.9版或更新版本時使用並設定。
-(請注意，Dispatcher 4.0.9版已於2011年發行。 如果您使用舊版，則升級至最新的Dispatcher版本是適當的)。
+>
+>`ModMimeUsePathInfo`參數僅應在您使用Dispatcher 4.0.9版或更新版本時使用並設定。
+>
+>(請注意，Dispatcher 4.0.9版已於2011年發行。 如果您使用舊版，則升級至最新的Dispatcher版本是適當的)。
 
 應為所有Apache配置設定`On`**ModMimeUsePathInfo**&#x200B;參數：
 
@@ -520,7 +529,7 @@ AllowOverride None
 ...
 ```
 
-### 啟用對HTTPS（Unix和Linux）的支援{#enable-support-for-https-unix-and-linux}
+### 啟用對HTTPS（Unix和Linux）的支援 {#enable-support-for-https-unix-and-linux}
 
 Dispatcher使用OpenSSL來實作透過HTTP的安全通訊。 從Dispatcher版本&#x200B;**4.2.0**&#x200B;開始，支援OpenSSL 1.0.0和OpenSSL 1.0.1。 Dispatcher預設會使用OpenSSL 1.0.0。 若要使用OpenSSL 1.0.1，請使用下列程式建立符號連結，讓Dispatcher使用已安裝的OpenSSL程式庫。
 
@@ -538,9 +547,10 @@ Dispatcher使用OpenSSL來實作透過HTTP的安全通訊。 從Dispatcher版本
    ```
 
 >[!NOTE]
-如果您使用的是自訂版本的Apache，請確定Apache和Dispatcher是使用相同版本的[OpenSSL](https://www.openssl.org/source/)編譯。
+>
+>如果您使用的是自訂版本的Apache，請確定Apache和Dispatcher是使用相同版本的[OpenSSL](https://www.openssl.org/source/)編譯。
 
-### 後續步驟{#next-steps-1}
+### 後續步驟 {#next-steps-1}
 
 開始使用Dispatcher之前，您現在必須：
 
@@ -550,17 +560,19 @@ Dispatcher使用OpenSSL來實作透過HTTP的安全通訊。 從Dispatcher版本
 ## Sun Java System Web Server / iPlanet {#sun-java-system-web-server-iplanet}
 
 >[!NOTE]
-此處介紹了Windows和Unix環境的說明。
-選取要執行的時候請小心。
+>
+>此處介紹了Windows和Unix環境的說明。
+>
+>選取要執行的時候請小心。
 
-### Sun Java System Web Server / iPlanet — 安裝Web伺服器{#sun-java-system-web-server-iplanet-installing-your-web-server}
+### Sun Java System Web Server / iPlanet — 安裝Web伺服器 {#sun-java-system-web-server-iplanet-installing-your-web-server}
 
 有關如何安裝這些Web伺服器的完整資訊，請參閱其各自的文檔：
 
 * Sun Java System Web Server
 * iPlanet Web Server
 
-### Sun Java System Web Server / iPlanet — 添加Dispatcher模組{#sun-java-system-web-server-iplanet-add-the-dispatcher-module}
+### Sun Java System Web Server / iPlanet — 添加Dispatcher模組 {#sun-java-system-web-server-iplanet-add-the-dispatcher-module}
 
 Dispatcher會以下列任一方式提供：
 
@@ -583,7 +595,7 @@ Dispatcher會以下列任一方式提供：
 
 1. 將Dispatcher檔案放置在Web伺服器的`plugin`目錄中：
 
-### Sun Java System Web Server / iPlanet — 為Dispatcher {#sun-java-system-web-server-iplanet-configure-for-the-dispatcher}配置
+### Sun Java System Web Server / iPlanet — 為Dispatcher配置 {#sun-java-system-web-server-iplanet-configure-for-the-dispatcher}
 
 需要使用`obj.conf`配置Web伺服器。 在Dispatcher安裝套件中，您會找到名為`obj.conf.disp`的範例設定檔案。
 
@@ -604,7 +616,8 @@ Dispatcher會以下列任一方式提供：
 1. 儲存變更。
 
 >[!NOTE]
-下列設定應全部位於一行，且`$(SERVER_ROOT)`和`$(PRODUCT_SUBDIR)`必須取代為個別值。
+>
+>下列設定應全部位於一行，且`$(SERVER_ROOT)`和`$(PRODUCT_SUBDIR)`必須取代為個別值。
 
 **初始化**
 
@@ -652,7 +665,7 @@ Service fn="dispService" method="(GET|HEAD|POST)" type="\*/\*"
 ...
 ```
 
-### 後續步驟{#next-steps-2}
+### 後續步驟 {#next-steps-2}
 
 開始使用Dispatcher之前，您現在必須：
 
