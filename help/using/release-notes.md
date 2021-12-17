@@ -9,10 +9,10 @@ content-type: reference
 products: SG_EXPERIENCEMANAGER/6.4
 discoiquuid: ff3d38e0-71c9-4b41-85f9-fa896393aac5
 exl-id: b55c7a34-d57b-4d45-bd83-29890f1524de
-source-git-commit: 4f37bc2571c3272beeb1764ca0bf0347e086cc07
+source-git-commit: bd03499fae4096fe5642735eb466276f1a179dec
 workflow-type: tm+mt
-source-wordcount: '852'
-ht-degree: 8%
+source-wordcount: '941'
+ht-degree: 7%
 
 ---
 
@@ -48,9 +48,9 @@ Adobe強烈建議使用最新版本的AEM Dispatcher，以取得最新功能、�
 * DISP-833 - X-Forwarded-Host標題可包含逗號分隔主機名稱的清單
 * DISP-835 - DispatcherUseForwardedHost可以吞咽主機標頭（如果最後）
 
-
 **改善功能**:
 
+* DISP-874 — 建立Dispatcher設定，透過標幟將DISP-818的實作開啟或關閉 `DispatcherRestrictUncacheableContent`. 預設值為Off。 關閉時，會移除mod所設定的任何快取標題，此標題會因無法存取的內容而過期。 這與4.3.3版中的行為不同（但與4.3.3之前的版本相同）。 保留 `DispatcherRestrictUncacheableContent`預設為「關閉」，建議使用瀏覽器快取，因此具有更大的彈性。 如果從4.3.3版升級至4.3.4版時，您想要維持與4.3.3版相同的行為，則必須明確設定 `DispatcherRestrictUncacheableContent` 開啟。
 * DISP-841 - Dispatcher對504回應代碼不遵守/serverStaleOnError
 * DISP-874 — 建立Dispatcher設定，以開啟或關閉DISP-818的實作
 * DISP-883 — 在Dispatcher中顯示URL請求分解的追蹤
