@@ -1,8 +1,8 @@
 ---
 title: 最佳化網站以提升快取效能
-seo-title: 最佳化網站以提升快取效能
+seo-title: Optimizing a Website for Cache Performance
 description: 了解如何設計您的網站，以充份發揮快取的效益。
-seo-description: Dispatcher提供許多內建機制，您可使用這些機制來最佳化效能。 了解如何設計您的網站，以充份發揮快取的效益。
+seo-description: Dispatcher offers a number of built-in mechanisms that you can use to optimize performance. Learn how to design your web site to maximize the benefits of caching.
 uuid: 2d4114d1-f464-4e10-b25c-a1b9a9c715d1
 contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
@@ -13,15 +13,15 @@ redirecttarget: https://helpx.adobe.com/experience-manager/6-4/sites/deploying/u
 index: y
 internal: n
 snippet: y
-source-git-commit: 2ca816ac0776d72be651b76ff4f45e0c3ed1450f
+source-git-commit: 762f575a58f53d25565fb9f67537e372c760674f
 workflow-type: tm+mt
-source-wordcount: '1167'
+source-wordcount: '1134'
 ht-degree: 3%
 
 ---
 
 
-# 為快取效能優化網站{#optimizing-a-website-for-cache-performance}
+# 最佳化網站以提升快取效能 {#optimizing-a-website-for-cache-performance}
 
 <!-- 
 
@@ -47,23 +47,22 @@ Dispatcher提供許多內建機制，您可使用這些機制來最佳化效能�
 >* 無法儲存其他項目，例如HTTP標題、Cookie、工作階段資料和表單資料。
 
 >
->
-一般而言，許多快取策略都需要選取好的URL，而不需仰賴這些額外資料。
+>一般而言，許多快取策略都需要選取好的URL，而不需仰賴這些額外資料。
 
-## 使用一致的頁面編碼{#using-consistent-page-encoding}
+## 使用一致的頁面編碼 {#using-consistent-page-encoding}
 
 HTTP要求標頭不會進行快取，因此如果您將頁面編碼資訊儲存在標題中，就會發生問題。 在此情況下，當Dispatcher從快取中提供頁面時，頁面會使用Web伺服器的預設編碼。 有兩種方法可以避免此問題：
 
 * 如果您只使用一種編碼，請確定Web伺服器上使用的編碼與AEM網站的預設編碼相同。
-* 在HTML `head`區段中使用`<META>`標籤來設定編碼，如下列範例所示：
+* 使用 `<META>` 標籤中的HTML `head` 區段來設定編碼，如下列範例所示：
 
 ```xml
         <META http-equiv="Content-Type" content="text/html; charset=EUC-JP">
 ```
 
-## 避免URL參數{#avoid-url-parameters}
+## 避免URL參數 {#avoid-url-parameters}
 
-如有可能，請避免要快取之頁面的URL參數。 例如，如果您有圖片庫，則不會快取下列URL（除非Dispatcher已相應地設定[](dispatcher-configuration.md#main-pars_title_24)）:
+如有可能，請避免要快取之頁面的URL參數。 例如，如果您有圖片庫，則不會快取下列URL(除非Dispatcher [相應地](dispatcher-configuration.md#main-pars_title_24)):
 
 ```xml
 www.myCompany.com/pictures/gallery.html?event=christmas&amp;page=1
@@ -79,7 +78,7 @@ www.myCompany.com/pictures/gallery.christmas.1.html
 >
 >此URL會呼叫與gallery.html相同的頁面和範本。 在範本定義中，您可以指定哪個指令碼轉譯頁面，或對所有頁面使用相同的指令碼。
 
-## 依URL {#customize-by-url}自訂
+## 依URL自訂 {#customize-by-url}
 
 如果您允許使用者變更字型大小（或任何其他版面自訂），請確定URL中反映不同的自訂。
 
@@ -95,13 +94,13 @@ www.myCompany.com/news/main.large.html
 >
 >對於大多數的版面方面，也可以使用樣式表和/或用戶端指令碼。 這些功能在快取方面通常非常有效。
 >
->在列印版本中，這也很實用，您可以在其中使用URL，例如：&quot;
+>在列印版本中，這也很實用，您可以在其中使用URL，例如：
 >
 >`www.myCompany.com/news/main.print.html`
 >
 >使用模板定義的指令碼全域功能，可以指定一個單獨的指令碼來呈現打印頁。
 
-## 使用作標題的影像檔案失效{#invalidating-image-files-used-as-titles}
+## 使用作標題的影像檔案失效 {#invalidating-image-files-used-as-titles}
 
 如果您將頁面標題或其他文字呈現為圖片，則建議儲存這些檔案，以便在頁面上的內容更新時刪除這些檔案：
 
@@ -116,7 +115,7 @@ www.myCompany.com/news/main.large.html
 >
 >影像檔案不一定實際存在於AEM例項上。 您可以使用動態建立影像檔案的指令碼。 Dispatcher接著會將檔案儲存在Web伺服器上。
 
-## 使用於導航{#invalidating-image-files-used-for-navigation}的影像檔案失效
+## 使用於導航的影像檔案失效 {#invalidating-image-files-used-for-navigation}
 
 如果您使用圖片作為導航條目，則方法與標題基本相同，只是略微複雜。 將所有導航影像與目標頁面一起儲存。 如果您將兩張圖片用於正常和活動，則可以使用以下指令碼：
 
@@ -147,12 +146,11 @@ Dispatcher無法快取個人化資料，因此建議您將個人化限制在必�
 >
 
 
+## 黏著連線 {#sticky-connections}
 
-## 黏著連線{#sticky-connections}
+[黏著連線](dispatcher.md#TheBenefitsofLoadBalancing) 確保同一個用戶的文檔都在同一伺服器上組成。 如果使用者離開此資料夾，稍後返回該資料夾，連線仍會持續。 定義一個資料夾，以保留網站需要黏著連線的所有檔案。 請盡量不要有其他檔案。 如果您使用個人化頁面和工作階段資料，這會影響負載平衡。
 
-[黏著](dispatcher.md#TheBenefitsofLoadBalancing) 連線，確保同一個使用者的檔案都是在同一台伺服器上撰寫。如果使用者離開此資料夾，稍後返回該資料夾，連線仍會持續。 定義一個資料夾，以保留網站需要黏著連線的所有檔案。 請盡量不要有其他檔案。 如果您使用個人化頁面和工作階段資料，這會影響負載平衡。
-
-## MIME類型{#mime-types}
+## MIME類型 {#mime-types}
 
 瀏覽器有兩種方式可判斷檔案類型：
 
