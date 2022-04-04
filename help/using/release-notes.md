@@ -9,9 +9,9 @@ content-type: reference
 products: SG_EXPERIENCEMANAGER/6.4
 discoiquuid: ff3d38e0-71c9-4b41-85f9-fa896393aac5
 exl-id: b55c7a34-d57b-4d45-bd83-29890f1524de
-source-git-commit: 4e17217d32e2d5d9e2435ec4d70e0d05d3905e1c
+source-git-commit: 69aa52221e997e0b68c89bf383d36fdb7093ac4d
 workflow-type: tm+mt
-source-wordcount: '976'
+source-wordcount: '977'
 ht-degree: 7%
 
 ---
@@ -31,9 +31,9 @@ ht-degree: 7%
 
 ## 系統需求和先決條件 {#system-requirements-and-prerequisites}
 
-請參閱 [支援的平台](https://helpx.adobe.com/experience-manager/6-4/sites/deploying/using/technical-requirements.html) 的子菜單。
+請參閱 [支援的平台](https://helpx.adobe.com/experience-manager/6-4/sites/deploying/using/technical-requirements.html)的子菜單。
 
-Adobe強烈建議使用最新AEM版本的Dispatcher來使用最新功能、最新的錯誤修復程式以及盡可能最好的效能。
+Adobe強烈建議使用最新AEM版本的Dispatcher從最新的功能、最新的錯誤修復和最佳效能中獲益。
 
 ## 安裝指示 {#installation-instructions}
 
