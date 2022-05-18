@@ -1,18 +1,18 @@
 ---
 title: Dispatcher 綜覽
-seo-title: Adobe AEM Dispatcher 綜覽
-description: 本文提供 Dispatcher 的一般綜覽。
-seo-description: 本文提供 Adobe Experience Manager Dispatcher 的一般綜覽。
+seo-title: Adobe AEM Dispatcher Overview
+description: 瞭解如何使用Dispatcher提高AEM雲服務的安全性、快取等。
+seo-description: This article provides a general overview of Adobe Experience Manager Dispatcher.
 uuid: 71766f86-5e91-446b-a078-061b179d090d
 pageversionid: 1193211344162
 topic-tags: dispatcher
 content-type: reference
 discoiquuid: 1d449ee2-4cdd-4b7a-8b4e-7e6fc0a1d7ee
 exl-id: c9266683-6890-4359-96db-054b7e856dd0
-source-git-commit: 3a0e237278079a3885e527d7f86989f8ac91e09d
+source-git-commit: 76f7a3fc8d98657c5f46912f452c05fce1b5be61
 workflow-type: tm+mt
-source-wordcount: '3199'
-ht-degree: 90%
+source-wordcount: '3190'
+ht-degree: 95%
 
 ---
 
@@ -22,22 +22,22 @@ ht-degree: 90%
 >
 >Dispatcher 版本與 AEM 無關。如果您依循連結至 Dispatcher 文件，且該連結內嵌於舊版 AEM 的文件中，您可能會被重新導向至本頁。
 
-Dispatcher是Adobe Experience Manager的快取和/或負載平衡工具，可與企業級Web伺服器搭配使用。
+Dispatcher是Adobe Experience Manager的快取和/或負載平衡工具，可與企業級Web伺服器結合使用。
 
-部署dispatcher的程式與所選的Web伺服器和作業系統平台無關：
+部署調度程式的過程獨立於Web伺服器和選擇的作業系統平台：
 
-1. 瞭解 Dispatcher (本頁)。另請參閱[調度程式的常見問題集](https://helpx.adobe.com/experience-manager/using/dispatcher-faq.html)。
-1. 根據Web伺服器文檔安裝[受支援的Web伺服器](https://helpx.adobe.com/experience-manager/6-3/sites/deploying/using/technical-requirements.html)。
+1. 瞭解 Dispatcher (本頁)。另請參見 [常見問題，有關分派員](https://helpx.adobe.com/experience-manager/using/dispatcher-faq.html)。
+1. 安裝 [受支援的web伺服器](https://helpx.adobe.com/experience-manager/6-3/sites/deploying/using/technical-requirements.html) Web伺服器文檔。
 1. [在 Web 伺服器上安裝 Dispatcher 模組](dispatcher-install.md)，並相應地設定 Web 伺服器。
 1. [設定 Dispatcher](dispatcher-configuration.md) (dispatcher.any 檔案)。
 1. [設定 AEM](page-invalidate.md)，如此一來內容更新即可讓快取失效。
 
 >[!NOTE]
 >
->若要進一步了解Dispatcher如何搭配AEM運作：
+>要更好地瞭解Dispatcher的工作方式，請執AEM行：
 >
->* 請參閱[ 2017年7月的「向AEM社群專家提問」](https://bit.ly/ATACE0717)。
->* 訪問[此儲存庫](https://github.com/adobe/aem-dispatcher-experiments)。 它包含一系列「回家」實驗室格式的實驗。
+>* 請參閱 [請社AEM區專家參加2017年7月](https://bit.ly/ATACE0717)。
+>* 訪問 [此儲存庫](https://github.com/adobe/aem-dispatcher-experiments)。 它包含一系列實驗，採用「回家」實驗室的形式。
 
 
 
@@ -45,7 +45,7 @@ Dispatcher是Adobe Experience Manager的快取和/或負載平衡工具，可與
 
 * [Dispatcher 安全性檢查清單](security-checklist.md)
 * [Dispatcher知識庫](https://helpx.adobe.com/cq/kb/index/dispatcher.html)
-* [最佳化網站以提升快取效能](https://helpx.adobe.com/experience-manager/6-4/sites/deploying/using/configuring-performance.html)
+* [優化網站以實現快取效能](https://helpx.adobe.com/experience-manager/6-4/sites/deploying/using/configuring-performance.html)
 * [使用具有多個網域的 Dispatcher](dispatcher-domains.md)
 * [將 SSL 與 Dispatcher 搭配使用](dispatcher-ssl.md)
 * [實作需要權限的快取](permissions-cache.md)
@@ -158,7 +158,7 @@ Dispatcher 有一個檔案清單，這些檔案會自動失效。請求該清單
 
 ### 確定文件是否會進入快取
 
-您可以[定義Dispatcher在設定檔案](https://helpx.adobe.com/experience-manager/dispatcher/using/dispatcher-configuration.html)中快取的檔案。 Dispatcher 會根據可快取文件清單來檢查請求。如果文件不在此清單中，Dispatcher 會請求 AEM 例項的文件。
+你可以 [定義Dispatcher在配置檔案中快取的文檔](https://helpx.adobe.com/experience-manager/dispatcher/using/dispatcher-configuration.html)。 Dispatcher 會根據可快取文件清單來檢查請求。如果文件不在此清單中，Dispatcher 會請求 AEM 例項的文件。
 
 在下列情況下，** Dispatcher 一律會直接從 AEM 例項要求文件:
 
@@ -168,7 +168,7 @@ Dispatcher 有一個檔案清單，這些檔案會自動失效。請求該清單
 
 >[!NOTE]
 >
->GET 或 HEAD (用於 HTTP 標頭) 方法可讓 Dispatcher 快取。有關響應標頭快取的詳細資訊，請參閱[快取HTTP響應標頭](https://helpx.adobe.com/experience-manager/dispatcher/using/dispatcher-configuration.html)部分。
+>GET 或 HEAD (用於 HTTP 標頭) 方法可讓 Dispatcher 快取。有關響應頭快取的其他資訊，請參見 [快取HTTP響應標頭](https://helpx.adobe.com/experience-manager/dispatcher/using/dispatcher-configuration.html) 的子菜單。
 
 ### 確定是否已快取文件
 
@@ -269,7 +269,7 @@ CDN 從 Dispatcher 重新擷取前，有許多方法可控制 CDN 快取資源�
    視 MIME 類型、副檔名、請求類型等，設定 CDN 快取保存特定資源的時長。
 
 1. 到期日和快取控制標頭\
-   如果是由上游伺服器傳送，大部分的 CDN 都會遵守 `Expires:` 和 `Cache-Control:` HTTP 標頭。例如，您可以使用[mod_expires](https://httpd.apache.org/docs/2.4/mod/mod_expires.html) Apache模組來達成此目的。
+   如果是由上游伺服器傳送，大部分的 CDN 都會遵守 `Expires:` 和 `Cache-Control:` HTTP 標頭。這可以例如通過使用 [mod_expires](https://httpd.apache.org/docs/2.4/mod/mod_expires.html) Apache模組。
 
 1. 手動失效\
    CDN 可透過 Web 介面從快取中移除資源。
@@ -280,17 +280,17 @@ CDN 從 Dispatcher 重新擷取前，有許多方法可控制 CDN 快取資源�
 
 如果將此方法用於快取受管理的內容，則表示只有在已設定的快取期限到期，並且已再次從 Dispatcher 中擷取文件後，使用者才能看到內容變更。
 
-為了達到更精細的控制，API 型的失效允許您在 Dispatcher 快取失效時將 DN 的快取判定為失效。您可以根據CDN API來實作您自己的[ContentBuilder](https://helpx.adobe.com/experience-manager/6-5/sites/developing/using/reference-materials/javadoc/com/day/cq/replication/ContentBuilder.html)和[TransportHandler](https://helpx.adobe.com/experience-manager/6-5/sites/developing/using/reference-materials/javadoc/com/day/cq/replication/TransportHandler.html)（如果API不是REST型），並設定復寫代理程式，使CDN的快取失效。
+為了達到更精細的控制，API 型的失效允許您在 Dispatcher 快取失效時將 DN 的快取判定為失效。基於CDN API，您可以實施自己的 [內容生成器](https://helpx.adobe.com/experience-manager/6-5/sites/developing/using/reference-materials/javadoc/com/day/cq/replication/ContentBuilder.html) 和 [傳輸處理程式](https://helpx.adobe.com/experience-manager/6-5/sites/developing/using/reference-materials/javadoc/com/day/cq/replication/TransportHandler.html) （如果API不基於REST），並設定一個複製代理，該代理將使用這些代理使CDN的快取失效。
 
 >[!NOTE]
 >
->另請參閱[AEM(CQ)Dispatcher安全性和CDN+瀏覽器快取](https://www.slideshare.net/andrewmkhoury/dispatcher-caching-aemgemspart2jan2015) ，以及[Dispatcher快取](https://docs.adobe.com/content/ddc/en/gems/dispatcher-caching---new-features-and-optimizations.html)的相關錄制簡報。
+>另請參閱 [(AEMCQ)Dispatcher Security和CDN+Browser Caching](https://www.slideshare.net/andrewmkhoury/dispatcher-caching-aemgemspart2jan2015) 並錄制演示文稿 [調度程式快取](https://docs.adobe.com/content/ddc/en/gems/dispatcher-caching — 新增功能和優化.html)。
 
 ## 將 Dispatcher 與 Author 伺服器搭配使用 {#using-a-dispatcher-with-an-author-server}
 
 >[!CAUTION]
 >
->如果您搭配觸控式UI](https://helpx.adobe.com/tw/experience-manager/6-3/sites/developing/using/touch-ui-concepts.html)使用[AEM，則應&#x200B;**not**&#x200B;快取製作例項內容。 如果已為 Author 例項啟用快取，則需要停用並刪除快取目錄的內容。如要停用快取，應編輯`author_dispatcher.any`檔案並修改區段`/rule`屬性`/cache`如下:
+>如果您 [使AEM用Touch UI](https://helpx.adobe.com/tw/experience-manager/6-3/sites/developing/using/touch-ui-concepts.html) 你應該 **不** 快取作者實例內容。 如果已為 Author 例項啟用快取，則需要停用並刪除快取目錄的內容。如要停用快取，應編輯`author_dispatcher.any`檔案並修改區段`/rule`屬性`/cache`如下:
 
 ```xml
 /rules
@@ -309,7 +309,7 @@ Dispatcher 可用於 Author 例項之前，以改善編寫效能。如要設定�
 1. 在文字編輯器中開啟 `author_dispatcher.any`，並進行下列變更: 
 
    1. 變更 `/hostname` 和 `/renders` 區段的 `/port`，以指向您的 Author 例項。
-   1. 變更 `/cache` 區段的 `/docroot`，以指向快取目錄。如果您正搭配觸控式UI](https://helpx.adobe.com/experience-manager/6-3/sites/developing/using/touch-ui-concepts.html)使用[AEM，請參閱上述警告。
+   1. 變更 `/cache` 區段的 `/docroot`，以指向快取目錄。以防您使用 [使AEM用Touch UI](https://helpx.adobe.com/experience-manager/6-3/sites/developing/using/touch-ui-concepts.html)，請參閱上面的警告。
    1. 儲存變更。
 
 1. 刪除您在上面設定的 `/cache` > `/docroot` 目錄中的所有現有檔案。
