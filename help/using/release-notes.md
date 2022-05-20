@@ -1,7 +1,7 @@
 ---
 title: AEM Dispatcher 發行說明
 seo-title: AEM Dispatcher Release Notes
-description: 特定於Adobe Experience Manager調度程式的發行說明
+description: Adobe Experience Manager Dispatcher 專屬的發行說明
 seo-description: Release notes specific to Adobe Experience Manager Dispatcher
 uuid: ae3ccf62-0514-4c03-a3b9-71799a482cbd
 topic-tags: release-notes
@@ -12,7 +12,7 @@ exl-id: b55c7a34-d57b-4d45-bd83-29890f1524de
 source-git-commit: 5430d53571414cf3bf764bb8523c252bb77a3bf2
 workflow-type: tm+mt
 source-wordcount: '1037'
-ht-degree: 7%
+ht-degree: 94%
 
 ---
 
@@ -22,168 +22,168 @@ ht-degree: 7%
 
 |  |  |
 |--- |--- |
-| 產品 | Adobe Experience Manager(AEM)調度員 |
+| 產品 | Adobe Experience Manager (AEM) Dispatcher |
 | 版本 | 4.3.5 |
 | 類型 | 次要版本 |
-| 日期 | 2022 年 4 月 04 日 |
-| 下載URL | <ul><li>[Apache 2.4](release-notes.md#apache)</li><li>[Microsoft網際網路資訊服務(IIS)](release-notes.md#iis)</li></ul> |
-| 相容性 | AEM 6.1或更高版本 |
+| 日期 | 2022 年 4 月 4 日 |
+| 下載 URL | <ul><li>[Apache 2.4](release-notes.md#apache)</li><li>[Microsoft Internet Information Services (IIS)](release-notes.md#iis)</li></ul> |
+| 相容性 | AEM 6.1 或更高版本 |
 
 ## 系統需求和先決條件 {#system-requirements-and-prerequisites}
 
-請參閱 [支援的平台](https://helpx.adobe.com/experience-manager/6-4/sites/deploying/using/technical-requirements.html)的子菜單。
+如需有關需求和先決條件的詳細資訊，請參閱[支援的平台](https://helpx.adobe.com/experience-manager/6-4/sites/deploying/using/technical-requirements.html)頁面。
 
-Adobe強烈建議使用最新AEM版本的Dispatcher從最新的功能、最新的錯誤修復和最佳效能中獲益。
+Adobe 極力建議您使用最新版 AEM Dispatcher 以受益於最新功能、最近的錯誤修正和最佳效能。
 
 ## 安裝指示 {#installation-instructions}
 
-有關詳細說明，請參見 [正在安裝Dispatcher](dispatcher-install.md)。
+如需詳細指示，請參閱[安裝 Dispatcher](dispatcher-install.md)。
 
-## 發佈歷史記錄 {#release-history}
+## 發行版記錄 {#release-history}
 
-### 4.3.5版（2022年4月4日） {#apr}
+### 版本 4.3.5 (2022 年 4 月 4 日) {#apr}
 
-**改善功能**:
+**改良功能**：
 
-* DISP-954 — 支援失效，即使到期未過
-* DISP-949 - Dispatcher返回200而不是404，即使POST請求被篩選器阻止
+* DISP-954 - 即便尚未過期也支援失效功能
+* DISP-949 - 即便篩選條件封鎖了 POST 請求，Dispatcher 也會傳回 200 而不是 404
 
-### 4.3.4版(2021-11-29) {#nov}
+### 版本 4.3.4 (2021 年 11 月 29 日) {#nov}
 
-**錯誤修正**:
+**錯誤修正**：
 
-* DISP-833 - X-Forwarded-Host標頭可能包含逗號分隔的主機名清單
-* DISP-835 - DispatcherUseForwardedHost吞咽主機標頭（如果該標頭是最後一個）
+* DISP-833 - X-Forwarded-Host 標頭可能包含以逗號分隔的主機名稱清單
+* DISP-835 - DispatcherUseForwardedHost 會在 Host 標頭最後出現時吞併它
 
-**改善功能**:
+**改良功能**：
 
-* DISP-874 — 建立調度程式配置以通過標誌開啟或關閉DISP-818的實施 `DispatcherRestrictUncacheableContent`。 預設值為Off。 當開啟時，它將刪除由mod設定的快取標頭，這些標頭將過期，以用於不可取的內容。 這與4.3.3版（預設值為On）中的行為不同，但與4.3.3之前的版本（預設值為Off）相同。 保留 `DispatcherRestrictUncacheableContent`預設關閉是建議的方法，因此瀏覽器快取具有更大的靈活性。 如果在從4.3.3版升級到4.3.4版時希望保留與4.3.3版中相同的行為，則必須顯式設定 `DispatcherRestrictUncacheableContent` 開啟。
-* DISP-841 - Dispatcher對504響應代碼不尊重/serverStaleOnError
-* DISP-874 — 建立調度程式配置以開啟或關閉DISP-818的實施
-* DISP-883 — 顯示Dispatcher中URL請求分解的跟蹤
-* DISP-944 — 預載入虛榮區
+* DISP-874 - 建立 Dispatcher 設定，以透過 `DispatcherRestrictUncacheableContent` 標幟開啟或關閉 DISP-818 的實作。 預設值為關閉。 當開啟時，它會移除 mod expires 為不可快取的內容所設定的任何快取標頭。 這與版本 4.3.3 (預設為開啟) 中的行為不同，但與 4.3.3 之前的版本 (預設為關閉) 中的行為相同。 建議保留 `DispatcherRestrictUncacheableContent` 的預設值「關閉」，好讓瀏覽器快取具有更大的彈性。 從版本 4.3.3 升級到 4.3.4 時，如果您想保留與版本 4.3.3 相同的行為，您必須明確地將 `DispatcherRestrictUncacheableContent` 設定為「開啟」。
+* DISP-841 - Dispatcher 不遵守 504 回應代碼的 /serverStaleOnError
+* DISP-874 - 建立 Dispatcher 設定，以開啟或關閉 DISP-818 的實作
+* DISP-883 - 在 Dispatcher 中顯示 URL 請求分解的追蹤
+* DISP-944 - 預先載入虛名 url
 
-### 4.3.3版（2019年–10月18日） {#october}
+### 版本 4.3.3 (2019 年 10 月 18 日) {#october}
 
-**錯誤修正**:
+**錯誤修正**：
 
-* DISP-739 - LogLevel調度程式： **級別** 無效
-* DISP-749 - Alpine Linux調度程式崩潰，跟蹤日誌級別
+* DISP-739 - LogLevel Dispatcher：**層級**&#x200B;無效
+* DISP-749 - Alpine Linux Dispatcher 當機，提供追蹤記錄層級
 
-**改善功能**:
+**改良功能**：
 
-* DISP-813 - Dispatcher中對openssl 1.1.x的支援
-* DISP-814 — 快取刷新期間出現Apache 40x錯誤
-* DISP-818 - mod_expires為不可訪問內容添加Cache-Control標頭
-* DISP-821 — 不在套接字中儲存日誌上下文
-* DISP-822 - Dispatcher應使用ppoll而不是pselect
-* DISP-824 — 安全DispatcherUseForwardedHost
-* DISP-825 — 當磁碟上沒有更多空間時記錄特殊消息
-* DISP-826 — 支援使用查詢字串重取URI
+* DISP-813 - 在 Dispatcher 中支援 openssl 1.1.x
+* DISP-814 - 在快取清除期間發生 Apache 40x 錯誤
+* DISP-818 - mod_expires 為不可快取的內容新增 Cache-Control 標頭
+* DISP-821 - 不會將記錄上下文儲存在 socket
+* DISP-822 - Dispatcher 應該使用 ppoll 而不是 pselect
+* DISP-824 - 安全 DispatcherUseForwardedHost
+* DISP-825 - 當磁碟空間用完時記錄特殊訊息
+* DISP-826 - 支援透過查詢字串重新提取 URI
 
-**新功能**:
+**新功能**：
 
-* DISP-703 — 場特定快取命中率
-* DISP-827 — 用於測試的本地伺服器
-* DISP-828 — 為調度程式建立測試Docker映像
+* DISP-703 - 陣列特有的快取命中比例
+* DISP-827 - 用於測試的本機伺服器
+* DISP-828 - 為 Dispatcher 建立測試 Docker 映像
 
-### 4.3.2版（2019年1月31日） {#jan}
+### 版本 4.3.2 (2019 年 1 月 31 日) {#jan}
 
-**錯誤修正**:
+**錯誤修正**：
 
-* DISP-734 — 如果未設定為處理程式，則Dispatcher會導致insert_output_filter崩潰
-* DISP-735 - RE在Alpine Linux上不工作
-* DISP-740 — 預設情況下，在macOS莫哈韋載入調度程式已禁用
-* DISP-742 — 被阻止的請求可能會將資訊洩露給身份驗證檢查器受保護的資源
+* DISP-734 - 如果未設定為處理常式，Dispatcher 會導致 insert_output_filter 損毀
+* DISP-735 - REs 無法在 Alpine Linux 上運作
+* DISP-740 - 預設會停用在 macOS Mojave 中載入 Dispatcher 的功能
+* DISP-742 - 被封鎖的請求可能會洩漏資訊給受到 Auth Checker 保護的資源
 
-**改善功能**:
+**改良功能**：
 
-* DISP-746 - Dispatcher.any中未標籤的字串應生成警告
+* DISP-746 - dispatcher.any 中未標記的字串應該會產生警告
 
-**新功能**:
+**新功能**：
 
-* DISP-747 — 在Apache環境中提供請求資訊
+* DISP-747 - 在 Apache 環境中提供請求資訊
 
-### 4.3.1版（2018年–10月16日） {#oct}
+### 版本 4.3.1 (2018 年 10 月 16 日) {#oct}
 
-**錯誤修正**:
+**錯誤修正**：
 
-* DISP-656 - Dispatcher服務錯誤的ETag標頭
-* DISP-694 — 保持活動連接失效時取消警告
-* DISP-714 — 基於Cookie的會話管理在IIS中不工作
-* DISP-715 - Renderid Cookie的安全標誌
-* DISP-720 — 未關閉臨時檔案，可能導致耗盡（開啟的檔案太多）
-* DISP-721 — 當Apache正常重新啟動子代時，Dispatcher中斷輪詢()
-* DISP-722 — 使用八進位模式0600建立快取檔案
-* DISP-723 — 當呈現超時設定為0時隱式10分鐘超時（並重試）
-* DISP-725 — 字串後的尾隨字元被靜默轉換為未命名值
-* DISP-726 — 當沒有伺服器場實際與傳入主機匹配時記錄警告
-* DISP-727 - Dispatcher檢查空快取檔案的請求內容長度
-* DISP-730 — 嘗試通過調度程式訪問標頭檔時為404
-* DISP-731 - Dispatcher易受日誌注入的攻擊
-* DISP-732 - Dispatcher應刪除URL中的連續「/」
-* DISP-733 - Dispatcher應設定（計算）年齡報頭
+* DISP-656 - Dispatcher 提供錯誤的 ETag 標頭
+* DISP-694 - 當持續連線過期時隱藏警告
+* DISP-714 - 以 Cookie 為基礎的工作階段管理不適用於 IIS
+* DISP-715 - Renderid Cookie 的安全標幟
+* DISP-720 - 暫存檔案未關閉可能會導致資源耗盡 (開啟太多檔案)
+* DISP-721 - 當 Apache 正常重新啟動子項時，Dispatcher 中斷 poll()
+* DISP-722 - 以八進位模式 0600 建立快取檔案
+* DISP-723 - 當轉譯器逾時值設定為 0 時，有隱含的 10 分鐘逾時值 (並重試)
+* DISP-725 - 字串後面的尾隨字元自動被轉換為未命名值
+* DISP-726 - 沒有任何陣列實際符合傳入主機時記錄警告
+* DISP-727 - Dispatcher 會檢查空的快取檔案的請求內容長度
+* DISP-730 - 嘗試透過 Dispatcher 存取標頭檔案時傳回 404 錯誤
+* DISP-731 - Dispatcher 容易受到記錄注入攻擊
+* DISP-732 - Dispatcher 應該移除 URL 中的連續「/」
+* DISP-733 - Dispatcher 應該設定 (計算) Age 標頭
 
-**改善功能**:
+**改良功能**：
 
-* DISP-656 - Dispatcher服務錯誤的ETag標頭
-* DISP-694 — 保持活動連接失效時取消警告
-* DISP-715 - Renderid Cookie的安全標誌
-* DISP-722 — 使用八進位模式0600建立快取檔案
-* DISP-726 — 當沒有伺服器場實際與傳入主機匹配時記錄警告
+* DISP-656 - Dispatcher 提供錯誤的 ETag 標頭
+* DISP-694 - 當持續連線過期時隱藏警告
+* DISP-715 - Renderid Cookie 的安全標幟
+* DISP-722 - 以八進位模式 0600 建立快取檔案
+* DISP-726 - 沒有任何陣列實際符合傳入主機時記錄警告
 
-### 4.3.0版（2018年6月13日） {#jun}
+### 版本 4.3.0 (2018 年 6 月 13 日) {#jun}
 
-**錯誤修正**:
+**錯誤修正**：
 
-* DISP-682 — 未正確應用數字日誌級別
-* DISP-685 - 32位Solaris SPARC二進位檔案對__divdi3有未定義的引用
-* DISP-688 - Dispatcher在404響應中不返回「X-Cache-Info」標頭
-* DISP-690 — 上次修改的報頭不可快取
-* DISP-691 - w3wp.exe中的訪問違規
-* DISP-693 — 需要更新Dispatcher下載頁上Solaris伺服器的體系結構詳細資訊
-* DISP-695 - Dispatcher模組4.2.3中DispatcherLog級別問題
-* DISP-698 - Dispatcher TTL需要支援s-maxage和private指令
-* DISP-700 - Linux上的模組無法正常工作
-* DISP-704 — 將包含%2b的瀏覽器請求發送到未編碼的發佈伺服器
-* DISP-705 — 由於雙重空閒或損壞(fasttop)而導致的Dispatcher崩潰
-* DISP-706 — 在失效期間，調度程式正在跟蹤可導致無限循環的回參考符號連結
-* DISP-709 — 阻止某些虛擬URL擴展
-* DISP-710 - Cent OS 6上不可用的Linux版本
+* DISP-682 - 錯誤地套用了數值記錄層級
+* DISP-685 - 32 位元 Solaris SPARC 二進位檔案有 __divdi3 的未定義參照
+* DISP-688 - Dispatcher 未在 404 回應中傳回「X-Cache-Info」標頭
+* DISP-690 - 無法快取 Last-Modified 標頭
+* DISP-691 - w3wp.exe 中有存取違規
+* DISP-693 - 需要在 Dispatcher 下載頁面上更新 solaris 伺服器的架構詳細資料
+* DISP-695 - Dispatcher 模組 4.2.3 中的 DispatcherLog 層級發生問題
+* DISP-698 - Dispatcher TTL 需要支援 s-maxage 和 private 指示詞
+* DISP-700 - 模組無法在 Alpine Linux 上正常運作
+* DISP-704 - 包含 %2b 的瀏覽器請求以未編碼形式傳送給發佈者
+* DISP-705 - 由於重複釋放或損毀 (fasttop) 導致 Dispatcher 當機
+* DISP-706 - 在失效期間，Dispatcher 追蹤回到可能導致無限迴圈的參照符號連結
+* DISP-709 - 封鎖某些虛名 URL 副檔名
+* DISP-710 - Linux 的組建無法在 Cent OS 6 上使用
 
-**改善功能**:
+**改良功能**：
 
-* DISP-652 - Dispatcher提供了錯誤的日期標題
+* DISP-652 - Dispatcher 提供錯誤的 Date 標頭
 
 ## 實用資源 {#helpful-resources}
 
-* [Dispatcher概AEM述](dispatcher.md)
+* [AEM Dispatcher 總覽](dispatcher.md)
 
-## 下載內容 {#downloads}
+## 下載 {#downloads}
 
 ### Apache 2.4 {#apache}
 
-| 平台 | 架構 | OpenSSL支援 | 下載 |
+| 平台 | 架構 | OpenSSL 支援 | 下載 |
 |---|---|---|---|
-| Linux | i686（32位） | 無 | [dispatcher-apache2.4-linux-i686-4.3.5.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-i686-4.3.5.tar.gz) |
-| Linux | i686（32位） | 1.0 | [dispatcher-apache2.4-linux-i686-ssl1.0-4.3.5.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-i686-ssl1.0-4.3.5.tar.gz) |
-| Linux | i686（32位） | 1.1 | [dispatcher-apache2.4-linux-i686-ssl1.1-4.3.5.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-i686-ssl1.1-4.3.5.tar.gz) |
-| Linux | x86_64（64位） | 無 | [dispatcher-apache2.4-linux-x86_64-4.3.5.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-x86_64-4.3.5.tar.gz) |
-| Linux | x86_64（64位） | 1.0 | [dispatcher-apache2.4-linux-x86_64-ssl1.0-4.3.5.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-x86_64-ssl1.0-4.3.5.tar.gz) |
-| Linux | x86_64（64位） | 1.1 | [dispatcher-apache2.4-linux-x86_64-ssl1.1-4.3.5.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-x86_64-ssl1.1-4.3.5.tar.gz) |
+| Linux | i686 (32 位元) | 無 | [dispatcher-apache2.4-linux-i686-4.3.5.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-i686-4.3.5.tar.gz) |
+| Linux | i686 (32 位元) | 1.0 | [dispatcher-apache2.4-linux-i686-ssl1.0-4.3.5.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-i686-ssl1.0-4.3.5.tar.gz) |
+| Linux | i686 (32 位元) | 1.1 | [dispatcher-apache2.4-linux-i686-ssl1.1-4.3.5.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-i686-ssl1.1-4.3.5.tar.gz) |
+| Linux | x86_64 (64 位元) | 無 | [dispatcher-apache2.4-linux-x86_64-4.3.5.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-x86_64-4.3.5.tar.gz) |
+| Linux | x86_64 (64 位元) | 1.0 | [dispatcher-apache2.4-linux-x86_64-ssl1.0-4.3.5.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-x86_64-ssl1.0-4.3.5.tar.gz) |
+| Linux | x86_64 (64 位元) | 1.1 | [dispatcher-apache2.4-linux-x86_64-ssl1.1-4.3.5.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-x86_64-ssl1.1-4.3.5.tar.gz) |
 | Linux | aarch64（64位） | 無 | [dispatcher-apache2.4-linux-aarch64-4.3.5.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-aarch64-4.3.5.tar.gz) |
 | Linux | aarch64（64位） | 1.0 | [dispatcher-apache2.4-linux-aarch64-ssl1.0-4.3.5.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-aarch64-ssl1.0-4.3.5.tar.gz) |
 | Linux | aarch64（64位） | 1.1 | [dispatcher-apache2.4-linux-aarch64-ssl1.1-4.3.5.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-aarch64-ssl1.1-4.3.5.tar.gz) |
 | macOS | arm64（64位） | 無 | [dispatcher-apache2.4-darwin-arm64-4.3.5.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-darwin-arm64-4.3.5.tar.gz) |
-| macOS | x86_64（64位） | 無 | [dispatcher-apache2.4-darwin-x86_64-4.3.5.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-darwin-x86_64-4.3.5.tar.gz) |
+| macOS | x86_64 (64 位元) | 無 | [dispatcher-apache2.4-darwin-x86_64-4.3.5.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-darwin-x86_64-4.3.5.tar.gz) |
 
 ### IIS {#iis}
 
-| 平台 | 架構 | OpenSSL支援 | 下載 |
+| 平台 | 架構 | OpenSSL 支援 | 下載 |
 |---|---|---|---|
-| Windows | x86（32位） | 無 | [dispatcher-iis-windows-x86-4.3.5.zip](https://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x86-4.3.5.zip) |
-| 窗口 | x86（32位） | 1.0 | [dispatcher-iis-windows-x86-ssl1.0-4.3.5.zip](https://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x86-ssl1.0-4.3.5.zip) |
-| 窗口 | x86（32位） | 1.1 | [dispatcher-iis-windows-x86-ssl1.1-4.3.5.zip](https://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x86-ssl1.1-4.3.5.zip) |
-| 窗口 | x64（64位） | 無 | [dispatcher-iis-windows-x64-4.3.5.zip](https://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x64-4.3.5.zip) |
-| 窗口 | x64（64位） | 1.0 | [dispatcher-iis-windows-x64-ssl1.0-4.3.5.zip](https://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x64-ssl1.0-4.3.5.zip) |
-| 窗口 | x64（64位） | 1.1 | [dispatcher-iis-windows-x64-ssl1.1-4.3.5.zip](https://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x64-ssl1.1-4.3.5.zip) |
+| Windows | x86 (32 位元) | 無 | [dispatcher-iis-windows-x86-4.3.5.zip](https://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x86-4.3.5.zip) |
+| 窗口 | x86 (32 位元) | 1.0 | [dispatcher-iis-windows-x86-ssl1.0-4.3.5.zip](https://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x86-ssl1.0-4.3.5.zip) |
+| 窗口 | x86 (32 位元) | 1.1 | [dispatcher-iis-windows-x86-ssl1.1-4.3.5.zip](https://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x86-ssl1.1-4.3.5.zip) |
+| 窗口 | x64 (64 位元) | 無 | [dispatcher-iis-windows-x64-4.3.5.zip](https://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x64-4.3.5.zip) |
+| 窗口 | x64 (64 位元) | 1.0 | [dispatcher-iis-windows-x64-ssl1.0-4.3.5.zip](https://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x64-ssl1.0-4.3.5.zip) |
+| 窗口 | x64 (64 位元) | 1.1 | [dispatcher-iis-windows-x64-ssl1.1-4.3.5.zip](https://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x64-ssl1.1-4.3.5.zip) |
