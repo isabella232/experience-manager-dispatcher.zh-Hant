@@ -3,7 +3,7 @@ title: 設定 Dispatcher
 description: 了解如何設定 Dispatcher。
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
 source-git-commit: deb232be3c4c5e3d11d13cbccb282409d90b93bb
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '8528'
 ht-degree: 100%
 
@@ -19,7 +19,7 @@ ht-degree: 100%
 
 ## 對 IPv4 和 IPv6 的支援 {#support-for-ipv-and-ipv}
 
-AEM 和 Dispatcher 的所有元素都可以安裝在 IPv4 和 IPv6 網路上。 請參閱 [IPV4 和 IPV6](https://experienceleague.adobe.com/docs/experience-manager-65/deploying/introduction/technical-requirements.html?lang=en#ipv-and-ipv)。
+AEM 和 Dispatcher 的所有元素都可以安裝在 IPv4 和 IPv6 網路上。 請參閱 [IPV4 和 IPV6](https://experienceleague.adobe.com/docs/experience-manager-65/deploying/introduction/technical-requirements.html?lang=zh-Hant#ipv-and-ipv)。
 
 ## Dispatcher 設定檔案 {#dispatcher-configuration-files}
 
@@ -193,7 +193,7 @@ AEM 和 Dispatcher 的所有元素都可以安裝在 IPv4 和 IPv6 網路上。 
 | 屬性名稱 | 說明 |
 |--- |--- |
 | [/homepage](#specify-a-default-page-iis-only-homepage) | 預設首頁 (選擇性)(僅限 IIS) |
-| [/clientheaders](#specifying-the-http-headers-to-pass-through-clientheaders) | 要傳遞的用戶端 HTTP 請求中的標頭。 |
+| [/clientheaders](#specifying-the-http-headers-to-pass-through-clientheaders) | 要傳遞的用戶端 HTTP 請求中的標題。 |
 | [/virtualhosts](#identifying-virtual-hosts-virtualhosts) | 此陣列的虛擬主機。 |
 | [/sessionmanagement](#enabling-secure-sessions-sessionmanagement) | 對工作階段管理和驗證的支援。 |
 | [/renders](#defining-page-renderers-renders) | 提供轉譯的頁面的伺服器 (通常是 AEM Publish 執行個體)。 |
@@ -213,9 +213,9 @@ AEM 和 Dispatcher 的所有元素都可以安裝在 IPv4 和 IPv6 網路上。 
 
 >[!CAUTION]
 >
->`/homepage` 參數 (僅限 IIS) 不再有效。 您應該改用 [IIS URL Rewrite 模組](https://docs.microsoft.com/en-us/iis/extensions/url-rewrite-module/using-the-url-rewrite-module)。
+>`/homepage` 參數 (僅限 IIS) 不再有效。 您應該改用 [IIS URL Rewrite 模組](https://docs.microsoft.com/zh-tw/iis/extensions/url-rewrite-module/using-the-url-rewrite-module)。
 >
->如果您使用 Apache，則應該使用 `mod_rewrite` 模組。 請參閱 Apache 網站文件以取得 `mod_rewrite` 的相關資訊 (例如，[Apache 2.4](https://httpd.apache.org/docs/current/mod/mod_rewrite.html))。 在使用 `mod_rewrite` 時，建議最好使用標幟 **[&#39;passthrough|PT&#39; (傳遞給下一個處理常式)](https://helpx.adobe.com/dispatcher/kb/DispatcherModReWrite.html)**，以強制重寫引擎將內部 `request_rec` 結構的 `uri` 欄位設定為 `filename` 欄位的值。
+>如果您使用 Apache，則應該使用 `mod_rewrite` 模組。 請參閱 Apache 網站文件以取得 `mod_rewrite` 的相關資訊 (例如，[Apache 2.4](https://httpd.apache.org/docs/current/mod/mod_rewrite.html))。 在使用 `mod_rewrite` 時，建議最好使用標幟 **[&#39;passthrough|PT&#39; (傳遞給下一個處理常式)](https://helpx.adobe.com/tw/dispatcher/kb/DispatcherModReWrite.html)**，以強制重寫引擎將內部 `request_rec` 結構的 `uri` 欄位設定為 `filename` 欄位的值。
 
 <!-- 
 
@@ -255,18 +255,18 @@ Comment Type: draft
 
  -->
 
-## 指定要傳遞的 HTTP 標頭 {#specifying-the-http-headers-to-pass-through-clientheaders}
+## 指定要傳遞的 HTTP 標題 {#specifying-the-http-headers-to-pass-through-clientheaders}
 
-`/clientheaders` 屬性會定義 Dispatcher 從用戶端 HTTP 請求傳送給轉譯器 (AEM 執行個體) 的 HTTP 標頭清單。
+`/clientheaders` 屬性會定義 Dispatcher 從用戶端 HTTP 請求傳送給轉譯器 (AEM 執行個體) 的 HTTP 標題清單。
 
-Dispatcher 預設會將標準 HTTP 標頭轉送給 AEM 執行個體。 在某些情況下，您可能會想要轉送其他標頭或移除特定標頭：
+Dispatcher 預設會將標準 HTTP 標題轉送給 AEM 執行個體。 在某些情況下，您可能會想要轉送其他標題或移除特定標題：
 
-* 在 HTTP 請求中新增您的 AEM 執行個體所期望的標頭，例如自訂標頭。
-* 移除僅與網頁伺服器有關的標頭，例如驗證標頭。
+* 在 HTTP 請求中新增您的 AEM 執行個體所期望的標題，例如自訂標題。
+* 移除僅與網頁伺服器有關的標題，例如驗證標題。
 
-如果您自訂要傳遞的標頭組合，則必須指定詳盡的標頭清單，包括通常在預設情況下包含的標頭。
+如果您自訂要傳遞的標題組合，則必須指定詳盡的標題清單，包括通常在預設情況下包含的標題。
 
-例如，為發佈執行個體處理頁面啟用請求的 Dispatcher 執行個體需要 `/clientheaders` 區段中的 `PATH` 標頭。 `PATH` 標頭會啟用複寫代理程式與 Dispatcher 之間的通訊。
+例如，為發佈執行個體處理頁面啟用請求的 Dispatcher 執行個體需要 `/clientheaders` 區段中的 `PATH` 標題。 `PATH` 標題會啟用複寫代理程式與 Dispatcher 之間的通訊。
 
 以下程式碼為 `/clientheaders` 的設定範例：
 
@@ -348,7 +348,7 @@ Dispatcher 預設會將標準 HTTP 標頭轉送給 AEM 執行個體。 在某些
 
 ### 解析虛擬主機 {#resolving-the-virtual-host}
 
-當 Dispatcher 收到 HTTP 或 HTTPS 請求時，它會尋找最符合該請求的 `host,` `uri` 和 `scheme` 標頭的虛擬主機值。 Dispatcher 會依照以下順序評估 `virtualhosts` 屬性中的值：
+當 Dispatcher 收到 HTTP 或 HTTPS 請求時，它會尋找最符合該請求的 `host,` `uri` 和 `scheme` 標題的虛擬主機值。 Dispatcher 會依照以下順序評估 `virtualhosts` 屬性中的值：
 
 * Dispatcher 會從最低的陣列開始，然後在 dispatcher.any 檔案中往上進行。
 * 對於每個陣列，Dispatcher 都會從 `virtualhosts` 屬性中的最高值開始，然後沿著值清單往下進行。
@@ -408,7 +408,7 @@ Dispatcher 會依照以下順序尋找最符合的虛擬主機值：
 >
 >`/allowAuthorized` **必須**&#x200B;在 `/cache` 區段中設定為 `"0"` 才能啟用此功能。
 
-建立安全工作階段以存取轉譯器陣列，讓使用者需要登入才能存取陣列中的任何頁面。 使用者在登入後，就可以存取陣列中的頁面。 如需搭配 CUG 使用此功能的相關資訊，請參閱[建立封閉式使用者群組](https://experienceleague.adobe.com/docs/experience-manager-65/administering/security/cug.html?lang=en#creating-the-user-group-to-be-used)。 此外，也請在上線前參考 Dispatcher [安全性檢查清單](/help/using/security-checklist.md)。
+建立安全工作階段以存取轉譯器陣列，讓使用者需要登入才能存取陣列中的任何頁面。 使用者在登入後，就可以存取陣列中的頁面。 如需搭配 CUG 使用此功能的相關資訊，請參閱[建立封閉式使用者群組](https://experienceleague.adobe.com/docs/experience-manager-65/administering/security/cug.html?lang=zh-Hant#creating-the-user-group-to-be-used)。 此外，也請在上線前參考 Dispatcher [安全性檢查清單](/help/using/security-checklist.md)。
 
 `/sessionmanagement` 屬性是 `/farms` 的子屬性。
 
@@ -439,7 +439,7 @@ Dispatcher 會依照以下順序尋找最符合的虛擬主機值：
 
 **/header** (選擇性)
 
-儲存授權資訊的 HTTP 標頭或 Cookie 的名稱。 如果您將此資訊儲存在 http 標頭中，請使用 `HTTP:<header-name>`。 若要將此資訊儲存在 Cookie 中，請使用 `Cookie:<header-name>`。 如果您未指定值，則會使用 `HTTP:authorization`。
+儲存授權資訊的 HTTP 標題或 Cookie 的名稱。 如果您將此資訊儲存在 http 標題中，請使用 `HTTP:<header-name>`。 若要將此資訊儲存在 Cookie 中，請使用 `Cookie:<header-name>`。 如果您未指定值，則會使用 `HTTP:authorization`。
 
 **/timeout** (選擇性)
 
@@ -517,7 +517,7 @@ Dispatcher 會依照以下順序尋找最符合的虛擬主機值：
 
 指定允許接收回應的時間 (以毫秒為單位)。 預設為 `"600000"`，此值會讓 Dispatcher 等待 10 分鐘。 設定為 `"0"` 可完全免除逾時。
 
-如果在剖析回應標頭時到達逾時時間，則會傳回 HTTP 狀態 504 (閘道錯誤)。 如果在讀取回應本文時到達逾時時間，Dispatcher 會將不完整的回應傳回給用戶端，但會刪除任何可能已寫入的快取檔案。
+如果在剖析回應標題時到達逾時時間，則會傳回 HTTP 狀態 504 (閘道錯誤)。 如果在讀取回應本文時到達逾時時間，Dispatcher 會將不完整的回應傳回給用戶端，但會刪除任何可能已寫入的快取檔案。
 
 **/ipv4**
 
@@ -559,7 +559,7 @@ Amazon Elastic Load Balancing (ELB) 服務可使用可能具有相同順序的 I
 
 >[!CAUTION]
 >
->請參閱 [Dispatcher 安全性檢查清單](security-checklist.md)，了解使用 Dispatcher 限制存取時的更多考量事項。 此外，也請閱讀 [AEM 安全性檢查清單](https://experienceleague.adobe.com/docs/experience-manager-65/administering/security/security-checklist.html?lang=en#security)，了解有關 AEM 安裝的更多安全性細節。
+>請參閱 [Dispatcher 安全性檢查清單](security-checklist.md)，了解使用 Dispatcher 限制存取時的更多考量事項。 此外，也請閱讀 [AEM 安全性檢查清單](https://experienceleague.adobe.com/docs/experience-manager-65/administering/security/security-checklist.html?lang=zh-Hant#security)，了解有關 AEM 安裝的更多安全性細節。
 
 `/filter` 區段是由一系列規則所組成，這些規則會根據 HTTP 請求的請求行部分中的模式來拒絕或允許對內容的存取。 您應該針對 `/filter` 區段使用允許清單策略：
 
@@ -808,7 +808,7 @@ Last Modified Date: 2015-06-26T04:32:37.986-0400
 
 >[!CAUTION]
 >
->如果您[正在發佈環境中使用報表](https://experienceleague.adobe.com/docs/experience-manager-65/administering/operations/reporting.html?lang=en#using-reports-in-a-publish-environment)，您應該設定 Dispatcher 以拒絕外部訪客存取 `/etc/reports`。
+>如果您[正在發佈環境中使用報表](https://experienceleague.adobe.com/docs/experience-manager-65/administering/operations/reporting.html?lang=zh-Hant#using-reports-in-a-publish-environment)，您應該設定 Dispatcher 以拒絕外部訪客存取 `/etc/reports`。
 
 ### 限制查詢字串 {#restricting-query-strings}
 
@@ -939,7 +939,7 @@ Last Modified Date: 2015-03-25T14:23:05.185-0400
 
 >[!NOTE]
 >
->如果您的轉譯器是 AEM 的執行個體，您必須[從軟體散發安裝 VanityURLS-Components 套件](https://experience.adobe.com/#/downloads/content/software-distribution/en/aem.html?package=/content/software-distribution/en/details.html/content/dam/aem/public/adobe/packages/granite/vanityurls-components)以啟用虛名 URL 服務。 (如需了解詳情，請參閱[軟體散發](https://experienceleague.adobe.com/docs/experience-manager-65/administering/contentmanagement/package-manager.html?lang=en#software-distribution)。)
+>如果您的轉譯器是 AEM 的執行個體，您必須[從軟體散發安裝 VanityURLS-Components 套件](https://experience.adobe.com/#/downloads/content/software-distribution/en/aem.html?package=/content/software-distribution/en/details.html/content/dam/aem/public/adobe/packages/granite/vanityurls-components)以啟用虛名 URL 服務。 (如需了解詳情，請參閱[軟體散發](https://experienceleague.adobe.com/docs/experience-manager-65/administering/contentmanagement/package-manager.html?lang=zh-Hant#software-distribution)。)
 
 使用以下程序來啟用對虛名 URL 的存取權。
 
@@ -1030,7 +1030,7 @@ statfile 沒有任何內容。 當更新內容時，Dispatcher 會更新時間�
 
 `/allowAuthorized` 屬性可控制是否快取包含以下任何驗證資訊的請求：
 
-* `authorization` 標頭
+* `authorization` 標題
 * 名為 `authorization` 的 Cookie
 * 名為 `login-token` 的 Cookie
 
@@ -1052,8 +1052,8 @@ statfile 沒有任何內容。 當更新內容時，Dispatcher 會更新時間�
    * 這通常表示這是不需要快取的動態頁面，例如搜尋結果。
 * 缺少副檔名。
    * 網頁伺服器需要副檔名來判斷文件類型 (MIME 類型)。
-* 驗證標頭已設定 (這可以設定).
-* 如果 AEM 執行個體提供以下標頭當作回應：
+* 驗證標題已設定 (這可以設定)。
+* 如果 AEM 執行個體提供以下標題當作回應：
 
    * `no-cache`
    * `no-store`
@@ -1061,7 +1061,7 @@ statfile 沒有任何內容。 當更新內容時，Dispatcher 會更新時間�
 
 >[!NOTE]
 >
->Dispatcher 可快取 GET 或 HEAD (用於 HTTP 標頭) 方法。 如需有關回應標頭快取的其他資訊，請參閱[快取 HTTP 回應標頭](#caching-http-response-headers)一節。
+>Dispatcher 可快取 GET 或 HEAD (用於 HTTP 標題) 方法。 如需有關回應標題快取的其他資訊，請參閱[快取 HTTP 回應標題](#caching-http-response-headers)一節。
 
 `/rules` 屬性中的每個項目都包含 [`glob`](#designing-patterns-for-glob-properties) 模式和一個類型：
 
@@ -1169,7 +1169,7 @@ Last Modified Date: 2017-11-13T09:23:24.326-0500
 
 >[!NOTE]
 >
->可藉由傳送其他標頭 `CQ-Action-Scope:ResourceOnly` 來避免失效。 這可用來清除特定資源，而不會讓快取的其他部分失效。 如需其他詳細資訊，請參閱[此頁面](https://adobe-consulting-services.github.io/acs-aem-commons/features/dispatcher-flush-rules/index.html)和[手動讓 Dispatcher 快取失效](https://experienceleague.adobe.com/docs/experience-manager-dispatcher/using/configuring/page-invalidate.html?lang=en#configuring)。
+>可藉由傳送其他標題 `CQ-Action-Scope:ResourceOnly` 來避免失效。 這可用來清除特定資源，而不會讓快取的其他部分失效。 如需其他詳細資訊，請參閱[此頁面](https://adobe-consulting-services.github.io/acs-aem-commons/features/dispatcher-flush-rules/index.html)和[手動讓 Dispatcher 快取失效](https://experienceleague.adobe.com/docs/experience-manager-dispatcher/using/configuring/page-invalidate.html?lang=zh-Hant#configuring)。
 
 >[!NOTE]
 >
@@ -1227,7 +1227,7 @@ AEM 與 Adobe Analytics 的整合可在您網站的`analytics.sitecatalyst.js` �
 
 * 控制代碼 - 失效的內容路徑
 * 行動 - 複寫行動 (例如啟用、停用)
-* 行動範圍 - 複寫行動的範圍 (除非傳送了 `CQ-Action-Scope: ResourceOnly` 的標頭，否則為空白，詳情請參閱[使 AEM 中的快取頁面失效](page-invalidate.md))
+* 行動範圍 - 複寫行動的範圍 (除非傳送了 `CQ-Action-Scope: ResourceOnly` 的標題，否則為空白，詳情請參閱[使 AEM 中的快取頁面失效](page-invalidate.md))
 
 這可用來涵蓋許多不同使用情況，例如讓其他應用程式特有的快取失效，或是處理頁面的外部化 URL 及其在 docroot 中的位置與內容路徑不符的情況。
 
@@ -1308,13 +1308,13 @@ GET /mypage.html?q=5&p=4
 
 如需 glob 屬性的相關資訊，請參閱[為 glob 屬性設計模式](#designing-patterns-for-glob-properties)。
 
-### 快取 HTTP 回應標頭 {#caching-http-response-headers}
+### 快取 HTTP 回應標題 {#caching-http-response-headers}
 
 >[!NOTE]
 >
 >Dispatcher 版本 **4.1.11** 可使用此功能。
 
-`/headers` 屬性可讓您定義將由 Dispatcher 快取的 HTTP 標頭類型。 初次請求未快取的資源時，符合其中一個設定值 (請參閱底下的設定範例) 的所有標頭都會儲存在快取檔案旁邊的另一個檔案中。 後續請求快取的資源時，儲存的標頭會新增到回應中。
+`/headers` 屬性可讓您定義將由 Dispatcher 快取的 HTTP 標題類型。 初次請求未快取的資源時，符合其中一個設定值 (請參閱底下的設定範例) 的所有標題都會儲存在快取檔案旁邊的另一個檔案中。 後續請求快取的資源時，儲存的標題會新增到回應中。
 
 下面顯示的是預設設定中的範例：
 
@@ -1339,9 +1339,9 @@ GET /mypage.html?q=5&p=4
 
 >[!NOTE]
 >
->如果您需要 Dispatcher 儲存並傳遞 AEM 中的 ETag 回應標頭，請執行以下操作：
+>如果您需要 Dispatcher 儲存並傳遞 AEM 中的 ETag 回應標題，請執行以下操作：
 >
->* 在 `/cache/headers` 區段中新增標頭名稱。
+>* 在 `/cache/headers` 區段中新增標題名稱。
 >* 在 Dispatcher 相關區段中新增以下 [Apache 指示詞](https://httpd.apache.org/docs/2.4/mod/core.html#fileetag)：
 >
 >```xml
@@ -1374,7 +1374,7 @@ GET /mypage.html?q=5&p=4
 
 ### 設定以時間為基礎的快取失效 - /enableTTL {#configuring-time-based-cache-invalidation-enablettl}
 
-在設定時，`/enableTTL` 屬性將會評估來自後端的回應標頭，如果其中包含 `Cache-Control` max-age 或 `Expires` 日期，則會在快取檔案旁邊建立空的輔助檔案，且修改時間等於到期日。 在修改時間過後請求快取檔案時，將會自動從後端重新請求該檔案。
+在設定時，`/enableTTL` 屬性將會評估來自後端的回應標題，如果其中包含 `Cache-Control` max-age 或 `Expires` 日期，則會在快取檔案旁邊建立空的輔助檔案，且修改時間等於到期日。 在修改時間過後請求快取檔案時，將會自動從後端重新請求該檔案。
 
 >[!NOTE]
 >
@@ -1547,7 +1547,7 @@ Dispatcher 最多可支援 8 個統計類別。 如果您定義 8 個以上的�
 
 >[!NOTE]
 >
->為了重試包含本文的 HTTP 請求，Dispatcher 會傳送 `Expect: 100-continue` 請求標頭給轉譯器，然後進行實際內容的多工緩衝處理。 然後含 CQSE 的 CQ 5.5 會立即傳送 100 (繼續) 或錯誤碼當作回應。 其他 servlet 容器也應該支援此功能。
+>為了重試包含本文的 HTTP 請求，Dispatcher 會傳送 `Expect: 100-continue` 請求標題給轉譯器，然後進行實際內容的多工緩衝處理。 然後含 CQSE 的 CQ 5.5 會立即傳送 100 (繼續) 或錯誤碼當作回應。 其他 servlet 容器也應該支援此功能。
 
 ## 忽略中斷錯誤 - /ignoreEINTR {#ignoring-interruption-errors-ignoreeintr}
 
@@ -1721,7 +1721,7 @@ The following table describes the wildcard characters.
 
 此記錄層級高於偵錯記錄，將會在記錄中顯示額外的資訊。 它會新增以下項目的記錄：
 
-* 轉送的標頭的值；
+* 轉送的標題的值；
 * 正套用到某個動作的規則。
 
 若要啟用追蹤記錄，請在網頁伺服器中將記錄層級設定為 `4`。
@@ -1782,9 +1782,9 @@ The following table describes the wildcard characters.
 
 ## 偵錯 {#debugging}
 
-將標頭 `X-Dispatcher-Info` 新增到請求時，Dispatcher 會回應是快取了目標、從快取中返回還是完全不可快取。 回應標頭 `X-Cache-Info` 會在可讀的表單中包含此資訊。 您可以使用這些回應標頭來偵錯 Dispatcher 快取回應的相關問題。
+將標題 `X-Dispatcher-Info` 新增到請求時，Dispatcher 會回應是快取了目標、從快取中返回還是完全不可快取。 回應標題 `X-Cache-Info` 會在可讀的表單中包含此資訊。 您可以使用這些回應標題來偵錯 Dispatcher 快取回應的相關問題。
 
-預設不會啟用此功能，所以為了包含回應標頭 `X-Cache-Info`，陣列必須包含以下項目：
+預設不會啟用此功能，所以為了包含回應標題 `X-Cache-Info`，陣列必須包含以下項目：
 
 ```xml
 /info "1"
@@ -1803,13 +1803,13 @@ The following table describes the wildcard characters.
 }
 ```
 
-此外，`X-Dispatcher-Info` 標頭不需要值，但如果您使用 `curl` 進行測試，就必須提供值才能傳送標頭，例如：
+此外，`X-Dispatcher-Info` 標題不需要值，但如果您使用 `curl` 進行測試，就必須提供值才能傳送標題，例如：
 
 ```xml
 curl -v -H "X-Dispatcher-Info: true" https://localhost/content/wknd/us/en.html
 ```
 
-底下是包含 `X-Dispatcher-Info` 將傳回的回應標頭的清單：
+底下是包含 `X-Dispatcher-Info` 將傳回的回應標題的清單：
 
 * **cached**\
    目標檔案包含在快取中，而且 Dispatcher 已判定傳遞它是有效的。
@@ -1846,6 +1846,6 @@ HTTP 方法既不是 GET 也不是 HEAD。 Dispatcher 假設輸出將會包含�
 陣列的快取是由工作階段管理員所控管 (設定包含 `sessionmanagement` 節點)，而且使用者的工作階段無效或不再有效。
 * **not cacheable: response contains`no_cache`**
 遠端伺服器傳回 
-`Dispatcher: no_cache` 標頭，禁止 Dispatcher 快取輸出。
+`Dispatcher: no_cache` 標題，禁止 Dispatcher 快取輸出。
 * **not cacheable: response content length is zero**
 回應的內容長度為零；Dispatcher 不會建立長度為零的檔案。
