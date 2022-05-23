@@ -11,9 +11,9 @@ content-type: reference
 discoiquuid: 4f9b2bc8-a309-47bc-b70d-a1c0da78d464
 exl-id: 3d8d8204-7e0d-44ad-b41b-6fec2689c6a6
 source-git-commit: 18fa55f4be3a93b5484c3a0fa408031a43944f27
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '829'
-ht-degree: 98%
+ht-degree: 100%
 
 ---
 
@@ -36,9 +36,9 @@ Dispatcher 包含的 AuthChecker 模組會實作權限敏感型快取。 在啟�
 ![](assets/chlimage_1.png)
 
 1. Dispatcher 判斷請求的內容已快取且有效。
-1. Dispatcher 傳送請求訊息給轉譯器。 HEAD 區段包含來自瀏覽器請求的所有標頭行。
+1. Dispatcher 傳送請求訊息給轉譯器。 HEAD 區段包含來自瀏覽器請求的所有標題行。
 1. 轉譯器呼叫 Auth Checker servlet 來執行安全性檢查，並回應 Dispatcher。 回應訊息包含 HTTP 狀態代碼 200，表示已授權使用者。
-1. Dispatcher 傳送回應訊息給瀏覽器，該訊息包含來自轉譯器回應的標頭行以及內文中的快取內容。
+1. Dispatcher 傳送回應訊息給瀏覽器，該訊息包含來自轉譯器回應的標題行以及內文中的快取內容。
 
 ## 不快取頁面，但會授權使用者 {#page-is-not-cached-and-user-is-authorized}
 
@@ -54,7 +54,7 @@ Dispatcher 包含的 AuthChecker 模組會實作權限敏感型快取。 在啟�
 ![](assets/chlimage_1-2.png)
 
 1. Dispatcher 檢查快取。
-1. Dispatcher 傳送請求訊息給轉譯器，該訊息包含來自瀏覽器的請求的所有標頭行。
+1. Dispatcher 傳送請求訊息給轉譯器，該訊息包含來自瀏覽器的請求的所有標題行。
 1. 轉譯器呼叫 Auth Checker servlet 來執行安全性檢查，結果檢查失敗，然後轉譯器將原始請求轉送給 Dispatcher。
 1. Dispatcher 將原始請求轉送給轉譯器。
 1. 轉譯器呼叫 AEM 授權程式 servlet (這不是 Dispatcher AuthChcker servlet) 來執行安全性檢查。 當使用者獲得授權時，轉譯器會將轉譯的頁面納入回應訊息的內文中。
@@ -151,13 +151,13 @@ dispatcher.any 檔案的 auth_checker 區段會控制權限敏感型快取的行
 
 * `filter`：指定要將權限敏感型快取套用到哪些資料夾的篩選條件。 通常 `deny` 篩選條件會套用到所有資料夾，而 `allow` 篩選條件則套用到安全資料夾。
 
-* `headers`：指定授權 servlet 包含在回應中的 HTTP 標頭。
+* `headers`：指定授權 servlet 包含在回應中的 HTTP 標題。
 
 當 Dispatcher 啟動時，Dispatcher 記錄檔會包含以下偵錯層級的訊息：
 
 `AuthChecker: initialized with URL 'configured_url'.`
 
-下面的auth_checker示例部分將Dispatcher配置為使用上一個主題的servlet。 篩選區段會讓權限檢查工作僅針對安全 HTML 資源來執行。
+以下範例的 auth_checker 區段會設定 Dispatcher 使用前一個主題中的 servlet。 篩選區段會讓權限檢查工作僅針對安全 HTML 資源來執行。
 
 ### 設定範例 {#example-configuration}
 
