@@ -12,7 +12,7 @@ content-type: reference
 discoiquuid: 40d91d66-c99b-422d-8e61-c0ced23272ef
 exl-id: 1470b636-7e60-48cc-8c31-899f8785dafa
 source-git-commit: 9d168ab7139e46b0c768fc3bab37245459eca002
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '2965'
 ht-degree: 100%
 
@@ -311,10 +311,10 @@ Dispatcher initializing (build 4.1.2)
 | 節點路徑 | 類型 | 屬性 |
 |--- |--- |--- |
 | `/etc/map/http/branda.com` | sling:Mapping | 名稱：sling:internalRedirect；類型：字串；值：/content/sitea |
-| `/etc/map/http/branda.com/libs` | sling：映射 | 名稱：sling:internalRedirect <br/>類型：字串<br/>值：/libs |
-| `/etc/map/http/branda.com/etc` | sling：映射 |  |
-| `/etc/map/http/branda.com/etc/designs` | sling：映射 | 名稱：sling:internalRedirect <br/>VType：字串<br/>VValue：/etc/designs |
-| `/etc/map/http/branda.com/etc/clientlibs` | sling：映射 | 名稱：sling:internalRedirect <br/>VType：字串<br/>VValue：/etc/clientlibs |
+| `/etc/map/http/branda.com/libs` | sling:Mapping | 名稱：sling:internalRedirect <br/>類型：字串<br/>值：/libs |
+| `/etc/map/http/branda.com/etc` | sling:Mapping |  |
+| `/etc/map/http/branda.com/etc/designs` | sling:Mapping | 名稱：sling:internalRedirect <br/>VType：字串<br/>VValue：/etc/designs |
+| `/etc/map/http/branda.com/etc/clientlibs` | sling:Mapping | 名稱：sling:internalRedirect <br/>VType：字串<br/>VValue：/etc/clientlibs |
 
 ## 設定 Dispatcher Flush 複寫代理程式 {#configuring-the-dispatcher-flush-replication-agent}
 
@@ -504,7 +504,7 @@ DocumentRoot "/usr/lib/apache/httpd-2.4.3/htdocs"
 
 若要重寫對副檔名為 .html 或 .htm 以外的檔案的參照，請建立 Sling 重寫程式轉換器元件，並將其新增到預設重寫程式管道。
 
-當資源路徑無法在網頁伺服器上下文中正確解析時，請重寫參照。 例如，當產生影像的元件建立類似 /content/sitea/en/products.navimage.png 等連結時，需要使用轉換器。 [如何建立完整功能的網站](https://helpx.adobe.com/experience-manager/6-5/sites/developing/using/the-basics.html)中的 topnav 元件會建立這種連結。
+當資源路徑無法在網頁伺服器上下文中正確解析時，請重寫參照。 例如，當產生影像的元件建立類似 /content/sitea/en/products.navimage.png 等連結時，需要使用轉換器。 [如何建立完整功能的網站](https://helpx.adobe.com/tw/experience-manager/6-5/sites/developing/using/the-basics.html)中的 topnav 元件會建立這種連結。
 
 [Sling 重寫程式](https://sling.apache.org/documentation/bundles/output-rewriting-pipelines-org-apache-sling-rewriter.html)是對 Sling 輸出進行後置處理的模組。 重寫程式的 SAX 管道實作是由產生器、一個或多個轉換器和序列化程式所組成：
 
@@ -543,7 +543,7 @@ AEM 會使用處理文字/html 類型的文件的預設管道重寫程式：
 
 >[!NOTE]
 >
->使用 Content Package Maven 外掛程式的 [multimodule](https://helpx.adobe.com/experience-manager/aem-previous-versions.html) 原型來建立您的 Maven 專案。 POM 會自動建立及安裝內容套件。
+>使用 Content Package Maven 外掛程式的 [multimodule](https://helpx.adobe.com/tw/experience-manager/aem-previous-versions.html) 原型來建立您的 Maven 專案。 POM 會自動建立及安裝內容套件。
 
 以下範例實作的轉換器會重寫影像檔案的參照。
 
