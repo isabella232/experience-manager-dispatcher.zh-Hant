@@ -1,7 +1,7 @@
 ---
 title: Dispatcher 總覽
 seo-title: Adobe AEM Dispatcher Overview
-description: 瞭解如何使用Dispatcher提高AEM雲服務的安全性、快取等。
+description: 了解使用 Dispatcher 來改善 AEM Cloud Service 安全性、快取行為及其他等。
 seo-description: This article provides a general overview of Adobe Experience Manager Dispatcher.
 uuid: 71766f86-5e91-446b-a078-061b179d090d
 pageversionid: 1193211344162
@@ -10,9 +10,9 @@ content-type: reference
 discoiquuid: 1d449ee2-4cdd-4b7a-8b4e-7e6fc0a1d7ee
 exl-id: c9266683-6890-4359-96db-054b7e856dd0
 source-git-commit: 76f7a3fc8d98657c5f46912f452c05fce1b5be61
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '3190'
-ht-degree: 99%
+ht-degree: 100%
 
 ---
 
@@ -26,8 +26,8 @@ Dispatcher 是 Adobe Experience Manager 的快取及/或負載平衡工具，可
 
 部署 Dispatcher 的程序與所選的網頁伺服器和作業系統平台無關：
 
-1. 了解 Dispatcher (本頁)。 此外，也請參閱[關於 Dispatcher 的常見問題集](https://helpx.adobe.com/experience-manager/using/dispatcher-faq.html)。
-1. 根據網頁伺服器文件安裝[支援的網頁伺服器](https://helpx.adobe.com/experience-manager/6-3/sites/deploying/using/technical-requirements.html)。
+1. 了解 Dispatcher (本頁)。 此外，也請參閱[關於 Dispatcher 的常見問題集](https://helpx.adobe.com/tw/experience-manager/using/dispatcher-faq.html)。
+1. 根據網頁伺服器文件安裝[支援的網頁伺服器](https://helpx.adobe.com/tw/experience-manager/6-3/sites/deploying/using/technical-requirements.html)。
 1. [在網頁伺服器上安裝 Dispatcher 模組](dispatcher-install.md)，並相應地設定網頁伺服器。
 1. [設定 Dispatcher](dispatcher-configuration.md) (dispatcher.any 檔案)。
 1. [設定 AEM](page-invalidate.md)，如此一來內容更新即可讓快取失效。
@@ -44,8 +44,8 @@ Dispatcher 是 Adobe Experience Manager 的快取及/或負載平衡工具，可
 視需要使用下列資訊：
 
 * [Dispatcher 安全性檢查清單](security-checklist.md)
-* [Dispatcher 知識庫](https://helpx.adobe.com/cq/kb/index/dispatcher.html)
-* [將網站快取效能最佳化](https://helpx.adobe.com/experience-manager/6-4/sites/deploying/using/configuring-performance.html)
+* [Dispatcher 知識庫](https://helpx.adobe.com/tw/cq/kb/index/dispatcher.html)
+* [將網站快取效能最佳化](https://helpx.adobe.com/tw/experience-manager/6-4/sites/deploying/using/configuring-performance.html)
 * [在多個網域中使用 Dispatcher](dispatcher-domains.md)
 * [搭配 Dispatcher 使用 SSL](dispatcher-ssl.md)
 * [實作權限敏感型快取](permissions-cache.md)
@@ -104,7 +104,7 @@ Dispatcher 包含的機制可根據動態網站上的內容來產生和更新靜
 
 >[!NOTE]
 >
->當缺少 HTTP 標頭快取的設定時，Dispatcher 只會儲存頁面的 HTML 程式碼，不會儲存 HTTP 標 題。如果您的網站使用不同的編碼，可能會發生問題，因為這些編碼可能會遺失。如要啟用 HTTP 標頭快取，請參閱[設定 Dispatcher 快取。](https://helpx.adobe.com/experience-manager/dispatcher/using/dispatcher-configuration.html)
+>當缺少 HTTP 標題快取的設定時，Dispatcher 只會儲存頁面的 HTML 程式碼，不會儲存 HTTP 標 題。如果您的網站使用不同的編碼，可能會發生問題，因為這些編碼可能會遺失。如要啟用 HTTP 標題快取，請參閱[設定 Dispatcher 快取。](https://helpx.adobe.com/tw/experience-manager/dispatcher/using/dispatcher-configuration.html)
 
 >[!NOTE]
 >
@@ -158,17 +158,17 @@ Dispatcher 有一個檔案清單，這些檔案會自動失效。請求該清單
 
 ### 判斷文件是否受限於快取
 
-您可以[定義 Dispatcher 會在設定檔案中快取哪些文件](https://helpx.adobe.com/experience-manager/dispatcher/using/dispatcher-configuration.html)。 Dispatcher 會根據可快取文件清單來檢查請求。如果文件不在此清單中，Dispatcher 會請求 AEM 執行個體的文件。
+您可以[定義 Dispatcher 會在設定檔案中快取哪些文件](https://helpx.adobe.com/tw/experience-manager/dispatcher/using/dispatcher-configuration.html)。 Dispatcher 會根據可快取文件清單來檢查請求。如果文件不在此清單中，Dispatcher 會請求 AEM 執行個體的文件。
 
 在下列情況下，** Dispatcher 一律會直接從 AEM 執行個體要求文件:
 
 * 如果請求 URI 包含問號「?」。這通常表示這是一個不需要快取的動態頁面，例如搜尋結果。
 * 缺少副檔名。 網頁伺服器需要副檔名來判斷文件類型 (MIME 類型)。
-* 驗證標頭已設定 (這可以設定)
+* 驗證標題已設定 (這可以設定)
 
 >[!NOTE]
 >
->Dispatcher 可快取 GET 或 HEAD (用於 HTTP 標頭) 方法。 如需有關回應標頭快取的其他資訊，請參閱[快取 HTTP 回應標頭](https://helpx.adobe.com/experience-manager/dispatcher/using/dispatcher-configuration.html)一節。
+>Dispatcher 可快取 GET 或 HEAD (用於 HTTP 標題) 方法。 如需有關回應標題快取的其他資訊，請參閱[快取 HTTP 回應標題](https://helpx.adobe.com/tw/experience-manager/dispatcher/using/dispatcher-configuration.html)一節。
 
 ### 確定是否已快取文件
 
@@ -259,7 +259,7 @@ CDN 為 HTTP 基礎架構元件，其運作方式與 Dispatcher 類似：當 CDN
 * Dispatcher
 * AEM
 
-在大多數的情況下，Dispatcher 是下一個最近的伺服器，可從快取中提供檔案，並影響傳回至 CDN 伺服器的回應標頭。
+在大多數的情況下，Dispatcher 是下一個最近的伺服器，可從快取中提供檔案，並影響傳回至 CDN 伺服器的回應標題。
 
 ## 控制 CDN 快取 {#controlling-a-cdn-cache}
 
@@ -268,8 +268,8 @@ CDN 從 Dispatcher 重新擷取前，有許多方法可控制 CDN 快取資源�
 1. 明確設定\
    視 MIME 類型、副檔名、請求類型等，設定 CDN 快取保存特定資源的時長。
 
-1. 到期日和快取控制標頭\
-   如果是由上游伺服器傳送，大部分的 CDN 都會遵守 `Expires:` 和 `Cache-Control:` HTTP 標頭。例如，可藉由使用 [mod_expires](https://httpd.apache.org/docs/2.4/mod/mod_expires.html) Apache 模組來達成這件事。
+1. 到期日和快取控制標題\
+   如果是由上游伺服器傳送，大部分的 CDN 都會遵守 `Expires:` 和 `Cache-Control:` HTTP 標題。例如，可藉由使用 [mod_expires](https://httpd.apache.org/docs/2.4/mod/mod_expires.html) Apache 模組來達成這件事。
 
 1. 手動失效\
    CDN 可透過 Web 介面從快取中移除資源。
@@ -280,7 +280,7 @@ CDN 從 Dispatcher 重新擷取前，有許多方法可控制 CDN 快取資源�
 
 如果將此方法用於快取受管理的內容，則表示只有在已設定的快取期限到期，並且已再次從 Dispatcher 中擷取文件後，使用者才能看到內容變更。
 
-為了達到更精細的控制，API 型的失效允許您在 Dispatcher 快取失效時將 DN 的快取判定為失效。您可以根據 CDN API 來實作您自己的 [ContentBuilder](https://helpx.adobe.com/experience-manager/6-5/sites/developing/using/reference-materials/javadoc/com/day/cq/replication/ContentBuilder.html) 和 [TransportHandler](https://helpx.adobe.com/experience-manager/6-5/sites/developing/using/reference-materials/javadoc/com/day/cq/replication/TransportHandler.html) (如果 API 不是 REST 型)，並設定複寫代理程式，它將利用這兩個工具讓 CDN 的快取失效。
+為了達到更精細的控制，API 型的失效允許您在 Dispatcher 快取失效時將 DN 的快取判定為失效。您可以根據 CDN API 來實作您自己的 [ContentBuilder](https://helpx.adobe.com/tw/experience-manager/6-5/sites/developing/using/reference-materials/javadoc/com/day/cq/replication/ContentBuilder.html) 和 [TransportHandler](https://helpx.adobe.com/tw/experience-manager/6-5/sites/developing/using/reference-materials/javadoc/com/day/cq/replication/TransportHandler.html) (如果 API 不是 REST 型)，並設定複寫代理程式，它將利用這兩個工具讓 CDN 的快取失效。
 
 >[!NOTE]
 >
@@ -290,7 +290,7 @@ CDN 從 Dispatcher 重新擷取前，有許多方法可控制 CDN 快取資源�
 
 >[!CAUTION]
 >
->如果您正在使用[具有 Touch UI 的 AEM](https://helpx.adobe.com/experience-manager/6-3/sites/developing/using/touch-ui-concepts.html)，您就&#x200B;**不**&#x200B;應該快取編寫執行個體內容。 如果已為編寫執行個體啟用快取，則需要停用並刪除快取目錄的內容。如要停用快取，應編輯`author_dispatcher.any`檔案並修改區段`/rule`屬性`/cache`如下:
+>如果您正在使用[具有 Touch UI 的 AEM](https://helpx.adobe.com/tw/experience-manager/6-3/sites/developing/using/touch-ui-concepts.html)，您就&#x200B;**不**&#x200B;應該快取編寫執行個體內容。 如果已為編寫執行個體啟用快取，則需要停用並刪除快取目錄的內容。如要停用快取，應編輯`author_dispatcher.any`檔案並修改區段`/rule`屬性`/cache`如下:
 
 ```xml
 /rules
@@ -309,7 +309,7 @@ Dispatcher 可用於編寫執行個體之前，以改善編寫效能。如要設
 1. 在文字編輯器中開啟 `author_dispatcher.any`，並進行下列變更: 
 
    1. 變更 `/hostname` 和 `/renders` 區段的 `/port`，以指向您的編寫執行個體。
-   1. 變更 `/cache` 區段的 `/docroot`，以指向快取目錄。如果您正在使用[具有 Touch UI 的 AEM](https://helpx.adobe.com/experience-manager/6-3/sites/developing/using/touch-ui-concepts.html)，請參閱上面的警告。
+   1. 變更 `/cache` 區段的 `/docroot`，以指向快取目錄。如果您正在使用[具有 Touch UI 的 AEM](https://helpx.adobe.com/tw/experience-manager/6-3/sites/developing/using/touch-ui-concepts.html)，請參閱上面的警告。
    1. 儲存變更。
 
 1. 刪除您在上面設定的 `/cache` > `/docroot` 目錄中的所有現有檔案。
