@@ -14,8 +14,8 @@ index: y
 internal: n
 snippet: y
 exl-id: 49009810-b5bf-41fd-b544-19dd0c06b013
-source-git-commit: 3a0e237278079a3885e527d7f86989f8ac91e09d
-workflow-type: ht
+source-git-commit: a21b527700b3a5c3a11eadaefc729e754ba2b37b
+workflow-type: tm+mt
 source-wordcount: '638'
 ht-degree: 100%
 
@@ -38,7 +38,7 @@ Adobe 極力建議您在進入生產階段前完成以下檢查清單。
 
 >[!CAUTION]
 >
->您也必須在上線之前完成您的 AEM 版本的安全性檢查清單。 請參閱相應的 [Adobe Experience Manager 文件](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html)。
+>您也必須在上線之前完成您的 AEM 版本的安全性檢查清單。 請參閱相應的 [Adobe Experience Manager 文件](https://helpx.adobe.com/experience-manager/6-5/sites/administering/using/security-checklist.html)。
 
 ## 使用最新版的 Dispatcher {#use-the-latest-version-of-dispatcher}
 

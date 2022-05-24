@@ -10,8 +10,8 @@ feature-set: Experience Manager
 feature: Dispatcher
 topic: Administration
 role: Admin
-source-git-commit: 4439a4f0adfb8e2e0d08636225d2399638d27af3
-workflow-type: ht
+source-git-commit: a21b527700b3a5c3a11eadaefc729e754ba2b37b
+workflow-type: tm+mt
 source-wordcount: '84'
 ht-degree: 100%
 
@@ -28,7 +28,7 @@ ht-degree: 100%
 + 設定 {#configuring}
    + [設定 Dispatcher](dispatcher-configuration.md)
    + [使 AEM 中的快取頁面失效](page-invalidate.md)
-   + [將網站快取效能最佳化](https://helpx.adobe.com/experience-manager/6-4/sites/deploying/using/configuring-performance.html)
+   + [將網站快取效能最佳化](https://helpx.adobe.com/tw/experience-manager/6-5/sites/deploying/using/configuring-performance.html)
    + [快取安全內容](permissions-cache.md)
    + [在多個網域中使用 Dispatcher ](dispatcher-domains.md)
    + [搭配 Dispatcher 使用 SSL](dispatcher-ssl.md)
