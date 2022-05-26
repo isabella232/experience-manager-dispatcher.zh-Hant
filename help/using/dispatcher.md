@@ -9,8 +9,8 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: 1d449ee2-4cdd-4b7a-8b4e-7e6fc0a1d7ee
 exl-id: c9266683-6890-4359-96db-054b7e856dd0
-source-git-commit: 76f7a3fc8d98657c5f46912f452c05fce1b5be61
-workflow-type: ht
+source-git-commit: 85a7f38ecb5f5fe620ff51a7cdbe29f546559288
+workflow-type: tm+mt
 source-wordcount: '3190'
 ht-degree: 100%
 
@@ -27,7 +27,7 @@ Dispatcher 是 Adobe Experience Manager 的快取及/或負載平衡工具，可
 部署 Dispatcher 的程序與所選的網頁伺服器和作業系統平台無關：
 
 1. 了解 Dispatcher (本頁)。 此外，也請參閱[關於 Dispatcher 的常見問題集](https://helpx.adobe.com/tw/experience-manager/using/dispatcher-faq.html)。
-1. 根據網頁伺服器文件安裝[支援的網頁伺服器](https://helpx.adobe.com/tw/experience-manager/6-3/sites/deploying/using/technical-requirements.html)。
+1. 根據網頁伺服器文件安裝[支援的網頁伺服器](https://helpx.adobe.com/tw/experience-manager/6-5/sites/deploying/using/technical-requirements.html)。
 1. [在網頁伺服器上安裝 Dispatcher 模組](dispatcher-install.md)，並相應地設定網頁伺服器。
 1. [設定 Dispatcher](dispatcher-configuration.md) (dispatcher.any 檔案)。
 1. [設定 AEM](page-invalidate.md)，如此一來內容更新即可讓快取失效。
@@ -158,7 +158,7 @@ Dispatcher 有一個檔案清單，這些檔案會自動失效。請求該清單
 
 ### 判斷文件是否受限於快取
 
-您可以[定義 Dispatcher 會在設定檔案中快取哪些文件](https://helpx.adobe.com/tw/experience-manager/dispatcher/using/dispatcher-configuration.html)。 Dispatcher 會根據可快取文件清單來檢查請求。如果文件不在此清單中，Dispatcher 會請求 AEM 執行個體的文件。
+您可以[定義 Dispatcher 會在設定檔案中快取哪些文件](https://helpx.adobe.com/experience-manager/dispatcher/using/dispatcher-configuration.html)。 Dispatcher 會根據可快取文件清單來檢查請求。如果文件不在此清單中，Dispatcher 會請求 AEM 執行個體的文件。
 
 在下列情況下，** Dispatcher 一律會直接從 AEM 執行個體要求文件:
 
@@ -168,7 +168,7 @@ Dispatcher 有一個檔案清單，這些檔案會自動失效。請求該清單
 
 >[!NOTE]
 >
->Dispatcher 可快取 GET 或 HEAD (用於 HTTP 標題) 方法。 如需有關回應標題快取的其他資訊，請參閱[快取 HTTP 回應標題](https://helpx.adobe.com/tw/experience-manager/dispatcher/using/dispatcher-configuration.html)一節。
+>Dispatcher 可快取 GET 或 HEAD (用於 HTTP 標題) 方法。 如需有關回應標題快取的其他資訊，請參閱[快取 HTTP 回應標題](https://helpx.adobe.com/experience-manager/dispatcher/using/dispatcher-configuration.html)一節。
 
 ### 確定是否已快取文件
 
@@ -309,7 +309,7 @@ Dispatcher 可用於編寫執行個體之前，以改善編寫效能。如要設
 1. 在文字編輯器中開啟 `author_dispatcher.any`，並進行下列變更: 
 
    1. 變更 `/hostname` 和 `/renders` 區段的 `/port`，以指向您的編寫執行個體。
-   1. 變更 `/cache` 區段的 `/docroot`，以指向快取目錄。如果您正在使用[具有 Touch UI 的 AEM](https://helpx.adobe.com/tw/experience-manager/6-3/sites/developing/using/touch-ui-concepts.html)，請參閱上面的警告。
+   1. 變更 `/cache` 區段的 `/docroot`，以指向快取目錄。如果您正在使用[具有 Touch UI 的 AEM](https://helpx.adobe.com/experience-manager/6-3/sites/developing/using/touch-ui-concepts.html)，請參閱上面的警告。
    1. 儲存變更。
 
 1. 刪除您在上面設定的 `/cache` > `/docroot` 目錄中的所有現有檔案。
