@@ -11,8 +11,8 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: 40d91d66-c99b-422d-8e61-c0ced23272ef
 exl-id: 1470b636-7e60-48cc-8c31-899f8785dafa
-source-git-commit: 2aed8101766363834c2fb5b27e0dbd004fc5daf9
-workflow-type: tm+mt
+source-git-commit: 7d2d1cbbb2fb444769239d48c9fbff4cfd2373a2
+workflow-type: ht
 source-wordcount: '2965'
 ht-degree: 100%
 
@@ -62,9 +62,11 @@ ht-degree: 100%
 
 ![](assets/chlimage_1-9.png)
 
-1. AEM 編寫執行個體上會啟用一個頁面，並將內容複寫到發佈執行個體。
-1. Dispatcher Flush 代理程式會呼叫 Dispatcher，好讓複寫內容的快取失效。
-1. Dispatcher 會觸及一個或多個 .stat 檔案，好讓快取檔案失效。
+<ol type="a">
+  <li>AEM 編寫執行個體上會啟用一個頁面，並將內容複寫到發佈執行個體。</li>
+  <li>Dispatcher Flush 代理程式會呼叫 Dispatcher，好讓複寫內容的快取失效。</li>
+  <li>Dispatcher 會觸及一個或多個 .stat 檔案，好讓快取檔案失效。</li>
+</ol>
 
 若要在多個網域中使用 Dispatcher，您需要設定 AEM、Dispatcher 和您的網頁伺服器。 此頁面上所述的解決方案是通用的，適用於大多數環境。 由於某些 AEM 拓撲很複雜，您的解決方案可能需要進一步的自訂設定才能解決特定問題。 您可能需要改寫範例，以符合您現有的 IT 基礎結構和管理政策。
 
@@ -311,10 +313,10 @@ Dispatcher initializing (build 4.1.2)
 | 節點路徑 | 類型 | 屬性 |
 |--- |--- |--- |
 | `/etc/map/http/branda.com` | sling:Mapping | 名稱：sling:internalRedirect；類型：字串；值：/content/sitea |
-| `/etc/map/http/branda.com/libs` | sling：映射 | 名稱：sling:internalRedirect <br/>類型：字串<br/>值：/libs |
-| `/etc/map/http/branda.com/etc` | sling：映射 |  |
-| `/etc/map/http/branda.com/etc/designs` | sling：映射 | 名稱：sling:internalRedirect <br/>VType：字串<br/>VValue：/etc/designs |
-| `/etc/map/http/branda.com/etc/clientlibs` | sling：映射 | 名稱：sling:internalRedirect <br/>VType：字串<br/>VValue：/etc/clientlibs |
+| `/etc/map/http/branda.com/libs` | sling:Mapping | 名稱：sling:internalRedirect <br/>類型：字串<br/>值：/libs |
+| `/etc/map/http/branda.com/etc` | sling:Mapping |  |
+| `/etc/map/http/branda.com/etc/designs` | sling:Mapping | 名稱：sling:internalRedirect <br/>VType：字串<br/>VValue：/etc/designs |
+| `/etc/map/http/branda.com/etc/clientlibs` | sling:Mapping | 名稱：sling:internalRedirect <br/>VType：字串<br/>VValue：/etc/clientlibs |
 
 ## 設定 Dispatcher Flush 複寫代理程式 {#configuring-the-dispatcher-flush-replication-agent}
 
