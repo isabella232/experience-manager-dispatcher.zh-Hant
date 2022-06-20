@@ -11,10 +11,10 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: 40d91d66-c99b-422d-8e61-c0ced23272ef
 exl-id: 1470b636-7e60-48cc-8c31-899f8785dafa
-source-git-commit: 7d2d1cbbb2fb444769239d48c9fbff4cfd2373a2
+source-git-commit: c7af1a042b0106fa0a559448398a8dd636d920c2
 workflow-type: tm+mt
-source-wordcount: '2965'
-ht-degree: 100%
+source-wordcount: '2968'
+ht-degree: 98%
 
 ---
 
@@ -62,11 +62,9 @@ ht-degree: 100%
 
 ![](assets/chlimage_1-9.png)
 
-<ol type="a">
-  <li>AEM 編寫執行個體上會啟用一個頁面，並將內容複寫到發佈執行個體。</li>
-  <li>Dispatcher Flush 代理程式會呼叫 Dispatcher，好讓複寫內容的快取失效。</li>
-  <li>Dispatcher 會觸及一個或多個 .stat 檔案，好讓快取檔案失效。</li>
-</ol>
+* a — 在作者實例上激AEM活頁面，並將內容複製到發佈實例。
+* b - Dispatcher Flush Agent調用Dispatcher以使複製內容的快取無效。
+* c - Dispatcher將觸碰一個或多個.stat檔案，使快取檔案失效。
 
 若要在多個網域中使用 Dispatcher，您需要設定 AEM、Dispatcher 和您的網頁伺服器。 此頁面上所述的解決方案是通用的，適用於大多數環境。 由於某些 AEM 拓撲很複雜，您的解決方案可能需要進一步的自訂設定才能解決特定問題。 您可能需要改寫範例，以符合您現有的 IT 基礎結構和管理政策。
 
