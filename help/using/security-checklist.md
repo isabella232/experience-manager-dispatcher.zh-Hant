@@ -14,10 +14,10 @@ index: y
 internal: n
 snippet: y
 exl-id: 49009810-b5bf-41fd-b544-19dd0c06b013
-source-git-commit: a21b527700b3a5c3a11eadaefc729e754ba2b37b
-workflow-type: ht
-source-wordcount: '638'
-ht-degree: 100%
+source-git-commit: 5a387498c7fd83cad1fafdbfded6a78f55acbc14
+workflow-type: tm+mt
+source-wordcount: '639'
+ht-degree: 99%
 
 ---
 
@@ -161,7 +161,7 @@ AEM 提供了旨在避免跨網站請求偽造攻擊的[架構](https://helpx.ad
 
 若要避免點擊劫持，建議您設定網頁伺服器，以提供設為 `SAMEORIGIN` 的 `X-FRAME-OPTIONS` HTTP 標頭。
 
-如需[點擊劫持的詳細資訊，請查看 OWASP 網站](https://www.owasp.org/index.php/Clickjacking)。
+如需[點擊劫持的詳細資訊，請查看 OWASP 網站](https://owasp.org/www-community/attacks/Clickjacking)。
 
 ## 執行滲透測試 {#perform-a-penetration-test}
 
