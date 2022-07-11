@@ -13,10 +13,10 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: 79cd94be-a6bc-4d34-bfe9-393b4107925c
 exl-id: 90eb6a78-e867-456d-b1cf-f62f49c91851
-source-git-commit: 3a0e237278079a3885e527d7f86989f8ac91e09d
-workflow-type: ht
+source-git-commit: 25f8569bdeb6b675038bea02637900e9d0fc1f27
+workflow-type: tm+mt
 source-wordcount: '1404'
-ht-degree: 100%
+ht-degree: 99%
 
 ---
 
@@ -67,7 +67,7 @@ Last Modified Date: 2017-05-25T10:37:23.679-0400
 1. 視需要設定其他參數。
 1. 按一下「確定」，啟用代理程式。
 
-或者，您也可以從 [AEM Touch UI](https://helpx.adobe.com/experience-manager/6-2/sites/deploying/using/replication.html#ConfiguringaDispatcherFlushagent) 存取及設定 Dispatcher Flush 代理程式。
+或者，您也可以從 [AEM Touch UI](https://experienceleague.adobe.com/docs/experience-manager-65/deploying/configuring/replication.html#configuring-a-dispatcher-flush-agent) 存取及設定 Dispatcher Flush 代理程式。
 
 如需如何啟用對虛名 URL 之存取權的詳細資訊，請參閱[啟用對虛名 URL 的存取權](dispatcher-configuration.md#enabling-access-to-vanity-urls-vanity-urls)。
 
