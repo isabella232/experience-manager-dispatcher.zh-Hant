@@ -5,7 +5,7 @@ type: Documentation
 git-repo: https://github.com/AdobeDocs/experience-manager-dispatcher.zh-Hant
 index: y
 source-git-commit: da6af93fa3dec8e3b2f146e9c8c6183a3185199b
-workflow-type: ht
+workflow-type: tm+mt
 source-wordcount: '111'
 ht-degree: 100%
 
