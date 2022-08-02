@@ -14,9 +14,9 @@ content-type: reference
 discoiquuid: 79cd94be-a6bc-4d34-bfe9-393b4107925c
 exl-id: 90eb6a78-e867-456d-b1cf-f62f49c91851
 source-git-commit: 25f8569bdeb6b675038bea02637900e9d0fc1f27
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '1404'
-ht-degree: 99%
+ht-degree: 100%
 
 ---
 
@@ -28,7 +28,7 @@ ht-degree: 99%
 
 系統會使用預設 `admin` 使用者帳戶來驗證預設情況下安裝的複寫代理程式。 您應該建立專用使用者帳戶以搭配複寫代理程式使用。
 
-如需詳細資訊，請參閱 AEM 安全性檢查清單的[設定複寫和傳輸使用者](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps)一節。
+如需詳細資訊，請參閱 AEM 安全性檢查清單的[設定複寫和傳輸使用者](https://helpx.adobe.com/tw/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps)一節。
 
 ## 使編寫環境中的 Dispatcher 快取失效 {#invalidating-dispatcher-cache-from-the-authoring-environment}
 
