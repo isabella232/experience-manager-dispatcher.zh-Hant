@@ -1,11 +1,11 @@
 ---
 title: 設定 Dispatcher
-description: 了解如何設定 Dispatcher。
+description: 了解如何設定 Dispatcher。瞭解對IPv4和IPv6的支援、配置檔案、環境變數、命名實例、定義場、標識虛擬主機等。
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: deb232be3c4c5e3d11d13cbccb282409d90b93bb
-workflow-type: ht
-source-wordcount: '8528'
-ht-degree: 100%
+source-git-commit: aed3c791a308b37ac493a78e918da3a4db1c8a64
+workflow-type: tm+mt
+source-wordcount: '8549'
+ht-degree: 99%
 
 ---
 
