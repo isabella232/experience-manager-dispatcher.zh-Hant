@@ -3,9 +3,9 @@ title: 設定 Dispatcher
 description: 了解如何設定 Dispatcher。了解對 IPv4 和 IPv6 的支援、設定檔案、環境變數、為執行個體命名、定義陣列、識別虛擬主機等。
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
 source-git-commit: d7045fd779bf2c59034247266930e4b79ec2156f
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '8572'
-ht-degree: 99%
+ht-degree: 100%
 
 ---
 
@@ -1374,11 +1374,11 @@ GET /mypage.html?q=5&p=4
 
 ### 設定以時間為基礎的快取失效 - /enableTTL {#configuring-time-based-cache-invalidation-enablettl}
 
-如果設定為1(`/enableTTL "1"`) `/enableTTL` 屬性將評估來自後端的響應標頭，如果它們包含 `Cache-Control` 最大年齡或 `Expires` 日期，建立快取檔案旁邊的輔助空檔案，修改時間等於到期日期。 在修改時間過後請求快取檔案時，將會自動從後端重新請求該檔案。
+如果設定為 1 (`/enableTTL "1"`)，`/enableTTL` 屬性將會評估來自後端的回應標頭，如果其中包含 `Cache-Control` max-age 或 `Expires` 日期，則會在快取檔案旁邊建立空的輔助檔案，且修改時間等於到期日。 在修改時間過後請求快取檔案時，將會自動從後端重新請求該檔案。
 
 >[!NOTE]
 >
->請記住，基於TTL的快取是報頭快取的超集，因此 `/headers` 還應正確配置屬性。
+>請記住，TTL 式快取是標頭快取的超集，因此也應正確設定 `/headers` 屬性。
 
 >[!NOTE]
 >
