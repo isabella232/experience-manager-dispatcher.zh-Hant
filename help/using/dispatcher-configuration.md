@@ -2,9 +2,9 @@
 title: 設定 Dispatcher
 description: 了解如何設定 Dispatcher。了解對 IPv4 和 IPv6 的支援、設定檔案、環境變數、為執行個體命名、定義陣列、識別虛擬主機等。
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: d7045fd779bf2c59034247266930e4b79ec2156f
+source-git-commit: 3455a90308d8661725850e19b67d7ff65f6f662f
 workflow-type: ht
-source-wordcount: '8572'
+source-wordcount: '8561'
 ht-degree: 100%
 
 ---
@@ -782,9 +782,10 @@ Last Modified Date: 2015-06-26T04:32:37.986-0400
 >
 >在搭配 Apache 使用時，請根據 Dispatcher 模組的 DispatcherUseProcessedURL 屬性來設計您的篩選條件 URL 模式。 (請參閱 [Apache Web Server - 為 Dispatcher 設定 Apache Web Server](dispatcher-install.md##apache-web-server-configure-apache-web-server-for-dispatcher)。)
 
+<!----
 >[!NOTE]
 >
->有關 Dynamic Media 的 `0030` 和 `0031` 篩選條件適用於 AEM 6.0 和更高版本。
+>Filters `0030` and `0031` regarding Dynamic Media are applicable to AEM 6.0 and higher. -->
 
 如果您選擇擴充存取權，請考量以下建議事項：
 
