@@ -2,10 +2,10 @@
 title: 設定 Dispatcher
 description: 了解如何設定 Dispatcher。了解對 IPv4 和 IPv6 的支援、設定檔案、環境變數、為執行個體命名、定義陣列、識別虛擬主機等。
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: 3455a90308d8661725850e19b67d7ff65f6f662f
+source-git-commit: f379daec71240150706eb90d930dbc756bbf8eb1
 workflow-type: tm+mt
-source-wordcount: '8561'
-ht-degree: 100%
+source-wordcount: '8636'
+ht-degree: 98%
 
 ---
 
@@ -1280,31 +1280,38 @@ printf "%-15s: %s %s" $1 $2 $3>> /opt/dispatcher/logs/invalidate.log
 
 忽略頁面的某個參數時，將會在第一次請求該頁面時快取該頁面。 無論請求中的參數值為何，都將為該頁面的後續請求提供快取頁面。
 
+>[!NOTE]
+>
+>建議您設定 `ignoreUrlParams` 以允許清單方式設定。 因此，會忽略所有查詢參數，並且只有已知或預期的查詢參數不會遭到忽略（「拒絕」）。 如需詳細資訊和範例，請參閱 [本頁](https://github.com/adobe/aem-dispatcher-optimizer-tool/blob/main/docs/Rules.md#dot---the-dispatcher-publish-farm-cache-should-have-its-ignoreurlparams-rules-configured-in-an-allow-list-manner).
+
 若要指定哪些參數會被忽略，請在 `ignoreUrlParams` 屬性中新增 glob 規則：
 
-* 若要忽略某個參數，請建立允許該參數的 glob 屬性。
-* 若要避免快取頁面，請建立拒絕該參數的 glob 屬性。
+* 若要快取頁面，而請求中包含URL參數，請建立允許參數（可忽略）的全域屬性。
+* 若要防止快取頁面，請建立拒絕參數的全域屬性（待忽略）。
 
-以下範例會讓 Dispatcher 忽略 `q` 參數，所以會快取包含 q 參數的請求 URL：
+下列範例會使Dispatcher忽略所有參數， `nocache` 參數。 因此，請求包含 `nocache` dispatcher不會快取參數：
 
 ```xml
 /ignoreUrlParams
 {
-    /0001 { /glob "*" /type "deny" }
-    /0002 { /glob "q" /type "allow" }
+    # allow-the-url-parameter-nocache-to-bypass-dispatcher-on-every-request
+    /0001 { /glob "nocache" /type "deny" }
+    # all-other-url-parameters-are-ignored-by-dispatcher-and-requests-are-cached
+    /0002 { /glob "*" /type "allow" }
 }
 ```
 
-使用範例 `ignoreUrlParams` 值時，以下 HTTP 請求會導致頁面被快取，因為 `q` 參數會被忽略：
+在 `ignoreUrlParams` 設定範例中，下列HTTP要求會導致頁面被快取，因為 `willbecached` 參數會被忽略：
 
 ```xml
-GET /mypage.html?q=5
+GET /mypage.html?willbecached=true
 ```
 
-使用範例 `ignoreUrlParams` 值時，以下 HTTP 請求會導致頁面&#x200B;**不**&#x200B;被快取，因為 `p` 參數不會被忽略：
+在 `ignoreUrlParams` 設定範例，下列HTTP要求會使頁面 **not** 因為 `nocache` 參數未忽略：
 
 ```xml
-GET /mypage.html?q=5&p=4
+GET /mypage.html?nocache=true
+GET /mypage.html?nocache=true&willbecached=true
 ```
 
 如需 glob 屬性的相關資訊，請參閱[為 glob 屬性設計模式](#designing-patterns-for-glob-properties)。
