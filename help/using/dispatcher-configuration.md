@@ -3,9 +3,9 @@ title: 設定 Dispatcher
 description: 了解如何設定 Dispatcher。了解對 IPv4 和 IPv6 的支援、設定檔案、環境變數、為執行個體命名、定義陣列、識別虛擬主機等。
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
 source-git-commit: f379daec71240150706eb90d930dbc756bbf8eb1
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '8636'
-ht-degree: 98%
+ht-degree: 100%
 
 ---
 
@@ -1282,14 +1282,14 @@ printf "%-15s: %s %s" $1 $2 $3>> /opt/dispatcher/logs/invalidate.log
 
 >[!NOTE]
 >
->建議您設定 `ignoreUrlParams` 以允許清單方式設定。 因此，會忽略所有查詢參數，並且只有已知或預期的查詢參數不會遭到忽略（「拒絕」）。 如需詳細資訊和範例，請參閱 [本頁](https://github.com/adobe/aem-dispatcher-optimizer-tool/blob/main/docs/Rules.md#dot---the-dispatcher-publish-farm-cache-should-have-its-ignoreurlparams-rules-configured-in-an-allow-list-manner).
+>建議您以白名單方式配置 `ignoreUrlParams` 設定。這樣一來，所有查詢參數都將被忽略，並且只有已知或預期的查詢參數可以免除 (「已拒絕」) 被忽略。如需更多資訊和範例，請參閱[此頁面](https://github.com/adobe/aem-dispatcher-optimizer-tool/blob/main/docs/Rules.md#dot---the-dispatcher-publish-farm-cache-should-have-its-ignoreurlparams-rules-configured-in-an-allow-list-manner)。
 
 若要指定哪些參數會被忽略，請在 `ignoreUrlParams` 屬性中新增 glob 規則：
 
-* 若要快取頁面，而請求中包含URL參數，請建立允許參數（可忽略）的全域屬性。
-* 若要防止快取頁面，請建立拒絕參數的全域屬性（待忽略）。
+* 雖然要求包含 URL 參數，但若要快取頁面，請建立一個允許該參數 (被忽略) 的 glob 屬性。
+* 若要防止頁面快取，請建立一個拒絕參數的 glob 屬性 (將被忽略)。
 
-下列範例會使Dispatcher忽略所有參數， `nocache` 參數。 因此，請求包含 `nocache` dispatcher不會快取參數：
+下列範例會造成 Dispatcher 忽略所有參數，`nocache` 參數除外。如此一來，Dispatcher 永遠不會快取包含 `nocache` 參數的要求 URL：
 
 ```xml
 /ignoreUrlParams
@@ -1301,13 +1301,13 @@ printf "%-15s: %s %s" $1 $2 $3>> /opt/dispatcher/logs/invalidate.log
 }
 ```
 
-在 `ignoreUrlParams` 設定範例中，下列HTTP要求會導致頁面被快取，因為 `willbecached` 參數會被忽略：
+在上述 `ignoreUrlParams` 配置範例的上下文中，以下 HTTP 要求會導致頁面被快取，因為 `willbecached` 參數被忽略：
 
 ```xml
 GET /mypage.html?willbecached=true
 ```
 
-在 `ignoreUrlParams` 設定範例，下列HTTP要求會使頁面 **not** 因為 `nocache` 參數未忽略：
+在上述 `ignoreUrlParams` 配置範例的上下文中，以下 HTTP 要求會導致頁面&#x200B;**不會**&#x200B;被快取，因為`nocache`參數不會被忽略：
 
 ```xml
 GET /mypage.html?nocache=true
