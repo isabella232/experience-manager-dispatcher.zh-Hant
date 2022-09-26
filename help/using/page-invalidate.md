@@ -14,9 +14,9 @@ content-type: reference
 discoiquuid: 79cd94be-a6bc-4d34-bfe9-393b4107925c
 exl-id: 90eb6a78-e867-456d-b1cf-f62f49c91851
 source-git-commit: f255701f23a628ba0d8b6cd91228462e1b552ffa
-workflow-type: tm+mt
-source-wordcount: '0'
-ht-degree: 0%
+workflow-type: ht
+source-wordcount: '1421'
+ht-degree: 100%
 
 ---
 
@@ -67,7 +67,7 @@ Last Modified Date: 2017-05-25T10:37:23.679-0400
 1. 視需要設定其他參數。
 1. 按一下「確定」，啟用代理程式。
 
-或者，您也可以從 [AEM Touch UI](https://experienceleague.adobe.com/docs/experience-manager-65/deploying/configuring/replication.html#configuring-a-dispatcher-flush-agent) 存取及設定 Dispatcher Flush 代理程式。
+或者，您也可以從 [AEM Touch UI](https://experienceleague.adobe.com/docs/experience-manager-65/deploying/configuring/replication.html?lang=zh-Hant#configuring-a-dispatcher-flush-agent) 存取及設定 Dispatcher Flush 代理程式。
 
 如需如何啟用對虛名 URL 之存取權的詳細資訊，請參閱[啟用對虛名 URL 的存取權](dispatcher-configuration.md#enabling-access-to-vanity-urls-vanity-urls)。
 
@@ -114,7 +114,7 @@ Dispatcher 清除作業是由發佈執行個體上運作的複寫代理程式所
    **注意：**&#x200B;對於 Dispatcher Flush 代理程式，只有當您使用以路徑為根據的虛擬主機項目來區分陣列時，才會使用 URI 屬性。 您會使用此欄位來鎖定要失效的陣列。 例如，陣列 #1 的虛擬主機為 `www.mysite.com/path1/*`，而陣列 #2 的虛擬主機為 `www.mysite.com/path2/*`。 您可以使用 URL `/path1/invalidate.cache` 鎖定第一個陣列，並使用 `/path2/invalidate.cache` 鎖定第二個陣列。 如需詳細資訊，請參閱[在多個網域中使用 Dispatcher](dispatcher-domains.md)。
 
 1. 視需要設定其他參數。
-1. 登入發佈執行個體並驗證排清代理設定。 此外，請確定已啟用。
+1. 登入發佈執行個體並驗證排清代理程式設定。另外，請確定已啟用它。
 1. 針對每個受影響的發佈執行個體重複此程序。
 
 在設定後，當您啟用編寫環境中的頁面進行發佈時，此代理程式會起始標準複寫。 記錄中包含的訊息會指示來自您的發佈伺服器的請求，類似於以下範例：
