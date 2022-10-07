@@ -11,9 +11,9 @@ content-type: reference
 discoiquuid: f00ad751-6b95-4365-8500-e1e0108d9536
 exl-id: 9375d1c0-8d9e-46cb-9810-fa4162a8c1ba
 source-git-commit: 63dc6184b502b517238c60ef6223b39bd7594306
-workflow-type: tm+mt
-source-wordcount: '0'
-ht-degree: 0%
+workflow-type: ht
+source-wordcount: '3693'
+ht-degree: 100%
 
 ---
 
@@ -177,7 +177,7 @@ replaceauthorization=0
 
 如果您的網站使用驗證方法，則必須適當地設定 Flush 複寫代理程式。
 
-1. 開啟「IIS管理器」，並選取您使用作為Dispatcher快取的網站。
+1. 開啟 IIS 管理員，然後選取您要用作 Dispatcher 快取的網站。
 1. 使用「功能檢視」模式，在 IIS 區段中按兩下「驗證」。
 1. 如果未啟用「匿名驗證」，請選取「匿名驗證」，然後在「動作」區域中按一下「啟用」。
 
@@ -642,7 +642,7 @@ keepalivetimeout="60"
 | 參數 | 說明 |
 |--- |--- |
 | config | 設定檔 `dispatcher.any.` 的位置和名稱 |
-| 記錄檔 | 記錄檔的位置和名稱。 |
+| logfile | 記錄檔的位置和名稱。 |
 | loglevel | 將訊息寫入記錄檔時的記錄層級：<br/>**0** 錯誤 <br/>**1** 警告 <br/>**2** 資訊 <br/>**3** 偵錯 <br/>**注意：**&#x200B;建議在安裝和測試期間將記錄層級設為 3，然後在生產環境執行時則設為 0。 |
 | keepalivetimeout | 指定保持連線逾時值 (以秒為單位)。 從 Dispatcher 版本 4.2.0 開始，預設保持連線值為 60。 0 的值會停用保持連線。 |
 
