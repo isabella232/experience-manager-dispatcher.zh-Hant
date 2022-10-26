@@ -3,7 +3,7 @@ title: 設定 Dispatcher
 description: 了解如何設定 Dispatcher。了解對 IPv4 和 IPv6 的支援、設定檔案、環境變數、為執行個體命名、定義陣列、識別虛擬主機等。
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
 source-git-commit: 0debee043078b869d0af3258075bd83bf0312c8f
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '8675'
 ht-degree: 100%
 
@@ -406,7 +406,7 @@ Dispatcher 會依照以下順序尋找最符合的虛擬主機值：
 
 >[!CAUTION]
 >
->`/allowAuthorized`**必須**&#x200B;在 `/cache` 區段中設定為 `"0"` 才能啟用此功能。 如[使用驗證時快取](#caching-when-authentication-is-used)區段中詳細說明的，當您設定包含驗證資訊的 `/allowAuthorized 0 ` 請求時，**不會**&#x200B;快取。如需權限敏感型快取，請參閱[快取安全內容](https://experienceleague.adobe.com/docs/experience-manager-dispatcher/using/configuring/permissions-cache.html)頁面。
+>`/allowAuthorized`**必須**&#x200B;在 `/cache` 區段中設定為 `"0"` 才能啟用此功能。 如[使用驗證時快取](#caching-when-authentication-is-used)區段中詳細說明的，當您設定包含驗證資訊的 `/allowAuthorized 0 ` 請求時，**不會**&#x200B;快取。如需權限敏感型快取，請參閱[快取安全內容](https://experienceleague.adobe.com/docs/experience-manager-dispatcher/using/configuring/permissions-cache.html?lang=zh-Hant)頁面。
 
 建立安全工作階段以存取轉譯器陣列，讓使用者需要登入才能存取陣列中的任何頁面。 使用者在登入後，就可以存取陣列中的頁面。 如需搭配 CUG 使用此功能的相關資訊，請參閱[建立封閉式使用者群組](https://experienceleague.adobe.com/docs/experience-manager-65/administering/security/cug.html?lang=zh-Hant#creating-the-user-group-to-be-used)。 此外，也請在上線前參考 Dispatcher [安全性檢查清單](/help/using/security-checklist.md)。
 
@@ -901,7 +901,7 @@ Dispatcher 篩選條件應該在 AEM Publish 執行個體上封鎖對以下頁�
 
 `curl -X POST "https://anonymous:anonymous@hostname:port/content/usergenerated/mytestnode"`
 
-在終端機或命令提示字元中發出以下命令，嘗試讓 Dispatcher 快取失效，並確定您有收到錯誤碼 403 的回應：
+在終端機或命令提示字元中發出以下命令，嘗試讓 Dispatcher 快取失效，並確定您收到了代碼 403 回應：
 
 `curl -H "CQ-Handle: /content" -H "CQ-Path: /content" https://yourhostname/dispatcher/invalidate.cache`
 
