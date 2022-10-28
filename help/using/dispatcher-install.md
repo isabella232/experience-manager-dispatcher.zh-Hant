@@ -11,8 +11,8 @@ content-type: reference
 discoiquuid: f00ad751-6b95-4365-8500-e1e0108d9536
 exl-id: 9375d1c0-8d9e-46cb-9810-fa4162a8c1ba
 source-git-commit: 663e493f3e1ae26c264e574cec4e0b271a971809
-workflow-type: ht
-source-wordcount: '0'
+workflow-type: tm+mt
+source-wordcount: '3693'
 ht-degree: 100%
 
 ---
@@ -642,7 +642,7 @@ keepalivetimeout="60"
 | 參數 | 說明 |
 |--- |--- |
 | config | 設定檔 `dispatcher.any.` 的位置和名稱 |
-| logfile | 記錄檔的位置和名稱。 |
+| 記錄檔 | 記錄檔的位置和名稱。 |
 | loglevel | 將訊息寫入記錄檔時的記錄層級：<br/>**0** 錯誤 <br/>**1** 警告 <br/>**2** 資訊 <br/>**3** 偵錯 <br/>**注意：**&#x200B;建議在安裝和測試期間將記錄層級設為 3，然後在生產環境執行時則設為 0。 |
 | keepalivetimeout | 指定保持連線逾時值 (以秒為單位)。 從 Dispatcher 版本 4.2.0 開始，預設保持連線值為 60。 0 的值會停用保持連線。 |
 
