@@ -2,8 +2,8 @@
 title: 設定 Dispatcher
 description: 了解如何設定 Dispatcher。了解對 IPv4 和 IPv6 的支援、設定檔案、環境變數、為執行個體命名、定義陣列、識別虛擬主機等。
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: 9ee19d28b9d18f2ffd4f45129e48b5431beacc77
-workflow-type: tm+mt
+source-git-commit: 51be516f90587ceda19180f13727c8372a794261
+workflow-type: ht
 source-wordcount: '8675'
 ht-degree: 100%
 
@@ -286,10 +286,6 @@ Dispatcher 預設會將標準 HTTP 標題轉送給 AEM 執行個體。 在某些
   "accept-language"
   "accept"
   "host"
-  "if-match"
-  "if-none-match"
-  "if-range"
-  "if-unmodified-since"
   "max-forwards"
   "proxy-authorization"
   "proxy-connection"
