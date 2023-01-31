@@ -2,10 +2,10 @@
 title: 設定 Dispatcher
 description: 了解如何設定 Dispatcher。了解對 IPv4 和 IPv6 的支援、設定檔案、環境變數、為執行個體命名、定義陣列、識別虛擬主機等。
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: 51be516f90587ceda19180f13727c8372a794261
+source-git-commit: 0378cfc2585339920894dd354c59929ef2bf49e0
 workflow-type: tm+mt
-source-wordcount: '8675'
-ht-degree: 100%
+source-wordcount: '8710'
+ht-degree: 99%
 
 ---
 
@@ -1284,6 +1284,11 @@ printf "%-15s: %s %s" $1 $2 $3>> /opt/dispatcher/logs/invalidate.log
 
 * 雖然要求包含 URL 參數，但若要快取頁面，請建立一個允許該參數 (被忽略) 的 glob 屬性。
 * 若要防止頁面快取，請建立一個拒絕參數的 glob 屬性 (將被忽略)。
+
+>[!NOTE]
+>
+>設定全域屬性時，請注意它應符合查詢參數名稱。 例如，如果您想忽略下列URL中的&quot;p1&quot;參數 `http://example.com/path/test.html?p1=test&p2=v2`，則全域屬性應為：
+> `/0002 { /glob "p1" /type "allow" }`
 
 下列範例會造成 Dispatcher 忽略所有參數，`nocache` 參數除外。如此一來，Dispatcher 永遠不會快取包含 `nocache` 參數的要求 URL：
 
