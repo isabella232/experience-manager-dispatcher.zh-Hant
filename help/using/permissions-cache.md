@@ -11,9 +11,9 @@ content-type: reference
 discoiquuid: 4f9b2bc8-a309-47bc-b70d-a1c0da78d464
 exl-id: 3d8d8204-7e0d-44ad-b41b-6fec2689c6a6
 source-git-commit: ef395d122b1f248cbcdad5a74ff111872c4d2b00
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '856'
-ht-degree: 96%
+ht-degree: 100%
 
 ---
 
@@ -147,7 +147,7 @@ public class AuthcheckerServlet extends SlingSafeMethodsServlet {
 
 >[!NOTE]
 >
->如果您的要求允許快取已驗證的文檔，請將/cache區段下的/allowAuthorized屬性設定為 `/allowAuthorized 1`. 請參閱 [使用驗證時快取](/help/using/dispatcher-configuration.md) 以取得更多詳細資訊。
+>如果您的要求允許快取經驗證的文件，請將 /cache 部分下的 /allowAuthorized 屬性設定為 `/allowAuthorized 1`。有關詳細資訊，請參閱[使用驗證時快取](/help/using/dispatcher-configuration.md)。
 
 dispatcher.any 檔案的 auth_checker 區段會控制權限敏感型快取的行為。 auth_checker 區段包含以下子區段：
 
