@@ -10,10 +10,10 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: 4f9b2bc8-a309-47bc-b70d-a1c0da78d464
 exl-id: 3d8d8204-7e0d-44ad-b41b-6fec2689c6a6
-source-git-commit: ef395d122b1f248cbcdad5a74ff111872c4d2b00
-workflow-type: ht
-source-wordcount: '856'
-ht-degree: 100%
+source-git-commit: 31eaa42b17838d97cacd5c535e04be01a3eb6807
+workflow-type: tm+mt
+source-wordcount: '918'
+ht-degree: 93%
 
 ---
 
@@ -60,7 +60,6 @@ Dispatcher 包含的 AuthChecker 模組會實作權限敏感型快取。 在啟�
 1. 轉譯器呼叫 AEM 授權程式 servlet (這不是 Dispatcher AuthChcker servlet) 來執行安全性檢查。 當使用者獲得授權時，轉譯器會將轉譯的頁面納入回應訊息的內文中。
 1. Dispatcher 將回應轉送給瀏覽器。 Dispatcher 將轉譯器的回應訊息內文新增到快取中。
 
-
 ## 實作權限敏感型快取 {#implementing-permission-sensitive-caching}
 
 若要實作權限敏感型快取，請執行以下工作：
@@ -71,6 +70,11 @@ Dispatcher 包含的 AuthChecker 模組會實作權限敏感型快取。 在啟�
 >[!NOTE]
 >
 >通常安全資源會儲存在與不安全檔案不同的資料夾中。 例如，/content/secure/
+
+>[!NOTE]
+>
+>當Dispatcher前面有CDN（或任何其他快取）時，您應據此設定快取標題，這樣CDN就不會快取私人內容。 例如： `Header always set Cache-Control private`.
+>若需AEMas a Cloud Service，請參閱 [快取](https://experienceleague.adobe.com/docs/experience-manager-cloud-service/content/implementing/content-delivery/caching.html) 頁面，以取得如何設定私人快取標題的詳細資訊。
 
 ## 建立 Auth Checker servlet {#create-the-auth-checker-servlet}
 
