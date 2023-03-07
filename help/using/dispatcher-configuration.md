@@ -2,10 +2,10 @@
 title: 設定 Dispatcher
 description: 了解如何設定 Dispatcher。了解對 IPv4 和 IPv6 的支援、設定檔案、環境變數、為執行個體命名、定義陣列、識別虛擬主機等。
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: 0378cfc2585339920894dd354c59929ef2bf49e0
-workflow-type: ht
-source-wordcount: '8710'
-ht-degree: 100%
+source-git-commit: 0ac7c1cf3fc9330665b7a758cea38410c1958f1c
+workflow-type: tm+mt
+source-wordcount: '8984'
+ht-degree: 96%
 
 ---
 
@@ -1383,7 +1383,31 @@ GET /mypage.html?nocache=true&willbecached=true
 
 ### 設定以時間為基礎的快取失效 - /enableTTL {#configuring-time-based-cache-invalidation-enablettl}
 
-如果設定為 1 (`/enableTTL "1"`)，`/enableTTL` 屬性將會評估來自後端的回應標頭，如果其中包含 `Cache-Control` max-age 或 `Expires` 日期，則會在快取檔案旁邊建立空的輔助檔案，且修改時間等於到期日。 在修改時間過後請求快取檔案時，將會自動從後端重新請求該檔案。
+基於時間的快取失效取決於 `/enableTTL` 屬性，以及是否有HTTP標準的定期過期標題。 如果您將屬性設為1(`/enableTTL "1"`)，會評估來自後端的回應標題，如果標題包含 `Cache-Control`, `max-age` 或 `Expires` 日期，則會建立快取檔案旁的輔助空白檔案，修改時間等於到期日。 在修改時間過後請求快取檔案時，將會自動從後端重新請求該檔案。
+
+在Dispatcher 4.3.5版之前，TTL失效邏輯僅根據已設定的TTL值。 若使用Dispatcher 4.3.5版，則兩者皆為設定TTL **和** dispatcher快取失效規則會納入考量。 因此，對於快取檔案：
+
+1. 若 `/enableTTL` 設為1時，會檢查檔案過期時間。 如果檔案已根據設定的TTL過期，則不會執行其他檢查，並會從後端重新請求快取檔案。
+2. 如果檔案未過期或 `/enableTTL` 未設定，則會套用標準快取失效規則，例如 [/statfilelevel](#invalidating-files-by-folder-level) 和 [/invalidate](#automatically-invalidating-cached-files). 這表示Dispatcher可能會使TTL尚未過期的檔案無效。
+
+此新實作支援的使用案例會顯示檔案的TTL較長（例如CDN上的），但即使TTL未過期，仍可能失效。 在Dispatcher上，內容時效性優於快取點擊率。
+
+轉換後，以備您需要 **僅限** 套用至檔案的過期邏輯，然後設定 `/enableTTL` 設為1，並將該檔案從標準快取失效機制中排除。 例如，您可以:
+
+* 設定 [失效規則](#automatically-invalidating-cached-files) ，忽略檔案。 在以下程式碼片段中，所有結尾為 `.example.html` 會遭到忽略，且只有在設定TTL過後才會過期。
+
+```xml
+  /invalidate
+  {
+   /0000  { /glob "*" /type "deny" }
+   /0001  { /glob "*.html" /type "allow" }
+   /0002  { /glob "*.example.html" /type "deny" }
+  }
+```
+
+* 以可設定高的方式設計內容結構 [/statfilelevel](#invalidating-files-by-folder-level) 因此檔案不會自動失效。
+
+這可確保 `.stat` 不會使用檔案失效，且指定檔案的TTL有效期僅限於此。
 
 >[!NOTE]
 >
