@@ -13,10 +13,10 @@ index: y
 internal: n
 snippet: y
 exl-id: ec378409-ddb7-4917-981d-dbf2198aca98
-source-git-commit: 0debee043078b869d0af3258075bd83bf0312c8f
+source-git-commit: e87af532ee3268f0a45679e20031c3febc02de58
 workflow-type: tm+mt
-source-wordcount: '1359'
-ht-degree: 100%
+source-wordcount: '1355'
+ht-degree: 69%
 
 ---
 
@@ -29,7 +29,7 @@ ht-degree: 100%
 
 >[!NOTE]
 >
->與 SSL 憑證有關的作業會與協力廠商產品綁定。 Adobe 白金級維護和支援合約中不涵蓋這些作業。
+>與SSL憑證相關的作業會系結至協力廠商產品。 Adobe 白金級維護和支援合約中不涵蓋這些作業。
 
 ## 在 Dispatcher 連線到 AEM 時使用 SSL {#use-ssl-when-dispatcher-connects-to-aem}
 
@@ -37,13 +37,13 @@ ht-degree: 100%
 
 在設定 Dispatcher 之前，請設定 AEM 或 CQ 使用 SSL：
 
-* AEM 6.2：[啟用透過 SSL 的 HTTP](https://helpx.adobe.com/experience-manager/6-2/sites/deploying/using/config-ssl.html)
-* AEM 6.1：[啟用透過 SSL 的 HTTP](https://docs.adobe.com/content/docs/en/aem/6-1/deploy/configuring/config-ssl.html)
-* AEM 舊版：請參閱[此頁面](https://helpx.adobe.com/experience-manager/aem-previous-versions.html)。
+* AEM 6.2：[啟用透過 SSL 的 HTTP](https://experienceleague.adobe.com/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions.html?lang=zh-Hant)
+* AEM 6.1：[啟用透過 SSL 的 HTTP](https://experienceleague.adobe.com/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions.html?lang=zh-Hant)
+* AEM 舊版：請參閱[此頁面](https://experienceleague.adobe.com/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions.html?lang=zh-Hant)。
 
 ### 與 SSL 相關的請求標頭 {#ssl-related-request-headers}
 
-當 Dispatcher 收到 HTTPS 請求時，Dispatcher 會在其傳送給 AEM 或 CQ 的後續請求中包含以下標頭：
+當Dispatcher收到HTTPS請求時，Dispatcher會在後續要求中納入下列標題，以便傳送至AEM或CQ:
 
 * `X-Forwarded-SSL`
 * `X-Forwarded-SSL-Cipher`
@@ -66,9 +66,9 @@ X-Forwarded-SSL-Session-ID: 814825E8CD055B4C166C2EF6D75E1D0FE786FFB29DEB6DE1E239
 * 虛擬主機的 `renders` 區段包含一個項目，此項目會識別使用 HTTPS 的 CQ 或 AEM 執行個體的主機名稱及連接埠。
 * `renders` 項目包含名為 `secure` 的屬性，其值為 `1`。
 
-注意：如果需要，請建立另一部虛擬主機來處理 HTTP 請求。
+注意：如有必要，請建立另一個虛擬主機以處理HTTP要求。
 
-以下範例檔案 dispatcher.any 顯示用來使用 HTTPS 連線到在主機 `localhost` 和連接埠 `8443` 上執行的 CQ 執行個體的屬性值：
+下列範例 `dispatcher.any` 檔案顯示使用HTTPS連線至主機上執行之CQ例項的屬性值 `localhost` 和埠 `8443`:
 
 ```
 /farms
@@ -118,7 +118,7 @@ X-Forwarded-SSL-Session-ID: 814825E8CD055B4C166C2EF6D75E1D0FE786FFB29DEB6DE1E239
 
 ## 設定 Dispatcher 與 AEM 之間的雙向 SSL {#configuring-mutual-ssl-between-dispatcher-and-aem}
 
-設定 Dispatcher 與轉譯器電腦之間的連線 (通常是 AEM 或 CQ 發佈執行個體) 以使用雙向 SSL：
+若要使用Mutual SSL，請設定Dispatcher與轉譯電腦(通常為AEM或CQ發佈例項)之間的連線：
 
 * Dispatcher 會透過 SSL 連線到轉譯器執行個體。
 * 轉譯器執行個體會驗證 Dispatcher 的憑證是否有效。
@@ -131,11 +131,11 @@ X-Forwarded-SSL-Session-ID: 814825E8CD055B4C166C2EF6D75E1D0FE786FFB29DEB6DE1E239
 * CA 憑證 (如果您充當 CA)
 * 用來產生 CA、憑證和憑證請求的 OpenSSL 程式庫。
 
-執行以下步驟來設定雙向 SSL：
+要配置互用SSL，請執行以下步驟：
 
 1. [安裝](dispatcher-install.md)您的平台適用的最新版 Dispatcher。 使用支援 SSL 的 Dispatcher 二進位檔案 (SSL 位在檔案名稱中，例如 dispatcher-apache2.4-linux-x86-64-ssl10-4.1.7.tar)。
 1. [建立或取得 CA 簽署的憑證](dispatcher-ssl.md#main-pars-title-3)，該憑證適用於 Dispatcher 和轉譯器執行個體。
-1. [建立包含轉譯器憑證的金鑰儲存區](dispatcher-ssl.md#main-pars-title-6)並設定轉譯器的 HTTP 服務來使用它。
+1. [建立包含呈現證書的密鑰庫](dispatcher-ssl.md#main-pars-title-6) 並設定轉譯的HTTP服務。
 1. [設定 Dispatcher 網頁伺服器模組](dispatcher-ssl.md#main-pars-title-4)以供雙向 SSL 使用。
 
 ### 建立或取得 CA 簽署的憑證 {#creating-or-obtaining-ca-signed-certificates}
@@ -146,8 +146,8 @@ X-Forwarded-SSL-Session-ID: 814825E8CD055B4C166C2EF6D75E1D0FE786FFB29DEB6DE1E239
 
 如果您充當 CA，請使用 [OpenSSL](https://www.openssl.org/) 建立可簽署伺服器和用戶端憑證的憑證授權單位。 (您必須已安裝 OpenSSL 程式庫。) 如果您使用第三方 CA，請勿執行此程序。
 
-1. 開啟終端機，並將目前目錄切換到包含 CA.sh 檔案的目錄，例如 `/usr/local/ssl/misc`。
-1. 若要建立 CA，請輸入以下命令，然後在收到提示時提供值：
+1. 開啟終端機，並將目前目錄變更為包含 `CA.sh` 檔案，例如 `/usr/local/ssl/misc`.
+1. 要建立CA，請輸入以下命令，然後在出現提示時提供值：
 
    ```shell
    ./CA.sh -newca
@@ -155,16 +155,16 @@ X-Forwarded-SSL-Session-ID: 814825E8CD055B4C166C2EF6D75E1D0FE786FFB29DEB6DE1E239
 
    >[!NOTE]
    >
-   >openssl.cnf 檔案中的幾個屬性可控制 CA.sh 指令碼的行為。 在您建立 CA 之前，應該視需要修改此檔案。
+   >中的數個屬性 `openssl.cnf` 檔案控制CA.sh指令碼的行為。 在建立CA之前，根據需要編輯此檔案。
 
 #### 建立憑證 {#creating-the-certificates}
 
 使用 OpenSSL 建立要傳送給第三方 CA 或透過您的 CA 簽署的憑證請求。
 
-當您建立憑證時，OpenSSL 會使用一般名稱屬性來識別憑證持有者。 對於轉譯器執行個體的憑證，如果您將 Dispatcher 設定為只有在其符合發佈執行個體的主機名稱時才接受憑證，請使用執行個體電腦的主機名稱當作一般名稱。 (請參閱 [DispatcherCheckPeerCN](dispatcher-ssl.md#main-pars-title-11) 屬性。)
+當您建立憑證時，OpenSSL 會使用一般名稱屬性來識別憑證持有者。 對於呈現實例的證書，如果要將Dispatcher配置為接受證書，並且僅當其與Publish實例的主機名匹配時，才使用實例電腦的主機名作為公用名。 (請參閱 [DispatcherCheckPeerCN](dispatcher-ssl.md#main-pars-title-11) 屬性。)
 
 1. 開啟終端機，並將目前目錄切換到包含您的 OpenSSL 程式庫的 CH.sh 檔案的目錄。
-1. 輸入以下命令，然後在收到提示時提供值。 必要時，請使用發佈執行個體的主機名稱當作一般名稱。 主機名稱是轉譯器的 IP 位址的 DNS 可解析名稱：
+1. 輸入以下命令，然後在收到提示時提供值。 如有必要，請使用發佈執行個體的主機名稱作為通用名稱。 主機名稱是轉譯器的 IP 位址的 DNS 可解析名稱：
 
    ```shell
    ./CA.sh -newreq
@@ -172,40 +172,40 @@ X-Forwarded-SSL-Session-ID: 814825E8CD055B4C166C2EF6D75E1D0FE786FFB29DEB6DE1E239
 
    如果您使用第三方 CA，請傳送 newreq.pem 檔案給 CA 進行簽署。 如果您充當 CA，請繼續前往步驟 3。
 
-1. 輸入以下命令，以使用您 CA 的憑證簽署此憑證：
+1. 要使用CA的證書籤名證書，請輸入以下命令：
 
    ```shell
    ./CA.sh -sign
    ```
 
-   在包含您的 CA 管理檔案的目錄中建立兩個名為 newcert.pem 和 newkey.pem 的檔案。 這些分別是適用於轉譯器電腦的公開憑證和私密金鑰。
+   兩個檔案已命名 `newcert.pem` 和 `newkey.pem` 在包含CA管理檔案的目錄中建立。 這兩個檔案分別是轉譯電腦的公開憑證和私密金鑰。
 
-1. 將 newcert.pem 重新命名為 rendercert.pem，並將 newkey.pem 重新命名為 renderkey.pem。
-1. 重複步驟 2 和 3，為 Dispatcher 模組建立新憑證和新的公開金鑰。 務必使用 Dispatcher 執行個體專屬的一般名稱。
-1. 將 newcert.pem 重新命名為 dispcert.pem，並將 newkey.pem 重新命名為 dispkey.pem。
+1. 重新命名 `newcert.pem` to `rendercert.pem`，並重新命名 `newkey.pem` to `renderkey.pem`.
+1. 重複步驟2和3，為Dispatcher模組建立憑證和公開金鑰。 務必使用 Dispatcher 執行個體專屬的一般名稱。
+1. 重新命名 `newcert.pem` to `dispcert.pem`，並重新命名 `newkey.pem` to `dispkey.pem`.
 
 ### 在轉譯器電腦上設定 SSL {#configuring-ssl-on-the-render-computer}
 
-在轉譯器執行個體上使用 rendercert.pem 和 renderkey.pem 檔案設定 SSL。
+在轉譯例項上使用 `rendercert.pem` 和 `renderkey.pem` 檔案。
 
-#### 將轉譯器憑證轉換為 JKS 格式 {#converting-the-render-certificate-to-jks-format}
+#### 將轉譯憑證轉換為JKS(Java™ KeyStore)格式 {#converting-the-render-certificate-to-jks-format}
 
-使用以下命令，將轉譯器憑證 (亦即 PEM 檔案) 轉換為 PKCS#12 檔案。 也請包含簽署了轉譯器憑證的 CA 的憑證：
+使用以下命令將渲染證書（PEM檔案）轉換為PKCS#12檔案。 也請包含簽署了轉譯器憑證的 CA 的憑證：
 
 1. 在終端機視窗中，將目前目錄切換到轉譯器憑證和私密金鑰的位置。
-1. 輸入以下命令，將轉譯器憑證 (亦即 PEM 檔案) 轉換為 PKCS#12 檔案。 也請包含簽署了轉譯器憑證的 CA 的憑證：
+1. 要將渲染證書（PEM檔案）轉換為PKCS#12檔案，請輸入以下命令。 也請包含簽署了轉譯器憑證的 CA 的憑證：
 
    ```shell
    openssl pkcs12 -export -in rendercert.pem -inkey renderkey.pem  -certfile demoCA/cacert.pem -out rendercert.p12
    ```
 
-1. 輸入以下命令，將 PKCS#12 檔案轉換為 Java KeyStore (JKS) 格式：
+1. 要將PKCS#12檔案轉換為Java™ KeyStore(JKS)格式，請輸入以下命令：
 
    ```shell
    keytool -importkeystore -srckeystore servercert.p12 -srcstoretype pkcs12 -destkeystore render.keystore
    ```
 
-1. Java Keystore 是使用預設別名所建立。 如有需要，請變更別名：
+1. Java™金鑰存放區是使用預設別名建立。 如有需要，請變更別名：
 
    ```shell
    keytool -changealias -alias 1 -destalias jettyhttp -keystore render.keystore
@@ -227,7 +227,7 @@ Last Modified Date: 2014-08-12T13:11:21.401-0400
 
  -->
 
-1. 使用文字編輯器開啟 cacert.pem 檔案，並移除在以下行前面的所有文字：
+1. 使用文本編輯器開啟cacert.pem檔案，並刪除以下行前面的所有文本：
 
    `-----BEGIN CERTIFICATE-----`
 
@@ -251,11 +251,11 @@ Last Modified Date: 2014-08-12T13:11:21.401-0400
 
 #### 設定轉譯器執行個體 {#configuring-the-render-instance}
 
-透過&#x200B;*在發佈執行個體上啟用 SSL* 一節中的指示來使用轉譯器憑證，以設定要使用 SSL 的轉譯器執行個體的 HTTP 服務：
+若要設定轉譯例項的HTTP服務以使用SSL，請使用轉譯憑證，並附上 *在發佈執行個體上啟用SSL* 小節：
 
-* AEM 6.2：[啟用透過 SSL 的 HTTP](https://helpx.adobe.com/experience-manager/6-2/sites/deploying/using/config-ssl.html)
-* AEM 6.1：[啟用透過 SSL 的 HTTP](https://docs.adobe.com/content/docs/en/aem/6-1/deploy/configuring/config-ssl.html)
-* AEM 舊版：請參閱[此頁面。](https://helpx.adobe.com/experience-manager/aem-previous-versions.html)
+* AEM 6.2：[啟用透過 SSL 的 HTTP](https://experienceleague.adobe.com/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions.html?lang=zh-Hant)
+* AEM 6.1：[啟用透過 SSL 的 HTTP](https://experienceleague.adobe.com/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions.html?lang=zh-Hant)
+* AEM 舊版：請參閱[此頁面。](https://experienceleague.adobe.com/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions.html?lang=zh-Hant)
 
 ### 為 Dispatcher 模組設定 SSL {#configuring-ssl-for-the-dispatcher-module}
 
@@ -263,7 +263,7 @@ Last Modified Date: 2014-08-12T13:11:21.401-0400
 
 ### 建立統一的 Dispatcher 憑證 {#creating-a-unified-dispatcher-certificate}
 
-將 Dispatcher 憑證和未加密的私密金鑰合併到單一 PEM 檔案中。 使用文字編輯器或 `cat` 命令建立類似於以下範例的檔案：
+將Dispatcher憑證和未加密的私密金鑰合併為單一PEM檔案。 使用文字編輯器或 `cat` 命令建立類似於以下範例的檔案：
 
 1. 開啟終端機，並將目前目錄切換到 dispkey.pem 檔案的位置。
 1. 若要將私密金鑰解密，請輸入以下命令：
