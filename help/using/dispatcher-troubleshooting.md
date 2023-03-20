@@ -14,9 +14,9 @@ content-type: reference
 discoiquuid: a612e745-f1e6-43de-b25a-9adcaadab5cf
 exl-id: 29f338ab-5d25-48a4-9309-058e0cc94cff
 source-git-commit: 26c8edbb142297830c7c8bd068502263c9f0e7eb
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '560'
-ht-degree: 43%
+ht-degree: 100%
 
 ---
 
@@ -30,23 +30,23 @@ ht-degree: 43%
 
 >[!NOTE]
 >
->檢查 [Dispatcher知識庫](https://helpx.adobe.com/experience-manager/kb/index/dispatcher.html), [疑難排解Dispatcher排清問題](https://experienceleague.adobe.com/search.html?lang=en#q=troubleshooting%20dispatcher%20flushing%20issues&amp;sort=relevancy&amp;f:el_product=[Experience%20Manager]) 和 [Dispatcher熱門問題常見問題集](dispatcher-faq.md) 以取得更多資訊。
+>請參考 [Dispatcher 知識庫](https://helpx.adobe.com/tw/experience-manager/kb/index/dispatcher.html)。 [疑難排解 Dispatcher 清除問題](https://experienceleague.adobe.com/search.html?lang=zh-Hant#q=troubleshooting%20dispatcher%20flushing%20issues&amp;sort=relevancy&amp;f:el_product=[Experience%20Manager])和 [Dispatcher 熱門問題常見問題集](dispatcher-faq.md)以了解進一步資訊。
 
 ## 檢查基本配置 {#check-the-basic-configuration}
 
 與以往一樣，第一步是檢查基本資訊：
 
 * [確認基本操作](/help/using/dispatcher-configuration.md#confirming-basic-operation)
-* 檢查您的Web伺服器和Dispatcher的所有記錄檔。 如有必要，請增加 `loglevel` 用於Dispatcher [記錄](/help/using/dispatcher-configuration.md#logging).
+* 檢查 Web 伺服器和 Dispatcher 的所有日誌檔案。 必要時，請提高`loglevel` (用於 Dispatcher [記錄](/help/using/dispatcher-configuration.md#logging))。
 
-* [檢查配置](/help/using/dispatcher-configuration.md):
+* [檢查配置](/help/using/dispatcher-configuration.md)：
 
-   * 您有多個調度程式嗎？
+   * 您有多個 Dispatcher 嗎？
 
       * 您確定哪個Dispatcher正在處理您正在調查的網站/頁面嗎？
    * 您是否實施過篩選器？
 
-      * 這些過濾器是否會影響您正在調查的問題？
+      * 這些篩選器是否影響您正在調查的事項?
 
 
 ## IIS診斷工具 {#iis-diagnostic-tools}
@@ -56,32 +56,32 @@ IIS提供各種跟蹤工具，具體取決於實際版本：
 * IIS 6 — 可以下載和配置IIS診斷工具
 * IIS 7 — 跟蹤已完全整合
 
-這些工具可協助您監控活動。
+這些工具可幫助您監控活動。
 
-## 找不到IIS和404 {#iis-and-not-found}
+## IIS 和 404 找不到 {#iis-and-not-found}
 
-使用IIS時，您可能會遇到 `404 Not Found` 在各種情況下傳回。 如果是，請參閱以下知識文庫文章。
+當您使用 IIS 時，可能會在各種情況下遇到網頁傳回 `404 Not Found`。 如果是，請參閱以下知識文庫文章。
 
-* [IIS 6/7 :POST方法返回404](https://helpx.adobe.com/experience-manager/kb/IIS6IsapiFilters.html)
-* [IIS 6:包含基本路徑的URL請求 `/bin` 傳回 `404 Not Found`](https://helpx.adobe.com/experience-manager/kb/RequestsToBinDirectoryFailInIIS6.html)
+* [IIS 6/7：POST 方法返回 404](https://helpx.adobe.com/tw/experience-manager/kb/IIS6IsapiFilters.html)
+* [IIS 6：請求包含基本路徑 `/bin` 的 URL 時傳回 `404 Not Found`](https://helpx.adobe.com/tw/experience-manager/kb/RequestsToBinDirectoryFailInIIS6.html)
 
-另請檢查Dispatcher快取根目錄和IIS檔案根目錄是否已設為相同目錄。
+另請參考 Dispatcher 快取根目錄和 IIS 文件根目錄是否設定為同一目錄。
 
 ## 刪除工作流模型的問題 {#problems-deleting-workflow-models}
 
 **症狀**
 
-在通過Dispatcher訪問作者實例時嘗試刪AEM除工作流模型時出現問題。
+在通過 Dispatcher 存取編寫執行個體時嘗試刪 AEM 除工作流模型時出現問題。
 
-**要再現的步驟：**
+**重現問題的步驟：**
 
-1. 登入您的製作例項（確認請求是透過Dispatcher路由）。
-1. 建立工作流程；例如，將「標題」設為workflowToDelete。
-1. 確認已成功建立工作流。
-1. 選取並以滑鼠右鍵按一下工作流程，然後按一下 **刪除**.
+1. 登入到編寫執行個體 (確認正透過 Dispatcher 路由請求)。
+1. 建立工作流程；例如，將「標題」設定為 workflowToDelete。
+1. 確認已成功建立工作流程。
+1. 選取並用滑鼠右鍵按一下工作流程，然後按一下「**刪除**」。
 
-1. 按一下 **是** 確認。
-1. 出現錯誤訊息方塊，其中顯示下列內容：\
+1. 按一下「**是**」確認。
+1. 將出現一個顯示以下內容的錯誤訊息框：\
    &quot; `ERROR 'Could not delete workflow model!!`&quot;.
 
 **解析度**
@@ -104,27 +104,27 @@ IIS提供各種跟蹤工具，具體取決於實際版本：
 
 ## 與mod_dir(Apache)的干涉 {#interference-with-mod-dir-apache}
 
-此程式說明Dispatcher如何與 `mod_dir` 在Apache網站伺服器內，因為這可能會導致各種可能未預期的效果：
+此程序描述 Dispatcher 如何與 Apache Webserver 中的 `mod_dir` 互動，因為這可能導致各種潛在的意外效果：
 
 ### Apache 1.3 {#apache}
 
-在Apache 1.3中， `mod_dir` 處理URL映射至檔案系統中目錄的每個請求。
+在 Apache 1.3 中，`mod_dir` 會處理 URL 對應到檔案系統中的目錄的每個請求。
 
 它也會：
 
 * 將請求重定向到現有 `index.html` 檔案
 * 生成目錄清單
 
-啟用Dispatcher時，會將本身註冊為內容類型的處理常式，以處理這類請求 `httpd/unix-directory`.
+在啟用 Dispatcher 時，它會處理這類請求，處理方式是將自己登錄為內容類型 `httpd/unix-directory` 的處理常式。
 
 ### Apache 2.x {#apache-x}
 
-在Apache 2.x中，情況有所不同。 一個模組可以處理請求的不同階段，如URL修正。 此 `mod_dir` 透過將請求（當URL對應至目錄時）重新導向至URL(使用 `/` 已附加。
+在 Apache 2.x 中，情況不同。 一個模組可以處理請求的不同階段，如 URL 修正。 `mod_dir` 會處理此階段，處理方式是將請求 (當 URL 對應到目錄時) 重新導向至已附加 `/` 的 URL。
 
-Dispatcher不會截取 `mod_dir` 修正，但會完全處理重新導向URL的要求(亦即 `/` 已附加)。 如果遠端伺服器(例如AEM)處理 `/a_path` 與要求不同 `/a_path/` 時 `/a_path` 映射到現有目錄)。
+Dispatcher不會攔截 `mod_dir` 修正，但完全處理對重新導向的 URL 的請求 (即附加 `/` )。 如果遠端伺服器 (例如 AEM) 處理對 `/a_path` 的請求的方式不同於對 `/a_path/` 的請求 (當 `/a_path` 對應到現有目錄)，此程序可能會導致問題。
 
-如果發生此情況，您必須：
+如果發生這種情況，您必須執行以下任一操作：
 
-* disable `mod_dir` 針對 `Directory` 或 `Location` 由Dispatcher處理的子樹
+* 停用 `mod_dir` (針對 Dispatcher 處理的 `Directory` 或 `Location` 子樹狀結構)
 
 * 使用 `DirectorySlash Off` 配置 `mod_dir` 不追加 `/`
