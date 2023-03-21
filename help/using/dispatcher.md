@@ -9,10 +9,10 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: 1d449ee2-4cdd-4b7a-8b4e-7e6fc0a1d7ee
 exl-id: c9266683-6890-4359-96db-054b7e856dd0
-source-git-commit: e87af532ee3268f0a45679e20031c3febc02de58
-workflow-type: ht
-source-wordcount: '3165'
-ht-degree: 100%
+source-git-commit: 7dd2ba37e149af960ba428421d64a5a24542eeeb
+workflow-type: tm+mt
+source-wordcount: '0'
+ht-degree: 0%
 
 ---
 
@@ -26,7 +26,7 @@ Dispatcher 是 Adobe Experience Manager 的快取及負載平衡工具，搭配�
 
 部署 Dispatcher 的程序與所選的網頁伺服器和作業系統平台無關：
 
-1. 了解 Dispatcher (本頁)。 此外，也請參閱[關於 Dispatcher 的常見問題集](https://experienceleague.adobe.com/docs/experience-manager-dispatcher/using/troubleshooting/dispatcher-faq.html?lang=zh-Hant)。
+1. 了解 Dispatcher (本頁)。 此外，也請參閱[關於 Dispatcher 的常見問題集](/help/using/dispatcher-faq.md)。
 1. 根據網頁伺服器文件安裝[支援的網頁伺服器](https://experienceleague.adobe.com/docs/experience-manager-65/deploying/introduction/technical-requirements.html?lang=zh-Hant)。
 1. [在網頁伺服器上安裝 Dispatcher 模組](dispatcher-install.md)，並相應地設定網頁伺服器。
 1. [設定 Dispatcher](dispatcher-configuration.md) (dispatcher.any 檔案)。
@@ -45,7 +45,7 @@ Dispatcher 是 Adobe Experience Manager 的快取及負載平衡工具，搭配�
 
 * [Dispatcher 安全性檢查清單](security-checklist.md)
 * [Dispatcher 知識庫](https://helpx.adobe.com/tw/experience-manager/kb/index/dispatcher.html)
-* [將網站快取效能最佳化](https://experienceleague.adobe.com/docs/experience-manager-64/deploying/configuring/configuring-performance.html?lang=zh-Hant)
+* [將網站快取效能最佳化](https://experienceleague.adobe.com/docs/experience-manager-65/deploying/configuring/configuring-performance.html)
 * [在多個網域中使用 Dispatcher](dispatcher-domains.md)
 * [搭配 Dispatcher 使用 SSL](dispatcher-ssl.md)
 * [實作權限敏感型快取](permissions-cache.md)

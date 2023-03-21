@@ -4,8 +4,8 @@ seo-title: Top issues for AEM Dispatcher
 description: AEM Dispatcher 熱門問題
 seo-description: Top issues for Adobe AEM Dispatcher
 exl-id: 4dcc7318-aba5-4b17-8cf4-190ffefbba75
-source-git-commit: 26c8edbb142297830c7c8bd068502263c9f0e7eb
-workflow-type: ht
+source-git-commit: f83b02d74a22e055b486305dfe5420e152efb452
+workflow-type: tm+mt
 source-wordcount: '1578'
 ht-degree: 100%
 
@@ -131,7 +131,7 @@ en 目錄下任何名為 `_jcr_content` 的目錄 (如果存在，則包含頁�
 
 ### 該如何在 Publish 執行個體上設定 Dispatcher 清除代理程式？
 
-請參閱[複寫](https://experienceleague.adobe.com/docs/experience-manager-64/deploying/configuring/replication.html?lang=zh-Hant#configuring-your-replication-agents)頁面。
+請參閱[複寫](https://experienceleague.adobe.com/docs/experience-manager-65/deploying/configuring/replication.html?lang=zh-Hant#configuring-your-replication-agents)頁面。
 
 ### 該如何對 Dispatcher 清除問題進行疑難排解？
 
