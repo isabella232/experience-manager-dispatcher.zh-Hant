@@ -5,7 +5,7 @@ description: AEM Dispatcher 熱門問題
 seo-description: Top issues for Adobe AEM Dispatcher
 exl-id: 4dcc7318-aba5-4b17-8cf4-190ffefbba75
 source-git-commit: f83b02d74a22e055b486305dfe5420e152efb452
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '1578'
 ht-degree: 100%
 
@@ -113,7 +113,7 @@ en 目錄下任何名為 `_jcr_content` 的目錄 (如果存在，則包含頁�
 
 ### 該如何實作權限敏感型快取？
 
-請參閱[快取安全內容](permissions-cache.md) 頁面。
+請參閱[快取安全內容](permissions-cache.md)頁面。
 
 ### 該如何維護 Dispatcher 與 CQ 執行個體之間的通訊安全？
 
@@ -158,7 +158,7 @@ Dispatcher 如何判斷某個文件是不是最新的？
 
 ### Dispatcher 如何傳回文件？
 
-您可以使用 [Dispatcher 設定](dispatcher-configuration.md)檔案 `dispatcher.any` 來定義 Dispatcher 是否會快取文件。 Dispatcher 會根據可快取文件清單來檢查請求。如果文件不在此清單中，Dispatcher 會請求 AEM 執行個體的文件。
+您可以使用 [ Dispatcher 設定](dispatcher-configuration.md)檔案 `dispatcher.any` 來定義 Dispatcher 是否會快取文件。 Dispatcher 會根據可快取文件清單來檢查請求。如果文件不在此清單中，Dispatcher 會請求 AEM 執行個體的文件。
 
 `/rules` 屬性可控制根據文件路徑快取哪些文件。 無論 `/rules` 屬性為何，Dispatcher 在以下情況下絕對不會快取文件：
 
@@ -166,7 +166,7 @@ Dispatcher 如何判斷某個文件是不是最新的？
 * 這表示這是不需要快取的動態頁面，例如搜尋結果。
 * 缺少副檔名。
 * 網頁伺服器需要副檔名來判斷文件類型 (MIME 類型)。
-* 驗證標題已設定 (可設定)。
+* 驗證標頭已設定 (可設定)。
 * 如果 AEM 執行個體提供以下標頭當作回應：
    * no-cache
    * no-store
