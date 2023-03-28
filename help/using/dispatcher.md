@@ -10,9 +10,9 @@ content-type: reference
 discoiquuid: 1d449ee2-4cdd-4b7a-8b4e-7e6fc0a1d7ee
 exl-id: c9266683-6890-4359-96db-054b7e856dd0
 source-git-commit: 7dd2ba37e149af960ba428421d64a5a24542eeeb
-workflow-type: tm+mt
-source-wordcount: '0'
-ht-degree: 0%
+workflow-type: ht
+source-wordcount: '3154'
+ht-degree: 100%
 
 ---
 
@@ -54,7 +54,7 @@ Dispatcher 是 Adobe Experience Manager 的快取及負載平衡工具，搭配�
 
 >[!NOTE]
 >
->**Dispatcher 最常見的用法是快取來自 AEM** Publish 執行個體的回應&#x200B;****，以提高您對外發佈網站的回應速度與安全性。大多數的討論均強調此用途。
+>**Dispatcher 最常見的用法**&#x200B;是快取來自 AEM **Publish 執行個體**&#x200B;的回應，以提高您對外發佈網站的回應速度與安全性。大多數的討論均強調此用途。
 >
 >但是，Dispatcher 也可用來提高您&#x200B;**編寫執行個體**&#x200B;的回應速度，尤其是如果您有大量使用者編輯和更新您的網站時特別實用。如需此情況特有的詳細資訊，請參閱下方的[搭配撰寫伺服器使用 Dispatcher](#using-a-dispatcher-with-an-author-server)。
 
@@ -104,7 +104,7 @@ Dispatcher 包含的機制可根據動態網站上的內容來產生和更新靜
 
 >[!NOTE]
 >
->當缺少 HTTP 標頭快取的設定時，Dispatcher 只會儲存頁面的 HTML 程式碼，不會儲存 HTTP 標題。如果您的網站使用不同的編碼，這種情況可能會發生問題，因為這些頁面可能會遺失。 如要啟用 HTTP 標題快取，請參閱[設定 Dispatcher 快取。](https://experienceleague.adobe.com/docs/experience-manager-dispatcher/using/configuring/dispatcher-configuration.html?lang=zh-Hant)
+>當缺少 HTTP 標頭快取的設定時，Dispatcher 只會儲存頁面的 HTML 程式碼，不會儲存 HTTP 標頭。如果您的網站使用不同的編碼，這種情況可能會發生問題，因為這些頁面可能會遺失。 如要啟用 HTTP 標頭快取，請參閱[設定 Dispatcher 快取。](https://experienceleague.adobe.com/docs/experience-manager-dispatcher/using/configuring/dispatcher-configuration.html?lang=zh-Hant)
 
 >[!NOTE]
 >
@@ -134,7 +134,7 @@ Dispatcher 有兩種主要方法，用於在對網站進行更改時更新快取
 請注意下列幾點：
 
 * 內容更新通常與編寫系統搭配使用，因而「知道」必須取代的內容。
-* 受內容更新影響的檔案會遭到移除，但不會立即取代。下次請求此類檔案時，Dispatcher 會從 AEM 例項擷取新檔案，並將其置於快取中，而覆寫舊內容。
+* 受內容更新影響的檔案會遭到移除，但不會立即取代。下次請求此類檔案時，Dispatcher 會從 AEM 執行個體擷取新檔案，並將其置於快取中，而覆寫舊內容。
 * 通常，包含頁面文字的自動產生圖片，會儲存在開頭為相同名稱的圖片檔案中，因而可確保要刪除的檔案的關聯性存在。例如您可以將頁面 mypage.html 的標題文字儲存為相同檔案夾中名稱為 mypage.titlePicture.gif 的圖片。如此一來，每次更新頁面時，圖片都會自動從快取中刪除，因此您可以確定圖片會一律反映頁面的最新版本。
 * 您可能有數個 statfile，例如每個語言檔案夾一個。如果頁面已更新，AEM 會尋找下一個包含 statfile 的上層檔案夾，並&#x200B;*接觸*&#x200B;該檔案。
 
@@ -164,11 +164,11 @@ Dispatcher 有一個檔案清單，這些檔案會自動失效。請求該清單
 
 * 請求 URI 包含問號「`?`」。 這種情況通常表示這是一個不需要快取的動態頁面，例如搜尋結果。
 * 缺少副檔名。 網頁伺服器需要副檔名來判斷文件類型 (MIME 類型)。
-* 驗證標題已設定 (可設定)。
+* 驗證標頭已設定 (可設定)。
 
 >[!NOTE]
 >
->Dispatcher 可快取 GET 或 HEAD (用於 HTTP 標題) 方法。如需有關回應標頭快取的其他資訊，請參閱[快取 HTTP 回應標頭](https://experienceleague.adobe.com/docs/experience-manager-dispatcher/using/configuring/dispatcher-configuration.html?lang=zh-Hant)一節。
+>Dispatcher 可快取 GET 或 HEAD (用於 HTTP 標頭) 方法。如需有關回應標頭快取的其他資訊，請參閱[快取 HTTP 回應標頭](https://experienceleague.adobe.com/docs/experience-manager-dispatcher/using/configuring/dispatcher-configuration.html?lang=zh-Hant)一節。
 
 ### 確定是否已快取文件
 
@@ -220,7 +220,7 @@ Dispatcher 會保留內部統計資料，瞭解 AEM 每個執行個體處理檔�
 
 不同類型的請求可能會有不同的平均完成時間，因此 Dispatcher 可讓您指定文件類別。 然後在運算時間估計值時考慮這些類別。 例如，您可以區分 HTML 頁面和影像，因為此二者的一般回應時間會有所不同。
 
-如果您使用複雜的搜尋功能，則可為搜尋查詢建立類別。 此方法可幫助 Dispatcher 將搜索查詢傳送給回應速度最快的執行個體。 它也有助於避免速度較慢的例項收到數個「昂貴」的搜尋查詢時停頓下來，而其他例項反而收到「較便宜」的請求。
+如果您使用複雜的搜尋功能，則可為搜尋查詢建立類別。 此方法可幫助 Dispatcher 將搜索查詢傳送給回應速度最快的執行個體。 它也有助於避免速度較慢的執行個體收到數個「昂貴」的搜尋查詢時停頓下來，而其他執行個體反而收到「較便宜」的請求。
 
 ### 個人化內容 (黏著連線)
 
@@ -270,8 +270,8 @@ CDN 為 HTTP 基礎架構元件，其運作方式與 Dispatcher 類似。當 CDN
 1. 明確設定\
    視 MIME 類型、副檔名、請求類型等，設定 CDN 快取保存特定資源的時長。
 
-1. 到期日和快取控制標題\
-   如果是由上游伺服器傳送，大部分的 CDN 都會遵守 `Expires:` 和 `Cache-Control:` HTTP 標題。 例如，可藉由使用 [mod_expires](https://httpd.apache.org/docs/2.4/mod/mod_expires.html) Apache 模組來達成此方法。
+1. 到期日和快取控制標頭\
+   如果是由上游伺服器傳送，大部分的 CDN 都會遵守 `Expires:` 和 `Cache-Control:` HTTP 標頭。 例如，可藉由使用 [mod_expires](https://httpd.apache.org/docs/2.4/mod/mod_expires.html) Apache 模組來達成此方法。
 
 1. 手動失效\
    CDN 可透過 Web 介面從快取中移除資源。
