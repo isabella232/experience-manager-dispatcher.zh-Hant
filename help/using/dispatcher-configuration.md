@@ -2,10 +2,10 @@
 title: 設定 Dispatcher
 description: 了解如何設定 Dispatcher。了解對 IPv4 和 IPv6 的支援、設定檔案、環境變數、為執行個體命名、定義陣列、識別虛擬主機等。
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: 26c8edbb142297830c7c8bd068502263c9f0e7eb
-workflow-type: ht
-source-wordcount: '8900'
-ht-degree: 100%
+source-git-commit: 434a17077cea8958a55a637eddd1f4851fc7f2ee
+workflow-type: tm+mt
+source-wordcount: '8941'
+ht-degree: 99%
 
 ---
 
@@ -1049,7 +1049,7 @@ statfile 沒有任何內容。當更新內容時，Dispatcher 會更新時間戳
    * 表示這是不需要快取的動態頁面，例如搜尋結果。
 * 缺少副檔名。
    * 網頁伺服器需要副檔名來判斷文件類型 (MIME 類型)。
-* 驗證標題已設定 (可設定)。
+* 驗證標頭已設定 (可設定)。
 * 如果 AEM 執行個體提供以下標題當作回應：
 
    * `no-cache`
@@ -1411,7 +1411,7 @@ GET /mypage.html?nocache=true&willbecached=true
 
 >[!NOTE]
 >
->請記住，TTL 式快取是標頭快取的超集，因此也應正確設定 `/headers` 屬性。
+>請記住， `/enableTTL` 設為1時，僅會在dispatcher端啟用TTL快取。 因此，其他檔案（請參閱上方）中包含的TTL資訊不會提供給其他向Dispatcher要求這類檔案類型的使用者代理。 如果您想要為下游系統（例如CDN或瀏覽器）提供快取標題，請設定 `/cache/headers` 一節。
 
 >[!NOTE]
 >
