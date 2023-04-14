@@ -3,9 +3,9 @@ title: 設定 Dispatcher
 description: 了解如何設定 Dispatcher。了解對 IPv4 和 IPv6 的支援、設定檔案、環境變數、為執行個體命名、定義陣列、識別虛擬主機等。
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
 source-git-commit: 434a17077cea8958a55a637eddd1f4851fc7f2ee
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '8941'
-ht-degree: 99%
+ht-degree: 100%
 
 ---
 
@@ -1411,7 +1411,7 @@ GET /mypage.html?nocache=true&willbecached=true
 
 >[!NOTE]
 >
->請記住， `/enableTTL` 設為1時，僅會在dispatcher端啟用TTL快取。 因此，其他檔案（請參閱上方）中包含的TTL資訊不會提供給其他向Dispatcher要求這類檔案類型的使用者代理。 如果您想要為下游系統（例如CDN或瀏覽器）提供快取標題，請設定 `/cache/headers` 一節。
+>請記住將 `/enableTTL` 設定為 1 只會在 Dispatcher 端啟用 TTL 快取。因此，其他檔案 (見上文) 包含的 TTL 資訊不會提供給要求來自 Dispatcher 之此檔案類型的任何其他使用者代理。如果你想要提供快取標頭給下游系統 (如 CDN 或瀏覽器)，你應該相應地設定 `/cache/headers` 區段。
 
 >[!NOTE]
 >
