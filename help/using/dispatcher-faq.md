@@ -5,7 +5,7 @@ description: AEM Dispatcher 熱門問題
 seo-description: Top issues for Adobe AEM Dispatcher
 exl-id: 4dcc7318-aba5-4b17-8cf4-190ffefbba75
 source-git-commit: f83b02d74a22e055b486305dfe5420e152efb452
-workflow-type: ht
+workflow-type: tm+mt
 source-wordcount: '1578'
 ht-degree: 100%
 

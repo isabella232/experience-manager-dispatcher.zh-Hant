@@ -1,5 +1,5 @@
 ---
-title: '在多個網域中使用 Dispatcher '
+title: 在多個網域中使用 Dispatcher
 seo-title: Using Dispatcher with Multiple Domains
 description: 了解如何使用 Dispatcher，以便在多個網域中處理頁面請求。
 seo-description: Learn how to use Dispatcher to process page requests in multiple web domains.
@@ -12,7 +12,7 @@ content-type: reference
 discoiquuid: 40d91d66-c99b-422d-8e61-c0ced23272ef
 exl-id: 1470b636-7e60-48cc-8c31-899f8785dafa
 source-git-commit: c7af1a042b0106fa0a559448398a8dd636d920c2
-workflow-type: ht
+workflow-type: tm+mt
 source-wordcount: '2968'
 ht-degree: 100%
 
