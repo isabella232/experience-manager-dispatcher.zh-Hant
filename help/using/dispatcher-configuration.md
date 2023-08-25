@@ -2,10 +2,10 @@
 title: 設定 Dispatcher
 description: 了解如何設定 Dispatcher。了解對 IPv4 和 IPv6 的支援、設定檔案、環境變數、為執行個體命名、定義陣列、識別虛擬主機等。
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: 434a17077cea8958a55a637eddd1f4851fc7f2ee
+source-git-commit: 5fe3bb534b239d5aec892623cab65e84e04c7d10
 workflow-type: tm+mt
 source-wordcount: '8941'
-ht-degree: 100%
+ht-degree: 99%
 
 ---
 
@@ -368,7 +368,7 @@ Dispatcher 會依照以下順序尋找最符合的虛擬主機值：
     {
     /virtualhosts
       {
-      "www.mycompany.com"
+      "www.mycompany.com/products/*"
       }
     /renders
       {
@@ -380,7 +380,7 @@ Dispatcher 會依照以下順序尋找最符合的虛擬主機值：
     {
     /virtualhosts
       {
-      "www.mycompany.com/products/*"
+      "www.mycompany.com"
       }
     /renders
       {
@@ -647,7 +647,7 @@ HTTP/1.1 會依據以下方式定義[請求行](https://www.w3.org/Protocols/rfc
 
 #### 範例篩選條件：允許存取 Workflow Console {#example-filter-allow-access-to-the-workflow-console}
 
-以下範例顯示用來拒絕外部使用者存取 Workflow console 的篩選條件：
+以下範例顯示用於允許外部存取Workflow console的篩選器：
 
 ```xml
 /filter {
@@ -825,6 +825,7 @@ Last Modified Date: 2015-06-26T04:32:37.986-0400
 >如果規則包含 `/query`，它只會比對包含查詢字串的請求，並比對提供的查詢模式。
 >
 >在上述範例中，如果也應該允許對 `/etc` 的沒有查詢字串的請求，則需要以下規則：
+>
 
 ```xml
 /filter {  
@@ -1849,40 +1850,38 @@ curl -v -H "X-Dispatcher-Info: true" https://localhost/content/wknd/us/en.html
 底下是包含 `X-Dispatcher-Info` 會傳回的回應標頭的清單：
 
 * **cached**\
-   目標檔案包含在快取中，而且 Dispatcher 已判定傳遞它是有效的。
+  目標檔案包含在快取中，而且 Dispatcher 已判定傳遞它是有效的。
 * **caching**\
-   目標檔案未包含在快取中，而且 Dispatcher 已判定快取輸出並傳遞它是有效的。
+  目標檔案未包含在快取中，而且 Dispatcher 已判定快取輸出並傳遞它是有效的。
 * **caching: stat file is more recent**
 目標檔案包含在快取中，但是較新版的統計檔案使其失效。Dispatcher 會刪除目標檔案、從輸出中重建檔案並傳遞它。
 * **not cacheable: no document root**
-陣列的設定不包含主目錄 (設定元素 
-`cache.docroot`)。
+陣列的設定不包含主目錄 (設定元素 `cache.docroot`).
 * **not cacheable: cache file path too long**\
-   目標檔案 (主目錄和 URL 檔案的串連) 超出系統上可行的最長檔案名稱。
+  目標檔案 (主目錄和 URL 檔案的串連) 超出系統上可行的最長檔案名稱。
 * **not cacheable: temporary file path too long**\
-   暫存檔案名稱範本超出系統上可行的最長檔案名稱。Dispatcher 會在實際建立或覆寫快取檔案之前先建立暫存檔案。 暫存檔案名稱是有附加 `_YYYYXXXXXX` 字元的目標檔案名稱，其中會取代 `Y` 和 `X` 以建立唯一名稱。
+  暫存檔案名稱範本超出系統上可行的最長檔案名稱。Dispatcher 會在實際建立或覆寫快取檔案之前先建立暫存檔案。 暫存檔案名稱是有附加 `_YYYYXXXXXX` 字元的目標檔案名稱，其中會取代 `Y` 和 `X` 以建立唯一名稱。
 * **not cacheable: request URL has no extension**\
-   請求 URL 沒有副檔名，或是副檔名後面有路徑，例如：`/test.html/a/path`。
+  請求 URL 沒有副檔名，或是副檔名後面有路徑，例如：`/test.html/a/path`。
 * **not cacheable: request wasn&#39;t a GET or HEAD**
 HTTP 方法不是 GET 或 HEAD。Dispatcher 假設輸出會包含不應該快取的動態資料。
 * **not cacheable: request contained a query string**\
-   請求包含查詢字串。Dispatcher 假設輸出取決於提供的查詢字串，所以不會快取。
+  請求包含查詢字串。Dispatcher 假設輸出取決於提供的查詢字串，所以不會快取。
 * **not cacheable: session manager didn&#39;t authenticate**\
-   陣列的快取是由工作階段管理員所控管 (設定包含 `sessionmanagement` 節點)，而且請求未包含適當的驗證資訊。
+  陣列的快取是由工作階段管理員所控管 (設定包含 `sessionmanagement` 節點)，而且請求未包含適當的驗證資訊。
 * **not cacheable: request contains authorization**\
-   不允許陣列快取輸出 ( `allowAuthorized 0`) 而且請求包含驗證資訊。
+  不允許陣列快取輸出 ( `allowAuthorized 0`) 而且請求包含驗證資訊。
 * **not cacheable: target is a directory**\
-   目標檔案是目錄。此位置可能指向一些概念錯誤，其中 URL 和某些子 URL 都包含可快取的輸出。 例如，如果對 `/test.html/a/file.ext` 的請求先出現並且包含可快取的輸出，則 Dispatcher 無法快取對 `/test.html` 的後續請求的輸出。
+  目標檔案是目錄。此位置可能指向一些概念錯誤，其中 URL 和某些子 URL 都包含可快取的輸出。 例如，如果對 `/test.html/a/file.ext` 的請求先出現並且包含可快取的輸出，則 Dispatcher 無法快取對 `/test.html` 的後續請求的輸出。
 * **not cacheable: request URL has a trailing slash**\
-   請求 URL 後面有斜線。
+  請求 URL 後面有斜線。
 * **not cacheable: request URL not in cache rules**\
-   陣列的快取規則明確拒絕快取部分請求 URL 的輸出。
+  陣列的快取規則明確拒絕快取部分請求 URL 的輸出。
 * **not cacheable: authorization checker denied access**\
-   陣列的授權檢查程式拒絕存取快取檔案。
+  陣列的授權檢查程式拒絕存取快取檔案。
 * **not cacheable: session not valid**
 陣列的快取是由工作階段管理員所控管 (設定包含 `sessionmanagement` 節點)，而且使用者的工作階段無效或不再有效。
 * **not cacheable: response contains`no_cache`**
-遠端伺服器傳回 
-`Dispatcher: no_cache` 標頭，禁止 Dispatcher 快取輸出。
+遠端伺服器傳回`Dispatcher: no_cache` 標頭，禁止 Dispatcher 快取輸出。
 * **not cacheable: response content length is zero**
 回應的內容長度為零；Dispatcher 不會建立長度為零的檔案。
