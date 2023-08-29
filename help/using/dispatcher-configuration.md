@@ -3,9 +3,9 @@ title: 設定 Dispatcher
 description: 了解如何設定 Dispatcher。了解對 IPv4 和 IPv6 的支援、設定檔案、環境變數、為執行個體命名、定義陣列、識別虛擬主機等。
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
 source-git-commit: 5fe3bb534b239d5aec892623cab65e84e04c7d10
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '8941'
-ht-degree: 99%
+ht-degree: 100%
 
 ---
 
@@ -647,7 +647,7 @@ HTTP/1.1 會依據以下方式定義[請求行](https://www.w3.org/Protocols/rfc
 
 #### 範例篩選條件：允許存取 Workflow Console {#example-filter-allow-access-to-the-workflow-console}
 
-以下範例顯示用於允許外部存取Workflow console的篩選器：
+以下範例顯示用來允許外部使用者存取 Workflow console 的篩選條件：
 
 ```xml
 /filter {
@@ -1856,7 +1856,7 @@ curl -v -H "X-Dispatcher-Info: true" https://localhost/content/wknd/us/en.html
 * **caching: stat file is more recent**
 目標檔案包含在快取中，但是較新版的統計檔案使其失效。Dispatcher 會刪除目標檔案、從輸出中重建檔案並傳遞它。
 * **not cacheable: no document root**
-陣列的設定不包含主目錄 (設定元素 `cache.docroot`).
+陣列的設定不包含主目錄 (設定元素 `cache.docroot`)。
 * **not cacheable: cache file path too long**\
   目標檔案 (主目錄和 URL 檔案的串連) 超出系統上可行的最長檔案名稱。
 * **not cacheable: temporary file path too long**\
@@ -1882,6 +1882,6 @@ HTTP 方法不是 GET 或 HEAD。Dispatcher 假設輸出會包含不應該快取
 * **not cacheable: session not valid**
 陣列的快取是由工作階段管理員所控管 (設定包含 `sessionmanagement` 節點)，而且使用者的工作階段無效或不再有效。
 * **not cacheable: response contains`no_cache`**
-遠端伺服器傳回`Dispatcher: no_cache` 標頭，禁止 Dispatcher 快取輸出。
+遠端伺服器傳回 `Dispatcher: no_cache` 標頭，禁止 Dispatcher 快取輸出。
 * **not cacheable: response content length is zero**
 回應的內容長度為零；Dispatcher 不會建立長度為零的檔案。
