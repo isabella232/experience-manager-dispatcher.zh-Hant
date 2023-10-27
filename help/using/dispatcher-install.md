@@ -10,9 +10,9 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: f00ad751-6b95-4365-8500-e1e0108d9536
 exl-id: 9375d1c0-8d9e-46cb-9810-fa4162a8c1ba
-source-git-commit: 663e493f3e1ae26c264e574cec4e0b271a971809
-workflow-type: tm+mt
-source-wordcount: '3693'
+source-git-commit: 3bb9cb81ac98147bf12e9370d02002dd91ee374e
+workflow-type: ht
+source-wordcount: '3726'
 ht-degree: 100%
 
 ---
@@ -314,9 +314,9 @@ Dispatcher 會以下列形式提供：
 
    * **Windows**：將 `disp_apache<x.y>.dll` 放到 `<APACHE_ROOT>/modules`
    * **Unix**：根據您的安裝找到 `<APACHE_ROOT>/libexec` 或 `<APACHE_ROOT>/modules` 目錄。\
-      將 `dispatcher-apache<options>.so` 複製到此目錄中。\
-      若要簡化長期維護作業，您也可以建立指向 Dispatcher、名為 `mod_dispatcher.so` 的符號連結：\
-      `ln -s dispatcher-apache<x>-<os>-<rel-nr>.so mod_dispatcher.so`
+     將 `dispatcher-apache<options>.so` 複製到此目錄中。\
+     若要簡化長期維護作業，您也可以建立指向 Dispatcher、名為 `mod_dispatcher.so` 的符號連結：\
+     `ln -s dispatcher-apache<x>-<os>-<rel-nr>.so mod_dispatcher.so`
 
 1. 將 dispatcher.any 檔案複製到 `<APACHE_ROOT>/conf` 目錄。
 
@@ -362,10 +362,10 @@ semanage fcontext -a -t httpd_sys_rw_content_t "[path to the docroot](/.*)?"
 
    * Apache Server 會以 root 身分啟動，但是子處理程序會以精靈形式啟動 (基於安全理由)。 DocumentRoot (`<APACHE_ROOT>/htdocs`) 必須屬於使用者精靈：
 
-      ```xml
-      cd <APACHE_ROOT>  
-      chown -R daemon:daemon htdocs
-      ```
+     ```xml
+     cd <APACHE_ROOT>  
+     chown -R daemon:daemon htdocs
+     ```
 
 **LoadModule**
 
@@ -400,6 +400,10 @@ DispatcherKeepAliveTimeout 60
 </IfModule>
 ...
 ```
+
+>[!NOTE]
+>
+>明確地從版本 4.3.3 升級到版本 4.3.4 的客戶將會注意到，為無法快取的內容設定快取標頭的方式具有不同的行為。 若要進一步了解這項變更，請參閱[發行說明](/help/using/release-notes.md#nov)頁面。
 
 個別設定參數：
 
