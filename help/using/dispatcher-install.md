@@ -10,9 +10,9 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: f00ad751-6b95-4365-8500-e1e0108d9536
 exl-id: 9375d1c0-8d9e-46cb-9810-fa4162a8c1ba
-source-git-commit: 3bb9cb81ac98147bf12e9370d02002dd91ee374e
-workflow-type: tm+mt
-source-wordcount: '3726'
+source-git-commit: 570eafa7889ff4db820f80eccd529046464d9cfb
+workflow-type: ht
+source-wordcount: '3797'
 ht-degree: 100%
 
 ---
@@ -449,7 +449,7 @@ DispatcherKeepAliveTimeout 60
 ```
 ...  
 <Directory />  
-<IfModule disp\_apache2.c>  
+<IfModule disp_apache2.c>  
 SetHandler dispatcher-handler  
 </IfModule>  
   
@@ -469,7 +469,7 @@ AllowOverride None
 ServerName www.mycompany.com  
 DocumentRoot _\[cache-path\]_\\docs  
 <Directory _\[cache-path\]_\\docs>  
-<IfModule disp\_apache2.c>  
+<IfModule disp_apache2.c>  
 SetHandler dispatcher-handler  
 </IfModule>  
 AllowOverride None  
@@ -486,7 +486,7 @@ AllowOverride None
 ServerName www.mycompany.com  
 DocumentRoot /usr/apachecache/docs  
 <Directory /usr/apachecache/docs>  
-<IfModule disp\_apache2.c>  
+<IfModule disp_apache2.c>  
 SetHandler dispatcher-handler  
 </IfModule>  
 AllowOverride None  
@@ -526,7 +526,7 @@ mod_mime 模組 (例如，請參閱 [Apache 模組 mod_mime](https://httpd.apach
 ```
 ...  
 <Directory />  
-<IfModule disp\_apache2.c>  
+<IfModule disp_apache2.c>  
 SetHandler dispatcher-handler  
 ModMimeUsePathInfo On  
 </IfModule>  
