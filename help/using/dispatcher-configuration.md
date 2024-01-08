@@ -2,10 +2,10 @@
 title: 設定 Dispatcher
 description: 了解如何設定 Dispatcher。了解對 IPv4 和 IPv6 的支援、設定檔案、環境變數、為執行個體命名、定義陣列、識別虛擬主機等。
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: 5fe3bb534b239d5aec892623cab65e84e04c7d10
-workflow-type: ht
-source-wordcount: '8941'
-ht-degree: 100%
+source-git-commit: 410346694a134c0f32a24de905623655f15269b4
+workflow-type: tm+mt
+source-wordcount: '8857'
+ht-degree: 99%
 
 ---
 
@@ -1296,10 +1296,10 @@ printf "%-15s: %s %s" $1 $2 $3>> /opt/dispatcher/logs/invalidate.log
 ```xml
 /ignoreUrlParams
 {
+    # ignore-all-url-parameters-by-dispatcher-and-requests-are-cached
+    /0001 { /glob "*" /type "allow" }
     # allow-the-url-parameter-nocache-to-bypass-dispatcher-on-every-request
-    /0001 { /glob "nocache" /type "deny" }
-    # all-other-url-parameters-are-ignored-by-dispatcher-and-requests-are-cached
-    /0002 { /glob "*" /type "allow" }
+    /0002 { /glob "nocache" /type "deny" }
 }
 ```
 
@@ -1384,7 +1384,7 @@ GET /mypage.html?nocache=true&willbecached=true
 
 ### 設定以時間為基礎的快取失效 - /enableTTL {#configuring-time-based-cache-invalidation-enablettl}
 
-以時間為基礎的快取失效取決於 `/enableTTL` 屬性以及來自 HTTP 標準的一般到期標頭是否存在。 如果設定屬性為 1 (`/enableTTL "1"`)，屬性將會評估來自後端的回應標頭。如果標頭包含 `Cache-Control`、`max-age` 或 `Expires` 日期，快取的檔案旁邊會建立空的輔助檔案，且修改時間等於到期日。 在修改時間過後請求快取檔案時，將會自動從後端重新請求該檔案。
+以時間為基礎的快取失效取決於 `/enableTTL` 屬性以及來自 HTTP 標準的一般到期標頭是否存在。 如果您將屬性設為1 (`/enableTTL "1"`)，則會評估來自後端的回應標頭。 如果標題包含 `Cache-Control`， `max-age` 或 `Expires` 日期，在快取檔案旁邊建立一個空的輔助檔案，其修改時間等於到期日。 在修改時間過後請求快取檔案時，將會自動從後端重新請求該檔案。
 
 在 Dispatcher 4.3.5 之前，TTL 失效邏輯僅根據設定的 TTL 值。 使用 Dispatcher 4.3.5，設定的 TTL **和** Dispatcher 快取失效規則都會列入考量。 因此，對於快取的檔案：
 
@@ -1881,7 +1881,7 @@ HTTP 方法不是 GET 或 HEAD。Dispatcher 假設輸出會包含不應該快取
   陣列的授權檢查程式拒絕存取快取檔案。
 * **not cacheable: session not valid**
 陣列的快取是由工作階段管理員所控管 (設定包含 `sessionmanagement` 節點)，而且使用者的工作階段無效或不再有效。
-* **not cacheable: response contains`no_cache`**
-遠端伺服器傳回 `Dispatcher: no_cache` 標頭，禁止 Dispatcher 快取輸出。
+* **not cacheable： response contains`no_cache`**
+遠端伺服器傳回 `Dispatcher: no_cache` 標頭，禁止Dispatcher快取輸出。
 * **not cacheable: response content length is zero**
 回應的內容長度為零；Dispatcher 不會建立長度為零的檔案。
