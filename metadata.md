@@ -4,9 +4,10 @@ solution: Experience Manager
 type: Documentation
 git-repo: https://github.com/AdobeDocs/experience-manager-dispatcher.zh-Hant
 index: y
-source-git-commit: da6af93fa3dec8e3b2f146e9c8c6183a3185199b
+recommendations: noDisplay
+source-git-commit: 70364ba7229e76ed8b30012029f9a5529b08312d
 workflow-type: tm+mt
-source-wordcount: '111'
+source-wordcount: '109'
 ht-degree: 100%
 
 ---
