@@ -6,7 +6,7 @@ git-repo: https://github.com/AdobeDocs/experience-manager-dispatcher.zh-Hant
 index: y
 recommendations: noDisplay
 source-git-commit: 70364ba7229e76ed8b30012029f9a5529b08312d
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '109'
 ht-degree: 100%
 
